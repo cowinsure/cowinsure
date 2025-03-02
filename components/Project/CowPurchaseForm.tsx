@@ -14,7 +14,7 @@ interface finalForm {
   name: '',
   phone: '',
   email: '',
-  insurance_type_id: 2, // Hardcoded as per the required output
+  insurance_type_id: number, // Hardcoded as per the required output
   responses: DynamicFieldResponse[]
 
 }
@@ -31,7 +31,7 @@ interface ApiResponse {
   data: FormField[];
 }
 
-const LifeInsuranceForm = () => {
+const CowPurchaseForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
     const [formFields, setFormFields] = useState<FormField[]>([]);
   const [isChecked, setChecked] = useState(false);
@@ -39,7 +39,7 @@ const LifeInsuranceForm = () => {
     name: '',
     phone: '',
     email: '',
-    insurance_type_id: 2, // Hardcoded as per the required output
+    insurance_type_id: 4, // Hardcoded as per the required output
     responses: [],
   });
 
@@ -53,7 +53,7 @@ const LifeInsuranceForm = () => {
   useEffect(() => {
     const fetchFormFields = async () => {
       try {
-        const response = await fetch('http://52.66.196.177:8000/api/v1/insurance/insurance-types/2/form/');
+        const response = await fetch('http://52.66.196.177:8000/api/v1/insurance/insurance-types/4/form/');
         const result: ApiResponse = await response.json();
         if (result.status === 'success') {
         
@@ -114,7 +114,7 @@ const LifeInsuranceForm = () => {
               name: '',
               phone: '',
               email: '',
-              insurance_type_id: 2, // Hardcoded as per the required output
+              insurance_type_id: 4, // Hardcoded as per the required output
               responses: [],
             });
           } else {
@@ -220,4 +220,4 @@ const LifeInsuranceForm = () => {
   );
 };
 
-export default LifeInsuranceForm;
+export default CowPurchaseForm;

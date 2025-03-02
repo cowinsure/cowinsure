@@ -11,6 +11,7 @@ import cover01 from '../../public/homeCover1.jpg';
 import cover02 from '../../public/homcover2.jpg';
 import cover03 from '../../public/homecover3.jpg';
 import { formatToBDT } from '@/utils/currencyFormatter';
+import CowPurchaseSection from '@/components/Project/cowSellProject/CowPurchaseSection';
 
 interface Portfolio {
   id: string;
@@ -35,13 +36,47 @@ interface ApiResponse {
   data: Portfolio[];
 }
 
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface CategoryApiResponse {
+  status: string;
+  message: string;
+  data: Category[];
+}
+
 const Project = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
 
+    const [categories, setCategories] = useState<Category[]>([]);
+  
+
   useEffect(() => {
-    const fetchPortfolios = async () => {
+    const fetchCategories = async () => {
       try {
-        const response = await fetch('http://52.66.196.177:8000/api/v1/portfolio/');
+        const response = await fetch('http://52.66.196.177:8000/api/v1/portfolio/categories/');
+        const result: CategoryApiResponse = await response.json();
+        if (result.status === 'success') {
+          setCategories(result.data);
+          const cowSellCategory = result.data.find(category => category.name === 'Long Term Investment');
+          if (cowSellCategory) {
+            fetchPortfolios(cowSellCategory.id);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+
+
+    const fetchPortfolios = async (categoryId: string)  => {
+      try {
+        const response = await fetch(`http://52.66.196.177:8000/api/v1/portfolio/category/${categoryId}/portfolios/`);
+
         const result: ApiResponse = await response.json();
         if (result.status === 'success') {
           setPortfolios(result.data);
@@ -51,7 +86,7 @@ const Project = () => {
       }
     };
 
-    fetchPortfolios();
+    fetchCategories();
   }, []);
 
   const slides = [
@@ -124,6 +159,10 @@ const Project = () => {
           ))}
         </div>
       </section>
+
+      <div>
+        <CowPurchaseSection />
+      </div>
 
       <div className='my-20'>
         <WhyInvestWithUs slides={slides} slideTexts={[]} styleHtmlText={[]} />
