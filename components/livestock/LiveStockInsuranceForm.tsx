@@ -1,0 +1,292 @@
+'use client'
+import React, { useEffect, useState } from 'react';
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import DialogCustom from '../Helper/Dialog';
+
+interface FormField {
+  id: number;
+  label: string;
+  field_type: string;
+  required: boolean;
+  choices: string[];
+}
+
+interface ApiResponse {
+  status: string;
+  message: string;
+  data: FormField[];
+}
+
+interface finalForm{
+  name: '',
+  phone: '',
+  email: '',
+  insurance_type_id: 1, // Hardcoded as per the required output
+  responses: DynamicFieldResponse[]
+
+}
+
+interface DynamicFieldResponse{
+  field_id:string|number
+   value: string
+}
+
+const LiveStockInsuranceForm = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formFields, setFormFields] = useState<FormField[]>([]);
+  const [isChecked , setChecked] = useState(false);
+  const [formValues, setFormValues] = useState<finalForm>({
+    name: '',
+    phone: '',
+    email: '',
+    insurance_type_id: 1, // Hardcoded as per the required output
+    responses: [],
+  });
+
+    const [submissionMessage, setSubmissionMessage] = useState('');
+    const [openDialog, setOpenDialog] = useState(false);
+
+
+  const findByLabel = (label:String) => {
+    return formFields.find(item => item.label === label);
+}
+
+const handleCloseDialog = () => {
+  setOpenDialog(false);
+};
+
+  useEffect(() => {
+    const fetchFormFields = async () => {
+      try {
+        const response = await fetch('http://52.66.196.177:8000/api/v1/insurance/insurance-types/1/form/');
+        const result: ApiResponse = await response.json();
+        if (result.status === 'success') {
+          setFormFields(result.data);
+          console.log(result.data);
+          
+        }
+      } catch (error) {
+        console.error('Error fetching form fields:', error);
+      }
+    };
+
+    fetchFormFields();
+  }, []);
+
+
+
+
+
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, field:FormField) => {
+    const updatedResponses = formValues.responses.filter(
+      (response) => response.field_id !== field.id
+    );
+    updatedResponses.push({
+      field_id: field.id,
+      value: e.target.value,
+    });
+
+    setFormValues({
+      ...formValues,
+      responses: updatedResponses,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    if (!isChecked) {
+      alert('You must accept the terms and conditions to proceed.');
+      setIsSubmitting(false);
+      return;
+    }
+   
+
+    try {
+      const response = await fetch('http://52.66.196.177:8000/api/v1/insurance/submit-form/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formValues)
+      });
+
+      const result = await response.json();
+       if (response.ok) {
+              toast.success('Your insurance request has been sent successfully.');
+              setSubmissionMessage(result.message);
+              setOpenDialog(true);
+              setFormValues({
+                name: '',
+                phone: '',
+                email: '',
+                insurance_type_id: 1, // Hardcoded as per the required output
+                responses: [],
+              });
+            }else{
+              toast.error('Failed to submit. Please try again later.'); 
+            }
+
+    }catch(error){
+//  console.error('Error submitting livestock insurance form:', error);
+      toast.error('An error occurred. Please try again later.');
+    } finally{
+      setIsSubmitting(false);
+    }
+    // Handle form submission logic here
+    // console.log('Formatted Submission:', formValues);
+    // console.log('Form submitted:', formData);
+  };
+
+  return (
+    <>
+    <div className='h-full w-full border border-green-400 flex flex-col lg:flex-col p-5'>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+          <div className="flex-1">
+            <label htmlFor="name" className="block text-lg text-start font-medium text-green-600">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formValues.name}
+              onChange={(e) => setFormValues({ ...formValues, [e.target.name]: e.target.value })}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              required
+            />
+          </div>
+          <div className="flex-1">
+            <label htmlFor="phone" className="block text-start text-lg font-medium text-green-600">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formValues.phone}
+              onChange={(e) => setFormValues({ ...formValues, [e.target.name]: e.target.value })}
+
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+          <div className='flex-1'>
+            <label htmlFor="cattleType" className="block text-start text-lg font-medium text-green-600">{findByLabel("Cattle Type")?.label}</label>
+            <select
+              id="cattleType"
+              name="cattleType"
+              value={formValues.responses.find(response => response.field_id === findByLabel("Cattle Type")?.id)?.value || ''}
+              onChange={(e)=>{
+                
+                const field = findByLabel("Cattle Type"); 
+                if (field) handleChange(e, field);
+              }}
+      
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              required
+            >
+              <option value="">Select Cattle Type</option>
+              <option value="Stud">Stud</option>
+              <option value="Bull">Bull</option>
+            </select>
+          </div>
+          <div className='flex-1'>
+            <label htmlFor="scopeOfCover" className="block text-start text-lg font-medium text-green-600">{findByLabel("Scope of Cover")?.label}</label>
+            <select
+              id="scopeOfCover"
+              name="scopeOfCover"
+              value={formValues.responses.find(response => response.field_id === findByLabel("Scope of Cover")?.id)?.value || ''}
+
+              onChange={(e)=>{
+                
+                const field = findByLabel("Scope of Cover"); 
+                if (field) handleChange(e, field);
+              }}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              required
+            >
+              <option value="">Select Scope of Cover</option>
+              <option value="Death Coverage & Permanent Disability">Death Coverage & Permanent Disability</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+          <div className='flex-1'>
+            <label htmlFor="cattleNumber" className="block text-start text-lg font-medium text-green-600">{findByLabel("Number of Cattle")?.label}</label>
+            <select
+              id="cattleNumber"
+              name="cattleNumber"
+              value={formValues.responses.find(response => response.field_id === findByLabel("Number of Cattle")?.id)?.value || ''}
+
+              onChange={(e)=>{
+                
+                const field = findByLabel("Number of Cattle"); 
+                if (field) handleChange(e, field);
+              }}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              required
+            >
+              <option value="">Select age</option>
+              {Array.from({ length: 100 }, (_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className='flex-1'>
+            <label htmlFor="amount" className="text-start block text-lg font-medium text-green-600">{findByLabel("Sum Insured")?.label}</label>
+            <input
+              type="number"
+              id="amount"
+              name="amount"
+              value={formValues.responses.find(response => response.field_id === findByLabel("Sum Insured")?.id)?.value || ''}
+
+              onChange={(e)=>{
+                
+                const field = findByLabel("Sum Insured"); 
+                if (field) handleChange(e, field);
+              }}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="termsAccepted"
+            name="termsAccepted"
+            checked={isChecked}
+            onChange={(e)=>{
+              setChecked(!isChecked)
+            }}
+            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+            required
+          />
+          <label htmlFor="termsAccepted" className="ml-2 block text-sm text-green-600">
+            I accept the terms and conditions
+          </label>
+        </div>
+        <div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          >
+             {isSubmitting ? 'Submitting...' : 'Submit'}
+          </button>
+        </div>
+      </form>
+    </div>
+    {openDialog ? <DialogCustom message={submissionMessage} onClose={()=>{handleCloseDialog()}} />: ""}
+    <ToastContainer />
+    </>
+  );
+};
+
+export default LiveStockInsuranceForm;
