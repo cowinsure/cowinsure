@@ -74,11 +74,11 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
     
 
   return (
-    <div className='relative w-svh h-svh md:h-svh  lg:h-[75vh] lg:mb-[20vh] mb-[40vh]'>
+    <div className='relative w-svh h-svh md:h-svh  lg:h-auto mb-[420px]  lg:mb-[120px]'>
 
 
       <Swiper
-        onSlideChange={(swiper) => {
+        onSlideChange={() => {
          
           setActiveIndex(activeIndex + 1);
         }}
@@ -109,10 +109,10 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
                   src={s.image_url}
                   objectFit='cover'
                   alt={`Slide ${index + 1}`}
-                  className="w-full object-cover h-svh lg:h-[75vh]"
+                  className="w-full object-cover h-svh lg:h-[500px]"
                   width={1920} // Add appropriate width
                   height={1080} // Add appropriate height
-                  unoptimized
+                  priority // Add this line to prioritize loading
                 />
               </motion.div>
 
@@ -139,10 +139,10 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
                     delay: 2 * 0.5, // Delay for staggering
                     ease: "easeOut",
                   }}
-                  className="text-white text-center text-2xl font-bold lg:text-[90px] md:text-5xl "
+                  className="text-white text-center text-xl font-bold lg:text-[40px] md:text-5xl "
                 >
                   {s.title}
-                      {/* <p><span className='text-green-500'>Empower Farmers , Earn Returns - Investment</span>  Backed by Innovation</p> */}
+                  
 
                 </motion.p>
 
@@ -170,7 +170,7 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
         ))}
       </Swiper>
 
-      <div className=" absolute right-0  w-full bottom-[-45vh] lg:bottom-[-120px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
+      <div className=" absolute right-0  w-full bottom-[-400px] lg:bottom-[-120px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
         
         
         <div className="shadow-md flex items-center bg-white  flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">

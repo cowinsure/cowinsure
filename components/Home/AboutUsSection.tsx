@@ -4,14 +4,14 @@ import Image from 'next/image';
 import { GiBullHorns } from 'react-icons/gi';
 import { FaCheckCircle } from 'react-icons/fa';
 import product from '../../public/productimage.jpg';
-import { motion, AnimatePresence } from 'framer-motion'; // Import Framer Motion
+import { motion} from 'framer-motion'; // Import Framer Motion
 
 
 const AboutUsSection: React.FC = () => {
   return (
 
 
-    <div className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full pt-10'>
+    <div className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10'>
       <div className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-end items-center relative '>
         <div className='absolute rounded-full   lg:right-20 right-[65px]  h-[30vh] w-[30vh] lg:h-[50vh] lg:w-[50vh]  bg-[#fcf4e6]'></div>
         <motion.div

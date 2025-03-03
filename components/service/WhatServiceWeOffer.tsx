@@ -14,8 +14,8 @@ interface ParentProps {
 }
 
 interface SliderProps{
-    title:String,
-    description:String,
+    title:string,
+    description:string,
     image:StaticImageData
 }
 

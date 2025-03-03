@@ -25,6 +25,7 @@ import AboutUsSection from './AboutUsSection';
 import CardsSection from './CardsSection';
 import WhyInvestWithUs from './WhyInvestWithUsSection';
 import AwardRecognitionSection from '../Helper/AwardRecognitionSection';
+import PartnerAndInvestorSection from '../Helper/PartnerAndInvestorSection';
 
 const Home = () => {
  const slides = [
@@ -110,7 +111,7 @@ const Home = () => {
       {/* Section 2 - About Us */}
 
       
-      <section className=" w-full mt-[50vh] lg:mt-[0vh]   mx-auto  flex flex:row items-center justify-center p-2">
+      <section className=" w-full    mx-auto  flex flex:row items-center justify-center p-2">
 
 
         <AboutUsSection/>
@@ -185,6 +186,8 @@ const Home = () => {
       {/* <HomeLoanSection/> */}
 
       <AwardRecognitionSection/>
+
+      <PartnerAndInvestorSection/>
 
 
       <div className='bg-[#F6F4EC]'>

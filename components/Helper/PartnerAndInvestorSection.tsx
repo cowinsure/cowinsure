@@ -52,7 +52,7 @@ interface BaseCardApiResponse {
   data: BaseCard[];
 }
 
-const AwardRecognitionSection = () => {
+const PartnerAndInvestorSection = () => {
   const [partners, setPartners] = useState<BaseCard[]>([]);
 
 
@@ -91,11 +91,11 @@ const AwardRecognitionSection = () => {
 
 
   return (
-    <div className=' flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
+    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
         <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
-        <h2 className="text-xl font-bold text-[#687469] text-start mb-3">achivement</h2>
-        <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">Award & Recognitions</h1>
+        <h2 className="text-xl font-bold text-[#687469] text-start mb-3">Association</h2>
+        <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">Partner & Investor</h1>
       </div>
 
       <Swiper
@@ -108,27 +108,27 @@ const AwardRecognitionSection = () => {
         spaceBetween={50}
         loop={true}
         pagination={{ clickable: false }}
-        autoplay={{ delay: 1000, disableOnInteraction: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: true }}
         modules={[Navigation, Autoplay]}
-        className="flex-1 w-full lg:h-auto flex justify-center items-center lg:justify-center lg:items-center "
+        className="flex-1 w-full lg:h-auto flex justify-center items-center lg:justify-center lg:items-center"
       >
         {partners.map((partner) => (
           <SwiperSlide key={partner.id}>
-            <div className="relative flex justify-center items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
-              <Image
-                src={partner.image_url}
-                alt={partner.name}
-               
-                className="rounded-md object-fit"
-              
-                width={300}
-                height={300}
-                priority
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
-                <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span>
-              </div>
-            </div>
+              <div className="relative flex justify-center items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
+                         <Image
+                           src={partner.image_url}
+                           alt={partner.name}
+                          
+                           className="rounded-md object-fit"
+                         
+                           width={300}
+                           height={300}
+                           priority
+                         />
+                         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
+                           <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span>
+                         </div>
+                       </div>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -154,4 +154,4 @@ const AwardRecognitionSection = () => {
   );
 };
 
-export default AwardRecognitionSection;
+export default PartnerAndInvestorSection;
