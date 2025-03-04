@@ -13,7 +13,7 @@ const AboutUsSection: React.FC = () => {
 
     <div className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10'>
       <div className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-end items-center relative '>
-        <div className='absolute rounded-full   lg:right-20 right-[65px]  h-[30vh] w-[30vh] lg:h-[50vh] lg:w-[50vh]  bg-[#fcf4e6]'></div>
+        <div className='absolute rounded-full  bg-[#fcf4e6] lg:right-20 right-[65px]  h-[300px] w-[300px] lg:h-[400px] lg:w-[400px]  '></div>
         <motion.div
           animate={{ y: [1, -10, 1], opacity: [1, 0.5, 1] }}
           transition={{
@@ -22,16 +22,16 @@ const AboutUsSection: React.FC = () => {
             repeat: Infinity,
           }}
 
-          className='absolute rounded-full   lg:bottom-20 lg:right-[40px] bottom-[10vh] right-[10vh]  h-[10vh] w-[10vh] lg:h-[15vh] lg:w-[15vh]  bg-green-900'></motion.div>
+          className='absolute rounded-full   lg:bottom-[150px] lg:right-[40px] bottom-[80px] right-[40px]  h-[10vh] w-[10vh] lg:h-[15vh] lg:w-[15vh]  bg-green-900'></motion.div>
 
-        <div className="rounded-full z-20  h-[30vh] w-[30vh] lg:h-[50vh] lg:w-[50vh] overflow-hidden  border-gray-300">
+        <div className="rounded-full z-20   h-[300px] w-[300px] lg:h-[400px] lg:w-[400px] overflow-hidden  border-gray-300">
 
           <Image
             src={product}
             alt="Profile"
 
             objectFit="cover"
-            className="overflow-hidden  lg:h-[50vh] lg:w-[50vh] h-[30vh] w-[30vh]"
+            className="overflow-hidden  lg:h-[500px] lg:w-[500px]  h-[300px] w-[300px]"
           />
 
         </div>
@@ -65,9 +65,9 @@ const AboutUsSection: React.FC = () => {
           </li>
         </ul>
         <div className='flex items-center'>
-          <div className="relative text-center p-3 lg:w-[150px] lg:h-[70px] bg-green-100 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
+          <div className="relative text-center p-3 lg:w-[150px] lg:h-[50px] bg-green-100 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Learn more</span>
-            <div className="absolute inset-0 bg-green-800 transform -translate-x-[-140px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
+            <div className="absolute inset-0 bg-green-800 transform -translate-x-[-145px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
           </div>
         </div>
 

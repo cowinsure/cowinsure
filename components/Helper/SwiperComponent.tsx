@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion'; // Import Framer Motion
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import Image, { StaticImageData } from 'next/image';
 import { GiBullHorns } from 'react-icons/gi';
+import Link from 'next/link';
 
 
 // Define the type for the props
@@ -74,7 +75,7 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
     
 
   return (
-    <div className='relative w-svh h-svh md:h-svh  lg:h-auto mb-[420px]  lg:mb-[120px]'>
+    <div className='relative w-full h-auto md:h-full  lg:h-auto mb-[320px]  lg:mb-[120px]'>
 
 
       <Swiper
@@ -92,16 +93,16 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000, disableOnInteraction: true }}
         modules={[EffectFade, Navigation, Pagination, Autoplay]}
-        className="absolute top-0 left-0 w-full lg:h-auto"
+        className="absolute top-0 left-0 w-full lg:h-auto bg-black"
       >
         {sliderData.map((s, index) => (
           <SwiperSlide key={index}>
             <AnimatePresence mode="popLayout" key={index}>
               <motion.div
                 key={activeIndex}
-                initial={{ scale: 1.5 }}
-                animate={index === activeIndex ? { scale: 2.0 } : { scale: 2.0 }}
-                transition={{ duration: 3, ease: 'easeOut' }}
+                initial={{ scale: 1.2 , opacity:0 }}
+                animate={index === activeIndex ? { scale: 1.8 , opacity:1 } : { scale: 1.8 ,opacity:1 }}
+                transition={{ duration: 3, ease: 'easeIn' }}
                 className="flex w-auto justify-center flex-col lg:justify-center lg:items-center h-auto lg:w-full lg:h-auto"
               >
                 <Image
@@ -109,7 +110,7 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
                   src={s.image_url}
                   objectFit='cover'
                   alt={`Slide ${index + 1}`}
-                  className="w-full object-cover h-svh lg:h-[500px]"
+                  className="w-full object-cover h-[800px] lg:h-[500px]"
                   width={1920} // Add appropriate width
                   height={1080} // Add appropriate height
                   priority // Add this line to prioritize loading
@@ -139,7 +140,7 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
                     delay: 2 * 0.5, // Delay for staggering
                     ease: "easeOut",
                   }}
-                  className="text-white text-center text-xl font-bold lg:text-[40px] md:text-5xl "
+                  className="text-white text-center text-lg font-bold lg:text-[40px] md:text-5xl "
                 >
                   {s.title}
                   
@@ -156,9 +157,9 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
                   ease: "easeOut",
                  
                 }}
-                className="relative text-center p-3   lg:w-[150px] lg:h-[60px] bg-green-200 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
-                  <span className="relative z-10 group-hover:text-white transition-colors rounded-md duration-300">Discover Now</span>
-                  <div className="absolute inset-0 bg-green-800/20 transform -translate-x-[-13vh] rounded-md group-hover:translate-x-0 group-hover:bg-green-800 transition-transform duration-300 ease-in-out"></div>
+                className="relative text-center p-3   lg:w-[150px] lg:h-[50px] bg-green-200 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
+                  <Link href='/project' className="relative z-10 group-hover:text-white transition-colors rounded-md duration-300">Discover Now</Link>
+                  <div className=" absolute inset-0 bg-green-800/20 transform -translate-x-[-145px] rounded-md group-hover:translate-x-0 group-hover:bg-green-800 transition-transform duration-300 ease-in-out"></div>
                 </motion.div>
 
 
@@ -170,11 +171,11 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
         ))}
       </Swiper>
 
-      <div className=" absolute right-0  w-full bottom-[-400px] lg:bottom-[-120px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
+      <div className=" absolute right-0  w-full bottom-[-200px] lg:bottom-[-100px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
         
         
-        <div className="shadow-md flex items-center bg-white  flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
-          <div className="p-6 flex-1 flex justify-center items-center h-40">
+        <div className="shadow-md flex items-center lg:h-32 bg-white  flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
+          <div className="p-6 flex-1 flex justify-center items-center h-20">
             <div className='items-center mr-4'>
               <GiBullHorns className='text-5xl text-green-600' />
             </div>
@@ -188,7 +189,7 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
           <div className="w-full lg:h-full lg:w-[2px] h-[2px]  bg-gray-200 my-4 lg:my-0" />
           
           
-          <div className="p-6 flex-1 flex justify-center items-center h-35">
+          <div className=" p-6 flex-1 flex justify-center items-center h-35 lg:h-auto">
             <div className='items-center mr-4'>
               <GiBullHorns className='text-5xl text-green-600' />
             </div>

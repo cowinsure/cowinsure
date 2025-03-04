@@ -10,8 +10,8 @@ const CardsSection: React.FC = () => {
 
 
   return (
-    <section className='  h-screen lg:h-auto    flex lg:items-center lg:justify-center flex-col mt-20 mb-28 lg:mt-20 lg:mb-28 lg:flex-row w-auto lg:w-auto gap-8  lg:px-24'>
-      <Link href="/insurance"  key={1} className='rounded-lg flex-1 relative lg:h-[32vh]  group cursor-pointer'>
+    <section className='  h-auto lg:h-auto    flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-20 mb-28 lg:mt-20 lg:mb-28 lg:flex-row w-full lg:w-auto gap-8  lg:px-24'>
+      <Link href="/insurance"  key={1} className='rounded-md  relative h-[300px] lg:h-[300px] w-full group cursor-pointer'>
         <Image
           src={cardImage2}
           alt={`Card ${0 + 1}`}
@@ -36,7 +36,7 @@ const CardsSection: React.FC = () => {
         </div>
       </Link>
 
-      <Link href="/service/farm_management" key={2} className='rounded-lg flex-1 relative h-auto w-full lg:h-[32vh] group'>
+      <Link href="/service/farm_management" key={2} className='rounded-md  relative h-[300px] w-full lg:h-[300px] group'>
         <Image
           src={cardImage1}
           alt={`Card ${0 + 1}`}
@@ -61,7 +61,7 @@ const CardsSection: React.FC = () => {
         </div>
       </Link>
 
-      <Link href="/service/aimuzzel" key={3} className='rounded-lg flex-1 relative h-64 lg:h-[32vh] group'>
+      <Link href="/service/aimuzzel" key={3} className='rounded-md  relative h-[300px] w-full lg:h-[300px] group'>
         <Image
           src={aibg}
           alt={`Card ${0 + 1}`}
