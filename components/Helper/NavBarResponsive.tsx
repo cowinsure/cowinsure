@@ -112,15 +112,26 @@ function NavBarResponsive() {
                       <span>{item.title}</span>
                     </Link>
                     {item.sub_menu.length > 0 && (
-                      <ul className="absolute left-0  hidden lg:w-[30vh] pt-[5vh] space-y-2 bg-transparent  group-hover:block rounded-md">
+                      <ul className="absolute left-0 hidden lg:w-[50vh] pt-[5vh] space-y-2 bg-transparent group-hover:block rounded-md">
                         <div className='bg-[#F6F4EC] flex flex-col justify-between w-full gap-4 p-2 rounded-md shadow-md'>
-                        {item.sub_menu.map((subItem) => (
-                          <li key={subItem.title}>
-                            <Link href={subItem.link} className="text-x  rounded-md font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200">
-                              {subItem.title}
-                            </Link>
-                          </li>
-                        ))}
+                          {item.sub_menu.map((subItem) => (
+                            <li key={subItem.title}>
+                              <Link href={subItem.link} className="text-x rounded-md font-semibold text-[#687469] block py-2 hover:bg-gray-200">
+                                {subItem.title}
+                              </Link>
+                              {subItem.sub_menu.length > 0 && (
+                                <ul className="pl-4 space-y-2">
+                                  {subItem.sub_menu.map((subSubItem) => (
+                                    <li key={subSubItem.title}>
+                                      <Link href={subSubItem.link} className="text-xs rounded-md font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200">
+                                        {subSubItem.title}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          ))}
                         </div>
                       </ul>
                     )}
@@ -164,6 +175,17 @@ function NavBarResponsive() {
                           <Link href={subItem.link} className="text-x font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200">
                             {subItem.title}
                           </Link>
+                          {subItem.sub_menu.length > 0 && (
+                            <ul className="pl-4 space-y-2">
+                              {subItem.sub_menu.map((subSubItem) => (
+                                <li key={subSubItem.title}>
+                                  <Link href={subSubItem.link} className="text-x font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200">
+                                    {subSubItem.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </li>
                       ))}
                     </ul>

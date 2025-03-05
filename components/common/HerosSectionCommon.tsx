@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import bannerImage from '../../public/farmManagement.jpg'; // Replace with your actual image path
 
-import {StaticImport } from 'next/dist/shared/lib/get-img-props';
+import {  StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 interface AppBrandingProps {
   title?: string;
@@ -13,7 +13,7 @@ interface AppBrandingProps {
 
 }
 
-const FarmHeroSection: React.FC<AppBrandingProps> = ({ title, description, customStyles = "relative w-full h-[50vh] lg:h-[100vh]" ,bannerUrl}) => {
+const HerosSectionCommon: React.FC<AppBrandingProps> = ({ title, description, customStyles = "relative w-full h-[50vh] lg:h-[60vh]" ,bannerUrl}) => {
   return (
     <div className={`${customStyles}`}>
       <Image
@@ -49,4 +49,4 @@ const FarmHeroSection: React.FC<AppBrandingProps> = ({ title, description, custo
   );
 };
 
-export default FarmHeroSection;
+export default HerosSectionCommon;

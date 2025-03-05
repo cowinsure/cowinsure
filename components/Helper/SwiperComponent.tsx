@@ -10,17 +10,13 @@ import 'swiper/css/effect-fade';
 import { motion, AnimatePresence } from 'framer-motion'; // Import Framer Motion
 
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { GiBullHorns } from 'react-icons/gi';
 import Link from 'next/link';
 
 
 // Define the type for the props
-interface CarouselProps {
-  slides: StaticImageData[];
-  slideTexts: string[];  // Array of image URLs
-  styleHtmlText: React.JSX.Element[];  // Array of image URLs
-}
+
 
 interface SliderData {
   id: number;
@@ -35,7 +31,7 @@ interface ApiResponse {
   status: string;
 }
 
-const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
+const SwiperComponent = () => {
   const [activeIndex, setActiveIndex] = useState(5);
   const [sliderData, setSliderData] = useState<SliderData[]>([]);
   
@@ -76,8 +72,6 @@ const SwiperComponent = ({ slides, slideTexts }: CarouselProps) => {
 
   return (
     <div className='relative w-full h-auto md:h-full  lg:h-auto mb-[320px]  lg:mb-[120px]'>
-
-
       <Swiper
         onSlideChange={() => {
          

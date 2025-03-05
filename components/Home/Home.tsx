@@ -39,12 +39,12 @@ const Home = () => {
     cover3,
 
   ];
-  const slideTexts = [
-    "Welcome to InsureCow",
-    " Investment plans for you",
+  // const slideTexts = [
+  //   "Welcome to InsureCow",
+  //   " Investment plans for you",
    
-    "Easy Insurance "
-  ];
+  //   "Easy Insurance "
+  // ];
 
   // const stylingHtmlText = [
   //   <h2 key="1" className=" text-white text-2xl font-bold text-center lg:text-5xl md:text-[50px] ">
@@ -95,7 +95,7 @@ const Home = () => {
 
    
 
-        <SwiperComponent  slides={slides} slideTexts={slideTexts} styleHtmlText={[]}  />
+        <SwiperComponent   />
      
 
 
@@ -142,7 +142,7 @@ const Home = () => {
 
     <div className='my-20'>
       
-<WhyInvestWithUs slides={slides} slideTexts={[]} styleHtmlText={[]}/>
+<WhyInvestWithUs />
     </div>
 
       
