@@ -5,6 +5,7 @@ import { GiBullHorns } from 'react-icons/gi';
 import { FaCheckCircle } from 'react-icons/fa';
 import product from '../../public/productimage.jpg';
 import { motion} from 'framer-motion'; // Import Framer Motion
+import Link from 'next/link';
 
 
 const AboutUsSection: React.FC = () => {
@@ -41,34 +42,42 @@ const AboutUsSection: React.FC = () => {
         <GiBullHorns className='w-auto text-3xl text-green-700 mb-3' />
         <span className="text-sm text-[#687469] uppercase font-semibold">get to know about us</span>
         <h2 className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl">
-          Pure Organic Food From InsureCow Market
+        Empowering Smallholder Farmers with Digital Livestock Assets
         </h2>
         <p className="mt-10 text-xl text-[#687469]">
-          Our mission is to support farmers with the best resources available.
+        Empowering Farmers, Securing Futures
         </p>
         <ul className="space-y-3 mb-8 pt-10 text-[18px] text-[#334b35]">
           <li className="flex items-center">
             <FaCheckCircle className='text-green-600 mr-2' />
-            Morbi vel libero vel odio rhoncus congue.
+            InsureCow Ltd. Singapore-based fintech & insurtech company
           </li>
           <li className="flex items-center">
             <FaCheckCircle className='text-green-600 mr-2' />
-            Etiam non ligula quis purus finibus pretium.
+            Revolutionizing financial inclusion for smallholder farmers
           </li>
           <li className="flex items-center">
             <FaCheckCircle className='text-green-600 mr-2' />
-            Curabitur et sem vitae urna dignissim contum a at ex.
+            Uses AI Digital Twins & Know Your Cow™ (KYC) technology
           </li>
           <li className="flex items-center">
             <FaCheckCircle className='text-green-600 mr-2' />
-            Etiam ullamcorper arcu quis eros, ut aliquam dui ornare.
+            Muzzle Printometry for tamper-proof cattle identification
+          </li>
+          <li className="flex items-center">
+            <FaCheckCircle className='text-green-600 mr-2' />
+            Transforming livestock into secure digital assets
+          </li>
+          <li className="flex items-center">
+            <FaCheckCircle className='text-green-600 mr-2' />
+            Connecting farmers with financial services for trust, transparency, & empowerment
           </li>
         </ul>
         <div className='flex items-center'>
-          <div className="relative text-center p-3 lg:w-[150px] lg:h-[50px] bg-green-100 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
+          <Link href='/about_us' className="relative text-center p-3 lg:w-[150px] lg:h-[50px] bg-green-100 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Learn more</span>
             <div className="absolute inset-0 bg-green-800 transform -translate-x-[-145px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
-          </div>
+          </Link>
         </div>
 
       </div>

@@ -4,6 +4,7 @@ import React from 'react'
 import { GiBullHorns } from 'react-icons/gi'
 import insureCow2 from '../../public/insurancecow.svg';
 import family from '../../public/family.svg';
+import health from '../../public/health-insurance-round-svgrepo-com.png';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -84,7 +85,7 @@ const HomeInsuranceSection = () => {
         >
           <Link href='/insurance/health' className='w-full flex flex-col items-center justify-center lg:flex-col lg:items-center lg:justify-center'>
             <Image
-              src={family}
+              src={health}
               alt="Profile"
               objectFit='cover'
               className=" object-cover w-24 h-24 overflow-clip"

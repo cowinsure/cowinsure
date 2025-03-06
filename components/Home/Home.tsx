@@ -26,6 +26,9 @@ import CardsSection from './CardsSection';
 import WhyInvestWithUs from './WhyInvestWithUsSection';
 import AwardRecognitionSection from '../Helper/AwardRecognitionSection';
 import PartnerAndInvestorSection from '../Helper/PartnerAndInvestorSection';
+import ServiceHighlighted from '../common/ServiceHighlighted';
+import bannerGenereal from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
+
 
 const Home = () => {
  const slides = [
@@ -78,6 +81,10 @@ const Home = () => {
 
   // ]
 
+  const mission  = "Our mission is to promote financial inclusion for smallholder farmers by providing accessible, innovative insurance and financial products. We aim to empower underserved farming communities with technol-ogy-driven solutions, enhancing their ability to mitigate risks, increase productivity, and achieve long-term economic resilience"
+const vision  = "Our vision is to ensure that smallholder farmers in emerging economies have access to financial services, cutting-edge technology, and essential information, fostering a sustainable and prosperous agricultural sector."
+
+
   return (
     <div className="pt-[5vh] lg:h-auto w-auto h-auto">
       {/* Hero Section */}
@@ -128,6 +135,13 @@ const Home = () => {
       <CardsSection/>
 
       {/* </div> */}
+
+        <div className='text-start mb-20'>
+
+
+      <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Mission' description={mission} reverse/>
+      <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Vision' description={vision} />
+        </div>
 
 
       <HomeVedioBanner/>

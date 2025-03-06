@@ -9,7 +9,7 @@ interface AppBrandingProps {
   description?: string;
   bannerUrl: string | StaticImport;
   customStyles?: React.CSSProperties;
-  link:String
+  link?:string
 
 }
 
@@ -43,12 +43,19 @@ const AppBranding: React.FC<AppBrandingProps> = ({ title, description, customSty
             Join us in making a difference - your investment can uplift communities and transform millions of lives for the better.
           </p>
         )}
-        <div className="flex space-x-4">
-          <button className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md">Learn More</button>
+
+          {link ?
+          <div className="flex space-x-4">
+          {/* <button className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md">Learn More</button> */}
           <Link href={`${link}`}>
-            <button className="px-4 py-2 bg-white hover:bg-gray-200 text-green-600 font-semibold rounded-md">Get Started</button>
+            {/* <button className="px-4 py-2 bg-white hover:bg-gray-200 text-green-600 font-semibold rounded-md">Get Started</button> */}
+            <button className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-md">Learn More</button>
           </Link>
         </div>
+          
+          :<></>}
+
+        
       </div>
     </div>
   );

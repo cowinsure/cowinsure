@@ -36,7 +36,7 @@ const CardsSection: React.FC = () => {
         </div>
       </Link>
 
-      <Link href="/service/farm_management" key={2} className='rounded-md  relative h-[300px] w-full lg:h-[300px] group'>
+      <Link href="/service/digita_livestock_solutions/farm_management_advisory" key={2} className='rounded-md  relative h-[300px] w-full lg:h-[300px] group'>
         <Image
           src={cardImage1}
           alt={`Card ${0 + 1}`}
@@ -61,7 +61,7 @@ const CardsSection: React.FC = () => {
         </div>
       </Link>
 
-      <Link href="/service/aimuzzel" key={3} className='rounded-md  relative h-[300px] w-full lg:h-[300px] group'>
+      <Link href="/service/digita_livestock_solutions/ai_powered_livestock_identification" key={3} className='rounded-md  relative h-[300px] w-full lg:h-[300px] group'>
         <Image
           src={aibg}
           alt={`Card ${0 + 1}`}

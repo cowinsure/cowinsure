@@ -94,7 +94,7 @@ export default function InvestmentTypeSection() {
           />
               <div className='container bg-gradient-to-t from-black to-gray-800/25 bg-opacity-35 absolute w-full top-0 bottom-0 flex flex-col items-end lg:flex-col lg:space-y-2 lg:justify-end lg:items-end justify-end'>
                         <div className='flex flex-col lg:flex-col items-end justify-between w-full px-5 space-y-4'>
-                            <div className='w-full text-start font-bold text-3xl text-white'>Invest by Return Type</div>
+                            <div className='w-full text-start font-bold text-2xl text-white'>Invest by Return Type</div>
                             <div className='text-white font-bold pb-10'>You can choose projects between fixed returns and variable returns. By selecting the return type that aligns with your financial goals, you can tailor your investment strategy to suit your preferences and risk tolerance.</div>
                         </div>
                     </div>

@@ -2,7 +2,7 @@
 import HerosSectionCommon from '@/components/common/HerosSectionCommon'
 import OurServicesCommon from '@/components/common/OurServicesCommon'
 import React from 'react'
-import bannerImage from '../../../../public/dubai2023.png';
+import bannerImage from '../../../../public/cover3.jpg';
 
 function TrainingSkillDevelopment() {
   return (

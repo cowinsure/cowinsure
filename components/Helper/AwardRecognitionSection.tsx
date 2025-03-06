@@ -25,14 +25,7 @@ interface BaseCategoryApiResponse {
 }
 
 interface ExtraData {
-  color: string;
-  cowId: string;
-  price: number;
-  teeth: number;
-  gender: string;
-  cowBreed: string;
-  currentLiveWeight: number;
-  expectedFinalWeight: number;
+  url: string;
 }
 
 interface BaseCard {
@@ -63,7 +56,7 @@ const AwardRecognitionSection = () => {
         const response = await fetch('http://52.66.196.177:8000/api/v1/base-categories/');
         const result: BaseCategoryApiResponse = await response.json();
         if (result.status === 'success') {
-          const partnersCategory = result.data.find(category => category.name === 'Partners');
+          const partnersCategory = result.data.find(category => category.name === 'Award');
           if (partnersCategory) {
             fetchBaseCards(partnersCategory.id);
           }
@@ -108,7 +101,7 @@ const AwardRecognitionSection = () => {
         spaceBetween={50}
         loop={true}
         pagination={{ clickable: false }}
-        autoplay={{ delay: 1000, disableOnInteraction: true }}
+        autoplay={{ delay: 1000, disableOnInteraction: false }}
         modules={[Navigation, Autoplay]}
         className="flex-1 w-full lg:h-auto flex justify-center items-center lg:justify-center lg:items-center "
       >

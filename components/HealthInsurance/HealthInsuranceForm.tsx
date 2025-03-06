@@ -4,7 +4,10 @@ import { FaArrowDownLong } from "react-icons/fa6";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DialogCustom from '../Helper/Dialog';
-
+import { FaPerson } from "react-icons/fa6";
+import { GiLovers } from "react-icons/gi";
+import { MdFamilyRestroom } from "react-icons/md";
+import { RiParentFill } from "react-icons/ri";
 interface FormField {
     id: number;
     label: string;
@@ -127,10 +130,10 @@ export default function HealthInsuranceForm() {
         return;
       }
 
-      var updatedResponses
+   
   
    
-    updatedResponses = {
+       const updatedResponses = {
       ...formValues,
       responses: [
         ...formValues.responses,
@@ -175,7 +178,7 @@ export default function HealthInsuranceForm() {
   
       }catch(error){
   //  console.error('Error submitting livestock insurance form:', error);
-        toast.error('An error occurred. Please try again later.');
+        toast.error('An error occurred. Please try again later.' + error);
       } finally{
         setIsSubmitting(false);
       }
@@ -189,8 +192,8 @@ export default function HealthInsuranceForm() {
         <div className='h-full w-full  flex flex-col lg:flex-col'>
             <div className='flex flex-row justify-center items-center gap-3'>
                 <div className='flex flex-col items-center  justify-center'>
-                    <div className='flex flex-col border lg:w-28 border-green-600  shadow-sm shadow-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(0)}>
-                        <span>1</span>
+                    <div className='flex flex-col border justify-center items-center  text-center lg:w-28 border-green-600  shadow-sm shadow-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(0)}>
+                        <FaPerson className='text-2xl text-green-500'/>
                         <span>self</span>
                     </div>
                     <div className='h-8 text-2xl mt-2 text-green-600'>
@@ -201,8 +204,8 @@ export default function HealthInsuranceForm() {
                 </div>
 
                 <div className='flex flex-col items-center justify-center'>
-                    <div className='flex flex-col border lg:w-28 border-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(1)}>
-                        <span>2</span>
+                    <div className='flex flex-col  justify-center items-center border lg:w-28 border-green-600 shadow-sm shadow-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(1)}>
+                    <GiLovers className='text-2xl text-green-500'/>
                         <span>couple</span>
                     </div>
                     <div className='h-8 text-2xl mt-2 text-green-500'>
@@ -213,8 +216,8 @@ export default function HealthInsuranceForm() {
                 </div>
 
                 <div className='flex flex-col items-center justify-center'>
-                    <div className='flex flex-col border lg:w-28 border-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(2)}>
-                        <span>3</span>
+                    <div className='flex flex-col  justify-center items-center border lg:w-28 border-green-600 shadow-sm shadow-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(2)}>
+                    <MdFamilyRestroom className='text-2xl text-green-500'/>
                         <span>family</span>
                     </div>
                     <div className='h-8 text-2xl mt-2 text-green-500'>
@@ -225,8 +228,8 @@ export default function HealthInsuranceForm() {
                 </div>
 
                 <div className='flex flex-col items-center justify-center'>
-                    <div className='flex flex-col border lg:w-28 border-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(3)}>
-                        <span>4</span>
+                    <div className='flex flex-col justify-center items-center border lg:w-28 border-green-600 shadow-sm shadow-green-400 p-5 rounded-md cursor-pointer' onClick={() => setVisibleArrow(3)}>
+                        <RiParentFill className='text-2xl text-green-500' />
                         <span>parent</span>
                     </div>
                     <div className='h-8 mt-2 text-2xl text-green-500'>

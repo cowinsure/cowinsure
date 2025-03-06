@@ -2,6 +2,7 @@ import HerosSectionCommon from '@/components/common/HerosSectionCommon'
 import OurServicesCommon from '@/components/common/OurServicesCommon'
 import React from 'react'
 import bannerImage from '../../../../public/brandinggrassfieldimg.jpeg';
+import HomeInsuranceSection from '@/components/Home/HomeInsuranceSection';
 
 function InsurancePlatformForInstitutions() {
   return (
@@ -11,6 +12,8 @@ function InsurancePlatformForInstitutions() {
     <div className='bg-[#F6F4EC]'>
 
     <OurServicesCommon serviceName="Insurance_platform_for_institutions"/>
+
+    <HomeInsuranceSection/>
     </div>
 
    </div>

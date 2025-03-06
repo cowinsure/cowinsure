@@ -104,7 +104,8 @@ const SwiperComponent = () => {
                   src={s.image_url}
                   objectFit='cover'
                   alt={`Slide ${index + 1}`}
-                  className="w-full object-cover h-[800px] lg:h-[500px]"
+                  // className="w-full object-cover h-[800px] lg:h-[500px]"
+                  className="w-full object-cover h-[800px] lg:h-[70vh]"
                   width={1920} // Add appropriate width
                   height={1080} // Add appropriate height
                   priority // Add this line to prioritize loading

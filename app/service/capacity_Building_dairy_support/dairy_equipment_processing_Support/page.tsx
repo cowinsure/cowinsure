@@ -1,12 +1,12 @@
 import HerosSectionCommon from '@/components/common/HerosSectionCommon'
 import OurServicesCommon from '@/components/common/OurServicesCommon'
 import React from 'react'
-import bannerImage from '../../../../public/cover3.jpg';
+import bannerImage from '../../../../public/farmers-with.jpg';
 
 function DairyEquipmentProcessingSupport() {
   return (
     <div className='h-auto mt-[80px]'>
-    <HerosSectionCommon title='Training Skill Development' bannerUrl={bannerImage}/>
+    <HerosSectionCommon title='Dairy Equipment & Processing Support' bannerUrl={bannerImage}/>
 
     <div className='bg-[#F6F4EC]'>
 

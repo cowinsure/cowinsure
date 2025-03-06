@@ -63,7 +63,7 @@ const listSlides = [
 function page() {
   return (
     <div >
-      <AppBranding title="Empowering Farmers, Securing Livelihoods – Smart Solutions for Livestock Success" bannerUrl={banner} link={"/about_us"} />
+      <AppBranding title="Empowering Farmers, Securing Livelihoods – Smart Solutions for Livestock Success" bannerUrl={banner}  />
 
 
       <WhatServiceWeOffer slider={listSlides}/>
