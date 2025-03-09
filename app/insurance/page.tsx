@@ -18,7 +18,7 @@ export default function InsuranceHome() {
         <FaqSection/>
       </div>
 
-      <div className='text-center bg-green-800 p-20'>
+      <div className='text-center bg-green-800 '>
         <ContactUs/>
       </div>
     </div>

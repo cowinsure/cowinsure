@@ -59,7 +59,7 @@ const DetailsID = () => {
     };
 
     fetchProjectDetails();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
 

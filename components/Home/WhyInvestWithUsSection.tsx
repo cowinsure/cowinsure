@@ -113,7 +113,7 @@ const WhyInvestWithUs: React.FC = () => {
               unoptimized
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
-              <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span>
+              {/* <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span> */}
               </div>
             </div>
             <div className='text-start'>

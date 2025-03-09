@@ -86,9 +86,9 @@ const FeaturedNewsSection: React.FC = () => {
         <h1 className="text-5xl font-bold text-[#334b35]">Featured News</h1>
       </div>
       <p className='text-center font-semibold text-gray-500 mt-10 text-2xl lg:max-w-[800px]'>
-        At InsureCow, we are dedicated to transforming agriculture by connecting investors with smallholder farmers. Together, we cultivate sustainable growth, drive food security, and uplift communities, ensuring every investment contributes to a better future for all.
+      InsureCow connects investors with smallholder farmers for sustainable growth and food security
       </p>
-      <div className="w-full grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {newsData.slice(0, visibleItems).map((news, index) => (
           <Link href={news.extra_data.url} key={index} className="relative bg-white p-20 rounded-lg shadow-md overflow-hidden group cursor-pointer">
             <div className="absolute inset-0 bg-cover bg-center -right-full group-hover:right-0 transition-all duration-500">

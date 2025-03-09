@@ -11,7 +11,7 @@ import LifeInsuranceForm from '@/components/lifeInsurance/LifeInsuranceComponent
 
 const LifeInsurance = () => {
     return (
-        <div className='h-auto   md:pt-0 mx-auto lg:w-full  text-center bg-[#F7F7F7] '>
+        <div className='h-auto  mt-[10vh]  md:pt-0 mx-auto lg:w-full  text-center bg-[#F7F7F7] '>
             <div className='pt-[10vh] lg:pt-[10vh]   container mx-auto flex flex-col lg:flex-col lg:justify-center justify-between'>
             <div className="w-full  text-center mb-16">
         <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-2' />

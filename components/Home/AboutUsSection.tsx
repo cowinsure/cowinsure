@@ -2,8 +2,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { GiBullHorns } from 'react-icons/gi';
-import { FaCheckCircle } from 'react-icons/fa';
-import product from '../../public/productimage.jpg';
+// import { FaCheckCircle } from 'react-icons/fa';
+import product from '../../public/cover3.jpg';
 import { motion} from 'framer-motion'; // Import Framer Motion
 import Link from 'next/link';
 
@@ -32,7 +32,7 @@ const AboutUsSection: React.FC = () => {
             alt="Profile"
 
             objectFit="cover"
-            className="overflow-hidden  lg:h-[500px] lg:w-[500px]  h-[300px] w-[300px]"
+            className="overflow-hidden  lg:h-[600px] lg:w-[600px]  h-[300px] w-[300px]"
           />
 
         </div>
@@ -47,32 +47,9 @@ const AboutUsSection: React.FC = () => {
         <p className="mt-10 text-xl text-[#687469]">
         Empowering Farmers, Securing Futures
         </p>
-        <ul className="space-y-3 mb-8 pt-10 text-[18px] text-[#334b35]">
-          <li className="flex items-center">
-            <FaCheckCircle className='text-green-600 mr-2' />
-            InsureCow Ltd. Singapore-based fintech & insurtech company
-          </li>
-          <li className="flex items-center">
-            <FaCheckCircle className='text-green-600 mr-2' />
-            Revolutionizing financial inclusion for smallholder farmers
-          </li>
-          <li className="flex items-center">
-            <FaCheckCircle className='text-green-600 mr-2' />
-            Uses AI Digital Twins & Know Your Cow™ (KYC) technology
-          </li>
-          <li className="flex items-center">
-            <FaCheckCircle className='text-green-600 mr-2' />
-            Muzzle Printometry for tamper-proof cattle identification
-          </li>
-          <li className="flex items-center">
-            <FaCheckCircle className='text-green-600 mr-2' />
-            Transforming livestock into secure digital assets
-          </li>
-          <li className="flex items-center">
-            <FaCheckCircle className='text-green-600 mr-2' />
-            Connecting farmers with financial services for trust, transparency, & empowerment
-          </li>
-        </ul>
+        <p className="space-y-3 mb-8 pt-10 text-[18px] text-[#334b35]">
+          InsureCow Ltd., a Singapore-based fintech and insurtech leader, revolutionizes financial inclusion for smallholder farmers. Using AI Digital Twins and proprietary Know Your Cow™ (KYC) technology, we transform livestock into secure digital assets. Our advanced Muzzle Printometry ensures tamper-proof cattle identification, enabling farmers to access financial and insurance services with trust and transparency.
+        </p>
         <div className='flex items-center'>
           <Link href='/about_us' className="relative text-center p-3 lg:w-[150px] lg:h-[50px] bg-green-100 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Learn more</span>

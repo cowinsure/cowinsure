@@ -3,18 +3,14 @@ import banner from '../../public/a-young-man-holding-a-basket-of-freshly-harvest
 import AppBranding from '@/components/Project/AppBranding';
 import ImapctHighlightSection from '@/components/impact/ImapctHighlightSection';
 import SDGImapctSection from '@/components/impact/SDGImapctSection';
-import CommitmentSection from '@/components/impact/CommitmentSection';
 import FeaturedNewsSection from '@/components/impact/FeaturedNewsSection';
-import BannerGeneral from '@/components/Home/BannerGeneral';
-import farmeintheway from '../../public/farmerfieldimg.jpeg';
-import Link from 'next/link';
 import FaqSection from '@/components/Home/FaqSection';
 
 
 
 function Imapct() {
   return (
-    <div className='pt-[5vh] lg:h-auto h-auto'>
+    <div className='mt-[8vh] lg:h-auto h-auto'>
         <AppBranding title="Stronger Together, Enriching Farmers' Future!" bannerUrl={banner} link={"/about_us"}/>
         
         <ImapctHighlightSection/>
@@ -25,7 +21,7 @@ function Imapct() {
 
         </div>
         <div className='bg-[#F6F4EC]'>
-        <CommitmentSection/>
+        {/* <CommitmentSection/> */}
         </div>
 
         <div className='py-10'>
@@ -34,7 +30,7 @@ function Imapct() {
         </div>
 
         
-      <BannerGeneral bannerUrl={farmeintheway}>
+      {/* <BannerGeneral bannerUrl={farmeintheway}>
         <div className="relative z-10 flex flex-row items-center justify-center h-full bg-black bg-opacity-50 text-white text-center ">
           <div className='flex flex-1 item-center  lg:justify-center lg:items-center    justify-center '>
             <h1 className=" text-4xl lg:text-6xl font-semibold "> <span className='text-white'>InsureCow impact report </span></h1>
@@ -48,7 +44,7 @@ function Imapct() {
             </div>
           </div>
         </div>
-      </BannerGeneral>
+      </BannerGeneral> */}
 
       <div className='text-center bg-[#F6F4EC]'>
 

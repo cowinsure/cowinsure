@@ -7,9 +7,9 @@ import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 interface AppBrandingProps {
   title?: string;
   description?: string;
-  bannerUrl: string | StaticImport |null;
+  bannerUrl: string | StaticImport;
   customStyles?: React.CSSProperties;
-  link?:String
+  link?:string
 
 }
 
@@ -17,7 +17,7 @@ const ServiceHeroSection: React.FC<AppBrandingProps> = ({ title, description, cu
   return (
     <div className={`${customStyles}`}>
       <Image
-        src={bannerUrl!!}
+        src={bannerUrl}
         placeholder='blur'
         blurDataURL={bannerImage.src}
         alt="Banner"

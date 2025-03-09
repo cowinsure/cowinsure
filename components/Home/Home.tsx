@@ -1,11 +1,6 @@
 
 import React from 'react'
 
-import cover3 from '../../public/cover3.jpg';
-
-import cover01 from '../../public/homeCover1.jpg';
-import cover02 from '../../public/homcover2.jpg';
-import cover03 from '../../public/homecover3.jpg';
 import grassBrandingImage from '../../public/brandinggrassfieldimg.jpeg';
 
 import "swiper/css";
@@ -26,22 +21,13 @@ import CardsSection from './CardsSection';
 import WhyInvestWithUs from './WhyInvestWithUsSection';
 import AwardRecognitionSection from '../Helper/AwardRecognitionSection';
 import PartnerAndInvestorSection from '../Helper/PartnerAndInvestorSection';
-import ServiceHighlighted from '../common/ServiceHighlighted';
-import bannerGenereal from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
+// import ServiceHighlighted from '../common/ServiceHighlighted';
+// import bannerGenereal from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
+import CowPurchaseSection from '../Project/cowSellProject/CowPurchaseSection';
 
 
 const Home = () => {
- const slides = [
-    cover01,
-    cover02,
-    cover03,
-    cover3,
-    cover01,
-    cover3,
-    cover03,
-    cover3,
 
-  ];
   // const slideTexts = [
   //   "Welcome to InsureCow",
   //   " Investment plans for you",
@@ -81,12 +67,12 @@ const Home = () => {
 
   // ]
 
-  const mission  = "Our mission is to promote financial inclusion for smallholder farmers by providing accessible, innovative insurance and financial products. We aim to empower underserved farming communities with technol-ogy-driven solutions, enhancing their ability to mitigate risks, increase productivity, and achieve long-term economic resilience"
-const vision  = "Our vision is to ensure that smallholder farmers in emerging economies have access to financial services, cutting-edge technology, and essential information, fostering a sustainable and prosperous agricultural sector."
+//   const mission  = "Our mission is to promote financial inclusion for smallholder farmers by providing accessible, innovative insurance and financial products. We aim to empower underserved farming communities with technol-ogy-driven solutions, enhancing their ability to mitigate risks, increase productivity, and achieve long-term economic resilience"
+// const vision  = "Our vision is to ensure that smallholder farmers in emerging economies have access to financial services, cutting-edge technology, and essential information, fostering a sustainable and prosperous agricultural sector."
 
 
   return (
-    <div className="pt-[5vh] lg:h-auto w-auto h-auto">
+    <div className=" lg:h-auto w-auto h-auto">
       {/* Hero Section */}
 
       {/* <section className=" h-auto flex items-center justify-center "> */}
@@ -139,8 +125,8 @@ const vision  = "Our vision is to ensure that smallholder farmers in emerging ec
         <div className='text-start mb-20'>
 
 
-      <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Mission' description={mission} reverse/>
-      <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Vision' description={vision} />
+      {/* <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Mission' description={mission} reverse/>
+      <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Vision' description={vision} /> */}
         </div>
 
 
@@ -152,6 +138,9 @@ const vision  = "Our vision is to ensure that smallholder farmers in emerging ec
 
       {/* Section 3 - Services */}
       <HomeInvestmentSection />
+
+      <CowPurchaseSection />
+
 
 
     <div className='my-20'>
@@ -205,7 +194,7 @@ const vision  = "Our vision is to ensure that smallholder farmers in emerging ec
 
 
       <div className='bg-[#F6F4EC]'>
-      <FeedbackSlider slides={slides} slideTexts={[]} styleHtmlText={[]}/>
+      <FeedbackSlider/>
       </div>
 
 

@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 import React from 'react'
 import { GiBullHorns } from 'react-icons/gi'
-import sampleCow2 from '../../public/sampleCow2.jpg';
 import femaleFarmer from '../../public/cropped-view-of-stylish-young-woman-in-sari-showin.jpg';
 import incomeUplife from '../../public/farmers-in-rice-paddy-fields-inle-lake-shan-stat.jpg';
 import farmland from '../../public/agriculture-farmland-2023-11-27-05-02-44-utc.jpg';
@@ -50,9 +49,9 @@ export default function ImapctHighlightSection() {
                         <div className=' container bg-black bg-opacity-50 absolute  w-full top-0   bottom-0  flex flex-col items-end lg:flex-col lg:space-y-2   lg:justify-end lg:items-end justify-end' >
                             <div className='flex flex-col  lg:flex-col   items-end justify-between w-full px-5 space-y-4 '>
 
-                                <div className='w-full text-start font-bold text-4xl text-white '>5,000</div>
+                                <div className='w-full text-start font-bold text-4xl text-white '>4,136</div>
                                 <div className='w-full text-start font-bold text-3xl text-white '>Farmers has access to finanace</div>
-                                <div className='text-white  font-bold pb-10'>Empowered over 5,000 smallholder farmers with financial access and insurance-backed microfinance</div>
+                                <div className='text-white  font-bold pb-10'>Empowered over 4,136 smallholder farmers with financial access and insurance-backed microfinance</div>
                             </div>
                         </div>
                     </div>
@@ -76,9 +75,9 @@ export default function ImapctHighlightSection() {
                         <div className=' container bg-black bg-opacity-50 absolute  w-full top-0   bottom-0  flex flex-col items-end lg:flex-col lg:space-y-2   lg:justify-end lg:items-end justify-end' >
                             <div className='flex flex-col  lg:flex-col   items-end justify-between w-full px-5 space-y-4 '>
 
-                                <div className='w-full text-start font-bold text-4xl text-white '>20-25%</div>
-                                <div className='w-full text-start font-bold text-3xl text-white '>Profit Boosting</div>
-                                <div className='text-white  font-bold pb-10'>Boosted farmer profitability by 20-25% through enhanced farm management tools and advisory services.</div>
+                                <div className='w-full text-start font-bold text-4xl text-white '>$800K</div>
+                                <div className='w-full text-start font-bold text-3xl text-white '>Loans Disbursed</div>
+                                <div className='text-white  font-bold pb-10'>InsureCow has disbursed $800K in loans to empower farmers, fostering growth, food security, and community resilience</div>
                             </div>
                         </div>
                     </div>
@@ -101,9 +100,9 @@ export default function ImapctHighlightSection() {
                             <div className='flex flex-col  lg:flex-col   items-end justify-between w-full px-5 space-y-4 '>
 
                                 <div className='w-full text-start font-bold text-4xl text-white '>
-                                1,500 farmers</div>
-                                <div className='w-full text-start font-bold text-3xl text-white '>Access to low-interest loans</div>
-                                <div className='text-white  font-bold pb-10'>Facilitated access to low-interest loans for over 1,500 farmers, reducing reliance on high-interest informal lenders</div>
+                                0 </div>
+                                <div className='w-full text-start font-bold text-3xl text-white '>Fraudulent</div>
+                                <div className='text-white  font-bold pb-10'>Zero fraudulent cases—ensuring trust, transparency, and impact in every investment</div>
                             </div>
                         </div>
                     </div>

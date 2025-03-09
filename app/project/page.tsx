@@ -4,12 +4,7 @@ import { GiBullHorns } from 'react-icons/gi';
 import Image from 'next/image';
 import FaqSection from '@/components/Home/FaqSection';
 import Link from 'next/link';
-import InvestmentTypeSection from '@/components/Project/InvestmentTypeSection';
 import WhyInvestWithUs from '@/components/Home/WhyInvestWithUsSection';
-import cover3 from '../../public/cover3.jpg';
-import cover01 from '../../public/homeCover1.jpg';
-import cover02 from '../../public/homcover2.jpg';
-import cover03 from '../../public/homecover3.jpg';
 import { formatToBDT } from '@/utils/currencyFormatter';
 import CowPurchaseSection from '@/components/Project/cowSellProject/CowPurchaseSection';
 
@@ -169,7 +164,7 @@ const Project = () => {
         <WhyInvestWithUs  />
       </div>
 
-      <InvestmentTypeSection />
+      {/* <InvestmentTypeSection /> */}
 
       <section className='bg-[#F6F4EC] text-center'>
         <FaqSection />

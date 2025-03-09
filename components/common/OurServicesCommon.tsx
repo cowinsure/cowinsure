@@ -86,7 +86,7 @@ const OurServicesCommon = ({ serviceName}: ParentProps) => {
     };
 
     fetchBaseCategories();
-  }, []);
+  }, );
 
 
 

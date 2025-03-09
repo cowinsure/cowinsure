@@ -6,13 +6,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi';
 // import Link from 'next/link';
 // import insureCow2 from '../../public/insurancecow.svg';
-import farmerPic from '../../public/farmerPic.jpg';
-import farmerPic2 from '../../public/farmerimg.jpg';
 import { useRef } from 'react';
 import { HiMiniArrowLongLeft } from "react-icons/hi2";
 
@@ -32,13 +30,9 @@ interface TestimonialApiResponse {
   data: Testimonial[];
 }
 
-interface CarouselProps {
-    slides: StaticImageData[];
-    slideTexts: string[];  // Array of image URLs
-    styleHtmlText: React.JSX.Element[];  // Array of image URLs
-}
 
-const FeedbackSlider = ({ slides }: CarouselProps) => {
+
+const FeedbackSlider = () => {
 
     const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 

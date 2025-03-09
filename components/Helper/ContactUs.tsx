@@ -43,10 +43,7 @@ const ContactUs: React.FC = () => {
         body: JSON.stringify(requestData)
       });
 
-      console.log(requestData);
-      
-
-      const result = await response.json();
+    
       if (response.ok) {
         toast.success('Your message has been sent successfully.');
         setFormData({

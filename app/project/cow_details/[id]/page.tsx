@@ -5,7 +5,6 @@ import Image from 'next/image';
 import FaqSection from '@/components/Home/FaqSection';
 import { useParams } from 'next/navigation';
 
-import CowInvestmentForm from '@/components/Project/CowInvestmentForm';
 import { formatToBDT } from '@/utils/currencyFormatter';
 import CowPurchaseForm from '@/components/Project/CowPurchaseForm';
 
@@ -61,7 +60,7 @@ function CowDetailsPage() {
         };
 
         fetchProjectDetails();
-    }, []);
+    }, [id]);
 
     if (loading) {
         return <div className='h-screen w-screen text-center'>Loading...</div>;

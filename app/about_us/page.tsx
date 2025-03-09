@@ -16,7 +16,7 @@ const vision  = "Our vision is to ensure that smallholder farmers in emerging ec
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className=' lg:h-auto h-auto'>
         <AppBranding title="Stronger Together, Enriching Farmers' Future!" bannerUrl={banner}  />
 
 
@@ -51,7 +51,7 @@ const AboutUs = () => {
       <FaqSection/>
 
         </div>
-        <div className='text-center bg-green-900 p-5' >
+        <div className='text-center bg-green-900'>
       <ContactUs/>
 
         </div>

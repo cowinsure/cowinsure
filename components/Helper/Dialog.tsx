@@ -1,5 +1,4 @@
 import React from 'react';
-import { GiBullHorns } from 'react-icons/gi';
 import { FaCheckCircle } from "react-icons/fa";
 
 interface DialogProps {

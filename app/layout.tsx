@@ -1,17 +1,26 @@
 
 import type { Metadata } from "next";
-import { Poppins,} from "next/font/google";
+import {
+  // Poppins,
+
+  Averia_Sans_Libre
+} from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Helper/Footer";
 import NavBarResponsive from "@/components/Helper/NavBarResponsive";
 import LoadingProvider from "@/components/Helper/LoadingProvider";
 
 
-const poppins = Poppins({
+// const poppins = Poppins({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "700", "800"], // Add the required font weights 
+//   style: ["normal", "italic"], // Optional styles
+//   variable: "--font-poppins",
+// });
+
+const averia = Averia_Sans_Libre({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "800"], // Add the required font weights 
-  style: ["normal", "italic"], // Optional styles
-  variable: "--font-poppins",
+  weight: ["400", "700"], // Specify weights as needed
 });
 
 
@@ -29,14 +38,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${poppins.variable
-        } antialiased`}
+        className={` ${averia.className
+          } antialiased`}
       >
-  
 
-      <NavBarResponsive/>
-      <LoadingProvider>{children}</LoadingProvider>
-       <Footer/>
+
+        <NavBarResponsive />
+        <LoadingProvider>{children}</LoadingProvider>
+        <Footer />
       </body>
     </html>
   );

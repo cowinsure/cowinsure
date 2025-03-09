@@ -50,7 +50,7 @@ interface CategoryApiResponse {
 const HomeInvestmentSection = () => {
 
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  // const [categories, setCategories] = useState<Category[]>([]);
 
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const HomeInvestmentSection = () => {
         const response = await fetch('http://52.66.196.177:8000/api/v1/portfolio/categories/');
         const result: CategoryApiResponse = await response.json();
         if (result.status === 'success') {
-          setCategories(result.data);
+          // setCategories(result.data);
           const cowSellCategory = result.data.find(category => category.name === 'Long Term Investment');
           if (cowSellCategory) {
             fetchPortfolios(cowSellCategory.id);

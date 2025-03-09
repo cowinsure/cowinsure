@@ -114,7 +114,7 @@ const PartnerAndInvestorSection = () => {
       >
         {partners.map((partner) => (
           <SwiperSlide key={partner.id}>
-              <div className="relative flex justify-center items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
+              <div className="relative flex justify-center items-center h-[300px] lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
                          <Image
                            src={partner.image_url}
                            alt={partner.name}

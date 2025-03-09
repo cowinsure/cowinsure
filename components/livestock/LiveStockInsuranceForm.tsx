@@ -48,7 +48,7 @@ const LiveStockInsuranceForm = () => {
     const [openDialog, setOpenDialog] = useState(false);
 
 
-  const findByLabel = (label:String) => {
+  const findByLabel = (label:string) => {
     return formFields.find(item => item.label === label);
 }
 
@@ -130,7 +130,7 @@ const handleCloseDialog = () => {
 
     }catch(error){
 //  console.error('Error submitting livestock insurance form:', error);
-      toast.error('An error occurred. Please try again later.');
+      toast.error('An error occurred. Please try again later.' + error);
     } finally{
       setIsSubmitting(false);
     }
@@ -262,7 +262,7 @@ const handleCloseDialog = () => {
             id="termsAccepted"
             name="termsAccepted"
             checked={isChecked}
-            onChange={(e)=>{
+            onChange={()=>{
               setChecked(!isChecked)
             }}
             className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
