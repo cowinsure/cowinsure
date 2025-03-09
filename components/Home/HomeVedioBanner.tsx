@@ -41,7 +41,7 @@ export default function VideoBanner() {
         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
           <div className="relative w-full max-w-4xl">
             {/* <VideoPlayer videoSrc='https://www.w3schools.com/html/mov_bbb.mp4'/> */}
-            <VideoPlayer videoSrc='/videos/insurecow-no-govt-leader_1080.mp4'/>
+            <VideoPlayer videoSrc='/videos/cowvedio2.mp4'/>
             {/* <iframe 
               className="w-full aspect-video rounded-lg" 
               src="https://www.youtube.com/watch?v=lw9fGXYfGOo" 
