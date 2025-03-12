@@ -7,7 +7,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SwiperComponent from '../Helper/SwiperComponent';
-import HomeInvestmentSection from './HomeInvestmentSection';
 import HomeInsuranceSection from './HomeInsuranceSection';
 import FaqSection from './FaqSection';
 import ContactUs from '@/components/Helper/ContactUs';
@@ -24,6 +23,7 @@ import PartnerAndInvestorSection from '../Helper/PartnerAndInvestorSection';
 // import ServiceHighlighted from '../common/ServiceHighlighted';
 // import bannerGenereal from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
 import CowPurchaseSection from '../Project/cowSellProject/CowPurchaseSection';
+import InvestmentSection from '../Helper/InvestmentSection';
 
 
 const Home = () => {
@@ -137,7 +137,8 @@ const Home = () => {
       <HomeInsuranceSection />
 
       {/* Section 3 - Services */}
-      <HomeInvestmentSection />
+      {/* <HomeInvestmentSection /> */}
+      <InvestmentSection/>
 
       <CowPurchaseSection />
 
