@@ -7,10 +7,11 @@ import 'swiper/css/pagination';
 
 import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi'
+import image from '../../../public/brandinggrassfieldimg.jpeg';
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { formatToBDT } from '@/utils/currencyFormatter';
+// import Link from 'next/link';
+// import { formatToBDT } from '@/utils/currencyFormatter';
 
 interface ExtraData {
   color: string;
@@ -98,7 +99,7 @@ const CowPurchaseSection = () => {
 
   return (
 
-    <section className="pb-10 h-auto lg:h-auto  flex flex-col  lg:flex-col lg:justify-start  lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
+    <section className="pb-10    flex flex-col  lg:flex-col lg:justify-center  lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
       <div className="max-w-4xl text-center">
         <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
 
@@ -107,7 +108,9 @@ const CowPurchaseSection = () => {
 
       </div>
 
-      <div className='mt-10 w-full h-auto container mx-auto flex flex-col gap-4 lg:flex-row items-start justify-center  mb-5 '>
+    
+
+      <div className='mt-10 w-full  container mx-auto flex flex-col gap-4 lg:flex-row items-start justify-center  mb-5 '>
 
         <Swiper
           breakpoints={{
@@ -121,12 +124,12 @@ const CowPurchaseSection = () => {
           pagination={{ clickable: false }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Navigation, Autoplay]}
-          className="flex-1 w-full lg:h-auto justify-center items-center lg:justify-center lg:items-center"
+          className="  w-full h-[70vh]  lg:h-[450px]   justify-center items-center lg:justify-center lg:items-center "
         >
           {portfolios.map((portfolio, index) => (
             <SwiperSlide key={index}>
 
-              <Link key={portfolio.id} href={`/project/cow_details/${portfolio.id}`} className='bg-white shadow-lg rounded-lg border-bg-[#F6F4EC] border-2 flex flex-col items-start justify-start'>
+              {/* <Link key={portfolio.id} href={`/project/cow_details/${portfolio.id}`} className='bg-white shadow-lg rounded-lg border-bg-[#F6F4EC] border-2 flex flex-col items-start justify-start'>
                 <div className="w-full lg:max-h-[500px] rounded-lg  relative flex flex-col lg:flex-col lg:justify-start lg:items-start">
                   <Image
                     src={portfolio.image_url}
@@ -168,7 +171,78 @@ const CowPurchaseSection = () => {
                     <div className="absolute inset-0 bg-green-800 transform -translate-x-[105px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
                   </div>
                 </div>
-              </Link>
+              </Link> */}
+                <div className='relative   w-full flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
+                                  <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
+                                      <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
+                                          <Image
+                                              src={portfolio.image_url}
+                                              alt='cover'
+                                              layout="fill"
+                                              objectFit="cover"
+                                              objectPosition='center'
+                                              className="rounded-lg w-full h-[500px]"
+                                              unoptimized
+                                              priority
+                                          />
+                                          <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
+              
+                                          </div>
+              
+              
+                                      </div>
+              
+              
+              
+                                  </div>
+                                  <div className=' absolute bottom-0 left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible '>
+                                      <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-green-800 rounded-t-lg text-2xl font-bold text-white'>
+                                      <div className='flex flex-row lg:flex-row items-center justify-start text-center w-full px-4  py-2'>
+                                        
+                                          <div className='text-white text-xl font-bold'>1,20,000 TK</div>
+                                      </div> 
+              
+                                      <div className='w-full flex flex-row lg:flex-col items-center justify-center   px-2  '>
+                                      <div className='flex flex-row lg:flex-row items-start justify-around  w-full  gap-4 px-2  '>
+                                          <div className='flex-1 text-white text-xs '>Live (KG)</div>
+                                          <div className= ' flex-1 text-white text-xs font-bold'>600KG</div>
+                                      </div>  
+              
+                                      <div className='flex flex-row lg:flex-row items-start justify-around w-full  gap-4 px-2 '>
+                                          <div className='flex-1 text-xs text-white font-semibold'>Expected(KG)</div>
+                                          <div className='flex-1 text-white text-xs font-bold'>800KG</div>
+                                      </div>
+              
+              
+              
+                                      </div>
+                                      
+                                   
+              
+              
+                                          {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
+                                      </div>
+              
+                                      <div className='rounded-b-lg overflow-hidden absolute left-0 cursor-pointer  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
+                                          flex flex-col  justify-center items-center text-black text-2xl font-bold'>
+              
+                                          <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> Buy Now</div>
+              
+                                      </div>
+              
+                                  </div>
+              
+                                  {/* <div className='w-0 group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-green-700'></div> */}
+              
+              
+              
+              
+                              </div>
+           
+           
+
+           
+            
             </SwiperSlide>
           ))}
         </Swiper>

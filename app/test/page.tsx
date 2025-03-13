@@ -7,6 +7,7 @@ function TestPage() {
     return (
 
         <>
+            {/* sample R&D */}
             <div className='container mx-auto h-auto mt-[20vh] flex flex-row justify-center gap-4 items-center'>
 
 
@@ -171,6 +172,7 @@ function TestPage() {
             </div>
 
 
+            {/* card type 2 */}
             <div className='container mx-auto h-auto mt-[20vh] flex flex-col lg:flex-row justify-center gap-4 items-center'>
 
                 <div className='relative flex-col w-[300px] h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
@@ -398,6 +400,133 @@ function TestPage() {
 
 
                 </div>
+
+            </div>
+
+
+
+
+            {/* cow sell card */}
+            <div className='container mx-auto h-auto mt-[20vh]  flex flex-row justify-center gap-4 items-center'>
+
+                <div className='relative  w-[300px] flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
+                    <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
+                        <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
+                            <Image
+                                src={cover}
+                                alt='cover'
+                                layout="fill"
+                                objectFit="cover"
+                                objectPosition='center'
+                                className="rounded-lg w-full h-[500px]"
+                                unoptimized
+                                priority
+                            />
+                            <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                    <div className=' absolute bottom-0 left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible '>
+                        <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-green-800 rounded-t-lg text-2xl font-bold text-white'>
+                        <div className='flex flex-row lg:flex-row items-center justify-start text-center w-full px-4  py-2'>
+                          
+                            <div className='text-white text-xl font-bold'>1,20,000 TK</div>
+                        </div> 
+
+                        <div className='w-full flex flex-row lg:flex-col items-center justify-center   px-2  '>
+                        <div className='flex flex-row lg:flex-row items-start justify-around  w-full  gap-4 px-2  '>
+                            <div className='flex-1 text-white text-xs '>Live (KG)</div>
+                            <div className= ' flex-1 text-white text-xs font-bold'>600KG</div>
+                        </div>  
+
+                        <div className='flex flex-row lg:flex-row items-start justify-around w-full  gap-4 px-2 '>
+                            <div className='flex-1 text-xs text-white font-semibold'>Expected(KG)</div>
+                            <div className='flex-1 text-white text-xs font-bold'>800KG</div>
+                        </div>
+
+
+
+                        </div>
+                        
+                     
+
+
+                            {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
+                        </div>
+
+                        <div className='rounded-b-lg overflow-hidden absolute left-0 cursor-pointer  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
+                            flex flex-col  justify-center items-center text-black text-2xl font-bold'>
+
+                            <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> Buy Now</div>
+
+                        </div>
+
+                    </div>
+
+                    {/* <div className='w-0 group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-green-700'></div> */}
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+            
+            {/* test card z translation */}
+            <div className='container mx-auto h-auto mt-[20vh]  flex flex-row justify-center gap-4 items-center'>
+
+                <div className='relative  w-[300px] flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
+                    <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
+                        <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
+                            <Image
+                                src={cover}
+                                alt='cover'
+                                layout="fill"
+                                objectFit="cover"
+                                objectPosition='center'
+                                className="rounded-lg w-full h-[500px]"
+                                unoptimized
+                                priority
+                            />
+                            <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+                    <div className='absolute  bottom-0 left-0 right-0 z-50 mx-5 overflow-hidden group-hover:overflow-visible'>
+                        <div className='relative [transform:rotateX(120deg)] z-20 flex flex-col h-[80px] justify-center items-center  rounded-t-lg text-2xl font-bold text-white  opacity-0 group-hover:opacity-100 group-hover:[transform:rotateX(0deg)] transition-all duration-700'>
+                           <div className='w-full flex flex-col justify-center bg-green-800 items-center h-full rounded-tr-lg'>
+                          
+                            <div className='    text-center '>Life Insurance</div>   
+                                
+                           </div>
+
+                           <div className=' absolute left-0 top-[-32px] rounded-t-md'>
+                           <div className='bg-yellow-600  text-xs p-2 text-center text-black rounded-t-md'>Insurance</div>
+                           </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
 
             </div>
         </>
