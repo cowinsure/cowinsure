@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { FaArrowRightLong } from "react-icons/fa6";
 
 import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi'
@@ -180,7 +181,7 @@ const InvestmentSection = () => {
 
                   {/* period */}
                 <div className='flex flex-row lg:flex-row items-end justify-between w-full px-2'>
-                                      <div className='text-xl text-white font-semibold'>{portfolio.name}</div>
+                                      <div className='text-xl text-white font-semibold'>Invest</div>
                                       <div className='text-white text-xl font-bold'> {formatToBDT(parseInt(portfolio.investment_value))}</div>
                                     </div>
 
@@ -208,9 +209,9 @@ const InvestmentSection = () => {
 
               </div>
 
-              <Link href={`/project/project_details/${portfolio.id}`} className='absolute bottom-[50px] left-0 right-0 z-30 mx-5 overflow-hidden group-hover:overflow-visible flex justify-center items-center cursor-pointer'>
-                <div className='relative z-20 flex flex-col h-[50px] w-[50px] justify-center items-center bg-yellow-500 rounded-full text-2xl font-bold text-white group-hover:bg-green-500 transition-all duration-500'>
-                  <span className='z-50 text-white group-hover:text-white transition-all duration-500'>{'->'}</span>
+              <Link href={`/project/project_details/${portfolio.id}`} className='absolute bottom-[50px] left-0 right-0 z-30 mx-5 group flex justify-center items-center cursor-pointer'>
+                <div className='relative z-20 flex flex-col h-[50px] w-[50px] justify-center items-center bg-yellow-500 rounded-full text-2xl font-bold text-white group-hover:bg-white transition-all duration-500'>
+                  <span className='z-50 text-white group-hover:text-green-800 transition-all duration-500'><FaArrowRightLong/></span>
                 </div>
                 </Link>
 

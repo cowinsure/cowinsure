@@ -1,7 +1,12 @@
 import AppBranding from '@/components/Project/AppBranding'
 import React from 'react'
 import banner from '../../public/farmers-with.jpg';
+import platform from '../../public/brandinggrassfieldimg.jpeg';
 import aibg from '../../public/aibg.jpg';
+import financialAccess from '../../public/farmerimg.jpg';
+import cover3 from '../../public/cover3.jpg';
+import farmaManagement from '../../public/farmManagement.jpg';
+import insuranceBacked from '../../public/agriculture-farmland-2023-11-27-05-02-44-utc.jpg';
 import WhatServiceWeOffer from '@/components/service/WhatServiceWeOffer';
 import HomeInsuranceSection from '@/components/Home/HomeInsuranceSection';
 
@@ -11,7 +16,7 @@ import HomeInsuranceSection from '@/components/Home/HomeInsuranceSection';
 
 const listSlides = [
     {
-        image:banner,
+        image:financialAccess,
         title:"Financial Access",
         description:"Connections to banks, microfinance institutions (MFIs), and investors for affordable financing through profit-sharing models."
 
@@ -23,13 +28,13 @@ const listSlides = [
 
     },
     {
-        image:banner,
+        image:insuranceBacked,
         title:"Insurance-Backed Microfinance",
         description:"Access to low-interest loans supported by comprehensive insurance coverage, reducing lending risks and helping farmers break free from informal lending cycles."
 
     },
     {
-        image:banner,
+        image:farmaManagement,
         title:"Farm Management Tools",
         description:"Solutions for herd health monitoring, feed management, breeding schedules, and veterinary care that enhance productivity and reduce livestock mortality."
 
@@ -41,7 +46,7 @@ const listSlides = [
 
     },
     {
-        image:banner,
+        image:cover3,
         title:"Training & Capacity Building",
         description:"Skill-building workshops on financial literacy, best farming practices, and dairy product conversion using specialized equipment."
 
@@ -53,7 +58,7 @@ const listSlides = [
 
     },
     {
-        image:banner,
+        image:platform,
         title:"Insurance Platform for Institutions",
         description:"API integration for insurance companies, NGOs, and MFIs for secure cattle identification, ensuring that investments are protected by insurance coverage."
 
