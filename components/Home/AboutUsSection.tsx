@@ -13,7 +13,7 @@ const AboutUsSection: React.FC = () => {
 
 
     <div className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10'>
-      <div className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-end items-center relative '>
+      <div className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-center items-center relative '>
         <div className='absolute rounded-full  bg-[#fcf4e6] lg:right-20 right-[65px]  h-[300px] w-[300px] lg:h-[400px] lg:w-[400px]  '></div>
         <motion.div
           animate={{ y: [1, -10, 1], opacity: [1, 0.5, 1] }}
@@ -25,15 +25,18 @@ const AboutUsSection: React.FC = () => {
 
           className='absolute rounded-full   lg:bottom-[150px] lg:right-[40px] bottom-[80px] right-[40px]  h-[10vh] w-[10vh] lg:h-[15vh] lg:w-[15vh]  bg-green-900'></motion.div>
 
-        <div className="rounded-full z-20   h-[300px] w-[300px] lg:h-[400px] lg:w-[400px] overflow-hidden  border-gray-300">
+        <div className="rounded-full z-20   h-[300px] w-[300px] lg:h-[500px] lg:w-[500px] overflow-hidden  border-gray-300">
 
           <Image
-            src={product}
-            alt="Profile"
-
-            objectFit="cover"
-            className="overflow-hidden  lg:h-[600px] lg:w-[600px]  h-[300px] w-[300px]"
-          />
+                              src={product}
+                              alt='cover'
+                              height={200}
+                              width={300}
+                              objectFit="cover"
+                              className="rounded-t-lg w-full h-full"
+                              unoptimized
+                              priority
+                            />
 
         </div>
 

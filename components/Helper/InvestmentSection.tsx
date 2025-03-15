@@ -116,12 +116,12 @@ const InvestmentSection = () => {
           pagination={{ clickable: false }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Navigation, Autoplay]}
-          className=" lg:h-auto w-full  justify-center flex items-center lg:justify-center lg:items-center"
+          className=" lg:h-auto flex-1  justify-center flex items-center lg:justify-center lg:items-center"
         >
           {portfolios.map((portfolio, index) => (
             <SwiperSlide key={index}>
 
-              <div key={portfolio.id} className='relative flex-col w-full h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
+              <div key={portfolio.id} className='relative flex-col w-full lg:w-[300px]  h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
 
                 <div className='relative h-auto round-lg '>
                   <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
@@ -147,30 +147,20 @@ const InvestmentSection = () => {
 
                   </div>
                   {/* project title */}
-                  <div className=' absolute bottom-[-55px] left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
+                  <div className=' absolute bottom-[-55px] left-0 right-0 z-40  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
                     <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-white'>
-                      <span className='z-50 text-white group-hover:text-white transition-all duration-500'>{portfolio.name}</span>
-                      {/* <span className='z-50'>101</span> */}
+                      <span className='z-40 text-white group-hover:text-white transition-all duration-500'>{portfolio.name}</span>
 
                       <div className='absolute inset-0 flex justify-center items-center'>
                         <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>
                       </div>
-                      {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
                     </div>
 
-                    {/* <div className='rounded-b-lg overflow-hidden absolute left-0  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
-    flex flex-col  justify-center items-center text-black text-2xl font-bold
-    '>
-
-            <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> {"->"}</div>
-
-        </div> */}
 
                   </div>
                   <div className=' absolute bottom-[-60px] left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
                     <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#2b442d] rounded-full text-2xl font-bold text-white'>
 
-                      {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
                     </div>
 
 
@@ -209,9 +199,9 @@ const InvestmentSection = () => {
 
               </div>
 
-              <Link href={`/project/project_details/${portfolio.id}`} className='absolute bottom-[50px] left-0 right-0 z-30 mx-5 group flex justify-center items-center cursor-pointer'>
+              <Link href={`/project/project_details/${portfolio.id}`} className='absolute w-full lg:w-[300px] bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
                 <div className='relative z-20 flex flex-col h-[50px] w-[50px] justify-center items-center bg-yellow-500 rounded-full text-2xl font-bold text-white group-hover:bg-white transition-all duration-500'>
-                  <span className='z-50 text-white group-hover:text-green-800 transition-all duration-500'><FaArrowRightLong/></span>
+                  <span className='z-50 text-white text-center group-hover:text-green-800 transition-all duration-500'><FaArrowRightLong/></span>
                 </div>
                 </Link>
 

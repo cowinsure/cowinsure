@@ -119,7 +119,7 @@ const HomeInvestmentSection = () => {
         >
           {portfolios.map((portfolio, index) => (
             <SwiperSlide key={index}>
-
+{/* 
               <Link key={portfolio.id} href={`/project/project_details/${portfolio.id}`} className='bg-white shadow-lg rounded-lg border-bg-[#F6F4EC] border-2 flex flex-col items-start justify-start'>
                 <div className="w-full  rounded-lg  relative flex flex-col lg:flex-col lg:justify-start lg:items-start">
                   <Image
@@ -164,7 +164,72 @@ const HomeInvestmentSection = () => {
                     <div className="absolute inset-0 bg-green-800 transform -translate-x-[105px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
                   </div>
                 </div>
-              </Link>
+              </Link> */}
+
+                           <div className='relative flex-col w-[300px] h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
+              
+              <div className='relative h-auto round-lg '>
+                  <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
+                      <div className='absolute h-full rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-4 transition-all duration-700'>
+                          <Image
+                        src={portfolio.image_url}
+                        alt='cover'
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-t-lg"
+                        unoptimized
+                        priority
+                          />
+                          <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
+                          </div>
+                      </div>
+              
+              
+              
+                  </div>
+                  {/* project title */}
+                  <div className=' absolute bottom-[-55px] left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
+                      <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-white'>
+                          <span className='z-50 text-yellow-600 group-hover:text-white transition-all duration-500'>Project</span>
+                          <span className='z-50'>101</span>
+              
+                          <div className='absolute inset-0 flex justify-center items-center'>
+                              <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>
+                          </div>
+                          {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
+                      </div>
+              
+              
+                  </div>
+                  <div className=' absolute bottom-[-60px] left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
+                      <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#2b442d] rounded-full text-2xl font-bold text-white'>
+              
+                          {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
+                      </div>
+              
+              
+                  </div>
+              </div>
+              <div className='w-0 shadow-lg group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-yellow-400 mx-auto'></div>
+              <div className='mt-10'>
+              
+                  {/* period */}
+                  <div className='mt-20 text-center p-2 text-white'>
+                  <h1 className="lg:text-2xl text-xl min-w-[150px] mb-5  font-bold text-white  text-start">{portfolio.description}</h1>
+              
+              
+                  <p className='text-start font-semibold   text-md '>
+                      {portfolio.description}
+              
+                          </p>
+                  </div>
+              
+               
+              </div>
+              
+              
+              
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
