@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { GiBullHorns } from 'react-icons/gi'
-import insureCow2 from '../../public/insurancecow.svg';
-import family from '../../public/family.svg';
-import health from '../../public/health-insurance-round-svgrepo-com.png';
+import health from '../../public/healthInsurance.jpg';
+import life from '../../public/lifeInsurance.jpg';
+import cow from '../../public/farmer-and-technology-2025-01-28-03-05-43-utc.jpg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ const HomeInsuranceSection = () => {
                     <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
                         <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-5 transition-all duration-500'>
                             <Image
-                                src={health}
+                                src={cow}
                                 alt='cover'
                                 layout="fill"
                                 objectFit="cover"
@@ -89,7 +89,7 @@ const HomeInsuranceSection = () => {
                     <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
                         <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-5 transition-all duration-500'>
                             <Image
-                                src={health}
+                                src={life}
                                 alt='cover'
                                 layout="fill"
                                 objectFit="cover"
@@ -142,7 +142,7 @@ const HomeInsuranceSection = () => {
                                 objectFit="cover"
                                 objectPosition='center'
                                 className="rounded-lg w-full h-[500px]"
-                                unoptimized
+                                unoptimized 
                                 priority
                             />
                             <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-700 ease-in-out overflow-hidden'>

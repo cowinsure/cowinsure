@@ -61,7 +61,7 @@ const InvestmentSection = () => {
         const result: CategoryApiResponse = await response.json();
         if (result.status === 'success') {
           // setCategories(result.data);
-          const cowSellCategory = result.data.find(category => category.name === 'Long Term Investment');
+          const cowSellCategory = result.data.find(category => category.name === 'Short Term Investment');
           if (cowSellCategory) {
             fetchPortfolios(cowSellCategory.id);
           }

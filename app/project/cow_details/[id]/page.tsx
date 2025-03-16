@@ -10,14 +10,27 @@ import CowPurchaseForm from '@/components/Project/CowPurchaseForm';
 
 
 interface ExtraData {
-    color: string;
-    cowId: string;
-    price: number;
-    teeth: number;
-    gender: string;
-    cowBreed: string;
-    currentLiveWeight: number;
-    expectedFinalWeight: number;
+    age: number;
+    sex: string;
+    breed: string;
+    horns: string;
+    colour: string;
+    isSold: boolean;
+    cattleId: string;
+    weightKg: number;
+    heightFeet: number;
+    askingPrice: number;
+    sellingPrice: number;
+    dehorningStatus: string;
+    dewormingStatus: string;
+    identifyingMarks: string;
+    sourceOfPurchase: string;
+    anyDiseaseHistory: string;
+    vaccinationStatus: string;
+    currentOwnerFarmName: string;
+    generalHealthCondition: string;
+    numberOfCutMarksOnSkin: number;
+    locationOfCurrentHolding: string;
 }
 
 interface Portfolio {
@@ -71,7 +84,7 @@ function CowDetailsPage() {
     }
 
     return (
-        <div className='h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7]'>
+        <div className='h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7] lg:mt-[10vh]'>
             <div className='pt-[10vh] lg:pt-[10vh] container mx-auto flex flex-col lg:flex-col lg:justify-center lg:items-center justify-center p-5'>
                 <div className='relative mb-10 w-full rounded-lg overflow-hidden'>
                     <Image
@@ -79,8 +92,8 @@ function CowDetailsPage() {
                         width={800}
                         height={600}
                         alt="Banner"
-                        objectFit="cover"
-                        className="w-full h-[50vh] object-cover rounded-lg"
+                        objectPosition='center'
+                        className="w-full h-[100vh] object-cover rounded-lg"
                         unoptimized
                     />
                     <div className='absolute bg-black bg-opacity-45 top-0 h-full w-full flex justify-center items-center lg:justify-center lg:items-center'>
@@ -91,15 +104,15 @@ function CowDetailsPage() {
                 <div className='mb-10 w-full flex flex-col lg:gap-5 gap-5 justify-between lg:flex-row lg:items-start lg:justify-between'>
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Live Weight</h2>
-                        <h2 className='text-3xl text-white'>{projectDetails.extra_data.currentLiveWeight} KG</h2>
+                        <h2 className='text-3xl text-white'>{projectDetails.extra_data.weightKg} KG</h2>
                     </div>
-                    <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
+                    {/* <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Expected Final Weight</h2>
                         <h2 className='text-3xl text-white'>{projectDetails.extra_data.expectedFinalWeight} KG</h2>
-                    </div>
+                    </div> */}
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Price</h2>
-                        <h2 className='text-3xl text-white'>{formatToBDT(projectDetails.extra_data.price)}</h2>
+                        <h2 className='text-3xl text-white'>{formatToBDT(projectDetails.extra_data.askingPrice)}</h2>
                     </div>
 
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
@@ -138,27 +151,27 @@ function CowDetailsPage() {
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>
                             <h2 className='text-xl font-bold  '>Cow Breed</h2>
-                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.cowBreed}</h2>
+                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.breed}</h2>
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>
                             <h2 className='text-xl font-bold text-start '>Teeth</h2>
-                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.teeth}</h2>
+                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.age} Month</h2>
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>
                             <h2 className='text-xl font-bold  '>Gender</h2>
-                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.gender}</h2>
+                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.sex}</h2>
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>
                             <h2 className='text-xl font-bold  '>Color</h2>
-                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.color}</h2>
+                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.colour}</h2>
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>
                             <h2 className='text-xl font-bold  '>Current Live Weight</h2>
-                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.currentLiveWeight} KG</h2>
+                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.weightKg} KG</h2>
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>
-                            <h2 className='text-xl font-bold  '>Expected Final Weight</h2>
-                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.expectedFinalWeight} KG</h2>
+                            <h2 className='text-xl font-bold  '>Height</h2>
+                            <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.heightFeet} Feet</h2>
                         </div>
 
                       

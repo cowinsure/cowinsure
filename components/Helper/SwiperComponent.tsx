@@ -11,7 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion'; // Import Framer Motion
 
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
-import { GiBullHorns } from 'react-icons/gi';
+// import { GiBullHorns } from 'react-icons/gi';
 import Link from 'next/link';
 import { HiMiniArrowLongLeft } from "react-icons/hi2";
 
@@ -253,7 +253,7 @@ const SwiperComponent = () => {
         <div className="shadow-md flex items-center lg:h-32 bg-white  flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
           <div className="p-6 flex-1 flex justify-center items-center h-20 lg:h-auto">
             <div className='items-center mr-4'>
-              <GiBullHorns className='text-5xl text-green-600' />
+              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farmers Impacted</h3>
@@ -267,7 +267,7 @@ const SwiperComponent = () => {
 
           <div className="p-6 flex-1 flex justify-center items-center h-35 lg:h-auto">
             <div className='items-center mr-4'>
-              <GiBullHorns className='text-5xl text-green-600' />
+              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Loan Disbursed</h3>
@@ -280,11 +280,11 @@ const SwiperComponent = () => {
 
           <div className="p-6 flex-1 flex justify-center items-center h-35">
             <div className='items-center mr-4'>
-              <GiBullHorns className='text-5xl text-green-600' />
+              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Fradulent Claims</h3>
-              <p className="text-sm mt-2 text-[#687469]">0</p>
+              <p className="text-sm mt-2 text-[#687469]">Zero</p>
             </div>
           </div>
 
@@ -294,7 +294,7 @@ const SwiperComponent = () => {
 
           <div className="p-6 flex-1 flex justify-center items-center h-35">
             <div className='items-center mr-4'>
-              <GiBullHorns className='text-5xl text-green-600' />
+              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farm Animal</h3>
