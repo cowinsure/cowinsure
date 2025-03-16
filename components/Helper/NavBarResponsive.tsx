@@ -146,8 +146,8 @@ function NavBarResponsive() {
                     <Image
                       src={logoData.image_url}
                       alt={logoData.name}
-                      width={80}
-                      height={15}
+                      width={120}
+                      height={50}
                       className="object-cover w-auto h-15 overflow-clip"
                     />
                   )}

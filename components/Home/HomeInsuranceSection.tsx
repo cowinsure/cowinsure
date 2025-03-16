@@ -39,7 +39,7 @@ const HomeInsuranceSection = () => {
         transition={{ duration: 0.3 }} // Animation duration
         className='relative  w-[400px] flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
                     <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
-                        <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-5 transition-all duration-500'>
+                        <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-5 transition-all duration-700'>
                             <Image
                                 src={cow}
                                 alt='cover'
@@ -47,7 +47,7 @@ const HomeInsuranceSection = () => {
                                 objectFit="cover"
                                 objectPosition='center'
                                 className="rounded-lg w-full h-[500px]"
-                                unoptimized
+                               
                                 priority
                             />
                             <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-700 ease-in-out overflow-hidden'>
@@ -95,7 +95,7 @@ const HomeInsuranceSection = () => {
                                 objectFit="cover"
                                 objectPosition='center'
                                 className="rounded-lg w-full h-[500px]"
-                                unoptimized
+                               
                                 priority
                             />
                             <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-700 ease-in-out overflow-hidden'>
@@ -142,7 +142,7 @@ const HomeInsuranceSection = () => {
                                 objectFit="cover"
                                 objectPosition='center'
                                 className="rounded-lg w-full h-[500px]"
-                                unoptimized 
+                               
                                 priority
                             />
                             <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-700 ease-in-out overflow-hidden'>

@@ -202,7 +202,7 @@ const InvestmentSection = () => {
 
               </div>
 
-              <Link href={`/project/project_details/${portfolio.id}`} className='absolute w-full lg:w-[300px] bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
+              <Link href={`/project/project_details/${portfolio.id}`} className='absolute w-full lg:w- auto bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
                 <div className='relative z-20 flex flex-col h-[50px] w-[50px] justify-center items-center bg-yellow-500 rounded-full text-2xl font-bold text-white group-hover:bg-white transition-all duration-500'>
                   <span className='z-50 text-white text-center group-hover:text-green-800 transition-all duration-500'><FaArrowRightLong/></span>
                 </div>

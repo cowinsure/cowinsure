@@ -135,8 +135,8 @@ const CowInvestmentForm = () => {
   return (
 
     <>
-        <div className='h-full w-full border border-green-400 flex flex-col lg:flex-col p-5'>
-      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className=' h-full w-auto border border-green-400 flex flex-col justify-center items-center lg:flex-col p-5'>
+      <form onSubmit={handleSubmit} className="space-y-4 ">
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
           <div className="flex-1">
             <label htmlFor="name" className="block text-lg text-start font-medium text-green-600">Name</label>

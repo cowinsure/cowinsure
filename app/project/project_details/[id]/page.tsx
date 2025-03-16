@@ -114,14 +114,15 @@ const DetailsID = () => {
   return (
     <div className='h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7] lg:mt-[10vh]'>
       <div className='pt-[10vh] lg:pt-[10vh] container mx-auto flex flex-col lg:flex-col lg:justify-center lg:items-center justify-center p-5'>
-        <div className='relative mb-10 w-full rounded-lg overflow-hidden'>
+        <div className='relative mb-10 w-auto rounded-lg overflow-hidden'>
           <Image
             src={projectDetails.image_url}
             width={800}
             height={600}
             alt="Banner"
-            objectFit="contain"
-            className="w-full h-[70vh] object-cover rounded-lg"
+            objectPosition='top'
+            objectFit="object-cover"
+            className="w-[50vh]  object-cover rounded-lg"
             unoptimized
           />
           <div className='absolute bg-black bg-opacity-45 top-0 h-full w-full flex justify-center items-center lg:justify-center lg:items-center'>
@@ -162,7 +163,7 @@ const DetailsID = () => {
 
         </div>
         <div className='w-full flex flex-col lg:gap-5 justify-start items-start lg:flex-row lg:items-start lg:justify-between mt-10'>
-          <div className='flex flex-col justify-start items-center lg:justify-start lg:items-start w-1/3'>
+          <div className='flex flex-col w-full justify-start items-center lg:justify-start lg:items-start lg:w-1/3'>
 
             <div className='w-full text-center mb-10 text-3xl font-bold text-[#334b35] mt-5'>Invest on Cow</div>
             <CowInvestmentForm />

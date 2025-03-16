@@ -134,7 +134,7 @@ function CowDetailsPage() {
 
                 </div>
                 <div className='w-full flex flex-col lg:gap-5 justify-start items-start lg:flex-row lg:items-start lg:justify-between mt-10'>
-                    <div className='flex flex-col justify-start items-center lg:justify-start lg:items-start lg:w-1/3 '>
+                    <div className='flex w-full flex-col justify-start items-center lg:justify-start lg:items-start lg:w-1/3 '>
 
                         <div className=' w-full text-start mb-10 text-3xl font-bold text-[#334b35] mt-5'>Buy Cow</div>
                         <CowPurchaseForm />

@@ -51,7 +51,7 @@ const AboutUs = () => {
       <FaqSection/>
 
         </div>
-        <div className='text-center bg-green-900'>
+        <div className='p-5 text-center bg-green-900'>
       <ContactUs/>
 
         </div>
