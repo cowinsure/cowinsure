@@ -120,7 +120,7 @@ const DetailsID = () => {
             width={800}
             height={600}
             alt="Banner"
-            objectFit="cover"
+            objectFit="contain"
             className="w-full h-[70vh] object-cover rounded-lg"
             unoptimized
           />
@@ -132,20 +132,20 @@ const DetailsID = () => {
         <div className='mb-10 w-full flex flex-col lg:gap-5 gap-5 justify-between lg:flex-row lg:items-start lg:justify-between'>
           <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
             <h2 className='text-2xl text-white mb-5'>Return</h2>
-            <h2 className='text-3xl text-white'>{projectDetails.expected_return_min}% - {projectDetails.expected_return_max}%</h2>
+            <h2 className='text-xl text-white'>{projectDetails.expected_return_min}% - {projectDetails.expected_return_max}%</h2>
           </div>
           <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
             <h2 className='text-2xl text-white mb-5'>Duration</h2>
-            <h2 className='text-3xl text-white'>{projectDetails.investment_period}</h2>
+            <h2 className='text-xl text-white'>{projectDetails.investment_period}</h2>
           </div>
           <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
             <h2 className='text-2xl text-white mb-5'>Unit price</h2>
-            <h2 className='text-3xl text-white'>{formatToBDT(parseInt(projectDetails.investment_value))}</h2>
+            <h2 className='text-xl text-white'>{formatToBDT(parseInt(projectDetails.investment_value))}</h2>
           </div>
 
           <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
             <h2 className='text-2xl text-white mb-5'>Location</h2>
-            <h2 className='text-3xl text-white'>{projectDetails.location}</h2>
+            <h2 className='text-xl text-white'>{projectDetails.location}</h2>
           </div>
 
         </div>
@@ -153,7 +153,7 @@ const DetailsID = () => {
 
         <div className='w-full flex flex-col lg:gap-5 justify-start items-start lg:flex-row lg:items-start lg:justify-between '>
           <div className='flex-1 flex flex-col lg:flex-col gap-5 justify-start items-start lg:items-start lg:justify-start'>
-            <h1 className='text-3xl font-bold text-[#334b35] text-start w-full mt-5 mb-5'>Project Details</h1>
+            <h1 className='text-xl font-bold text-[#334b35] text-start w-full mt-5 mb-5'>Project Details</h1>
             <p className='text-start  text-xl font-semibold text-[#687469]'>
               {projectDetails.description}
             </p>

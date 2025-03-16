@@ -104,7 +104,7 @@ function CowDetailsPage() {
                 <div className='mb-10 w-full flex flex-col lg:gap-5 gap-5 justify-between lg:flex-row lg:items-start lg:justify-between'>
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Live Weight</h2>
-                        <h2 className='text-3xl text-white'>{projectDetails.extra_data.weightKg} KG</h2>
+                        <h2 className='text-xl text-white'>{projectDetails.extra_data.weightKg} KG</h2>
                     </div>
                     {/* <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Expected Final Weight</h2>
@@ -112,12 +112,12 @@ function CowDetailsPage() {
                     </div> */}
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Price</h2>
-                        <h2 className='text-3xl text-white'>{formatToBDT(projectDetails.extra_data.askingPrice)}</h2>
+                        <h2 className='text-xl text-white'>{formatToBDT(projectDetails.extra_data.askingPrice)}</h2>
                     </div>
 
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Location</h2>
-                        <h2 className='text-3xl text-white'>{projectDetails.location}</h2>
+                        <h2 className='text-xl text-white'>{projectDetails.location}</h2>
                     </div>
 
                 </div>

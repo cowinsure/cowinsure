@@ -162,7 +162,7 @@ const CowPurchaseSection = () => {
                                       </div>
               
                                       {/* <Link href={`/cow_details/${portfolio.id}`}> */}
-                                      <Link href={`project/cow_details/${portfolio.id}`} className='rounded-b-lg overflow-hidden absolute left-0 cursor-pointer  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
+                                      <Link href={`cow_details/${portfolio.id}`} className='rounded-b-lg overflow-hidden absolute left-0 cursor-pointer  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
                                           flex flex-col  justify-center items-center text-black text-2xl font-bold'>
               
                                           <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> Buy Now</div>

@@ -121,9 +121,9 @@ const InvestmentSection = () => {
           {portfolios.map((portfolio, index) => (
             <SwiperSlide key={index}>
 
-              <div key={portfolio.id} className='relative flex-col w-full lg:w-[300px]  h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
+              <div key={portfolio.id} className='relative flex-col w-auto lg:w-[300px]  h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
 
-                <div className='relative h-auto round-lg '>
+                <div className='relative h-auto w-full round-lg '>
                   <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
                     <div className='absolute h-auto rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-4 transition-all duration-700'>
                       <Image
