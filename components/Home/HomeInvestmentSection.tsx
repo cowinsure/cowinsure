@@ -9,8 +9,8 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi'
 
 import Image from 'next/image';
-import Link from 'next/link';
-import { formatToBDT } from '@/utils/currencyFormatter';
+// import Link from 'next/link';
+// import { formatToBDT } from '@/utils/currencyFormatter';
 
 interface Portfolio {
   id: string;
@@ -60,7 +60,7 @@ const HomeInvestmentSection = () => {
         const result: CategoryApiResponse = await response.json();
         if (result.status === 'success') {
           // setCategories(result.data);
-          const cowSellCategory = result.data.find(category => category.name === 'Long Term Investment');
+          const cowSellCategory = result.data.find(category => category.name === 'Short Term Investment');
           if (cowSellCategory) {
             fetchPortfolios(cowSellCategory.id);
           }
@@ -115,7 +115,7 @@ const HomeInvestmentSection = () => {
           pagination={{ clickable: false }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Navigation, Autoplay]}
-          className="flex-1 w-full lg:h-auto justify-center items-center lg:justify-center lg:items-center"
+          className=" w-full lg:h-auto justify-center items-center lg:justify-center lg:items-center"
         >
           {portfolios.map((portfolio, index) => (
             <SwiperSlide key={index}>

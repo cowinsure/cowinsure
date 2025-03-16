@@ -23,7 +23,7 @@ const AppBranding: React.FC<AppBrandingProps> = ({ title, description, customSty
         alt="Banner"
         layout="fill"
         objectFit="cover"
-        objectPosition="center"
+        objectPosition="top"
         className="absolute inset-0 z-0"
       />
       <div className="relative z-10 flex flex-col items-center justify-center h-full bg-black bg-opacity-30 text-white text-center p-5">

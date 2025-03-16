@@ -159,7 +159,7 @@ const handleCloseDialog = () => {
           <div className="flex-1">
             <label htmlFor="phone" className="block text-start text-lg font-medium text-green-600">Phone</label>
             <input
-              type="tel"
+              type="number"
               id="phone"
               name="phone"
               value={formValues.phone}
@@ -229,7 +229,7 @@ const handleCloseDialog = () => {
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
               required
             >
-              <option value="">Select age</option>
+              <option value="">Select Number of Cattle</option>
               {Array.from({ length: 100 }, (_, i) => (
                 <option key={i + 1} value={i + 1}>
                   {i + 1}

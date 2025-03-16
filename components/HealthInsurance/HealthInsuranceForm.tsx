@@ -260,7 +260,7 @@ export default function HealthInsuranceForm() {
                             <div className="flex-1">
                                 <label htmlFor="phone" className="block text-start text-lg font-medium text-green-600">Phone</label>
                                 <input
-                                    type="tel"
+                                    type="number"
                                     id="phone"
                                     name="phone"
                                     value={formValues.phone}

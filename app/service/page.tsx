@@ -67,7 +67,7 @@ const listSlides = [
 
 function page() {
   return (
-    <div >
+    <div className='h-auto mt-[10vh] overflow-hidden'>
       <AppBranding title="Empowering Farmers, Securing Livelihoods – Smart Solutions for Livestock Success" bannerUrl={banner}  />
 
 

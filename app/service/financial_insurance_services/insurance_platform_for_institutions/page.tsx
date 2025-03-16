@@ -6,7 +6,7 @@ import HomeInsuranceSection from '@/components/Home/HomeInsuranceSection';
 
 function InsurancePlatformForInstitutions() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto mt-[10vh] overflow-hidden'>
     <HerosSectionCommon title='Insurance Platform For Institutions' bannerUrl={bannerImage}/>
 
     <div className='bg-[#F6F4EC]'>

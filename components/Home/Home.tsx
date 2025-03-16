@@ -24,6 +24,7 @@ import PartnerAndInvestorSection from '../Helper/PartnerAndInvestorSection';
 // import bannerGenereal from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
 // import CowPurchaseSection from '../Project/cowSellProject/CowPurchaseSection';
 import InvestmentSection from '../Helper/InvestmentSection';
+// import HomeInvestmentSection from './HomeInvestmentSection';
 
 
 const Home = () => {
@@ -72,7 +73,7 @@ const Home = () => {
 
 
   return (
-    <div className=" lg:h-auto w-auto h-auto">
+    <div className=" lg:h-auto w-auto h-auto overflow-hidden">
       {/* Hero Section */}
 
       {/* <section className=" h-auto flex items-center justify-center "> */}
@@ -104,7 +105,7 @@ const Home = () => {
       {/* Section 2 - About Us */}
 
       
-      <section className=" w-full    mx-auto  flex flex:row items-center justify-center p-2">
+      <section className=" mb-10   mx-auto  flex flex:row items-center justify-center p-2">
 
 
         <AboutUsSection/>
@@ -116,18 +117,18 @@ const Home = () => {
 
       </section >
 
-      {/* <div
-       className='w-screen bg-slate-600    h-auto'> */}
+   
+   
       <CardsSection/>
 
-      {/* </div> */}
 
-        <div className='text-start mb-20'>
+
+     
 
 
       {/* <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Mission' description={mission} reverse/>
       <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Vision' description={vision} /> */}
-        </div>
+        
 
 
       <HomeVedioBanner/>

@@ -12,7 +12,7 @@ import { GiBullHorns } from 'react-icons/gi'
 
 function page() {
     return (
-        <div className='h-auto   md:pt-0 mx-auto lg:w-full  text-center bg-[#F7F7F7] '>
+        <div className='h-auto w-auto   md:pt-0  lg:w-full  text-center bg-[#F7F7F7] '>
             <div className='pt-[100px] lg:pt-[100px]   container mx-auto flex flex-col lg:flex-col lg:justify-center justify-between'>
                 <div className="w-full  text-center mb-16">
                     <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-2' />
@@ -32,18 +32,18 @@ function page() {
                 <div className=' mt-14 flex flex-col lg:flex-row lg:justify-center  gap-3 lg:mb-[10vh]'>
 
                     <div className='lg:w-1/2 flex flex-col items-center justify-center lg:justify-center lg:items-center'>
-                        
-        <div className="rounded-full z-20  h-[30vh] w-[30vh] lg:h-[35vh] lg:w-[35vh] overflow-hidden  border-gray-300">
 
-<Image
-  src={inspection}
-  alt="Profile"
+                        <div className="rounded-full z-20  h-[30vh] w-[30vh] lg:h-[35vh] lg:w-[35vh] overflow-hidden  border-gray-300">
 
-  objectFit="cover"
-  className="overflow-hidden  lg:h-[35vh] lg:w-[35vh] h-[30vh] w-[30vh]"
-/>
+                            <Image
+                                src={inspection}
+                                alt="Profile"
 
-</div>
+                                objectFit="cover"
+                                className="overflow-hidden  lg:h-[35vh] lg:w-[35vh] h-[30vh] w-[30vh]"
+                            />
+
+                        </div>
 
                         <div className='text-2xl text-start mt-5 font-semibold text-[#687469]'>Choose the best  <span className='text-3xl text-green-700 font-bold' >Health Insurance Plan</span>
                         </div>

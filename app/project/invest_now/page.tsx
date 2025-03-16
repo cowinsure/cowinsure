@@ -1,10 +1,10 @@
 
 'use client'
 import React, { useEffect, useState } from 'react';
-import InvestmentSection from '@/components/Helper/InvestmentSection'
+// import InvestmentSection from '@/components/Helper/InvestmentSection'
 import { GiBullHorns } from 'react-icons/gi';
 import Image from 'next/image';
-import FaqSection from '@/components/Home/FaqSection';
+// import FaqSection from '@/components/Home/FaqSection';
 import Link from 'next/link';
 import { formatToBDT } from '@/utils/currencyFormatter';
 import { FaArrowRightLong } from 'react-icons/fa6';

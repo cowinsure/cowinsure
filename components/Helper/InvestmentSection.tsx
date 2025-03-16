@@ -102,26 +102,29 @@ const InvestmentSection = () => {
 
       </div>
 
-      <div className='mt-10 w-full h-auto container mx-auto flex flex-col gap-4 lg:flex-row items-start justify-center  mb-5 '>
+      <div className='mt-10 w-full h-auto container mx-auto flex flex-col gap-4 lg:flex-row items-center justify-center  mb-5 '>
 
         <Swiper
+         centeredSlides={true}
+         slidesPerView={1}
+        
           breakpoints={{
             640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 4 },
           }}
-          spaceBetween={10}
-          loop={true}
+          spaceBetween={50}
+          loop={portfolios.length > 1}
           pagination={{ clickable: false }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Navigation, Autoplay]}
-          className=" lg:h-auto flex-1  justify-center flex items-center lg:justify-center lg:items-center"
+          className=" lg:h-auto w-full md:w-full flex-1  justify-center flex items-center lg:justify-center lg:items-center"
         >
           {portfolios.map((portfolio, index) => (
             <SwiperSlide key={index}>
 
-              <div key={portfolio.id} className='relative flex-col w-auto lg:w-[300px]  h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
+              <div key={portfolio.id} className='relative flex-col w-full   h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
 
                 <div className='relative h-auto w-full round-lg '>
                   <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
