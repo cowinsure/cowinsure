@@ -166,6 +166,9 @@ const SwiperComponent = () => {
                   width={1920} // Add appropriate width
                   height={1080} // Add appropriate height
                   priority // Add this line to prioritize loading
+                  unoptimized
+                  quality={100}
+                
                 />
               </motion.div>
 

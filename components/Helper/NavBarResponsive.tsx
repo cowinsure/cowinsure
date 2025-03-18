@@ -99,9 +99,11 @@ function NavBarResponsive() {
                         <Image
                           src={logoData.image_url}
                           alt={logoData.name}
-                          width={200}
-                          height={200}
-                          className="object-fit w-auto h-auto"
+                          width={50}
+                          height={20}
+                          className="object-fit w-auto h-[80px]"
+                          priority
+                          unoptimized
                         />
                       )}
                     </Link>

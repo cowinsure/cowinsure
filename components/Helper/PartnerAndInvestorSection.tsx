@@ -123,6 +123,7 @@ const PartnerAndInvestorSection = () => {
                          
                            width={300}
                            height={300}
+                           unoptimized
                            priority
                          />
                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">

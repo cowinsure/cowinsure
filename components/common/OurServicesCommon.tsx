@@ -58,7 +58,7 @@ const OurServicesCommon = ({ serviceName}: ParentProps) => {
  useEffect(() => {
     const fetchBaseCategories = async () => {
       try {
-        const response = await fetch('http://52.66.196.177:8000/api/v1/base-categories/');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`);
         const result: BaseCategoryApiResponse = await response.json();
         if (result.status === 'success') {
           const partnersCategory = result.data.find(category => category.name === serviceName);
@@ -73,7 +73,7 @@ const OurServicesCommon = ({ serviceName}: ParentProps) => {
 
     const fetchBaseCards = async (categoryId: string) => {
       try {
-        const response = await fetch(`http://52.66.196.177:8000/api/v1/base-category/${categoryId}/base-cards/`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`);
         const result: BaseCardApiResponse = await response.json();
         if (result.status === 'success') {
             console.log(result.data[0].image_url);
@@ -105,6 +105,7 @@ const OurServicesCommon = ({ serviceName}: ParentProps) => {
      
 
       <Swiper
+      // centeredSlides={true}
         breakpoints={{
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },

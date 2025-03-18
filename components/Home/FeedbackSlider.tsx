@@ -121,6 +121,7 @@ const FeedbackSlider = () => {
                                                 className="rounded-full object-cover w-10 h-10 lg:h-20 lg:w-20"
                                                 width={80}
                                                 height={80}
+                                                unoptimized
                                                 priority
                                             />
                                         </div>

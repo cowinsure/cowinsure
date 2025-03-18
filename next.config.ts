@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
+
   images: {
     remotePatterns: [
       {
@@ -12,14 +13,14 @@ const nextConfig: NextConfig = {
         search: '',
       },
       {
-        protocol: 'http',
-        hostname: '52.66.196.177',
+        protocol: 'https',
+        hostname: '13.126.3.2',
         port: '',
         pathname: '/media/logos/**',
         search: '',
       },
     ],
-    domains: ['52.66.196.177'], // Add this line
+    domains: ["13.126.3.2"], // Add this line
   },
   /* config options here */
 };
