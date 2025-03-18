@@ -46,7 +46,7 @@ const FeaturedNewsSection: React.FC = () => {
   useEffect(() => {
     const fetchBaseCategories = async () => {
       try {
-        const response = await fetch('http://52.66.196.177:8000/api/v1/base-categories/');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`);
         const result: BaseCategoryApiResponse = await response.json();
         if (result.status === 'success') {
           const newsCategory = result.data.find(category => category.name === 'news');
@@ -61,7 +61,7 @@ const FeaturedNewsSection: React.FC = () => {
 
     const fetchBaseCards = async (categoryId: string) => {
       try {
-        const response = await fetch(`http://52.66.196.177:8000/api/v1/base-category/${categoryId}/base-cards/`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`);
         const result: BaseCardApiResponse = await response.json();
         if (result.status === 'success') {
           setNewsData(result.data);

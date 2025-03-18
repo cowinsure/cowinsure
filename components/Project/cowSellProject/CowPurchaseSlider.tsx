@@ -70,7 +70,7 @@ function CowPurchaseSlider() {
       useEffect(() => {
         const fetchCategories = async () => {
           try {
-            const response = await fetch('http://52.66.196.177:8000/api/v1/portfolio/categories/');
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/categories/`);
             const result: CategoryApiResponse = await response.json();
             if (result.status === 'success') {
               // setCategories(result.data);
@@ -86,7 +86,7 @@ function CowPurchaseSlider() {
     
         const fetchPortfolios = async (categoryId: string) => {
           try {
-            const response = await fetch(`http://52.66.196.177:8000/api/v1/portfolio/category/${categoryId}/portfolios/`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/category/${categoryId}/portfolios/`);
             const result: ApiResponse = await response.json();
             if (result.status === 'success') {
               setPortfolios(result.data);

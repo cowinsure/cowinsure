@@ -59,7 +59,7 @@ const handleCloseDialog = () => {
   useEffect(() => {
     const fetchFormFields = async () => {
       try {
-        const response = await fetch('http://52.66.196.177:8000/api/v1/insurance/insurance-types/1/form/');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/insurance-types/1/form/`);
         const result: ApiResponse = await response.json();
         if (result.status === 'success') {
           setFormFields(result.data);
@@ -104,7 +104,7 @@ const handleCloseDialog = () => {
    
 
     try {
-      const response = await fetch('http://52.66.196.177:8000/api/v1/insurance/submit-form/', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/submit-form/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

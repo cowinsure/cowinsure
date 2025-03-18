@@ -71,7 +71,7 @@ function NavBarResponsive() {
 
     const fetchMenuData = async () => {
       try {
-        const response = await fetch('http://52.66.196.177:8000/api/v1/menu/');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/menu/`);
         const result: ApiResponse = await response.json();
         if (result.status === 'success') {
           setMenuData(result.data);

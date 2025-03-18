@@ -42,7 +42,7 @@ const FeedbackSlider = () => {
     useEffect(() => {
         const fetchTestimonials = async () => {
             try {
-                const response = await fetch('http://52.66.196.177:8000/api/v1/testimonials/');
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/testimonials/`);
                 const result: TestimonialApiResponse = await response.json();
                 if (result.status === 'success') {
                     setTestimonials(result.data);

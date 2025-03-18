@@ -35,7 +35,7 @@ const ContactUs: React.FC = () => {
     };
 
     try {
-      const response = await fetch('http://52.66.196.177:8000/api/v1/contact-us/', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/contact-us/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
