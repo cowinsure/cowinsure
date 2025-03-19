@@ -14,13 +14,13 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: '13.126.3.2',
+        hostname: 'webv1.insurecow.com',
         port: '',
         pathname: '/media/logos/**',
         search: '',
       },
     ],
-    domains: ["13.126.3.2"], // Add this line
+    domains: ["webv1.insurecow.com"], // Adjusted this line
   },
   /* config options here */
 };

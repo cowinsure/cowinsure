@@ -132,7 +132,7 @@ const HomeInsuranceSection = () => {
         whileInView={{ opacity: 1, x: 0 }} // Animate when in view
         viewport={{ once: true }} // Only animate once
         transition={{ duration: 0.3 }} // Animation duration
-        className='relative  w-[400px] flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
+        className='relative  w-[400px] flex-col h-auto   justify-center items-center group bg-gray-800 rounded-lg'>
                     <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
                         <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-5 transition-all duration-700'>
                             <Image
