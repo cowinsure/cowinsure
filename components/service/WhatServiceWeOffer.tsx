@@ -16,7 +16,8 @@ interface ParentProps {
 interface SliderProps{
     title:string,
     description:string,
-    image:StaticImageData
+    image:StaticImageData,
+    icon:StaticImageData
 }
 
 const WhatServiceWeOffer = ({ slider}: ParentProps) => {
@@ -103,8 +104,15 @@ const WhatServiceWeOffer = ({ slider}: ParentProps) => {
     {/* project title */}
     <div className=' absolute bottom-[-55px] left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
         <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-white'>
-            <span className='z-50 text-yellow-600 group-hover:text-white transition-all duration-500'>Project</span>
-            <span className='z-50'>101</span>
+            {/* <span className='z-50 text-yellow-600 group-hover:text-white transition-all duration-500'>Project</span> */}
+            <Image
+          src={s.icon}
+          alt='cover'
+          className="h-[75px] z-50 object-fit-contain fill-current text-yellow group-hover:text-white transition-all duration-500"
+          unoptimized
+          priority
+            />
+          
 
             <div className='absolute inset-0 flex justify-center items-center'>
                 <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>

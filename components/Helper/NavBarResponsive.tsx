@@ -54,15 +54,12 @@ function NavBarResponsive() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const onclick = ()  => {
-    console.log('clicked');
-    
-   }
+
 
   useEffect(() => {
     const fetchLogoData = async () => {
       try {
-        console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
+       
         
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/logo/`);
         const result = await response.json();
@@ -180,7 +177,7 @@ function NavBarResponsive() {
                     <ul className="pl-4 space-y-2">
                       {item.sub_menu.map((subItem) => (
                         <li key={subItem.title} className="group">
-                          <Link href={subItem.link} className=" text-xs font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200" onClick={onclick}>
+                          <Link href={subItem.link} className=" text-xs font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200" >
                                 {subItem.title}
                               </Link>
                        
