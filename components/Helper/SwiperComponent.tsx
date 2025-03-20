@@ -260,7 +260,7 @@ const SwiperComponent = () => {
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farmers Impacted</h3>
-              <p className="text-sm mt-2 text-[#687469]">4,136</p>
+              <p className="text-md mt-2 text-[#687469]">4,136</p>
             </div>
           </div>
 
@@ -274,7 +274,7 @@ const SwiperComponent = () => {
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Loan Disbursed</h3>
-              <p className="text-sm mt-2 text-[#687469]">$800K</p>
+              <p className="text-md mt-2 text-[#687469]">$800K</p>
             </div>
           </div>
 
@@ -287,7 +287,7 @@ const SwiperComponent = () => {
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Fradulent Claims</h3>
-              <p className="text-sm mt-2 text-[#687469]">Zero</p>
+              <p className="text-md mt-2 text-[#687469]">Zero</p>
             </div>
           </div>
 
@@ -301,7 +301,7 @@ const SwiperComponent = () => {
             </div>
             <div className='flex flex-col justify-start items-start'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farm Animal</h3>
-              <p className="text-sm mt-2 text-[#687469]">1,2345</p>
+              <p className="text-md mt-2 text-[#687469]">1,2345</p>
             </div>
           </div>
         </div>
