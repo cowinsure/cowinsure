@@ -54,6 +54,11 @@ function NavBarResponsive() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const onclick = ()  => {
+    console.log('clicked');
+    
+   }
+
   useEffect(() => {
     const fetchLogoData = async () => {
       try {
@@ -164,7 +169,7 @@ function NavBarResponsive() {
           </div>
         </div>
         {isClick && (
-          <div className='md:hidden w-full flex justify-center items-center mt-10'>
+          <div className='md:hidden w-full flex justify-center items-center mt-10 '>
             <div className='px-2 pt-2 space-y-5 sm:px-3 flex flex-col'>
               {menuData.map((item) => (
                 <div key={item.title} className=''>
@@ -175,20 +180,12 @@ function NavBarResponsive() {
                     <ul className="pl-4 space-y-2">
                       {item.sub_menu.map((subItem) => (
                         <li key={subItem.title} className="group">
-                          <button className="text-x font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200 w-full text-left">
-                          {subItem.title}
-                          </button>
-                          {subItem.sub_menu.length > 0 && (
-                          <ul className="pl-4 space-y-2 hidden group-hover:block">
-                            {subItem.sub_menu.map((subSubItem) => (
-                            <li key={subSubItem.title}>
-                              <Link href={subSubItem.link} className="text-xs font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200">
-                              {subSubItem.title}
+                          <Link href={subItem.link} className=" text-xs font-semibold text-[#687469] block px-4 py-2 hover:bg-gray-200" onClick={onclick}>
+                                {subItem.title}
                               </Link>
-                            </li>
-                            ))}
-                          </ul>
-                          )}
+                       
+                        
+                       
                         </li>
                       ))}
                     </ul>

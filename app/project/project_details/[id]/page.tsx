@@ -114,20 +114,20 @@ const DetailsID = () => {
   return (
     <div className='h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7] lg:mt-[10vh]'>
       <div className='pt-[10vh] lg:pt-[10vh] container mx-auto flex flex-col lg:flex-col lg:justify-center lg:items-center justify-center p-5'>
-      <div className='relative mb-10 w-full rounded-lg overflow-hidden'>
-                         <Image
-                             src={projectDetails.image_url}
-                             width={800}
-                             height={600}
-                             alt="Banner"
-                             objectPosition='center'
-                             className="w-full h-[100vh] object-cover rounded-lg"
-                             unoptimized
-                         />
-                         <div className='absolute bg-black bg-opacity-45 top-0 h-full w-full flex justify-center items-center lg:justify-center lg:items-center'>
-                             <h1 className='text-white text-4xl lg:text-6xl font-bold'>{projectDetails.name}</h1>
-                         </div>
-                     </div>
+      <div className='relative mb-10 w-full rounded-lg overflow-hidden h-auto lg:h-[100vh]'>
+        <Image
+          src={projectDetails.image_url}
+          width={800}
+          height={600}
+          alt="Banner"
+          objectPosition='top'
+          className="w-full h-full object-cover rounded-lg"
+          unoptimized
+        />
+        <div className='absolute bg-black bg-opacity-45 top-0 h-full w-full flex justify-center items-center lg:justify-center lg:items-center'>
+          <h1 className='text-white text-4xl lg:text-6xl font-bold'>{projectDetails.name}</h1>
+        </div>
+      </div>
         <h1 className='text-3xl font-bold text-[#334b35] text-start w-full mt-5 mb-5'>Project Overview</h1>
         <div className='mb-10 w-full flex flex-col lg:gap-5 gap-5 justify-between lg:flex-row lg:items-start lg:justify-between'>
           <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>

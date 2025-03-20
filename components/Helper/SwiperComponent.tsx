@@ -75,7 +75,7 @@ const SwiperComponent = () => {
   return (
     <div className='relative w-full h-auto md:h-full  lg:h-auto mb-[320px]  lg:mb-[120px] mt-[8vh]'>
 
-      <div className='absolute right-4 bottom-4 top-auto lg:right-16 lg:bottom-0 lg:top-10 z-50 flex gap-3 mb-10 lg:flex-col lg:justify-center'>
+      <div className='absolute right-4   top-10 lg:right-16 lg:bottom-0 lg:top-10 z-40 flex gap-3 mb-10 lg:flex-col lg:justify-center'>
         <button
           ref={nextRef}
           className="group hover:border-white text-white p-2 lg:p-4 rounded-full border-2 border-gray-500/20"
@@ -162,7 +162,7 @@ const SwiperComponent = () => {
                   objectFit='cover'
                   alt={`Slide ${index + 1}`}
                   // className="w-full object-cover h-[800px] lg:h-[500px]"
-                  className="w-full object-cover h-[800px] lg:h-[90vh]"
+                  className="w-full object-cover h-[90vh] lg:h-[90vh]"
                   width={1920} // Add appropriate width
                   height={1080} // Add appropriate height
                   priority // Add this line to prioritize loading
@@ -172,7 +172,7 @@ const SwiperComponent = () => {
                 />
               </motion.div>
 
-              <div className="absolute z-50 top-0 flex-col overflow-hidden h-full  bottom-0 md:left-0  flex items-center justify-start lg:justify-center lg:items-center lg:flex-col md:justify-center space-y-9 md:flex-col bg-black bg-opacity-20 w-full">
+              <div className="absolute z-50 top-0 flex-col overflow-hidden h-full  bottom-0 md:left-0  flex items-center justify-center lg:justify-center lg:items-center lg:flex-col md:justify-center space-y-9 md:flex-col bg-black bg-opacity-20 w-full">
 
 
 
@@ -250,7 +250,7 @@ const SwiperComponent = () => {
 
       }}
       
-      className=" absolute right-0 w-full bottom-[-200px] lg:bottom-[-100px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
+      className=" absolute right-0 w-full bottom-[-400px] lg:bottom-[-100px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
 
 
         <div className="shadow-md flex items-center lg:h-32 bg-white  flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
@@ -258,7 +258,7 @@ const SwiperComponent = () => {
             <div className='items-center mr-4'>
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
-            <div className='flex flex-col justify-start items-start'>
+            <div className='flex flex-col justify-start items-start '>
               <h3 className="font-semibold text-xl text-[#334B35]">Farmers Impacted</h3>
               <p className="text-md mt-2 text-[#687469]">4,136</p>
             </div>

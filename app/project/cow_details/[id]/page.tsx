@@ -86,14 +86,14 @@ function CowDetailsPage() {
     return (
         <div className='h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7] lg:mt-[10vh]'>
             <div className='pt-[10vh] lg:pt-[10vh] container mx-auto flex flex-col lg:flex-col lg:justify-center lg:items-center justify-center p-5'>
-                <div className='relative mb-10 w-full rounded-lg overflow-hidden'>
+                <div className='relative mb-10 w-full rounded-lg overflow-hidden h-auto lg:h-[70vh]'>
                     <Image
                         src={projectDetails.image_url}
                         width={800}
                         height={600}
                         alt="Banner"
                         objectPosition='center'
-                        className="w-full h-[100vh] object-cover rounded-lg"
+                        className="w-full h-full object-cover rounded-lg"
                         unoptimized
                     />
                     <div className='absolute bg-black bg-opacity-45 top-0 h-full w-full flex justify-center items-center lg:justify-center lg:items-center'>

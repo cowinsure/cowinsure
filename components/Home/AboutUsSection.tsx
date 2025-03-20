@@ -12,7 +12,7 @@ const AboutUsSection: React.FC = () => {
   return (
 
 
-    <div className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10'>
+    <div className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10 mt-20'>
       <div className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-center items-center relative '>
         {/* <div className='absolute rounded-full  bg-[#fcf4e6] lg:right-[35vh] right-[65px]  h-[300px] w-[300px] lg:h-[500px] lg:w-[500px]  '></div> */}
         {/* <motion.div
