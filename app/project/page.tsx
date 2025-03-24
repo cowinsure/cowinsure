@@ -123,13 +123,17 @@ const Project = () => {
                         <Image
                           src={portfolio.image_url}
                           alt='cover'
-                          height={200}
-                          width={300}
-                          objectFit="cover"
-                          className="rounded-t-lg w-full "
-                          unoptimized
-                          priority
-                        /> <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
+                          width={800}
+                          height={600}
+                          quality={50}
+                          loading="eager"
+                          unoptimized = {true}
+                          priority={true}
+                          objectPosition='top'
+                          className="w-full h-full object-cover rounded-lg"
+                        />
+                        
+                        <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
 
 
                         </div>

@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
         search: '',
       },
     ],
-    domains: ["webv1.insurecow.com"], // Adjusted this line
+    // Adjusted this line
   },
   /* config options here */
 };
