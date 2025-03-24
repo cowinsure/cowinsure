@@ -71,10 +71,10 @@ const AboutUsSection: React.FC = () => {
         <h2 className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl">
         Empowering Smallholder Farmers with Digital Livestock Assets
         </h2>
-        <p className="mt-10 text-xl text-[#687469]">
+        <p className="mt-5 text-xl text-[#687469]">
         Empowering Farmers, Securing Futures
         </p>
-        <p className="space-y-3 mb-8 pt-10 text-[18px] text-[#334b35]">
+        <p className="space-y-3 mb-8 pt-5 text-[18px] text-[#334b35]">
           InsureCow Ltd., a Singapore-based fintech and insurtech leader, revolutionizes financial inclusion for smallholder farmers. Using AI Digital Twins and proprietary Know Your Cow™ (KYC) technology, we transform livestock into secure digital assets. Our advanced Muzzle Printometry ensures tamper-proof cattle identification, enabling farmers to access financial and insurance services with trust and transparency.
         </p>
         <div className='flex items-center'>
