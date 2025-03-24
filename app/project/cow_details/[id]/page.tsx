@@ -93,8 +93,12 @@ function CowDetailsPage() {
                         height={600}
                         alt="Banner"
                         objectPosition='center'
+                        quality={50}
+                        loading="eager"
+                        unoptimized = {true}
+                        priority={true}
                         className="w-full h-full object-cover rounded-lg"
-                        unoptimized
+                        
                     />
                     <div className='absolute bg-black bg-opacity-45 top-0 h-full w-full flex justify-center items-center lg:justify-center lg:items-center'>
                         <h1 className='text-white text-4xl lg:text-6xl font-bold'>{projectDetails.name}</h1>
