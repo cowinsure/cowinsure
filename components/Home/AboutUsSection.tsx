@@ -33,8 +33,7 @@ const AboutUsSection: React.FC = () => {
     alt='cover'
     height={200}
     width={300}
-    objectFit="cover"
-    className="w-full h-full rounded-md"
+    className="w-full h-full rounded-md object-cover"
     unoptimized
     priority
   />

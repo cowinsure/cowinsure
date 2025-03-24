@@ -120,6 +120,7 @@ const DetailsID = () => {
           width={800}
           height={600}
           alt="Banner"
+          loading="eager"
           objectPosition='top'
           className="w-full h-full object-cover rounded-lg"
           unoptimized
