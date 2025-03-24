@@ -88,8 +88,12 @@ const Home = () => {
         {/* <Carousel slides={slides} /> */}
 
    
+   <div className='h-screen'>
 
+    
         <SwiperComponent   />
+   </div>
+
      
 
 

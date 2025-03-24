@@ -112,7 +112,7 @@ function NavBarResponsive() {
                   </div>
                 </div>
                 {menuData.map((item) => (
-                  <div key={item.title} className="relative group">
+                  <div key={item.title} className="relative group menu-item">
                     <Link href={item.link} className={`text-[#334b35] text-x font-semibold`}>
                       <span>{item.title}</span>
                     </Link>
@@ -193,6 +193,28 @@ function NavBarResponsive() {
           </div>
         )}
       </nav>
+      <style jsx>{`
+        .menu-item {
+          position: relative;
+        }
+        .menu-item::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          display: block;
+          margin-top: 5px;
+          right: 0;
+          background: #334b35;
+          transition: width 0.4s ease;
+          -webkit-transition: width 0.4s ease;
+        }
+        .menu-item:hover::after {
+          width: 100%;
+          left: 0;
+          background: #334b35;
+        }
+      `}</style>
     </>
   );
 }

@@ -130,8 +130,8 @@ function CowDetailsPage() {
                 <div className='w-full flex flex-col lg:gap-5 justify-start items-start lg:flex-row lg:items-start lg:justify-between '>
                     <div className='flex-1 flex flex-col lg:flex-col gap-5 justify-start items-start lg:items-start lg:justify-start'>
                         <h1 className='text-3xl font-bold text-[#334b35] text-start w-full mt-5 mb-5'>Cow Details</h1>
-                        <p className='text-start  text-xl font-semibold text-[#687469]'>
-                            {projectDetails.description}
+                        <p className='text-start  '>
+                        <div dangerouslySetInnerHTML={{ __html: projectDetails.description }} />
                         </p>
 
                     </div>

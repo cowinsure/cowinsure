@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
 
   images: {
+    domains: ['webv1.insurecow.com'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -151,7 +151,7 @@ const SwiperComponent = () => {
             <AnimatePresence mode="popLayout" key={index}>
               <motion.div
                 key={activeIndex + Date()}
-                initial={{ scale: 1, opacity: 0 }}
+                initial={{ scale: 1, opacity: 1 }}
                 animate={index === activeIndex ? { scale: 1, opacity: 1 } : { scale: 1, opacity: 1 }}
                 transition={{ duration: 3, ease: 'easeIn' }}
                 className="flex w-auto justify-center flex-col lg:justify-center lg:items-center h-auto lg:w-full lg:h-auto"
@@ -167,12 +167,12 @@ const SwiperComponent = () => {
                   height={1080} // Add appropriate height
                   priority // Add this line to prioritize loading
                   unoptimized
-                  quality={100}
+                  quality={50}
                 
                 />
               </motion.div>
 
-              <div className="absolute z-50 top-0 flex-col overflow-hidden h-full  bottom-0 md:left-0  flex items-center justify-center lg:justify-center lg:items-center lg:flex-col md:justify-center space-y-9 md:flex-col bg-black bg-opacity-20 w-full">
+              <div className="absolute z-50 top-0 flex-col overflow-hidden h-full  bottom-0 md:left-0  flex items-center justify-center lg:justify-center lg:items-center lg:flex-col md:justify-center  md:flex-col bg-black bg-opacity-20 w-full">
 
 
 
@@ -193,11 +193,11 @@ const SwiperComponent = () => {
                   initial={{ y: 100, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{
-                  duration: 1,
+                  duration: 2,
                   delay: 2 * 0.5, // Delay for staggering
                   ease: "easeOut",
                   }}
-                  className="text-white text-center text-lg font-bold lg:text-[40px] md:text-5xl "
+                  className="text-white text-center text-lg font-bold lg:text-[40px] md:text-5xl  "
                 >
                  
                   {s.title}
@@ -207,11 +207,11 @@ const SwiperComponent = () => {
                     initial={{ width: 0 }}
                     animate={{ width: '50%' }}
                     transition={{
-                      duration: 1,
+                      duration: 3,
                       delay: 3, // Wait for the text to appear first
                       ease: "easeOut",
                     }}
-                    className="h-1 bg-white mt-2"
+                    className="h-1 bg-white mt-4"
                   />
 
                 <motion.div
@@ -224,7 +224,7 @@ const SwiperComponent = () => {
                     ease: "easeOut",
 
                   }}
-                  className="relative text-center p-3   lg:w-[150px] lg:h-[50px] bg-green-200 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
+                  className="relative text-center mt-8 p-3   lg:w-[150px] lg:h-[50px] bg-green-200 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
                   <Link href='/project' className="relative z-10 group-hover:text-white transition-colors rounded-md duration-300">Discover Now</Link>
                   <div className=" absolute inset-0 bg-green-800/20 transform -translate-x-[-145px] rounded-md group-hover:translate-x-0 group-hover:bg-green-800 transition-transform duration-300 ease-in-out"></div>
                 </motion.div>

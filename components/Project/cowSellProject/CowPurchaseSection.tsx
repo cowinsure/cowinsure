@@ -122,10 +122,13 @@ const CowPurchaseSection = () => {
                                               alt='cover'
                                               layout="fill"
                                               objectFit="cover"
+                                         
                                               objectPosition='center'
+                                              quality={50}
+                                              loading="eager"
+                                              unoptimized = {true}
+                                              priority={true}
                                               className="rounded-lg w-full h-[500px]"
-                                              unoptimized
-                                              priority
                                           />
                                           <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
               
