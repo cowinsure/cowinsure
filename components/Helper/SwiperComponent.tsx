@@ -116,21 +116,19 @@ const SwiperComponent = () => {
 
       <Swiper
         onSlideChange={() => {
-
           setActiveIndex(activeIndex + 1);
         }}
         onSwiper={(swiper) => {
           // Delay the first slide change
           setTimeout(() => {
-            if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }
-          })
+        if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+          swiper.navigation.init();
+          swiper.navigation.update();
+        }
+          });
         }}
-
         effect="fade"
         fadeEffect={{ crossFade: true }}
         speed={3000}
@@ -145,97 +143,82 @@ const SwiperComponent = () => {
         autoplay={{ delay: 3000, disableOnInteraction: true }}
         modules={[EffectFade, Navigation, Pagination, Autoplay]}
         className="absolute top-0 left-0 w-full lg:h-auto bg-black"
+        style={{ height: '80vh' }} // Set fixed height
       >
-        {sliderData.map((s, index) => (
-          <SwiperSlide key={index }>
-            <AnimatePresence mode="popLayout" key={index}>
-              <motion.div
-                key={activeIndex + Date()}
-                initial={{ scale: 1, opacity: 1 }}
-                animate={index === activeIndex ? { scale: 1, opacity: 1 } : { scale: 1, opacity: 1 }}
-                transition={{ duration: 3, ease: 'easeIn' }}
-                className="flex w-auto justify-center flex-col lg:justify-center lg:items-center h-auto lg:w-full lg:h-auto"
-              >
-                <Image
-                  objectPosition="top"
-                  src={s.image_url}
-                  objectFit='cover'
-                  alt={`Slide ${index + 1}`}
-                  // className="w-full object-cover h-[800px] lg:h-[500px]"
-                  className="w-full object-cover h-[90vh] lg:h-[90vh]"
-                  width={1920} // Add appropriate width
-                  height={1080} // Add appropriate height
-                  priority // Add this line to prioritize loading
-                  unoptimized
-                  quality={50}
-                
-                />
-              </motion.div>
+        {sliderData.length > 0 ? (
+          sliderData.map((s, index) => (
+        <SwiperSlide key={index}>
+          <AnimatePresence mode="popLayout" key={index}>
+            <motion.div
+          key={activeIndex + Date()}
+          initial={{ scale: 1, opacity: 1 }}
+          animate={index === activeIndex ? { scale: 1, opacity: 1 } : { scale: 1, opacity: 1 }}
+          transition={{ duration: 3, ease: 'easeIn' }}
+          className="flex w-auto justify-center flex-col lg:justify-center lg:items-center h-auto lg:w-full lg:h-auto"
+            >
+          <Image
+            objectPosition="top"
+            src={s.image_url}
+            objectFit='cover'
+            alt={`Slide ${index + 1}`}
+            className="w-full object-cover h-[80vh] lg:h-[90vh]"
+            width={1920}
+            height={1080}
+            priority
+            unoptimized
+            quality={50}
+          />
+            </motion.div>
 
-              <div className="absolute z-50 top-0 flex-col overflow-hidden h-full  bottom-0 md:left-0  flex items-center justify-center lg:justify-center lg:items-center lg:flex-col md:justify-center  md:flex-col bg-black bg-opacity-20 w-full">
-
-
-
-
-                {/* <motion.div
-                  animate={{ y: [0, -20, 0], opacity: [1, 0.5, 1] }}
-                  transition={{
-                    duration: 2,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                  }}
-                  className='text-center'><GiBullHorns className='mt-20 text-5xl text-white' /></motion.div> */}
-                <div className='items-center '>
-
-                </div>
-                <motion.p
-                  key={number}
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{
-                  duration: 2,
-                  delay: 2 * 0.5, // Delay for staggering
-                  ease: "easeOut",
-                  }}
-                  className="text-white text-center text-lg font-bold lg:text-[40px] md:text-5xl  "
-                >
-                 
-                  {s.title}
-                  </motion.p>
-                  <motion.div
-                    key={activeIndex+ Date()} // Ensure the animation restarts with each slide
-                    initial={{ width: 0 }}
-                    animate={{ width: '50%' }}
-                    transition={{
-                      duration: 3,
-                      delay: 3, // Wait for the text to appear first
-                      ease: "easeOut",
-                    }}
-                    className="h-1 bg-white mt-4"
-                  />
-
-                <motion.div
-                  key={Math.floor(Math.random() * 100)}
-                  initial={{ y: 250, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{
-                    duration: 3,
-                    delay: 0.1, // Delay for staggering
-                    ease: "easeOut",
-
-                  }}
-                  className="relative text-center mt-8 p-3   lg:w-[150px] lg:h-[50px] bg-green-200 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
-                  <Link href='/project' className="relative z-10 group-hover:text-white transition-colors rounded-md duration-300">Discover Now</Link>
-                  <div className=" absolute inset-0 bg-green-800/20 transform -translate-x-[-145px] rounded-md group-hover:translate-x-0 group-hover:bg-green-800 transition-transform duration-300 ease-in-out"></div>
-                </motion.div>
-
-
-
-              </div>
-
-            </AnimatePresence>
-          </SwiperSlide>
-        ))}
+            <div className="absolute z-50 top-0 flex-col overflow-hidden h-full bottom-0 md:left-0 flex items-center justify-center lg:justify-center lg:items-center lg:flex-col md:justify-center md:flex-col bg-black bg-opacity-20 w-full">
+          <div className='items-center '></div>
+          <motion.p
+            key={number}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 2,
+              delay: 2 * 0.5,
+              ease: "easeOut",
+            }}
+            className="text-white text-center text-lg font-bold lg:text-[40px] md:text-5xl"
+          >
+            {s.title}
+          </motion.p>
+          <motion.div
+            key={activeIndex + Date()}
+            initial={{ width: 0 }}
+            animate={{ width: '50%' }}
+            transition={{
+              duration: 3,
+              delay: 3,
+              ease: "easeOut",
+            }}
+            className="h-1 bg-white mt-4"
+          />
+          <motion.div
+            key={Math.floor(Math.random() * 100)}
+            initial={{ y: 250, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 3,
+              delay: 0.1,
+              ease: "easeOut",
+            }}
+            className="relative text-center mt-8 p-3 lg:w-[150px] lg:h-[50px] bg-green-200 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center"
+          >
+            <Link href='/project' className="relative z-10 group-hover:text-white transition-colors rounded-md duration-300">Discover Now</Link>
+            <div className="absolute inset-0 bg-green-800/20 transform -translate-x-[-145px] rounded-md group-hover:translate-x-0 group-hover:bg-green-800 transition-transform duration-300 ease-in-out"></div>
+          </motion.div>
+            </div>
+          </AnimatePresence>
+        </SwiperSlide>
+          ))
+        ) : (
+          <div className="flex items-center justify-center w-full h-full text-white">
+        Loading...
+          </div>
+        )}
       </Swiper>
 
       <motion.div 
@@ -253,12 +236,12 @@ const SwiperComponent = () => {
       className=" absolute right-0 w-full bottom-[-400px] lg:bottom-[-100px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
 
 
-        <div className="shadow-md flex items-center lg:h-32 bg-white  flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
+        <div className="shadow-md flex items-center lg:h-32  bg-white flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
           <div className="p-6 flex-1 flex justify-center items-center h-20 lg:h-auto">
             <div className='items-center mr-4'>
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
-            <div className='flex flex-col justify-start items-start '>
+            <div className='flex flex-col justify-center items-center   w-[200px]'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farmers Impacted</h3>
               <p className="text-md mt-2 text-[#687469]">4,136</p>
             </div>
@@ -272,7 +255,7 @@ const SwiperComponent = () => {
             <div className='items-center mr-4'>
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
-            <div className='flex flex-col justify-start items-start'>
+            <div className='flex flex-col justify-center items-center  w-[200px]'>
               <h3 className="font-semibold text-xl text-[#334B35]">Loan Disbursed</h3>
               <p className="text-md mt-2 text-[#687469]">$800K</p>
             </div>
@@ -285,7 +268,7 @@ const SwiperComponent = () => {
             <div className='items-center mr-4'>
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
-            <div className='flex flex-col justify-start items-start'>
+            <div className='flex flex-col justify-center items-center w-[200px]'>
               <h3 className="font-semibold text-xl text-[#334B35]">Fradulent Claims</h3>
               <p className="text-md mt-2 text-[#687469]">Zero</p>
             </div>
@@ -299,7 +282,7 @@ const SwiperComponent = () => {
             <div className='items-center mr-4'>
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
-            <div className='flex flex-col justify-start items-start'>
+            <div className='flex flex-col justify-center items-center w-[200px]'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farm Animal</h3>
               <p className="text-md mt-2 text-[#687469]">1,2345</p>
             </div>

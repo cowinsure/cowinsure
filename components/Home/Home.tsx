@@ -162,7 +162,7 @@ const Home = () => {
        >
  <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center h-full bg-black bg-opacity-50 text-white text-center ">
           <div className='flex flex-1  item-center  lg:justify-center lg:items-center  justify-center '>
-            <h1 className=" text-xl lg:text-6xl font-semibold text-center flex justify-center items-center "> <span className='text-white'>What Sets </span>
+            <h1 className=" text-xl lg:text-6xl font-semibold text-center flex justify-center items-center "> What Sets 
               InsureCow Apart</h1>
 
 
@@ -171,7 +171,7 @@ const Home = () => {
 
           <div className='flex w-full  flex-col item-center flex-1 lg:justify-center lg:items-center  backdrop-blur-lg  bg-gradient-to-r  from-green-900/80 to-[#16351810]   h-full justify-center text-center ' style={{ clipPath: 'ellipse(90% 90% at 50% 50%)' }}>
 
-            <p className="text-x lg:text-2xl mb-6 lg:max-w-[70vh]">Our product innovates every aspect of smallholder financing from how the loan is disbursed, how the returns are shared and how the risk is priced and managed.</p>
+            <p className="text-x lg:text-2xl mb-6 lg:max-w-[70vh]"></p>
             <div className="flex space-x-4">
 
 

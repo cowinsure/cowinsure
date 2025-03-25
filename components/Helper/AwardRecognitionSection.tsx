@@ -25,7 +25,8 @@ interface BaseCategoryApiResponse {
 }
 
 interface ExtraData {
-  url: string;
+  status?: string;
+  award?: string;
 }
 
 interface BaseCard {
@@ -119,8 +120,10 @@ const AwardRecognitionSection = () => {
                 unoptimized
                 priority
               />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
-                <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span>
+              <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex flex-col justify-center items-center">
+                <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>{partner.extra_data.status}</p>
+                <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>{partner.extra_data.award}</p>
+               
               </div>
             </div>
           </SwiperSlide>

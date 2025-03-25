@@ -10,7 +10,7 @@ const CardsSection: React.FC = () => {
 
 
   return (
-    <section className='  h-auto lg:h-auto    flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-20 mb-28 lg:mt-20 lg:mb-28 lg:flex-row w-full lg:w-auto gap-8  lg:px-24'>
+    <section className='p-5  h-auto lg:h-auto    flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-20 mb-28 lg:mt-20 lg:mb-28 lg:flex-row w-full lg:w-auto gap-8  lg:px-24'>
       <Link href="/insurance"  key={1} className='rounded-md  relative h-[300px] lg:h-[300px] w-full group cursor-pointer'>
         <Image
           src={cardImage2}
