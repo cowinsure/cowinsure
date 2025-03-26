@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -65,6 +65,8 @@ function CowPurchaseSlider() {
 
     
       const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+          const memoizedPortfolios = useMemo(() => portfolios, [portfolios]);
+      
       // const [categories, setCategories] = useState<Category[]>([]);
     
       useEffect(() => {
@@ -124,7 +126,7 @@ function CowPurchaseSlider() {
   modules={[Navigation, Autoplay]}
   className="  w-full h-[70vh]  lg:h-[450px]   justify-center items-center lg:justify-center lg:items-center "
 >
-  {portfolios.map((portfolio, index) => (
+  {memoizedPortfolios.map((portfolio, index) => (
     <SwiperSlide key={index}>
 
       {/* <Link key={portfolio.id} href={`/project/cow_details/${portfolio.id}`} className='bg-white shadow-lg rounded-lg border-bg-[#F6F4EC] border-2 flex flex-col items-start justify-start'>
@@ -180,8 +182,10 @@ function CowPurchaseSlider() {
                                       objectFit="cover"
                                       objectPosition='center'
                                       className="rounded-lg w-full h-[500px]"
-                                      unoptimized
-                                      priority
+                                      quality={50}
+                                      loading="eager"
+                                      // unoptimized = {true}
+                                      priority={true}
                                   />
                                   <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
       

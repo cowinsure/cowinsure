@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 // import Swiper and modules styles
@@ -35,6 +35,8 @@ interface ApiResponse {
 const SwiperComponent = () => {
   const [activeIndex, setActiveIndex] = useState(5);
   const [sliderData, setSliderData] = useState<SliderData[]>([]);
+   
+  
   const prevRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
 
@@ -134,25 +136,25 @@ const SwiperComponent = () => {
         speed={3000}
         spaceBetween={0}
         slidesPerView={1}
-        loop={true}
+      
         navigation={{
           prevEl: prevRef.current,
           nextEl: nextRef.current,
         }}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         modules={[EffectFade, Navigation, Pagination, Autoplay]}
         className="absolute top-0 left-0 w-full lg:h-auto bg-black"
         style={{ height: '80vh' }} // Set fixed height
       >
         {sliderData.length > 0 ? (
           sliderData.map((s, index) => (
-        <SwiperSlide key={index}>
-          <AnimatePresence mode="popLayout" key={index}>
+        <SwiperSlide key={s.id}>
+          <AnimatePresence mode="popLayout" >
             <motion.div
           key={activeIndex + Date()}
           initial={{ scale: 1, opacity: 1 }}
-          animate={index === activeIndex ? { scale: 1, opacity: 1 } : { scale: 1, opacity: 1 }}
+          animate={{scale: 1, opacity: 1 }}
           transition={{ duration: 3, ease: 'easeIn' }}
           className="flex w-auto justify-center flex-col lg:justify-center lg:items-center h-auto lg:w-full lg:h-auto"
             >
@@ -164,9 +166,9 @@ const SwiperComponent = () => {
             className="w-full object-cover h-[80vh] lg:h-[90vh]"
             width={1920}
             height={1080}
-            priority
-            unoptimized
             quality={50}
+            loading="eager"
+            priority
           />
             </motion.div>
 

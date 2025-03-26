@@ -95,7 +95,7 @@ function CowDetailsPage() {
                         objectPosition='center'
                         quality={50}
                         loading="eager"
-                        unoptimized = {true}
+                       
                         priority={true}
                         className="w-full h-full object-cover rounded-lg"
                         
@@ -144,7 +144,7 @@ function CowDetailsPage() {
                         <CowPurchaseForm />
 
                     </div>
-                    <div className='lg:w-1/2  flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center  ' >
+                    <div className='lg:w-1/2 w-full  flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center  ' >
                         <h1 className=' text-3xl font-bold text-[#334b35] text-start w-full mt-10 lg:text-start'>Cow Details</h1>
 
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-10'>
@@ -158,7 +158,7 @@ function CowDetailsPage() {
                             <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.breed}</h2>
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>
-                            <h2 className='text-xl font-bold text-start '>Teeth</h2>
+                            <h2 className='text-xl font-bold text-start '>Age</h2>
                             <h2 className='text-xl font-bold text-green-700 '>{projectDetails.extra_data.age} Month</h2>
                         </div>
                         <div className='flex flex-row justify-between gap-10 lg:justify-between w-full mt-5'>

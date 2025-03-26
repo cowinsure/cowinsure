@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -63,6 +63,7 @@ interface CategoryApiResponse {
 const CowPurchaseSection = () => {
 
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+    const memoizedPortfolios = useMemo(() => portfolios, [portfolios]);
   // const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -109,11 +110,11 @@ const CowPurchaseSection = () => {
 
       </div>
         <div className=' mt-10 w-full h-auto container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-10 mb-5'>
-          {portfolios.map((portfolio) => (
+          {memoizedPortfolios.map((portfolio) => (
 
 
-            <>
-              <div className='relative lg:w-[300px]'>
+            <div key={portfolio.id}>
+              <div  className='relative lg:w-[300px]'>
               <div className='relative   w-full flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
                                   <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
                                       <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
@@ -126,7 +127,7 @@ const CowPurchaseSection = () => {
                                               objectPosition='center'
                                               quality={50}
                                               loading="eager"
-                                              unoptimized = {true}
+                                              // unoptimized = {true}
                                               priority={true}
                                               className="rounded-lg w-full h-[500px]"
                                           />
@@ -185,7 +186,7 @@ const CowPurchaseSection = () => {
 
       
               </div>
-            </>
+            </div>
           ))}
         </div>
     

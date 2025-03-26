@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -50,6 +50,8 @@ interface CategoryApiResponse {
 const HomeInvestmentSection = () => {
 
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+      const memoizedPortfolios = useMemo(() => portfolios, [portfolios]);
+  
   // const [categories, setCategories] = useState<Category[]>([]);
 
 
@@ -117,8 +119,8 @@ const HomeInvestmentSection = () => {
           modules={[Navigation, Autoplay]}
           className=" w-full lg:h-auto justify-center items-center lg:justify-center lg:items-center"
         >
-          {portfolios.map((portfolio, index) => (
-            <SwiperSlide key={index}>
+          {memoizedPortfolios.map((portfolio, index) => (
+            <SwiperSlide key={portfolio.id}>
 {/* 
               <Link key={portfolio.id} href={`/project/project_details/${portfolio.id}`} className='bg-white shadow-lg rounded-lg border-bg-[#F6F4EC] border-2 flex flex-col items-start justify-start'>
                 <div className="w-full  rounded-lg  relative flex flex-col lg:flex-col lg:justify-start lg:items-start">
@@ -177,7 +179,8 @@ const HomeInvestmentSection = () => {
                         layout="fill"
                         objectFit="cover"
                         className="rounded-t-lg"
-                        unoptimized
+                        quality={50}
+                        loading="eager"
                         priority
                           />
                           <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>

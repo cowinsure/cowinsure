@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -51,6 +51,7 @@ interface CategoryApiResponse {
 const InvestmentSection = () => {
 
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
+  const memoizedPortfolios = useMemo(() => portfolios, [portfolios]);
   // const [categories, setCategories] = useState<Category[]>([]);
 
 
@@ -115,16 +116,16 @@ const InvestmentSection = () => {
             1280: { slidesPerView: 4 },
           }}
           spaceBetween={50}
-          loop={portfolios.length > 1}
+          loop={memoizedPortfolios.length > 1}
           pagination={{ clickable: false }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           modules={[Navigation, Autoplay]}
           className=" lg:h-auto w-full md:w-full flex-1  justify-center flex items-center lg:justify-center lg:items-center"
         >
-          {portfolios.map((portfolio, index) => (
-            <SwiperSlide key={index}>
+          {memoizedPortfolios.map((portfolio, index) => (
+            <SwiperSlide key={portfolio.id}>
 
-              <div key={portfolio.id} className='relative flex-col w-full   h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
+              <div  className='relative flex-col w-full   h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
 
                 <div className='relative h-auto w-full round-lg '>
                   <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
@@ -136,7 +137,8 @@ const InvestmentSection = () => {
                         width={300}
                         objectFit="cover"
                         className="rounded-t-lg w-full "
-                        unoptimized
+                        quality={50}
+                        loading="eager"
                         priority
                       /> <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
 

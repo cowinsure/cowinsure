@@ -114,7 +114,8 @@ function InvestNow() {
                           width={300}
                           objectFit="cover"
                           className="rounded-t-lg w-full "
-                          unoptimized
+                          quality={50}
+                          loading="eager"
                           priority
                         /> <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
 
