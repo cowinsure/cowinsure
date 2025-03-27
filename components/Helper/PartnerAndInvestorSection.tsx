@@ -91,8 +91,8 @@ const PartnerAndInvestorSection = () => {
 
 
   return (
-    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
-      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
+    <div className='container mt-20 mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
+      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full mb-10">
         <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
         <h2 className="text-xl font-bold text-[#687469] text-start mb-3">Association</h2>
         <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">Partner & Investor</h1>
@@ -114,18 +114,18 @@ const PartnerAndInvestorSection = () => {
       >
         {partners.map((partner) => (
           <SwiperSlide key={partner.id}>
-              <div className="relative flex justify-center items-center h-[300px] lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
-                         <Image
-                           src={partner.image_url}
-                           alt={partner.name}
-                          
-                           className="rounded-md object-fit"
-                         
-                           width={300}
-                           height={300}
-                           unoptimized
-                           priority
-                         />
+              <div className="relative flex justify-center items-center h-[200px] lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
+                           <Image
+                                         src={partner.image_url}
+                                         alt={partner.name}
+                                        
+                                         className="rounded-md object-fit"
+                                          layout="responsive"
+                                         width={300}
+                                         height={300}
+                                         
+                                         priority
+                                       />
                          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
                            <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span>
                          </div>

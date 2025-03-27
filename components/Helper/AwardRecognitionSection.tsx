@@ -85,8 +85,8 @@ const AwardRecognitionSection = () => {
 
 
   return (
-    <div className=' flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
-      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
+    <div className=' flex flex-col mt-20 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
+      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full mb-10">
         <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
         <h2 className="text-xl font-bold text-[#687469] text-start mb-3">achivement</h2>
         <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">Award & Recognitions</h1>
@@ -108,7 +108,7 @@ const AwardRecognitionSection = () => {
       >
         {partners.map((partner) => (
           <SwiperSlide key={partner.id}>
-            <div className="relative flex justify-center h-[300px] items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
+            <div className="relative flex justify-center h-[200px] items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
               <Image
                 src={partner.image_url}
                 alt={partner.name}
@@ -117,14 +117,21 @@ const AwardRecognitionSection = () => {
               
                 width={300}
                 height={300}
-                unoptimized
+                
                 priority
               />
-              <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex flex-col justify-center items-center">
-                <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>{partner.extra_data.status}</p>
-                <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>{partner.extra_data.award}</p>
-               
-              </div>
+                <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex flex-col justify-center items-center">
+                {partner.extra_data.status && (
+                  <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                  {partner.extra_data.status}
+                  </p>
+                )}
+                {partner.extra_data.award && (
+                  <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                  {partner.extra_data.award}
+                  </p>
+                )}
+                </div>
             </div>
           </SwiperSlide>
         ))}

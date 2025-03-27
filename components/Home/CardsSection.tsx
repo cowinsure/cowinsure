@@ -4,13 +4,24 @@ import cardImage1 from '../../public/farmManagement.jpg';
 import cardImage2 from '../../public/insurance.jpg';
 import aibg from '../../public/aibg.jpg';
 import Link from 'next/link';
+import { GiBullHorns } from 'react-icons/gi';
 
 
 const CardsSection: React.FC = () => {
 
 
   return (
-    <section className='p-5  h-auto lg:h-auto    flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-20 mb-28 lg:mt-20 lg:mb-28 lg:flex-row w-full lg:w-auto gap-8  lg:px-24'>
+
+    <>
+    
+     <div className=" flex flex-col justify-center items-center  text-center w-full mb-10">
+            <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
+            <h2 className="text-xl font-bold text-[#687469] text-start mb-3">Services</h2>
+            <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">What we offer</h1>
+          </div>
+    
+
+    <div className='p-5  h-auto lg:h-auto    flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-20 mb-28 lg:mt-20 lg:mb-28 lg:flex-row w-full lg:w-auto gap-8  lg:px-24'>
       <Link href="/insurance"  key={1} className='rounded-md  relative h-[300px] lg:h-[300px] w-full group cursor-pointer'>
         <Image
           src={cardImage2}
@@ -83,7 +94,8 @@ const CardsSection: React.FC = () => {
           </div>
         </div>
       </Link>
-    </section>
+    </div>
+     </>
   );
 };
 
