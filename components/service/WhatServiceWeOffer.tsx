@@ -89,7 +89,7 @@ const WhatServiceWeOffer = ({ slider}: ParentProps) => {
             <Image
           src={s.icon}
           alt='cover'
-          className="h-[75px] z-50 object-fit-contain fill-current text-yellow group-hover:text-white transition-all duration-500"
+          className="h-[65px] w-[65px] z-50 object-fit-contain fill-current text-yellow group-hover:text-white transition-all duration-500"
           unoptimized
           priority
             />
