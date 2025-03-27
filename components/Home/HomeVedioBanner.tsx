@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { X } from 'lucide-react';
-import image2 from '../../public/watchourvedio.jpg'
+import image2 from '../../public/watchourvedio.jpeg'
 import VideoPlayer from '../Videoplayer';
 import { FaPlay } from "react-icons/fa";
 
@@ -15,7 +15,7 @@ export default function VideoBanner() {
   const toggleOverlay = () => setIsOpen(!isOpen);
 
   return (
-    <section className="relative w-full h-[70vh] overflow-hidden">
+    <section className="relative w-full h-[90vh] overflow-hidden">
       <Image 
         src={image2}
         alt="Background Image" 
