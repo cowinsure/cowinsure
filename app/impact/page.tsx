@@ -10,7 +10,7 @@ import FaqSection from '@/components/Home/FaqSection';
 
 function Imapct() {
   return (
-    <div className='lg:mt-[5vh] lg:h-auto h-auto w-auto  overflow-hidden'>
+    <div className=' lg:h-auto h-auto w-auto  overflow-hidden'>
         <AppBranding title="Stronger Together, Enriching Farmers' Future!" bannerUrl={banner} link={"/about_us"}/>
         
         <ImapctHighlightSection/>

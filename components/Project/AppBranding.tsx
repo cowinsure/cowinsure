@@ -28,11 +28,11 @@ const AppBranding: React.FC<AppBrandingProps> = ({ title, description, customSty
       />
       <div className="relative z-10 flex flex-col items-center justify-center h-full bg-black bg-opacity-30 text-white text-center p-5">
         {title ? (
-          <h1 className="text-4xl lg:text-6xl font-semibold mb-4">
+          <h1 className="text-xl lg:text-6xl font-semibold mb-4">
             <span className='text-white'>{title}</span>
           </h1>
         ) : (
-          <h1 className="text-4xl lg:text-6xl font-semibold mb-4 lg:text-[109px]">
+          <h1 className="text-xl lg:text-6xl font-semibold mb-4 lg:text-[109px]">
             <span className=' text-green-800'>Empowering Communities,</span> <span className=''>Simplified.</span> 
           </h1>
         )}

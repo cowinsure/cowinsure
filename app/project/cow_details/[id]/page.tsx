@@ -89,13 +89,13 @@ function CowDetailsPage() {
                 <div className='relative mb-10 w-full rounded-lg overflow-hidden h-auto lg:h-[70vh]'>
                     <Image
                         src={projectDetails.image_url}
-                        width={800}
-                        height={600}
+                        width={1024}
+                        height={1080}
                         alt="Banner"
                         objectPosition='center'
                         quality={50}
                         loading="eager"
-                        unoptimized={true}
+                        // unoptimized={true}
                         priority={true}
                         className="w-full h-full object-cover rounded-lg"
                         

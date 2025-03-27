@@ -29,7 +29,7 @@ export default function ImapctHighlightSection() {
 
             </p>
 
-            <div className='rounded-lg flex flex-col justify-center items-center gap-2 lg:gap-14 lg:flex-row lg:justify-center lg:items-center'>
+            <div className='rounded-lg flex flex-col justify-center items-center gap-2 lg:gap-14 lg:flex-row lg:justify-center lg:items-center p-2'>
 
 
 

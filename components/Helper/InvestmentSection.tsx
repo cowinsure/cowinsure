@@ -122,7 +122,7 @@ const InvestmentSection = () => {
           modules={[Navigation, Autoplay]}
           className=" lg:h-auto w-full md:w-full flex-1  justify-center flex items-center lg:justify-center lg:items-center"
         >
-          {memoizedPortfolios.map((portfolio, index) => (
+          {memoizedPortfolios.map((portfolio) => (
             <SwiperSlide key={portfolio.id}>
 
               <div  className='relative flex-col w-full   h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>

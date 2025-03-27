@@ -99,7 +99,7 @@ const Project = () => {
   // ];
 
   return (
-    <div className='pt-16 lg:pt-0 overflow-hidden'>
+    <div className='pt-16 lg:pt-0 overflow-hidden lg:mt-[5vh]'>
       <section className="h-auto pb-10 lg:mt-14 lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
         <div className="max-w-4xl text-center">
           <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
@@ -107,7 +107,7 @@ const Project = () => {
           <h1 className="text-5xl font-bold text-[#334b35]">Our Projects</h1>
         </div>
 
-        <div className=' mt-10 w-full h-auto container mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-5'>
+        <div className=' mt-10 w-full h-auto container mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-5 p-2'>
           {portfolios.map((portfolio) => (
 
 

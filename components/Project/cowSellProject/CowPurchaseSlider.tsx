@@ -18,6 +18,7 @@ interface ExtraData {
   color: string;
   cowId: string;
   askingPrice: number;
+  sellingPrice: number;
   teeth: number;
   gender: string;
   cowBreed: string;
@@ -127,7 +128,7 @@ function CowPurchaseSlider() {
   className="  w-full h-[70vh]  lg:h-[450px]   justify-center items-center lg:justify-center lg:items-center "
 >
   {memoizedPortfolios.map((portfolio, index) => (
-    <SwiperSlide key={index}>
+    <SwiperSlide key={index} className='p-2'>
 
   
         <div className='relative   w-full flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
@@ -159,13 +160,13 @@ function CowPurchaseSlider() {
                               <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-green-800 rounded-t-lg text-2xl font-bold text-white'>
                               <div className='flex flex-row lg:flex-row items-center justify-start text-center w-full px-4  py-2'>
                                 
-                                  <div className='text-white text-xl font-bold'>{formatToBDT(portfolio.extra_data.askingPrice)} TK</div>
+                                  <div className='text-white text-xl font-bold'>{formatToBDT(portfolio.extra_data.sellingPrice)} TK</div>
                               </div> 
       
                               <div className='w-full flex flex-row lg:flex-col items-center justify-center   px-2  '>
-                              <div className='flex flex-row lg:flex-row items-start justify-around  w-full  gap-4 px-2  '>
-                                  <div className='flex-1 text-white text-xs '>Live (KG)</div>
-                                  <div className= ' flex-1 text-white text-xs font-bold'>{portfolio.extra_data.weightKg}</div>
+                              <div className='flex flex-row lg:flex-row items-center justify-start   w-full gap-4  px-2  '>
+                                  <div className=' text-white text-xs '>Live weight:</div>
+                                  <div className= ' flex-1 text-white text-xl font-bold'>{portfolio.extra_data.weightKg} KG</div>
                               </div>  
       
                           

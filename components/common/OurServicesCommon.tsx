@@ -137,7 +137,7 @@ const OurServicesCommon = ({ serviceName}: ParentProps) => {
             </div>
 
             <div className='text-start'>
-            <h1 className="lg:text-2xl text-xl min-w-[150px] mb-5  font-bold text-[#334b35]  text-start">{s.name}</h1>
+            <h1 className="lg:text-2xl text-xl min-w-[150px] my-2  font-bold text-[#334b35]  text-start">{s.name}</h1>
         <p className='text-start font-semibold text-gray-500  text-xl '>
         {s.extra_data.short_description}
 

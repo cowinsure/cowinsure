@@ -110,7 +110,8 @@ const WhyInvestWithUs: React.FC = () => {
               className="rounded-md object-cover w-full h-48"
               width={300}
               height={200}
-              unoptimized
+              priority={true}
+              loading='eager'
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
               {/* <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span> */}

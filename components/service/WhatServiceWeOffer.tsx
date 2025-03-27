@@ -28,7 +28,7 @@ const WhatServiceWeOffer = ({ slider}: ParentProps) => {
 
 
   return (
-    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto p-5'>
+    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto '>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
         <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
         <h2 className="text-xl font-bold text-[#687469] text-start mb-3">Services</h2>
@@ -60,27 +60,8 @@ const WhatServiceWeOffer = ({ slider}: ParentProps) => {
       >
         {slider.map((s, index) => (
           <SwiperSlide key={index}>
-            {/* <div className="relative flex-col lg:w-auto lg:h-auto cursor-pointer group">
-              <Image
-              src={s.image}
-              alt="Profile"
-              objectFit='cover'
-              className="rounded-md object-cover"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
-              <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span>
-              </div>
-            </div>
-
-            <div className='text-start'>
-            <h1 className="lg:text-2xl text-xl min-w-[150px] mb-5  font-bold text-[#334b35]  text-start">{s.title}</h1>
-        <p className='text-start font-semibold text-gray-500  text-xl '>
-        {s.description}
-
-            </p>
-
-            </div> */}
-             <div className='relative flex-col w-[300px] h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
+            
+             <div className='relative flex-col m-2  lg:w-[300px] h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
 
 <div className='relative h-auto round-lg '>
     <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
