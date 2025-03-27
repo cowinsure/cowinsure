@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'webv1.insurecow.com',
         port: '',
-        pathname: '/media/logos/**',
+        pathname: '/media/**',
         search: '',
       },
     ],

@@ -129,49 +129,7 @@ function CowPurchaseSlider() {
   {memoizedPortfolios.map((portfolio, index) => (
     <SwiperSlide key={index}>
 
-      {/* <Link key={portfolio.id} href={`/project/cow_details/${portfolio.id}`} className='bg-white shadow-lg rounded-lg border-bg-[#F6F4EC] border-2 flex flex-col items-start justify-start'>
-        <div className="w-full lg:max-h-[500px] rounded-lg  relative flex flex-col lg:flex-col lg:justify-start lg:items-start">
-          <Image
-            src={portfolio.image_url}
-            alt={portfolio.name}
-            objectFit='cover'
-            className="rounded-lg object-cover w-full h-full "
-            width={400}
-            height={300}
-            unoptimized
-          />
-        
-        </div>
-
-        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-5 py-3'>
-          <div className='text-md font-semibold'>Cow ID</div>
-          <div className='text-green-700 text-lg font-bold'>{portfolio.extra_data.cowId}</div>
-        </div>
-
-        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-5 py-3'>
-          <div className='text-md font-semibold'>Live Weight</div>
-          <div className='text-green-700 text-lg font-bold'> {portfolio.extra_data.currentLiveWeight} KG</div>
-        </div>
-        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-5 py-3'>
-          <div className='text-md font-semibold'>Expected Final Weight</div>
-          <div className='text-green-700 text-lg font-bold'> {portfolio.extra_data.expectedFinalWeight} KG</div>
-        </div>
-
-        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-5 py-3'>
-          <div className='text-md font-semibold'>Price</div>
-          <div className='text-green-700 text-lg font-bold'>{formatToBDT(portfolio.extra_data.price) }</div>
-        </div>
-      
-
-    
-
-        <div className="h-auto w-full flex flex-col justify-center items-end lg:justify-center lg:items-center bg-white rounded-md p-5">
-          <div className="relative text-end p-3 bg-green-100 text-green-800 font-bold rounded-md overflow-hidden group cursor-pointer">
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">Order Now</span>
-            <div className="absolute inset-0 bg-green-800 transform -translate-x-[105px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
-          </div>
-        </div>
-      </Link> */}
+  
         <div className='relative   w-full flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
                           <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
                               <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
@@ -184,7 +142,7 @@ function CowPurchaseSlider() {
                                       className="rounded-lg w-full h-[500px]"
                                       quality={50}
                                       loading="eager"
-                                      // unoptimized = {true}
+                                      
                                       priority={true}
                                   />
                                   <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>

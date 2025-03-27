@@ -95,7 +95,7 @@ function CowDetailsPage() {
                         objectPosition='center'
                         quality={50}
                         loading="eager"
-                       
+                        unoptimized={true}
                         priority={true}
                         className="w-full h-full object-cover rounded-lg"
                         
