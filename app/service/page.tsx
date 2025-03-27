@@ -81,7 +81,7 @@ const listSlides = [
 
 function page() {
   return (
-    <div className='h-auto overflow-hidden'>
+    <div className='h-auto overflow-hidden '>
       <AppBranding title="Empowering Farmers, Securing Livelihoods – Smart Solutions for Livestock Success" bannerUrl={banner}  />
 
 

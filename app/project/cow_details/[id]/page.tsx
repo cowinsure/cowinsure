@@ -116,7 +116,7 @@ function CowDetailsPage() {
                     </div> */}
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
                         <h2 className='text-2xl text-white mb-5'>Price</h2>
-                        <h2 className='text-xl text-white'>{formatToBDT(projectDetails.extra_data.askingPrice)}</h2>
+                        <h2 className='text-xl text-white'>{formatToBDT(projectDetails.extra_data.sellingPrice)}</h2>
                     </div>
 
                     <div className='w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold'>
