@@ -100,7 +100,7 @@ const Project = () => {
 
   return (
     <div className='pt-16 lg:pt-0 overflow-hidden lg:mt-[2vh]'>
-      <section className="h-auto pb-10 lg:mt-14 lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
+      <section className="h-screen pb-10 lg:mt-14 lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
         <div className="max-w-4xl text-center">
           <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
           <h2 className="text-xl font-bold text-[#687469]">Invest Now</h2>

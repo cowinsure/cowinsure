@@ -102,7 +102,7 @@ function CowPurchaseSlider() {
         fetchCategories();
       }, []);
   return (
-    <section className="pb-10    flex flex-col  lg:flex-col lg:justify-center  lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
+    <section className="    flex flex-col  lg:flex-col lg:justify-center  lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
       <div className="max-w-4xl text-center">
         <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
 

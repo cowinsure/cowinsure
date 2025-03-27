@@ -28,7 +28,7 @@ const WhatServiceWeOffer = ({ slider}: ParentProps) => {
 
 
   return (
-    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto lg:mt-11'>
+    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto lg:mt-11 mt-11'>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
         <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
         <h2 className="text-xl font-bold text-[#687469] text-start mb-3">Services</h2>
