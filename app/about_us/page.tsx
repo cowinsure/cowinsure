@@ -1,7 +1,8 @@
 import AppBranding from '@/components/Project/AppBranding'
 import React from 'react'
 import banner from '../../public/farmers-with.jpg';
-import bannerGenereal from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
+import bannerGenereal from '../../public/farmerfieldimg.jpeg';
+import bannerGenereal2 from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
 
 import FaqSection from '@/components/Home/FaqSection';
 import ContactUs from '@/components/Helper/ContactUs';
@@ -21,7 +22,7 @@ const AboutUs = () => {
 
 
     <ServiceHighlighted url='' image={bannerGenereal} title='Our Mission' description={mission} reverse/>
-    <ServiceHighlighted url='' image={bannerGenereal} title='Our Vision' description={vision} />
+    <ServiceHighlighted url='' image={bannerGenereal2} title='Our Vision' description={vision} />
 
         
         <div className='h-auto lg:h-auto lg:pt-10 md:h-auto bg-[#F7F7F7]'>

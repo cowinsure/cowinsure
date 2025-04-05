@@ -25,7 +25,7 @@ interface ApiResponse {
 
 function NavBarResponsive() {
   const [isClick, setClick] = useState(false);
-  const [hidden, setHidden] = useState(false);
+  // const [hidden, setHidden] = useState(false);
   const [logoData, setLogoData] = useState<LogoData | null>(null);
   const [menuData, setMenuData] = useState<MenuItem[]>([]);
 
@@ -33,26 +33,26 @@ function NavBarResponsive() {
     setClick(!isClick);
   };
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
+  // useEffect(() => {
+  //   let lastScrollY = window.scrollY;
 
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
-      lastScrollY = window.scrollY;
-      // if (window.scrollY === 0) {
-      //   setStartScroll(true);
-      // } else {
-      //   setStartScroll(false);
-      // }
-    };
+  //   const handleScroll = () => {
+  //     if (window.scrollY > lastScrollY) {
+  //       setHidden(true);
+  //     } else {
+  //       setHidden(false);
+  //     }
+  //     lastScrollY = window.scrollY;
+  //     // if (window.scrollY === 0) {
+  //     //   setStartScroll(true);
+  //     // } else {
+  //     //   setStartScroll(false);
+  //     // }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
 
 
@@ -89,7 +89,7 @@ function NavBarResponsive() {
 
   return (
     <>
-      <nav className={`bg-[#F6F4EC] bg:blur-md ${isClick ? "h-auto" : "h-20"} text-white  lg:p-6 shadow-md fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${hidden ? "-translate-y-full" : "translate-y-0"}`}>
+      <nav className={`bg-[#F6F4EC] bg:blur-md ${isClick ? "h-auto" : "h-20"} text-white  lg:p-6 shadow-md fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${false ? "-translate-y-full" : "translate-y-0"}`}>
         <div className='max-w-7xl mx-auto px-4 sm:p-6 '>
           <div className='flex items-center justify-evenly h-2'>
             <div className='hidden md:block'>

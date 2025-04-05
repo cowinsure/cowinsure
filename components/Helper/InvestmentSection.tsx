@@ -113,9 +113,9 @@ const InvestmentSection = () => {
             640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 4 },
+            1280: { slidesPerView: 3 },
           }}
-          spaceBetween={50}
+          spaceBetween={60}
           loop={memoizedPortfolios.length > 1}
           pagination={{ clickable: false }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
