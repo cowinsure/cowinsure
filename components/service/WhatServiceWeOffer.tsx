@@ -13,11 +13,11 @@ interface ParentProps {
   slider:SliderProps[]
 }
 
-interface SliderProps{
-    title:string,
-    description:string,
-    image:StaticImageData,
-    icon:StaticImageData
+interface SliderProps {
+  image: StaticImageData;
+  title: string;
+  description: string;
+  icon: React.JSX.Element; // Update to allow React elements
 }
 
 const WhatServiceWeOffer = ({ slider}: ParentProps) => {

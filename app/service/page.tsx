@@ -9,14 +9,7 @@ import farmaManagement from '../../public/farmManagement.jpg';
 import insuranceBacked from '../../public/agriculture-farmland-2023-11-27-05-02-44-utc.jpg';
 import WhatServiceWeOffer from '@/components/service/WhatServiceWeOffer';
 import HomeInsuranceSection from '@/components/Home/HomeInsuranceSection';
-import farmingTools from '../../public/farming-tools.svg'
-import advisory from '../../public/advisory.svg'  
-import training from '../../public/training.svg'
-import dairy from '../../public/dairy.svg'
-import insurance from '../../public/insurance.svg'
-import finance from '../../public/finance.svg'
-import financeAccess from '../../public/financeAccess.svg'
-import aiPower from '../../public/aiPower.svg'
+
 import { FinanceAccess,LivestockAI,Finance,FarmingTools,Advisory,Training,Dairy,Insurance } from '@/components/service/SvgIcons';
 
 
