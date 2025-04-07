@@ -46,7 +46,7 @@ const Footer = () => {
 
         {/* Contact Info */}
         <p className="mt-4 text-gray-600">info@insure.global</p>
-        <p className="text-gray-600">+8801xxxxxxx</p>
+        <p className="text-gray-600">+8801999INSURE</p>
       </div>
 
       {/* Middle Section - About */}
