@@ -2,7 +2,7 @@ import AppBranding from '@/components/Project/AppBranding'
 import React from 'react'
 import banner from '../../public/farmers-with.jpg';
 import platform from '../../public/brandinggrassfieldimg.jpeg';
-import aibg from '../../public/aibg.jpg';
+import aibg from '../../public/aibg.png';
 import financialAccess from '../../public/farmerimg.jpg';
 import cover3 from '../../public/cover3.jpg';
 import farmaManagement from '../../public/farmManagement.jpg';

@@ -85,8 +85,8 @@ const CardsSection: React.FC = () => {
             <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">What we offer</h1>
           </div>
     
-          <div className='p-5  h-auto lg:h-auto    flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-20 mb-28 lg:mt-20 lg:mb-28 lg:flex-row w-full lg:w-auto gap-8  lg:px-24'>
-          {whatWeOfferData.map((item,index)=>(
+          <div className='p-5 min-h-[300px] h-auto lg:h-auto    flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-14 mb-20 lg:mt-14 lg:mb-20 lg:flex-row w-full lg:w-auto gap-8  lg:px-24'>
+          {whatWeOfferData.length > 0 ? (whatWeOfferData.map((item,index)=>(
             <Link href={item.extra_data.url}  key={index} className='rounded-md  relative h-[300px] lg:h-[300px] w-full group cursor-pointer'>
             <Image
               src={item.image_url}
@@ -110,13 +110,18 @@ const CardsSection: React.FC = () => {
             </div>
           </Link>
       
-    ))}
+   ) )):(
+            <div className="text-gray-400 text-center">Loading services...</div>
+           )
+
+    }
       
     </div>
  
     
      </>
   );
+  
 };
 
 export default CardsSection;
