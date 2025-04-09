@@ -19,6 +19,39 @@ import { HiMiniArrowLongLeft } from "react-icons/hi2";
 // Define the type for the props
 
 
+interface ExtraData{
+  value: string;
+}
+
+interface BaseCard {
+  id: number;
+  name: string;
+  category: string;
+  image_url: string;
+  extra_data: ExtraData;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+interface BaseCardApiResponse {
+  status: string;
+  message: string;
+  data: BaseCard[];
+}
+
+interface BaseCategory {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface BaseCategoryApiResponse {
+  status: string;
+  message: string;
+  data: BaseCategory[];
+}
+
 interface SliderData {
   id: number;
   title: string;
@@ -32,7 +65,7 @@ interface ApiResponse {
   status: string;
 }
 
-const SwiperComponent = () => {
+const SwiperComponent: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(5);
   const [sliderData, setSliderData] = useState<SliderData[]>([]);
    
@@ -70,6 +103,39 @@ const SwiperComponent = () => {
 
     fetchSliderData();
   }, []);
+
+    const [highlightsData, setHighlightsData] = useState<BaseCard[]>([]);
+  
+    useEffect(()=>{
+      const fetchBaseCategories = async()=>{
+        try {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`);
+          const result: BaseCategoryApiResponse = await response.json();
+          if (result.status==='success'){
+            const setHighlightsCategory = result.data.find(category => category.name === 'Highlights - Home Section');
+            if(setHighlightsCategory){
+              fetchBaseCards(setHighlightsCategory.id);
+            }
+          }
+        }catch(error){
+          console.error("Error fetching base categories: ",error);
+        }
+      };
+      const fetchBaseCards = async(categoryId: string) => {
+        try{
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`);
+          const result: BaseCardApiResponse = await response.json();
+          if(result.status === 'success'){
+            setHighlightsData(result.data);
+          }
+        } catch(error){
+          console.error('Error fetching base cards: ',error);
+        }
+      };
+      fetchBaseCategories();
+  
+      },
+    []);  
 
 
 
@@ -224,73 +290,40 @@ const SwiperComponent = () => {
       </Swiper>
 
       <motion.div 
-      
-     
-      initial={{ y: 250, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 3,
-        delay: 0.1, // Delay for staggering
-        ease: "easeOut",
-
-      }}
-      
-      className=" absolute right-0 w-full bottom-[-400px] lg:bottom-[-100px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
-
-
-        <div className="shadow-md flex items-center lg:h-32  bg-white flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
-          <div className="p-6 flex-1 flex justify-center items-center h-20 lg:h-auto">
-            <div className='items-center mr-4'>
-              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
-            </div>
-            <div className='flex flex-col justify-center items-center   w-[200px]'>
-              <h3 className="font-semibold text-xl text-[#334B35]">Farmers Impacted</h3>
-              <p className="text-md mt-2 text-[#687469]">4,136</p>
-            </div>
-          </div>
-
-
-          <div className="w-full lg:h-full lg:w-[2px] h-[2px]  bg-gray-200 my-4 lg:my-0" />
-
-
-          <div className="p-6 flex-1 flex justify-center items-center h-35 lg:h-auto">
-            <div className='items-center mr-4'>
-              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
-            </div>
-            <div className='flex flex-col justify-center items-center  w-[200px]'>
-              <h3 className="font-semibold text-xl text-[#334B35]">Loan Disbursed</h3>
-              <p className="text-md mt-2 text-[#687469]">$800K</p>
-            </div>
-          </div>
-
-          <div className="w-full lg:h-full lg:w-[2px] h-[2px]  bg-gray-200 my-4 lg:my-0" />
-
-
-          <div className="p-6 flex-1 flex justify-center items-center h-35">
-            <div className='items-center mr-4'>
-              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
-            </div>
-            <div className='flex flex-col justify-center items-center w-[200px]'>
-              <h3 className="font-semibold text-xl text-[#334B35]">Fradulent Claims</h3>
-              <p className="text-md mt-2 text-[#687469]">Zero</p>
-            </div>
-          </div>
-
-
-          <div className="w-full lg:h-full lg:w-[2px] h-[2px]  bg-gray-200 my-4 lg:my-0" />
-
-
-          <div className="p-6 flex-1 flex justify-center items-center h-35">
-            <div className='items-center mr-4'>
-              {/* <GiBullHorns className='text-5xl text-green-600' /> */}
-            </div>
-            <div className='flex flex-col justify-center items-center w-[200px]'>
-              <h3 className="font-semibold text-xl text-[#334B35]">Farm Animal</h3>
-              <p className="text-md mt-2 text-[#687469]">1,2345</p>
-            </div>
-          </div>
+  initial={{ y: 250, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{
+    duration: 3,
+    delay: 0.1,
+    ease: "easeOut",
+  }}
+  className="w-full z-10 flex justify-center px-4"
+>
+  <div className="shadow-md bg-white w-full max-w-6xl rounded-lg p-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-y-4">
+      {highlightsData.map((item, index) => (
+        <div
+          key={index}
+          className={`
+            flex flex-col items-center text-center p-4 border-r border-gray-300
+            ${((index + 1) % 1 === 0 || highlightsData.length) ? 'sm:border-b-0' : ''}
+            ${((index + 1) % 2 === 0 || highlightsData.length) ? 'md:border-b-0' : ''}
+            ${((index + 1) % 3 === 0 || highlightsData.length) ? 'lg:border-b-0' : ''}
+            ${((index + 1) % 4 === 0 || highlightsData.length) ? 'xl:border-b-0' : ''}
+          `}
+        >
+          <h3 className="font-semibold text-xl text-[#334B35]">{item.name}</h3>
+          <p className="text-md mt-2 text-[#687469]">{item.extra_data.value}</p>
         </div>
-      </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.div>
+
+
+
+
+      
     </div>
   )
 }
