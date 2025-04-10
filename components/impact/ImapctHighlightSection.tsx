@@ -3,16 +3,77 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GiBullHorns } from 'react-icons/gi'
-import femaleFarmer from '../../public/cropped-view-of-stylish-young-woman-in-sari-showin.jpg';
-import incomeUplife from '../../public/farmers-in-rice-paddy-fields-inle-lake-shan-stat.jpg';
-import farmland from '../../public/agriculture-farmland-2023-11-27-05-02-44-utc.jpg';
+
+interface ExtraData{
+    value: string;
+    description: string;
+  }
+  
+  interface BaseCard {
+    id: number;
+    name: string;
+    category: string;
+    image_url: string;
+    extra_data: ExtraData;
+    is_active: boolean;
+    created_at: string;
+    updated_at: string;
+  }
+  
+  interface BaseCardApiResponse {
+    status: string;
+    message: string;
+    data: BaseCard[];
+  }
+  
+  interface BaseCategory {
+    id: string;
+    name: string;
+    description: string;
+  }
+  
+  interface BaseCategoryApiResponse {
+    status: string;
+    message: string;
+    data: BaseCategory[];
+  }
+
+const ImpactHighlightSection: React.FC = () => {
+    const [impactHighlightSection, setImpactHighlightSection] = useState<BaseCard[]>([]);
+      useEffect(()=>{
+        const fetchBaseCategories = async()=>{
+          try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`);
+            const result: BaseCategoryApiResponse = await response.json();
+            if (result.status==='success'){
+              const impactHighlightSectionCategory = result.data.find(category => category.name === 'Impact Scoring');
+              if(impactHighlightSectionCategory){
+                fetchBaseCards(impactHighlightSectionCategory.id);
+              }
+            }
+          }catch(error){
+            console.error("Error fetching base categories: ",error);
+          }
+        };
+        const fetchBaseCards = async(categoryId: string) => {
+          try{
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`);
+            const result: BaseCardApiResponse = await response.json();
+            if(result.status === 'success'){
+              setImpactHighlightSection(result.data);
+            }
+          } catch(error){
+            console.error('Error fetching base cards: ',error);
+          }
+        };
+        fetchBaseCategories();
+    
+        },
+      []);  
 
 
-
-
-export default function ImapctHighlightSection() {
     return (
         <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center py-20'>
 
@@ -32,86 +93,43 @@ export default function ImapctHighlightSection() {
             <div className='rounded-lg flex flex-col justify-center items-center gap-2 lg:gap-14 lg:flex-row lg:justify-center lg:items-center p-2'>
 
 
-
+            {impactHighlightSection.map((item,index)=>(
+                <>
                 <motion.div
-
-                    initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-                    whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-                    viewport={{ once: true }} // Only animate once
-                    transition={{ duration: 0.3 }} className='mt-20  lg:w-1/3 sm:w-1/2 md:w-1/2  cursor-pointer  shadow-lg  rounded-lg    flex flex-col items-center justify-center '>
-                    <div className="  rounded-lg overflow-hidden relative h-[70vh] lg:h-[45vh] ">
-                        <Image
-                            src={incomeUplife}
-                            alt="Profile"
-                            objectFit='cover'
-                            className="rounded-lg  object-cover w-full h-full overflow-clip"
-                        />
-                        <div className=' container bg-black bg-opacity-50 absolute  w-full top-0   bottom-0  flex flex-col items-end lg:flex-col lg:space-y-2   lg:justify-end lg:items-end justify-end' >
-                            <div className='flex flex-col  lg:flex-col   items-end justify-between w-full px-5 space-y-4 '>
-
-                                <div className='w-full text-start font-bold text-4xl text-white '>4,136</div>
-                                <div className='w-full text-start font-bold text-3xl text-white '>Farmers has access to finanace</div>
-                                <div className='text-white  font-bold pb-10'>Empowered over 4,136 smallholder farmers with financial access and insurance-backed microfinance</div>
-                            </div>
-                        </div>
+                key={index}
+                initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
+                whileInView={{ opacity: 1, x: 0 }} // Animate when in view
+                viewport={{ once: true }} // Only animate once
+                transition={{ duration: 0.3 }}
+                className="mt-20 w-full max-w-md md:max-w-lg lg:max-w-xl cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center"
+              >
+                {/* Image container */}
+                <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[45vh] overflow-hidden rounded-lg">
+                  <Image
+                    src={item.image_url}
+                    alt="Profile"
+                    height={300}
+                    width={200}
+                    objectFit="cover" // legacy prop, adapt if you're on Next 13+
+                    className="rounded-lg object-cover w-full h-full"
+                  />
+                  {/* Overlay for text */}
+                  <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-end justify-end p-4 sm:p-5">
+                    <div className="w-full text-start font-bold text-2xl sm:text-3xl text-white">
+                      {item.extra_data.value}
                     </div>
-                </motion.div>
-
-
-
-                <motion.div
-
-                    initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-                    whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-                    viewport={{ once: true }} // Only animate once
-                    transition={{ duration: 0.3 }} className='mt-20  lg:w-1/3 sm:w-1/2 md:w-1/2  cursor-pointer  shadow-lg  rounded-lg    flex flex-col items-center justify-center '>
-                    <div className="  rounded-lg overflow-hidden relative h-[70vh] lg:h-[45vh] ">
-                        <Image
-                            src={farmland}
-                            alt="Profile"
-                            objectFit='cover'
-                            className="rounded-lg  object-cover w-full h-full overflow-clip"
-                        />
-                        <div className=' container bg-black bg-opacity-50 absolute  w-full top-0   bottom-0  flex flex-col items-end lg:flex-col lg:space-y-2   lg:justify-end lg:items-end justify-end' >
-                            <div className='flex flex-col  lg:flex-col   items-end justify-between w-full px-5 space-y-4 '>
-
-                                <div className='w-full text-start font-bold text-4xl text-white '>$800K</div>
-                                <div className='w-full text-start font-bold text-3xl text-white '>Loans Disbursed</div>
-                                <div className='text-white  font-bold pb-10'>InsureCow has disbursed $800K in loans to empower farmers, fostering growth, food security, and community resilience</div>
-                            </div>
-                        </div>
+                    <div className="w-full text-start font-bold text-xl sm:text-2xl text-white">
+                      {item.name}
                     </div>
-                </motion.div>
-
-                <motion.div
-
-                    initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-                    whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-                    viewport={{ once: true }} // Only animate once
-                    transition={{ duration: 0.3 }} className='mt-20  lg:w-1/3 sm:w-1/2 md:w-1/2  cursor-pointer  shadow-lg  rounded-lg    flex flex-col items-center justify-center '>
-                    <div className="  rounded-lg overflow-hidden relative h-[70vh] lg:h-[45vh] ">
-                        <Image
-                            src={femaleFarmer}
-                            alt="Profile"
-                            objectFit='cover'
-                            className="rounded-lg  object-cover w-full h-full overflow-clip"
-                        />
-                        <div className=' container bg-black bg-opacity-50 absolute  w-full top-0   bottom-0  flex flex-col items-end lg:flex-col lg:space-y-2   lg:justify-end lg:items-end justify-end' >
-                            <div className='flex flex-col  lg:flex-col   items-end justify-between w-full px-5 space-y-4 '>
-
-                                <div className='w-full text-start font-bold text-4xl text-white '>
-                                0 </div>
-                                <div className='w-full text-start font-bold text-3xl text-white '>Fraudulent</div>
-                                <div className='text-white  font-bold pb-10'>Zero fraudulent cases—ensuring trust, transparency, and impact in every investment</div>
-                            </div>
-                        </div>
+                    <div className="text-white font-bold text-sm sm:text-base pb-4">
+                      {item.extra_data.description}
                     </div>
-                </motion.div>
-
-
-
-
-
+                  </div>
+                </div>
+              </motion.div>
+                </>
+            ))} 
+            
 
             </div>
 
@@ -120,3 +138,4 @@ export default function ImapctHighlightSection() {
         </div>
     )
 }
+export default ImpactHighlightSection

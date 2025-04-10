@@ -1,92 +1,128 @@
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react';
+import 'swiper/css';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const coreValues = [
+  {
+    letter: 'I',
+    title: 'Innovation',
+    description:
+      'Driving transformative solutions through cutting-edge technology, AI, and digital asset creation for the future of agriculture.',
+  },
+  {
+    letter: 'N',
+    title: 'Nurturing',
+    description:
+      'Empowering smallholder farmers by providing access to financial tools, insurance-backed investments, and capacity-building opportunities.',
+  },
+  {
+    letter: 'S',
+    title: 'Sustainability',
+    description:
+      'Promoting environmentally sustainable practices while ensuring long-term growth and global food security.',
+  },
+  {
+    letter: 'U',
+    title: 'Uniting',
+    description:
+      'Bridging the gap between farmers, financial institutions, insurers, and global investors to create a connected agricultural ecosystem.',
+  },
+  {
+    letter: 'R',
+    title: 'Resilience',
+    description:
+      'Building financial resilience for farmers through insurance-backed microfinance and digital collateral solutions.',
+  },
+  {
+    letter: 'E',
+    title: 'Empowerment',
+    description:
+      'Empowering farmers with technology, training, and financial inclusion to unlock their full potential and secure their livelihoods.',
+  },
+  {
+    letter: 'C',
+    title: 'Collaboration',
+    description:
+      'Fostering partnerships with institutions, NGOs, and governments to create impactful, scalable solutions for global food security.',
+  },
+  {
+    letter: 'O',
+    title: 'Opportunity',
+    description:
+      'Creating inclusive opportunities for farmers, investors, and institutions through innovative financial products and services.',
+  },
+  {
+    letter: 'W',
+    title: 'Wealth Creation',
+    description:
+      'Transforming livestock into digital assets, enabling wealth generation for smallholder farmers and contributing to global food security.',
+  },
+];
 
 function CoreValueSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto-swiping logic every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % coreValues.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className='container mx-auto py-10 lg:py-20'>
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 justify-start items-start">
-      <div className="lg:w-1/4 w-full flex flex-col gap-1 lg:gap-2">
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>I</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>N</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>S</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>U</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>R</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>E</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>C</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>O</h1>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-950 text-white rounded-md'>W</h1>
+    // Container:
+    // - By default (below 650px): flex-row (letters on left, description on right)
+    // - For devices with minimum width of 650px: flex-col (letters on top, description below)
+    <div className="container mx-auto py-10 px-4 flex flex-row min-[650px]:flex-col items-center gap-8">
+      
+      {/* Letters Container:
+          - Default: flex-col (vertical) for narrow screens.
+          // For minimum width of 650px, switch to flex-row */}
+      <div className="flex flex-col min-[650px]:flex-row gap-2">
+        {coreValues.map((item, index) => (
+          <motion.div
+            key={item.letter}
+            onClick={() => setActiveIndex(index)}
+            className="cursor-pointer rounded-full text-white font-bold flex items-center justify-center transition-all duration-300"
+            animate={{
+              scale: index === activeIndex ? 1.5 : 1,
+              backgroundColor: index === activeIndex ? '#166534' : '#052e16',
+            }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+            style={{
+              width: 48,
+              height: 48,
+              fontSize: '1.5rem',
+            }}
+          >
+            {item.letter}
+          </motion.div>
+        ))}
       </div>
 
-      <div className="lg:w-3/4 w-full flex flex-col gap-1 lg:gap-2">
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Innovation</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Driving transformative solutions through cutting-edge technology, AI, and digital asset creation for the future of agriculture.
-        </p>
-        </div>
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Nurturing</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Empowering smallholder farmers by providing access to financial tools, insurance-backed investments, and capacity-building opportunities.
-        </p>
-        </div>
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Sustainability</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Promoting environmentally sustainable practices while ensuring long-term growth and global food security.
-        </p>
-        </div>
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Uniting</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Bridging the gap between farmers, financial institutions, insurers, and global investors to create a connected agricultural ecosystem.
-        </p>
-        </div>
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Resilience</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Building financial resilience for farmers through insurance-backed microfinance and digital collateral solutions.
-        </p>
-        </div>
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Empowerment</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Empowering farmers with technology, training, and financial inclusion to unlock their full potential and secure their livelihoods.
-        </p>
-        </div>
-
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Collaboration</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Fostering partnerships with institutions, NGOs, and governments to create impactful, scalable solutions for global food security.
-        </p>
-        </div>
-
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Opportunity</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Creating inclusive opportunities for farmers, investors, and institutions through innovative financial products and services.
-        </p>
-        </div>
-
-        <div className='relative group h-full overflow-hidden'>
-        <h1 className='text-center text-[3vh] lg:text-[5vh] bg-green-800 text-white rounded-md'>Wealth Creation</h1>
-        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-90 transition-opacity duration-300'></div>
-        <p className='absolute text-xs lg:text-xl w-full h-full top-0 right-0 transform lg:text-center flex justify-center items-center group-hover:translate-y-0 group-hover:opacity-100 opacity-0 transition-opacity duration-300 text-white text-center'>
-        Transforming livestock into digital assets, enabling wealth generation for smallholder farmers and contributing to global food security.
-        </p>
-        </div>
-      </div>
+      {/* Description Card */}
+      <div className="w-full max-w-3xl bg-white border border-green-100 shadow-lg rounded-2xl p-6 text-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={coreValues[activeIndex].title}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          >
+            <h2 className="text-2xl min-[650px]:text-3xl font-bold text-green-800 mb-4">
+              {coreValues[activeIndex].title}
+            </h2>
+            <p className="text-gray-700 text-md min-[650px]:text-lg leading-relaxed">
+              {coreValues[activeIndex].description}
+            </p>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
-  )
+  );
 }
 
 export default CoreValueSection;

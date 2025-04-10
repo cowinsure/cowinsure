@@ -28,7 +28,7 @@ export default function SDGImapctSection() {
 
     </p>
 
-      <div className='rounded-lg flex flex-col justify-center items-center gap-2 lg:gap-14 lg:flex-row lg:justify-center lg:items-center'>
+      <div className='w-[99%] rounded-lg grid lg:flex md:grid justify-center items-center gap-2 lg:gap-5 md:gap-5 lg:justify-center lg:items-center'>
 
   
 
@@ -42,7 +42,7 @@ export default function SDGImapctSection() {
         whileInView={{ opacity: 1, x: 0 }} // Animate when in view
         viewport={{ once: true }} // Only animate once
         transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-1/2 md:w-1/2 cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center'
+        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
         <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
             <Image
@@ -61,7 +61,7 @@ export default function SDGImapctSection() {
         whileInView={{ opacity: 1, x: 0 }} // Animate when in view
         viewport={{ once: true }} // Only animate once
         transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-1/2 md:w-1/2 cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center'
+        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
         <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
             <Image
@@ -81,7 +81,7 @@ export default function SDGImapctSection() {
         whileInView={{ opacity: 1, x: 0 }} // Animate when in view
         viewport={{ once: true }} // Only animate once
         transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-1/2 md:w-1/2 cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center'
+        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
         <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
             <Image
@@ -100,7 +100,7 @@ export default function SDGImapctSection() {
         whileInView={{ opacity: 1, x: 0 }} // Animate when in view
         viewport={{ once: true }} // Only animate once
         transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-1/2 md:w-1/2 cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center'
+        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
         <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
             <Image
@@ -119,7 +119,7 @@ export default function SDGImapctSection() {
         whileInView={{ opacity: 1, x: 0 }} // Animate when in view
         viewport={{ once: true }} // Only animate once
         transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-1/2 md:w-1/2 cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center'
+        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
         <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
             <Image
