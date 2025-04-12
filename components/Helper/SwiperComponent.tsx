@@ -207,7 +207,7 @@ const SwiperComponent = () => {
               delay: 0.1,
               ease: "easeOut",
             }}
-            className="relative text-center mt-8 p-3 lg:w-[150px] lg:h-[50px] bg-green-200 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center"
+            className="relative text-center mt-8 p-3 lg:w-[150px] lg:h-[50px] bg-green-300 text-green-800/75 font-bold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center"
           >
             <Link href='/project' className="relative z-10 group-hover:text-white transition-colors rounded-md duration-300">Discover Now</Link>
             <div className="absolute inset-0 bg-green-800/20 transform -translate-x-[-145px] rounded-md group-hover:translate-x-0 group-hover:bg-green-800 transition-transform duration-300 ease-in-out"></div>

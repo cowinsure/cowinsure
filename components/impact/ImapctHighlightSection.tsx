@@ -121,7 +121,7 @@ const ImpactHighlightSection: React.FC = () => {
                     <div className="w-full text-start font-bold text-xl sm:text-2xl text-white">
                       {item.name}
                     </div>
-                    <div className="text-white font-bold text-sm sm:text-base pb-4">
+                    <div className="w-auto text-white font-bold text-sm sm:text-base pb-4">
                       {item.extra_data.description}
                     </div>
                   </div>
