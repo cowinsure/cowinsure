@@ -28,7 +28,7 @@ export default function SDGImapctSection() {
 
     </p>
 
-      <div className='w-[99%] rounded-lg grid lg:flex md:grid justify-center items-center gap-2 lg:gap-5 md:gap-5 lg:justify-center lg:items-center'>
+      <div className='w-[99%] rounded-lg flex flex-col lg:flex-row min-[600px]:flex-row justify-center items-center gap-2 lg:gap-5 md:gap-5 lg:justify-center lg:items-center'>
 
   
 
@@ -44,7 +44,7 @@ export default function SDGImapctSection() {
         transition={{ duration: 0.3 }} 
         className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
+        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[600px]:h-auto">
             <Image
                 src={provertSDG}
                 alt="Profile"
@@ -63,7 +63,7 @@ export default function SDGImapctSection() {
         transition={{ duration: 0.3 }} 
         className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
+        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[600px]:h-auto">
             <Image
                 src={zeroHunger}
                 alt="Profile"
@@ -83,7 +83,7 @@ export default function SDGImapctSection() {
         transition={{ duration: 0.3 }} 
         className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
+        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[600px]:h-auto">
             <Image
                 src={genderequality}
                 alt="Profile"
@@ -102,7 +102,7 @@ export default function SDGImapctSection() {
         transition={{ duration: 0.3 }} 
         className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
+        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[600px]:h-auto">
             <Image
                 src={DecentWorkSDG}
                 alt="Profile"
@@ -121,7 +121,7 @@ export default function SDGImapctSection() {
         transition={{ duration: 0.3 }} 
         className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
     >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] lg:h-[25vh]">
+        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[600px]:h-auto">
             <Image
                 src={climateSDG}
                 alt="Profile"
