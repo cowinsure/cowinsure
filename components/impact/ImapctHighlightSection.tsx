@@ -101,10 +101,10 @@ const ImpactHighlightSection: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }} // Animate when in view
                 viewport={{ once: true }} // Only animate once
                 transition={{ duration: 0.3 }}
-                className="mt-20 w-full max-w-md md:max-w-lg lg:max-w-xl cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center"
+                className="mt-20 w-auto max-w-md md:max-w-lg lg:max-w-xl cursor-pointer shadow-lg rounded-lg flex flex-col items-center justify-center"
               >
                 {/* Image container */}
-                <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[45vh] overflow-hidden rounded-lg">
+                <div className="relative w-auto h-56 sm:h-72 md:h-80 lg:h-[45vh] overflow-hidden rounded-lg">
                   <Image
                     src={item.image_url}
                     alt="Profile"
