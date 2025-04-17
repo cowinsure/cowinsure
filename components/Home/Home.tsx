@@ -215,7 +215,7 @@ const Home = () => {
       {/* faq section */}
       <div className='bg-white'>
 
-      <FaqSection />
+      <FaqSection  />
       </div>
 
 
