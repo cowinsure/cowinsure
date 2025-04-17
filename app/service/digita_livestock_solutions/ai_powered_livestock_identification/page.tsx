@@ -1,6 +1,6 @@
 
 import React from 'react'
-import bannerImage from '../../../../public/aibg.jpg';
+import bannerImage from '../../../../public/aibg.png';
 import HerosSectionCommon from '@/components/common/HerosSectionCommon';
 import OurServicesCommon from '@/components/common/OurServicesCommon';
 

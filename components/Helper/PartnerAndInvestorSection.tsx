@@ -34,6 +34,7 @@ interface ExtraData {
   cowBreed: string;
   currentLiveWeight: number;
   expectedFinalWeight: number;
+  url: string;
 }
 
 interface BaseCard {

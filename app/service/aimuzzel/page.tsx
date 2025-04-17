@@ -1,6 +1,6 @@
 import ServiceHeroSection from '@/components/service/ServiceHeroSection'
 import React from 'react'
-import bannerImage from '../../../public/aibg.jpg'; // Replace with your actual image path
+import bannerImage from '../../../public/aibg.png'; // Replace with your actual image path
 
 
 function Aimuzzel() {

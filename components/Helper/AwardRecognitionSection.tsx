@@ -29,7 +29,7 @@ interface ExtraData {
   status?: string;
   event?: string;
   prize?: string;
-  url?: string;
+  url: string;
 }
 
 interface BaseCard {

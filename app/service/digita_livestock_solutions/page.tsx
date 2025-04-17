@@ -1,7 +1,7 @@
 import HerosSectionCommon from '@/components/common/HerosSectionCommon'
 import ServiceHighlighted from '@/components/common/ServiceHighlighted'
 import React from 'react'
-import bannerImage from '../../../public/aibg.jpg';
+import bannerImage from '../../../public/aibg.png';
 import farmManagement from '../../../public/farmManagement.jpg';
 
 
