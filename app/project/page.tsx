@@ -108,11 +108,11 @@ const Project = () => {
         </div>
 
         <div className=' mt-10 w-full h-auto container mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-5 p-2'>
-          {portfolios.map((portfolio) => (
+          {portfolios.map((portfolio,index) => (
 
 
             <>
-              <div className='relative  lg:w-[300px]'>
+              <div key={index} className='relative  lg:w-[300px]'>
 
 
                 <div key={portfolio.id} className='relative flex-col w-full   h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
