@@ -245,7 +245,7 @@ const SwiperComponent = () => {
             </div>
             <div className='flex flex-col justify-center items-center   w-[200px]'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farmers Impacted</h3>
-              <p className="text-md mt-2 text-[#687469]">4,136</p>
+              <p className="text-md mt-2 text-[#687469]">4,136+ MSME Farms and Farmers</p>
             </div>
           </div>
 
@@ -258,8 +258,8 @@ const SwiperComponent = () => {
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
             <div className='flex flex-col justify-center items-center  w-[200px]'>
-              <h3 className="font-semibold text-xl text-[#334B35]">Loan Disbursed</h3>
-              <p className="text-md mt-2 text-[#687469]">$800K</p>
+              <h3 className="font-semibold text-xl text-[#334B35]">Livestock Registered</h3>
+              <p className="text-md mt-2 text-[#687469]">12,345+ Cattle</p>
             </div>
           </div>
 
@@ -272,7 +272,7 @@ const SwiperComponent = () => {
             </div>
             <div className='flex flex-col justify-center items-center w-[200px]'>
               <h3 className="font-semibold text-xl text-[#334B35]">Fradulent Claims</h3>
-              <p className="text-md mt-2 text-[#687469]">Zero</p>
+              <p className="text-md mt-2 text-[#687469]">Zero false claims</p>
             </div>
           </div>
 
@@ -285,8 +285,8 @@ const SwiperComponent = () => {
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
             <div className='flex flex-col justify-center items-center w-[200px]'>
-              <h3 className="font-semibold text-xl text-[#334B35]">Farm Animal</h3>
-              <p className="text-md mt-2 text-[#687469]">1,2345</p>
+              <h3 className="font-semibold text-xl text-[#334B35]">Capacity Building</h3>
+              <p className="text-md mt-2 text-[#687469]">2,000+ farmers</p>
             </div>
           </div>
         </div>

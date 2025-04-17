@@ -1,7 +1,7 @@
 import React from 'react'
 import banner from '../../public/a-young-man-holding-a-basket-of-freshly-harvested.jpg';
 import AppBranding from '@/components/Project/AppBranding';
-import ImapctHighlightSection from '@/components/impact/ImapctHighlightSection';
+import ImpactHighlightSection from '@/components/impact/ImpactHighlightSection';
 import SDGImapctSection from '@/components/impact/SDGImapctSection';
 import FeaturedNewsSection from '@/components/impact/FeaturedNewsSection';
 import FaqSection from '@/components/Home/FaqSection';
@@ -11,9 +11,11 @@ import FaqSection from '@/components/Home/FaqSection';
 function Imapct() {
   return (
     <div className=' lg:h-auto h-auto w-auto  overflow-hidden'>
-        <AppBranding title="Stronger Together, Enriching Farmers' Future!" bannerUrl={banner} link={"/about_us"}/>
+        <AppBranding title="Stronger Together, Enriching Farmers' Future!" bannerUrl={banner} link="#impact-highlight"/>
         
-        <ImapctHighlightSection/>
+        <div id="impact-highlight">
+  <ImpactHighlightSection />
+</div>
 
         <div className='bg-[#F6F4EC]'>
 
