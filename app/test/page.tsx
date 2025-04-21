@@ -1,539 +1,136 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react';
 import Image from 'next/image';
 import cover from '../../public/sampleCow2.jpg';
+import CowPurchaseModal from '@/components/Project/cowSellProject/CowPurchaseModal';
 
+const TestPage = () => {
+  const [activeTab, setActiveTab] = useState('Overview');
+  const cow = {
+    id: 'COW-Y3',
+    breed: 'Physian Cross',
+    age: '30 Month',
+    gender: 'Male',
+    color: 'Black and White',
+    currentWeight: '480 KG',
+    height: '5 Feet',
+    expectedWeight: '460 KG',
+    price: 'BDT 256000',
+    sku: '5002_1',
+    inStock: true,
+    deliveryDays: '50-51 days',
+  };
 
-function TestPage() {
-    return (
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-        <>
-            {/* sample R&D */}
-            <div className='container mx-auto h-auto mt-[20vh] flex flex-row justify-center gap-4 items-center'>
+  const tabs = ['Overview', 'Delivery Terms', 'Payment Terms', 'FAQs'];
 
+  return (
+    <div className="bg-[#F7F7F7] p-6 pt-20 lg:p-10 lg:pt-28">
+      {/* Top Section */}
+      <div className="max-w-6xl mx-auto bg-white rounded-md shadow-md overflow-hidden lg:flex">
+        {/* Image Gallery */}
+        <div className="lg:w-1/2 p-4">
+          <div className="rounded-md overflow-hidden mb-4">
+            <Image
+              src={cover}
+              alt="cow-main"
+              width={600}
+              height={400}
+              className="w-full h-auto object-cover"
+            />
+          </div>
 
+          <div className="flex space-x-2">
+            {[1, 2, 3].map(i => (
+              <button key={i} className="flex-1 bg-green-100 text-green-900 py-2 rounded-md">
+                Preview
+              </button>
+            ))}
+          </div>
+        </div>
 
+        {/* Main Info */}
+        <div className="lg:w-1/2 p-6 flex flex-col justify-center items-center">
+          <h2 className="text-2xl font-medium">
+            {cow.breed} - <span className="text-green-800">{cow.expectedWeight}</span>
+          </h2>
+          <p className="text-4xl font-bold text-green-900 my-4">{cow.price}</p>
+          <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded"
+                    >
+                        Buy Now
+                    </button>
+        </div>
+        <CowPurchaseModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
 
-
-                <div className='flex-1 flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
-                    <div className='relative h-[300px]  rounded-t-lg   overflow-hidden'>
-                        <div className='absolute h-auto rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-full transition-all duration-500'>
-                            <Image
-                                src={cover}
-                                alt='cover'
-                                layout="fill"
-                                objectFit="cover"
-                                objectPosition='center'
-                                className="rounded-t-lg w-full h-[500px]"
-                                unoptimized
-                                priority
-                            />
-                            <div className='absolute rounded-t-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
-
-                            </div>
-                        </div>
-                        hello
-
-                    </div>
-                    <div className='w-0 group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-green-700'></div>
-                    <div className='rounded-b-lg group-hover:bg-green-800  transition-all duration-500 container mx-auto flex flex-col justify-center items-center w-full h-auto p-5'>
-
-                        <div className='flex flex-row lg:flex-row items-end justify-between w-full px-2 rounded-b-lg'>
-                            <div className='text-xl text-white font-semibold'>Project</div>
-                            <div className='text-white text-xl font-bold'> cow 101</div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-                <div className='relative  w-[300px] flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
-                    <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
-                        <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
-                            <Image
-                                src={cover}
-                                alt='cover'
-                                layout="fill"
-                                objectFit="cover"
-                                objectPosition='center'
-                                className="rounded-lg w-full h-[500px]"
-                                unoptimized
-                                priority
-                            />
-                            <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
-
-                            </div>
-
-
-                        </div>
-
-
-
-                    </div>
-                    <div className=' absolute bottom-0 left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible '>
-                        <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-green-800 rounded-t-lg text-2xl font-bold text-white'>
-                            <span>Smart  Organic  </span>
-                            <span> Services</span>
-                            {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                        </div>
-
-                        <div className='rounded-b-lg overflow-hidden absolute left-0  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
-        flex flex-col  justify-center items-center text-black text-2xl font-bold
-        '>
-
-                            <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> {"->"}</div>
-
-                        </div>
-
-                    </div>
-
-                    {/* <div className='w-0 group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-green-700'></div> */}
-
-
-
-
-                </div>
-
-
-                <div className='relative flex-col w-[300px] h-auto  justify-center items-center group  bg-[#263c28] rounded-lg'>
-
-                    <div className='relative h-auto round-lg '>
-                        <div className='relative h-[300px]  rounded-t-lg   overflow-hidden'>
-                            <div className='absolute h-auto rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-full transition-all duration-500'>
-                                <Image
-                                    src={cover}
-                                    alt='cover'
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition='center'
-                                    className="rounded-t-lg w-full h-[500px]"
-                                    unoptimized
-                                    priority
-                                /> <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
-
-
-                                </div>
-
-
-                            </div>
-
-
-
-                        </div>
-                        {/* project title */}
-                        <div className=' absolute bottom-[-50px] left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[150px] w-[150px] justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-white'>
-                                <span className='z-50 text-yellow-600 group-hover:text-white transition-all duration-500'>Project</span>
-                                <span className='z-50'>101</span>
-
-                                <div className='absolute inset-0 flex justify-center items-center'>
-                                    <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>
-                                </div>
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-                            {/* <div className='rounded-b-lg overflow-hidden absolute left-0  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
-        flex flex-col  justify-center items-center text-black text-2xl font-bold
-        '>
-
-                <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> {"->"}</div>
-
-            </div> */}
-
-                        </div>
-                        <div className=' absolute bottom-[-60px] left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[150px] w-[150px] justify-center items-center bg-[#091a09] rounded-full text-2xl font-bold text-white'>
-
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div className='w-0 shadow-lg group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-yellow-400 mx-auto'></div>
-                    <div className='mt-10'>
-
-                        {/* period */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Period</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-
-                        {/* Return */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Return</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-                    </div>
-
-
-
-                </div>
+        {/* Purchase Box */}
+        {/* <div className="lg:w-1/3 p-6">
+          <p className="text-sm font-medium">
+            <span>SKU: {cow.sku}</span>
+            {cow.inStock ? <span className="text-green-600 ml-2">In-stock</span> : <span className="text-red-600 ml-2">Out of stock</span>}
+          </p>
+          <p className="text-sm mt-2">Delivery will be 2 days before The Eid-Ul-Adha</p>
+          <div className="flex items-center space-x-3 mt-4">
+            <button className="flex items-center text-red-500">
+              <FaHeart /> <span className="ml-1">Add to Wishlist</span>
+            </button>
+            <div className="flex space-x-2 text-gray-600">
+              <FaFacebookF />
+              <FaFacebookMessenger />
+              <FaWhatsapp />
             </div>
-
-
-            {/* card type 2 */}
-            <div className='container mx-auto h-auto mt-[20vh] flex flex-col lg:flex-row justify-center gap-4 items-center'>
-
-                <div className='relative flex-col w-[300px] h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
-
-                    <div className='relative h-auto round-lg '>
-                        <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
-                            <div className='absolute h-auto rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-4 transition-all duration-700'>
-                                <Image
-                                    src={cover}
-                                    alt='cover'
-                                    height={200}
-                                    width={300}
-                                    objectFit="cover"
-                                    className="rounded-t-lg w-full "
-                                    unoptimized
-                                    priority
-                                /> <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
-
-
-                                </div>
-
-
-                            </div>
-
-
-
-                        </div>
-                        {/* project title */}
-                        <div className=' absolute bottom-[-55px] left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-white'>
-                                <span className='z-50 text-yellow-600 group-hover:text-white transition-all duration-500'>Project</span>
-                                <span className='z-50'>101</span>
-
-                                <div className='absolute inset-0 flex justify-center items-center'>
-                                    <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>
-                                </div>
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-                            {/* <div className='rounded-b-lg overflow-hidden absolute left-0  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
-        flex flex-col  justify-center items-center text-black text-2xl font-bold
-        '>
-
-                <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> {"->"}</div>
-
-            </div> */}
-
-                        </div>
-                        <div className=' absolute bottom-[-60px] left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#2b442d] rounded-full text-2xl font-bold text-white'>
-
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div className='w-0 shadow-lg group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-yellow-400 mx-auto'></div>
-                    <div className='mt-10'>
-
-                        {/* period */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Period</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-
-                        {/* Return */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Return</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-                <div className='relative flex-col w-[300px] h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
-
-                    <div className='relative h-auto round-lg '>
-                        <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
-                            <div className='absolute h-auto rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-4 transition-all duration-700'>
-                                <Image
-                                    src={cover}
-                                    alt='cover'
-                                    height={200}
-                                    width={300}
-                                    objectFit="cover"
-                                    className="rounded-t-lg w-full "
-                                    unoptimized
-                                    priority
-                                /> <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
-
-
-                                </div>
-
-
-                            </div>
-
-
-
-                        </div>
-                        {/* project title */}
-                        <div className=' absolute bottom-[-55px] left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-white'>
-                                <span className='z-50 text-yellow-600 group-hover:text-white transition-all duration-500'>Project</span>
-                                <span className='z-50'>101</span>
-
-                                <div className='absolute inset-0 flex justify-center items-center'>
-                                    <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>
-                                </div>
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-                            {/* <div className='rounded-b-lg overflow-hidden absolute left-0  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
-        flex flex-col  justify-center items-center text-black text-2xl font-bold
-        '>
-
-                <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> {"->"}</div>
-
-            </div> */}
-
-                        </div>
-                        <div className=' absolute bottom-[-60px] left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#2b442d] rounded-full text-2xl font-bold text-white'>
-
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div className='w-0 shadow-lg group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-yellow-400 mx-auto'></div>
-                    <div className='mt-10'>
-
-                        {/* period */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Period</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-
-                        {/* Return */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Return</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-
-                <div className='relative flex-col w-[300px] h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
-
-                    <div className='relative h-auto round-lg '>
-                        <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
-                            <div className='absolute h-auto rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-4 transition-all duration-700'>
-                                <Image
-                                    src={cover}
-                                    alt='cover'
-                                    height={200}
-                                    width={300}
-                                    objectFit="cover"
-                                    className="rounded-t-lg w-full "
-                                    unoptimized
-                                    priority
-                                /> <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
-
-
-                                </div>
-
-
-                            </div>
-
-
-
-                        </div>
-                        {/* project title */}
-                        <div className=' absolute bottom-[-55px] left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-white'>
-                                <span className='z-50 text-yellow-600 group-hover:text-white transition-all duration-500'>Project</span>
-                                <span className='z-50'>101</span>
-
-                                <div className='absolute inset-0 flex justify-center items-center'>
-                                    <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>
-                                </div>
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-                            {/* <div className='rounded-b-lg overflow-hidden absolute left-0  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
-        flex flex-col  justify-center items-center text-black text-2xl font-bold
-        '>
-
-                <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> {"->"}</div>
-
-            </div> */}
-
-                        </div>
-                        <div className=' absolute bottom-[-60px] left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                            <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#2b442d] rounded-full text-2xl font-bold text-white'>
-
-                                {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                            </div>
-
-
-                        </div>
-                    </div>
-                    <div className='w-0 shadow-lg group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-yellow-400 mx-auto'></div>
-                    <div className='mt-10'>
-
-                        {/* period */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Period</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-
-                        {/* Return */}
-                        <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                            <div className='text-md text-white font-semibold'>Return</div>
-                            <div className='text-white text-md font-bold'>1 Month</div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
+          </div>
+          <div className="mt-4 text-sm">
+            <p><strong>Delivery:</strong> {cow.deliveryDays}</p>
+            <p><strong>Location:</strong> <span className="text-blue-600 underline cursor-pointer">Select your delivery location</span></p>
+          </div>
+          <div className="mt-4">
+            <p className="font-medium">Card Payment</p>
+            <div className="flex space-x-2 mt-2">
+              <span>Visa</span>
+              <span>Mastercard</span>
+              <span>AMEX</span>
             </div>
+          </div>
+          <button className="mt-4 w-full bg-pink-600 text-white py-2 rounded-md">bKash</button>
+        </div> */}
+      </div>
 
+      {/* Tabs */}
+      <div className="max-w-6xl mx-auto bg-white mt-10 rounded-md shadow-md">
+        <div className="flex">
+          {tabs.map(tab => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`flex-1 py-3 font-medium rounded-t-md focus:outline-none \$
+                activeTab === tab ? 'bg-green-300 text-black' : 'bg-green-700 text-white'`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+        <div className="p-6 text-left">
+          {activeTab === 'Overview' && (
+            <ul className="space-y-4">
+              <li><strong>Cow ID:</strong> {cow.id}</li>
+              <li><strong>Cow Breed:</strong> {cow.breed}</li>
+              <li><strong>Age:</strong> {cow.age}</li>
+              <li><strong>Gender:</strong> {cow.gender}</li>
+              <li><strong>Color:</strong> {cow.color}</li>
+              <li><strong>Current Live Weight:</strong> {cow.currentWeight}</li>
+              <li><strong>Height:</strong> {cow.height}</li>
+            </ul>
+          )}
+          {activeTab === 'Delivery Terms' && <p>Delivery terms content...</p>}
+          {activeTab === 'Payment Terms' && <p>Payment terms content...</p>}
+          {activeTab === 'FAQs' && <p>FAQs content...</p>}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-
-
-            {/* cow sell card */}
-            <div className='container mx-auto h-auto mt-[20vh]  flex flex-row justify-center gap-4 items-center'>
-
-                <div className='relative  w-[300px] flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
-                    <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
-                        <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
-                            <Image
-                                src={cover}
-                                alt='cover'
-                                layout="fill"
-                                objectFit="cover"
-                                objectPosition='center'
-                                className="rounded-lg w-full h-[500px]"
-                                unoptimized
-                                priority
-                            />
-                            <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
-
-                            </div>
-
-
-                        </div>
-
-
-
-                    </div>
-                    <div className=' absolute bottom-0 left-0 right-0 z-50  mx-5  overflow-hidden group-hover:overflow-visible '>
-                        <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-green-800 rounded-t-lg text-2xl font-bold text-white'>
-                        <div className='flex flex-row lg:flex-row items-center justify-start text-center w-full px-4  py-2'>
-                          
-                            <div className='text-white text-xl font-bold'>1,20,000 TK</div>
-                        </div> 
-
-                        <div className='w-full flex flex-row lg:flex-col items-center justify-center   px-2  '>
-                        <div className='flex flex-row lg:flex-row items-start justify-around  w-full  gap-4 px-2  '>
-                            <div className='flex-1 text-white text-xs '>Live (KG)</div>
-                            <div className= ' flex-1 text-white text-xs font-bold'>600KG</div>
-                        </div>  
-
-                        <div className='flex flex-row lg:flex-row items-start justify-around w-full  gap-4 px-2 '>
-                            <div className='flex-1 text-xs text-white font-semibold'>Expected(KG)</div>
-                            <div className='flex-1 text-white text-xs font-bold'>800KG</div>
-                        </div>
-
-
-
-                        </div>
-                        
-                     
-
-
-                            {/* <div className='absolute invisible bottom-[100%] z-10 bg-black w-full group-hover:visible group-hover:bottom-[-31px] transition-all duration-500'>hellow</div> */}
-                        </div>
-
-                        <div className='rounded-b-lg overflow-hidden absolute left-0 cursor-pointer  right-0  invisible bottom-[0%] bg-transparent   group-hover:visible group-hover:bottom-[-31px]    transition-all duration-500
-                            flex flex-col  justify-center items-center text-black text-2xl font-bold'>
-
-                            <div className='w-full group-hover:bg-green-900 group-hover:text-center text-white'> Buy Now</div>
-
-                        </div>
-
-                    </div>
-
-                    {/* <div className='w-0 group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-green-700'></div> */}
-
-
-
-
-                </div>
-
-
-            </div>
-
-
-            
-            {/* test card z translation */}
-            <div className='container mx-auto h-auto mt-[20vh]  flex flex-row justify-center gap-4 items-center'>
-
-                <div className='relative  w-[300px] flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
-                    <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
-                        <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
-                            <Image
-                                src={cover}
-                                alt='cover'
-                                layout="fill"
-                                objectFit="cover"
-                                objectPosition='center'
-                                className="rounded-lg w-full h-[500px]"
-                                unoptimized
-                                priority
-                            />
-                            <div className='absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-300 ease-in-out overflow-hidden'>
-
-                            </div>
-
-
-                        </div>
-
-
-
-                    </div>
-                    <div className='absolute  bottom-0 left-0 right-0 z-50 mx-5 overflow-hidden group-hover:overflow-visible'>
-                        <div className='relative [transform:rotateX(120deg)] z-20 flex flex-col h-[80px] justify-center items-center  rounded-t-lg text-2xl font-bold text-white  opacity-0 group-hover:opacity-100 group-hover:[transform:rotateX(0deg)] transition-all duration-700'>
-                           <div className='w-full flex flex-col justify-center bg-green-800 items-center h-full rounded-tr-lg'>
-                          
-                            <div className='    text-center '>Life Insurance</div>   
-                                
-                           </div>
-
-                           <div className=' absolute left-0 top-[-32px] rounded-t-md'>
-                           <div className='bg-yellow-600  text-xs p-2 text-center text-black rounded-t-md'>Insurance</div>
-                           </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                </div>
-
-
-            </div>
-        </>
-
-
-
-    )
-}
-
-export default TestPage
+export default TestPage;
