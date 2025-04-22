@@ -179,34 +179,35 @@ if (!projectDetails) {
       </div>
 
       {/* Tabs */}
-      <div className="max-w-6xl mx-auto bg-white mt-10 rounded-md shadow-md">
-  <div className="bg-gray-100 rounded-lg p-2">
+      <div className="max-w-6xl mx-auto bg-green-200 mt-10 pb-1 rounded-md shadow-md">
+  <div className="bg-green-200 rounded-lg p-2">
     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
       {tabs.map((tab) => (
         <button
           key={tab}
           onClick={() => setActiveTab(tab)}
-          className={`py-3 font-medium rounded-md transition-colors ${
+          className={`relative overflow-hidden py-3 font-medium rounded-md transition-colors duration-300 ${
             activeTab === tab
-              ? "bg-green-600 text-white"
-              : "bg-green-100 text-green-900 hover:bg-green-200"
-          }`}
+              ? "bg-green-800 text-white"
+              : "bg-green-100 text-green-900 hover:text-white"
+          } group `}
         >
-          {tab}
+          <span className='relative z-10'>{tab}</span>
+          <span className='absolute inset-0 bg-green-800 transition-all duration-500 transform scale-x-0 origin-left group-hover:scale-x-100 rounded-md'/>
         </button>
       ))}
     </div>
   </div>
 
   {/* Content Area */}
-  <div className="bg-white p-6 pb-10 rounded-lg shadow-sm m-2 min-h-[200px]">
+  <div className="bg-green-100 p-6 pb-10 rounded-lg shadow-sm m-2 min-h-[200px]">
     <AnimatePresence mode="wait">
       <motion.div
         key={activeTab} 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, x: 10, y: 20 }}
         exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.15 }}
       >
         {activeTab === "Overview" && (
           <div>
