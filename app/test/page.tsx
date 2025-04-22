@@ -8,7 +8,7 @@ const TestPage = () => {
   const [activeTab, setActiveTab] = useState('Overview');
   const cow = {
     id: 'COW-Y3',
-    breed: 'Physian Cross',
+    breed: 'Freisian Cross',
     age: '30 Month',
     gender: 'Male',
     color: 'Black and White',
@@ -100,21 +100,25 @@ const TestPage = () => {
 
       {/* Tabs */}
       <div className="max-w-6xl mx-auto bg-white mt-10 rounded-md shadow-md">
-        <div className="flex">
-          {tabs.map(tab => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`flex-1 py-3 font-medium rounded-t-md focus:outline-none \$
-                activeTab === tab ? 'bg-green-300 text-black' : 'bg-green-700 text-white'`}
-            >
-              {tab}
-            </button>
-          ))}
+      <div className="bg-gray-100 rounded-lg p-2">
+          <div className="grid grid-cols-4 gap-2">
+            {tabs.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`py-3 font-medium rounded-md transition-colors ${
+                  activeTab === tab ? "bg-green-600 text-white" : "bg-green-100 text-green-900 hover:bg-green-200"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="p-6 text-left">
+        <div className="bg-white p-6 rounded-lg shadow-sm m-2">
           {activeTab === 'Overview' && (
-            <ul className="space-y-4">
+            <div>
+            {/* <ul className="space-y-4">
               <li><strong>Cow ID:</strong> {cow.id}</li>
               <li><strong>Cow Breed:</strong> {cow.breed}</li>
               <li><strong>Age:</strong> {cow.age}</li>
@@ -122,7 +126,23 @@ const TestPage = () => {
               <li><strong>Color:</strong> {cow.color}</li>
               <li><strong>Current Live Weight:</strong> {cow.currentWeight}</li>
               <li><strong>Height:</strong> {cow.height}</li>
-            </ul>
+            </ul> */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4">
+            {[
+              { label: "Cow ID", value: cow.id },
+              { label: "Cow Breed", value: cow.breed },
+              { label: "Age", value: cow.age },
+              { label: "Gender", value: cow.gender },
+              { label: "Color", value: cow.color },
+              { label: "Current Live Weight", value: cow.currentWeight },
+              { label: "Height", value: cow.height },
+            ].map((item, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <li><strong>{item.label}</strong> {item.value}</li>
+              </div>
+            ))}
+          </div>
+          </div>
           )}
           {activeTab === 'Delivery Terms' && <p>Delivery terms content...</p>}
           {activeTab === 'Payment Terms' && <p>Payment terms content...</p>}

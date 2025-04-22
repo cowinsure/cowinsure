@@ -1,0 +1,256 @@
+'use client'
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import CowPurchaseModal from '@/components/Project/cowSellProject/CowPurchaseModal';
+import { useParams } from 'next/navigation';
+import { formatToBDT } from '@/utils/currencyFormatter';
+import { motion, AnimatePresence } from "framer-motion";
+
+interface ExtraData {
+  age: number;
+  sex: string;
+  breed: string;
+  horns: string;
+  colour: string;
+  isSold: boolean;
+  cattleId: string;
+  weightKg: number;
+  heightFeet: number;
+  askingPrice: number;
+  sellingPrice: number;
+  dehorningStatus: string;
+  dewormingStatus: string;
+  identifyingMarks: string;
+  sourceOfPurchase: string;
+  anyDiseaseHistory: string;
+  vaccinationStatus: string;
+  currentOwnerFarmName: string;
+  generalHealthCondition: string;
+  numberOfCutMarksOnSkin: number;
+  locationOfCurrentHolding: string;
+}
+
+interface Portfolio {
+  id: string;
+  name: string;
+  location: string;
+  investment_value: string;
+  currency: string;
+  investment_period: string;
+  expected_return_min: string;
+  expected_return_max: string;
+  total_return_min: string;
+  total_return_max: string;
+  image_url: string;
+  description: string;
+  extra_data: ExtraData;
+  created_at: string;
+  updated_at: string;
+}
+
+const TestPage = () => {
+  const { id } = useParams() as { id: string };
+      const [loading, setLoading] = useState(true);
+  
+      const [projectDetails, setProjectDetails] = useState<Portfolio | null>(null);
+
+      const [activeTab, setActiveTab] = useState('Overview');
+    
+      const [isModalOpen, setIsModalOpen] = useState(false)
+    
+      const tabs = ['Overview', 'Delivery Terms', 'Payment Terms', 'FAQs'];
+
+      // const [activeImage,setActiveImage] = useState(0)
+
+      // const cowImages = [
+      //   Image1,
+      //   Image2
+      // ]
+  
+      useEffect(() => {
+          const fetchProjectDetails = async () => {
+              try {
+                  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/${id}/`);
+                  const data = await response.json();
+                  setProjectDetails(data.data);
+  
+                  setLoading(false);
+              } catch (error) {
+                  console.error('Error fetching project details:', error);
+                  setLoading(false);
+              }
+          };
+  
+          fetchProjectDetails();
+      }, [id]);
+  
+
+
+  if (loading) {
+    return <div className='h-screen w-screen text-center'>Loading...</div>;
+}
+
+if (!projectDetails) {
+    return <div>Error loading project details.</div>;
+}
+
+  return (
+    <div className="bg-[#F7F7F7] p-6 pt-20 lg:p-10 lg:pt-28">
+      {/* Top Section */}
+      <div className="max-w-6xl mx-auto bg-white rounded-md shadow-md overflow-hidden lg:flex">
+        {/* Image Gallery */}
+        <div className="lg:w-1/2 p-4">
+          <div className="rounded-md overflow-hidden mb-4">
+            <Image
+              src={projectDetails.image_url}
+              alt="cow-main"
+              width={600}
+              height={400}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+
+          <div className="flex space-x-2">
+            {[1, 2, 3].map(i => (
+              <button key={i} className="flex-1 bg-green-100 text-green-900 py-2 rounded-md">
+                Preview
+              </button>
+            ))}
+          </div>
+          {/* <div className="grid grid-cols-3 gap-3">
+            {cowImages.map((img, i) => (
+              <div
+                key={i}
+                className={`bg-green-100 rounded-lg overflow-hidden cursor-pointer ${activeImage === i ? "ring-2 ring-green-500" : ""}`}
+                onClick={() => setActiveImage(i)}
+              >
+                <div className="p-3 text-center text-green-800">Preview</div>
+              </div>
+            ))}
+          </div> */}
+        </div>
+
+        {/* Main Info */}
+        <div className="lg:w-1/2 p-6 flex flex-col justify-center items-center">
+          <h2 className="text-2xl font-medium">
+            {projectDetails.extra_data.breed} - <span className="text-green-800">{projectDetails.extra_data.weightKg} KG</span>
+          </h2>
+          <p className="text-4xl font-bold text-green-900 my-4">{formatToBDT(projectDetails.extra_data.sellingPrice)}</p>
+          <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded"
+                    >
+                        Buy Now
+                    </button>
+        </div>
+        <CowPurchaseModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+        {/* Purchase Box */}
+        {/* <div className="lg:w-1/3 p-6">
+          <p className="text-sm font-medium">
+            <span>SKU: {cow.sku}</span>
+            {cow.inStock ? <span className="text-green-600 ml-2">In-stock</span> : <span className="text-red-600 ml-2">Out of stock</span>}
+          </p>
+          <p className="text-sm mt-2">Delivery will be 2 days before The Eid-Ul-Adha</p>
+          <div className="flex items-center space-x-3 mt-4">
+            <button className="flex items-center text-red-500">
+              <FaHeart /> <span className="ml-1">Add to Wishlist</span>
+            </button>
+            <div className="flex space-x-2 text-gray-600">
+              <FaFacebookF />
+              <FaFacebookMessenger />
+              <FaWhatsapp />
+            </div>
+          </div>
+          <div className="mt-4 text-sm">
+            <p><strong>Delivery:</strong> {cow.deliveryDays}</p>
+            <p><strong>Location:</strong> <span className="text-blue-600 underline cursor-pointer">Select your delivery location</span></p>
+          </div>
+          <div className="mt-4">
+            <p className="font-medium">Card Payment</p>
+            <div className="flex space-x-2 mt-2">
+              <span>Visa</span>
+              <span>Mastercard</span>
+              <span>AMEX</span>
+            </div>
+          </div>
+          <button className="mt-4 w-full bg-pink-600 text-white py-2 rounded-md">bKash</button>
+        </div> */}
+      </div>
+
+      {/* Tabs */}
+      <div className="max-w-6xl mx-auto bg-white mt-10 rounded-md shadow-md">
+  <div className="bg-gray-100 rounded-lg p-2">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+      {tabs.map((tab) => (
+        <button
+          key={tab}
+          onClick={() => setActiveTab(tab)}
+          className={`py-3 font-medium rounded-md transition-colors ${
+            activeTab === tab
+              ? "bg-green-600 text-white"
+              : "bg-green-100 text-green-900 hover:bg-green-200"
+          }`}
+        >
+          {tab}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  {/* Content Area */}
+  <div className="bg-white p-6 pb-10 rounded-lg shadow-sm m-2 min-h-[200px]">
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeTab} 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, x: 10, y: 20 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.3 }}
+      >
+        {activeTab === "Overview" && (
+          <div>
+            {/* Overview Content */}
+            <div className="text-lg lg:text-xl grid grid-cols-1 md:grid-cols-2 gap-y-8">
+              {[
+                { label: "Cow ID", value: projectDetails.name },
+                { label: "Cow Breed", value: projectDetails.extra_data.breed },
+                { label: "Age", value: `${projectDetails.extra_data.age} Months` },
+                { label: "Gender", value: projectDetails.extra_data.sex },
+                { label: "Color", value: `${projectDetails.extra_data.colour}` },
+                { label: "Current Live Weight", value: `${projectDetails.extra_data.weightKg} KG` },
+                { label: "Height", value: `${projectDetails.extra_data.heightFeet} Feet` },
+              ].map((item, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <li>
+                    <strong>{item.label}:</strong> {item.value}
+                  </li>
+                </div>
+              ))}
+            </div>
+
+            <div className="w-full flex flex-col lg:gap-5 justify-start items-start lg:flex-row lg:items-start lg:justify-between">
+              <div className="flex-1 flex flex-col lg:flex-col gap-5 justify-start items-start lg:items-start lg:justify-start">
+                <h1 className="text-3xl font-bold text-[#334b35] text-start w-full mt-14 mb-2">
+                  Description
+                </h1>
+                <div
+                  className="text-start text-lg"
+                  dangerouslySetInnerHTML={{ __html: projectDetails.description }}
+                />
+              </div>
+            </div>
+          </div>
+        )}
+        {activeTab === "Delivery Terms" && <p>Delivery terms content...</p>}
+        {activeTab === "Payment Terms" && <p>Payment terms content...</p>}
+        {activeTab === "FAQs" && <p>FAQs content...</p>}
+      </motion.div>
+    </AnimatePresence>
+  </div>
+</div>
+    </div>
+  );
+};
+
+export default TestPage;
