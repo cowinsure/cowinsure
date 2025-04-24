@@ -132,9 +132,11 @@ if (!projectDetails) {
 
         {/* Main Info */}
         <div className="lg:w-1/2 p-6 flex flex-col justify-center items-center">
-          <h2 className="text-2xl font-medium">
-            {projectDetails.extra_data.breed} - <span className="text-green-800">{projectDetails.extra_data.weightKg} KG</span>
+        <div className='flex flex-col justify-center items-center space-y-6'><h2 className="text-3xl font-medium">
+            Breed: {projectDetails.extra_data.breed}
           </h2>
+          <h2 className='text-xl'>Color: {projectDetails.extra_data.colour}</h2>
+          <h2 className='text-2xl'><span className="text-green-800">{projectDetails.extra_data.weightKg} KG</span></h2></div>
           <p className="text-4xl font-bold text-green-900 my-4">{formatToBDT(projectDetails.extra_data.sellingPrice)}</p>
           <button
                         onClick={() => setIsModalOpen(true)}
