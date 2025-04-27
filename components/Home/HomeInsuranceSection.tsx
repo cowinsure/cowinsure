@@ -96,7 +96,7 @@ const HomeInsuranceSection: React.FC = () => {
 
 
       {insuranceSection.map((item,index)=>(
-        <>
+        
         <motion.div
         key={index}
         initial={{ opacity: 0, x: 10 }} // Initial state (hidden)
@@ -140,7 +140,7 @@ const HomeInsuranceSection: React.FC = () => {
                         </div>
                     </Link>
 
-                </motion.div></>
+                </motion.div>
       ))}
 
       </div>

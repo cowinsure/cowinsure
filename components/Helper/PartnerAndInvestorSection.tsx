@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import Image from 'next/image';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi';
+import Link from 'next/link';
 
 
 
@@ -33,6 +34,7 @@ interface ExtraData {
   cowBreed: string;
   currentLiveWeight: number;
   expectedFinalWeight: number;
+  url: string;
 }
 
 interface BaseCard {
@@ -114,6 +116,7 @@ const PartnerAndInvestorSection = () => {
       >
         {partners.map((partner) => (
           <SwiperSlide key={partner.id}>
+            <Link href={partner.extra_data.url} passHref>
               <div className="relative flex justify-center items-center h-[200px] lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
                            <Image
                                          src={partner.image_url}
@@ -130,6 +133,7 @@ const PartnerAndInvestorSection = () => {
                            <span className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">+</span>
                          </div>
                        </div>
+                       </Link>
           </SwiperSlide>
         ))}
       </Swiper>

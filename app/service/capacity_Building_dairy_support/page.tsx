@@ -1,6 +1,6 @@
 import HerosSectionCommon from '@/components/common/HerosSectionCommon'
 import React from 'react'
-import bannerImage from '../../../public/aibg.jpg';
+import bannerImage from '../../../public/aibg.png';
 import training from '../../../public/cover3.jpg';
 import dairySupport from '../../../public/farmers-with.jpg';
 import ServiceHighlighted from '@/components/common/ServiceHighlighted';

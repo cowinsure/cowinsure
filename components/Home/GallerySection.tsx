@@ -94,6 +94,7 @@ const GallerySection = () => {
       </Swiper>
 
       {selectedImage && (
+        <>
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
           <div className="relative max-w-3xl max-h-3xl w-full h-full p-4">
             <button className="absolute top-2 right-2 text-white text-2xl" onClick={closeOverlay}>×</button>
@@ -109,6 +110,7 @@ const GallerySection = () => {
             />
           </div>
         </div>
+        </>
       )}
     </div>
   );

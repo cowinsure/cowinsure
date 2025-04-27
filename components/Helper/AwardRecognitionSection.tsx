@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import Image from 'next/image';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi';
+import Link from 'next/link';
 
 
 
@@ -26,7 +27,9 @@ interface BaseCategoryApiResponse {
 
 interface ExtraData {
   status?: string;
-  award?: string;
+  event?: string;
+  prize?: string;
+  url: string;
 }
 
 interface BaseCard {
@@ -108,11 +111,11 @@ const AwardRecognitionSection = () => {
       >
         {partners.map((partner) => (
           <SwiperSlide key={partner.id}>
-            <div className="relative flex justify-center h-[200px] items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
+           <Link href={partner.extra_data.url} passHref>
+           <div className="relative flex justify-center h-[200px] items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
               <Image
                 src={partner.image_url}
                 alt={partner.name}
-               
                 className="rounded-md object-fit"
               
                 width={300}
@@ -120,19 +123,26 @@ const AwardRecognitionSection = () => {
                 
                 priority
               />
+              {/* <Link href={partner.extra_data.url} className='absolute  bottom-0 left-0 right-0 z-50 mx-5 overflow-hidden group-hover:overflow-visible'/> */}
                 <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex flex-col justify-center items-center">
+                  {partner.extra_data.event && (
+                    <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                    {partner.extra_data.event}
+                    </p>
+                  )}
                 {partner.extra_data.status && (
                   <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
                   {partner.extra_data.status}
                   </p>
                 )}
-                {partner.extra_data.award && (
-                  <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-                  {partner.extra_data.award}
-                  </p>
-                )}
+                {partner.extra_data.prize && (
+                    <p className='text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                    {partner.extra_data.prize}
+                    </p>
+                  )}
                 </div>
             </div>
+           </Link>
           </SwiperSlide>
         ))}
       </Swiper>

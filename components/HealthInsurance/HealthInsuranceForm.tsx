@@ -80,9 +80,12 @@ export default function HealthInsuranceForm() {
         responses: [],
     });
 
-    const findById = (id: number) => {
-        return formFields.find(item => item.id === id);
+ 
+    const findByLabel = (label:string) => {
+        return formFields.find(item => item.label === label);
     }
+
+
 
     useEffect(() => {
         const fetchFormFields = async () => {
@@ -272,14 +275,14 @@ export default function HealthInsuranceForm() {
                         </div>
                         <div className="flex space-x-4">
                             <div className='flex-1'>
-                                <label htmlFor="yourAge" className="block text-start text-lg font-medium text-green-600">{findById(8)?.label}</label>
+                                <label htmlFor="yourAge" className="block text-start text-lg font-medium text-green-600">{findByLabel("Your Age")?.label}</label>
                                 <select
                                     id="8"
                                     name="yourAge"
-                                    value={formValues.responses.find(response => response.field_id === findById(8)?.id)?.value || ''}
+                                    value={formValues.responses.find(response => response.field_id === findByLabel("Your Age")?.id)?.value || ''}
                                     onChange={(e) => {
 
-                                        const field = findById(8);
+                                        const field = findByLabel("Your Age");
                                         if (field) handleChange2(e, field);
                                     }}
                                     className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
@@ -297,14 +300,14 @@ export default function HealthInsuranceForm() {
                             {visibleArrow === 1 ?
 
                                 <div className='flex-1'>
-                                    <label htmlFor="spouseAge" className="block text-start text-lg font-medium text-green-600">{findById(11)?.label}</label>
+                                    <label htmlFor="spouseAge" className="block text-start text-lg font-medium text-green-600">{findByLabel("Spouse Age")?.label}</label>
                                     <select
                                         id="11"
                                         name="spouseAge"
-                                        value={formValues.responses.find(response => response.field_id === findById(11)?.id)?.value || ''}
+                                        value={formValues.responses.find(response => response.field_id === findByLabel("Spouse Age")?.id)?.value || ''}
                                         onChange={(e) => {
 
-                                            const field = findById(11);
+                                            const field = findByLabel("Spouse Age");
                                             if (field) handleChange2(e, field);
                                         }}
                                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
@@ -330,40 +333,41 @@ export default function HealthInsuranceForm() {
                         {visibleArrow === 3 ?
                             <>
                                 <div className="flex  flex-col gap-3">
-                                    <span className='text-xl'>{findById(12)?.label}</span>
+                                    <span className='text-xl'>{findByLabel("Insurance For")?.label}</span>
                                     <div className='flex items-center justify-start gap-4'>
                                         <div className={`border lg:w-[150px] text-center bg-white rounded-lg p-2 ${parent === 0 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                             onClick={() => {
                                                 setParent(0)
+                                          
                                                 setInsuranceFor(
                                                     {
-                                                        field_id: 12,
-                                                        value: findById(12)?.choices[0] || ''
+                                                        field_id: findByLabel("Insurance For")?.id ?? '',
+                                                        value: findByLabel("Insurance For")?.choices[0] || ''
                                                     }
                                                 )
-                                            }}>{findById(12)?.choices[0]}</div>
+                                            }}>{findByLabel("Insurance For")?.choices[0]}</div>
                                         <div className={`border lg:w-[150px] text-center bg-white rounded-lg p-2 ${parent === 1 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                             onClick={() => {
                                                 setParent(1)
                                                 setInsuranceFor(
                                                     {
-                                                        field_id: 12,
-                                                        value: findById(12)?.choices[1] || ''
+                                                        field_id: findByLabel("Insurance For")?.id ?? '',
+                                                        value: findByLabel("Insurance For")?.choices[1] || ''
                                                     }
                                                 )
 
-                                            }}>{findById(12)?.choices[1]}</div>
+                                            }}>{findByLabel("Insurance For")?.choices[1]}</div>
                                         <div className={`border lg:w-[150px] text-center bg-white rounded-lg p-2 ${parent === 2 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                             onClick={() => {
                                                 setParent(2)
                                                 setInsuranceFor(
                                                     {
-                                                        field_id: 12,
-                                                        value: findById(12)?.choices[2] || ''
+                                                        field_id: findByLabel("Insurance For")?.id ?? '',
+                                                        value: findByLabel("Insurance For")?.choices[2] || ''
                                                     }
                                                 )
 
-                                            }}>{findById(12)?.choices[2]}</div>
+                                            }}>{findByLabel("Insurance For")?.choices[2]}</div>
 
                                     </div>
                                 </div>
@@ -372,14 +376,14 @@ export default function HealthInsuranceForm() {
                                     {parent === 0 || parent === 2 ?
 
                                         <div className='flex-1'>
-                                            <label htmlFor="fatherAge" className="block text-start text-lg font-medium text-green-600">{findById(13)?.label}</label>
+                                            <label htmlFor="fatherAge" className="block text-start text-lg font-medium text-green-600">{findByLabel("Father Age")?.label}</label>
                                             <select
                                                 id="13"
                                                 name="fatherAge"
-                                                value={formValues.responses.find(response => response.field_id === findById(13)?.id)?.value || ''}
+                                                value={formValues.responses.find(response => response.field_id === findByLabel("Father Age")?.id)?.value || ''}
                                                 onChange={(e) => {
 
-                                                    const field = findById(13);
+                                                    const field = findByLabel("Father Age");
                                                     if (field) handleChange2(e, field);
                                                 }}
                                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
@@ -400,14 +404,14 @@ export default function HealthInsuranceForm() {
                                     {parent === 1 || parent === 2 ?
 
                                         <div className='flex-1'>
-                                            <label htmlFor="motherAge" className="block text-start text-lg font-medium text-green-600">{findById(14)?.label}</label>
+                                            <label htmlFor="motherAge" className="block text-start text-lg font-medium text-green-600">{findByLabel("Mother Age")?.label}</label>
                                             <select
                                                 id="14"
                                                 name="motherAge"
-                                                value={formValues.responses.find(response => response.field_id === findById(14)?.id)?.value || ''}
+                                                value={formValues.responses.find(response => response.field_id === findByLabel("Mother Age")?.id)?.value || ''}
                                                 onChange={(e) => {
 
-                                                    const field = findById(14);
+                                                    const field = findByLabel("Mother Age");
                                                     if (field) handleChange2(e, field);
                                                 }}
                                                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
@@ -437,30 +441,30 @@ export default function HealthInsuranceForm() {
 
                         {visibleArrow === 2 ?
                             <div className="flex  flex-col gap-3">
-                                <span className='text-xl'>{findById(9)?.label}</span>
+                                <span className='text-xl'>{findByLabel("Number of Child (Below 18 years)")?.label}</span>
                                 <div className='flex items-center justify-start gap-4'>
                                     <div className={`border lg:w-[150px] text-center bg-white rounded-lg p-2 ${children === 0 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                         onClick={() => { setChildrenNumber(0)
 
                                             setNumberOfChild(
                                                 {
-                                                    field_id: 9,
-                                                    value: findById(9)?.choices[0] || ''
+                                                    field_id: findByLabel("Number of Child (Below 18 years)")?.id ?? '',
+                                                    value:findByLabel("Number of Child (Below 18 years)")?.choices[0] || ''
                                                 }
                                             )
 
-                                         }}>{findById(9)?.choices[0]}</div>
+                                         }}>{findByLabel("Number of Child (Below 18 years)")?.choices[0]}</div>
                                     <div className={`border lg:w-[150px] text-center bg-white rounded-lg p-2 ${children === 1 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                         onClick={() => { setChildrenNumber(1)
 
                                             setNumberOfChild(
                                                 {
-                                                    field_id: 9,
-                                                    value: findById(9)?.choices[1] || ''
+                                                    field_id: findByLabel("Number of Child (Below 18 years)")?.id ?? '',
+                                                    value: findByLabel("Number of Child (Below 18 years)")?.choices[1] || ''
                                                 }
                                             )
 
-                                         }}>{findById(9)?.choices[1]}</div>
+                                         }}>{findByLabel("Number of Child (Below 18 years)")?.choices[1]}</div>
 
                                 </div>
                             </div>
@@ -470,39 +474,39 @@ export default function HealthInsuranceForm() {
                             <></>}
 
                         <div className="flex  flex-col gap-3">
-                            <span className='text-xl'>{findById(10)?.label}</span>
+                            <span className='text-xl'>{findByLabel("Health Coverage Amount (?)")?.label}</span>
                             <div className='flex items-center justify-start gap-4'>
                                 <div className={`border lg:w-[150px] text-center bg-white rounded-lg p-2 ${coverage === 0 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                  onClick={() => { setCoverage(0) 
                                     setHealthCoverage({
-                                         field_id: 10,
-                                        value: findById(10)?.choices[0] || ''
+                                        field_id: findByLabel("Health Coverage Amount (?)")?.id ?? '',
+                                        value: findByLabel("Health Coverage Amount (?)")?.choices[0] || ''
                                     })
-                                 }}>{findById(10)?.choices[0]}</div>
+                                 }}>{findByLabel("Health Coverage Amount (?)")?.choices[0]}</div>
                                 <div className={`border rounded-lg lg:w-[150px] bg-white text-center p-2 ${coverage === 1 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                  onClick={() => { setCoverage(1)
                                     setHealthCoverage({
-                                        field_id: 10,
-                                       value: findById(10)?.choices[1] || ''
+                                        field_id: findByLabel("Health Coverage Amount (?)")?.id ?? '',
+                                        value: findByLabel("Health Coverage Amount (?)")?.choices[1] || ''
                                    })
 
-                                  }}>{findById(10)?.choices[1]}</div>
+                                  }}>{findByLabel("Health Coverage Amount (?)")?.choices[1]}</div>
                                 <div className={`border rounded-lg lg:w-[150px] bg-white  text-center p-2 ${coverage === 2 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `} 
                                 onClick={() => { setCoverage(2)
 
                                     setHealthCoverage({
-                                        field_id: 10,
-                                       value: findById(10)?.choices[2] || ''
+                                         field_id: findByLabel("Health Coverage Amount (?)")?.id ?? '',
+                                        value: findByLabel("Health Coverage Amount (?)")?.choices[2] || ''
                                    })
-                                 }}>{findById(10)?.choices[2]}</div>
+                                 }}>{findByLabel("Health Coverage Amount (?)")?.choices[2]}</div>
                                 <div className={`border rounded-lg lg:w-[150px] bg-white text-center p-2 ${coverage === 3 ? 'border-green-600 text-green-700' : 'text-gray-500 border-gray-200'} border-green-600 hover:text-green-700 cursor-pointer `}
                                  onClick={() => { setCoverage(3)
 
                                     setHealthCoverage({
-                                        field_id: 10,
-                                       value: findById(10)?.choices[3] || ''
+                                        field_id: findByLabel("Health Coverage Amount (?)")?.id ?? '',
+                                        value: findByLabel("Health Coverage Amount (?)")?.choices[3] || ''
                                    })
-                                  }}>{findById(10)?.choices[3]}</div>
+                                  }}>{findByLabel("Health Coverage Amount (?)")?.choices[3]}</div>
                             </div>
                         </div>
 
