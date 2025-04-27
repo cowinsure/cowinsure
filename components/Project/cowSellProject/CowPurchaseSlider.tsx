@@ -125,13 +125,13 @@ function CowPurchaseSlider() {
   pagination={{ clickable: false }}
   autoplay={{ delay: 5000, disableOnInteraction: false }}
   modules={[Navigation, Autoplay]}
-  className="  w-full h-auto  lg:h-[450px]    justify-center items-center lg:justify-center lg:items-center "
+  className="  w-full h-auto   lg:h-[450px]    justify-center items-center lg:justify-center lg:items-center "
 >
   {memoizedPortfolios.map((portfolio, index) => (
     <SwiperSlide key={index} className='p-2'>
 
   
-        <div className='relative   w-full flex-col h-auto  justify-center items-center group bg-gray-800 rounded-lg'>
+        <div className='relative   w-full flex-col h-auto mb-10  justify-center items-center group bg-gray-800 rounded-lg'>
                           <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
                               <div className='absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-12 transition-all duration-500'>
                                   <Image
