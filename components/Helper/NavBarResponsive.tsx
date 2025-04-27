@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+
 
 interface LogoData {
   id: number;
@@ -89,9 +91,9 @@ function NavBarResponsive() {
 
   return (
     <>
-      <nav className={`bg-[#F6F4EC] bg:blur-md ${isClick ? "h-auto" : "h-20"} text-white  lg:p-6 shadow-md fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${false ? "-translate-y-full" : "translate-y-0"}`}>
+      <nav className={` bg-[#F6F4EC] bg:blur-md ${isClick ? "h-auto" : "h-20"} text-white  lg:p-6 shadow-md fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${false ? "-translate-y-full" : "translate-y-0"}`}>
         <div className='max-w-7xl mx-auto px-4 sm:p-6 '>
-          <div className='flex items-center justify-evenly h-2'>01            <div className='hidden md:block'>
+          <div className='flex items-center justify-evenly h-2'>           <div className='hidden md:block'>
               <div className='flex items-center lg:justify-center lg:items-center space-x-20'>
                 <div className='h-auto items-start'>
                   <div className='text-[#687649] pb-8'>
@@ -159,14 +161,22 @@ function NavBarResponsive() {
                 </Link>
               </div>
               <button className='inline-flex items-center justify-center p-4 rounded-md text-black md:text-black hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-black text-2xl' onClick={toggleNavbar}>
-                {!isClick ? "= " : "x"}
+                {!isClick ? "=" : "x"}
               </button>
             </div>
           </div>
         </div>
-        {isClick && (
-          <div className='md:hidden w-full flex justify-center items-center mt-10 '>
-            <div className='px-2 pt-2 space-y-5 sm:px-3 flex flex-col'>
+        <AnimatePresence>
+  {isClick && (
+    <motion.div
+      key="mobile-menu"
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className="md:hidden w-full flex justify-center items-center mt-10 overflow-y-auto max-h-[calc(100vh-2rem)]"
+    >
+            <div className='px-2 pt-2 space-y-3 sm:px-3 flex flex-col'>
               {menuData.map((item) => (
                 <div key={item.title} className=''>
                   <Link href={item.link} className={`text-[#334b35] text-x font-semibold`}>
@@ -189,8 +199,9 @@ function NavBarResponsive() {
                 </div>
               ))}
             </div>
-          </div>
-        )}
+          </motion.div>
+          )}
+</AnimatePresence>
       </nav>
       <style jsx>{`
         .menu-item {
