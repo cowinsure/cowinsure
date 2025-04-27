@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import bannerImage from '../../public/aibg.jpg'; // Replace with your actual image path
+import bannerImage from '../../public/aibg.png'; // Replace with your actual image path
 
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 

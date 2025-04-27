@@ -49,7 +49,7 @@ interface CategoryApiResponse {
 
 const Project = () => {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  // const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -57,7 +57,7 @@ const Project = () => {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/categories/`);
         const result: CategoryApiResponse = await response.json();
         if (result.status === 'success') {
-          setCategories(result.data);
+          // setCategories(result.data);
           const cowSellCategory = result.data.find(category => category.name === 'Short Term Investment');
           if (cowSellCategory) {
             fetchPortfolios(cowSellCategory.id);
@@ -97,7 +97,7 @@ const Project = () => {
               height={600}
               quality={50}
               loading="eager"
-              unoptimized={true}
+            
               priority
               objectPosition='top'
               className="w-full h-full object-cover rounded-t-lg"
@@ -172,7 +172,7 @@ const Project = () => {
   
   return (
     <div className='pt-16 lg:pt-0 overflow-hidden lg:mt-[2vh]'>
-      <section className="h-screen pb-10 lg:mt-14 lg:h-auto flex flex-col items-center justify-center bg-[#F6F4EC] pt-10">
+      <section className="h-auto pb-10 lg:mt-14 lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
         <div className="max-w-4xl text-center">
           <GiBullHorns className='w-full text-3xl text-green-700 mb-3' />
           <h2 className="text-xl font-bold text-[#687469]">Invest Now</h2>
@@ -209,7 +209,7 @@ const Project = () => {
         <WhyInvestWithUs />
       </div>
 
-      <section className='bg-[#F6F4EC] py-10'>
+      <section className='bg-[#F6F4EC] py-10 text-center'>
         <FaqSection />
       </section>
     </div>
