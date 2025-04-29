@@ -91,7 +91,7 @@ function NavBarResponsive() {
 
   return (
     <>
-      <nav className={` bg-[#F6F4EC] bg:blur-md ${isClick ? "h-auto" : "h-20"} text-white  lg:p-6 shadow-md fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${false ? "-translate-y-full" : "translate-y-0"}`}>
+      <nav className={`relative bg-[#F6F4EC] bg:blur-md ${isClick ? "h-auto" : "h-20"} text-white  lg:p-6 shadow-md fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${false ? "-translate-y-full" : "translate-y-0"}`}>
         <div className='max-w-7xl mx-auto px-4 sm:p-6 '>
           <div className='flex items-center justify-evenly h-2'>           <div className='hidden md:block'>
               <div className='flex items-center lg:justify-center lg:items-center space-x-20'>

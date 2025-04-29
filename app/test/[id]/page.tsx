@@ -48,6 +48,7 @@ interface Portfolio {
   updated_at: string;
 }
 
+
 const TestPage = () => {
   const { id } = useParams() as { id: string };
       const [loading, setLoading] = useState(true);
@@ -95,11 +96,26 @@ if (!projectDetails) {
 }
 
   return (
-    <div className="bg-[#F7F7F7] p-6 pt-20 lg:p-10 lg:pt-28">
+    <motion.div
+      className="bg-[#F7F7F7] p-6 pt-12 lg:p-10 lg:pt-14"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       {/* Top Section */}
-      <div className="max-w-6xl mx-auto bg-white rounded-md shadow-md overflow-hidden lg:flex">
+      <motion.div
+        className="max-w-6xl mx-auto bg-white rounded-md shadow-md overflow-hidden lg:flex"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         {/* Image Gallery */}
-        <div className="lg:w-1/2 p-4">
+        <motion.div
+          className="lg:w-1/2 p-4"
+          initial={{ scale: 0.95 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="rounded-md overflow-hidden mb-4">
             <Image
               src={projectDetails.image_url}
@@ -110,13 +126,13 @@ if (!projectDetails) {
             />
           </div>
 
-          <div className="flex space-x-2">
+          {/* <div className="flex space-x-2">
             {[1, 2, 3].map(i => (
               <button key={i} className="flex-1 bg-green-100 text-green-900 py-2 rounded-md">
                 Preview
               </button>
             ))}
-          </div>
+          </div> */}
           {/* <div className="grid grid-cols-3 gap-3">
             {cowImages.map((img, i) => (
               <div
@@ -128,7 +144,7 @@ if (!projectDetails) {
               </div>
             ))}
           </div> */}
-        </div>
+        </motion.div>
 
         {/* Main Info */}
         <div className="lg:w-1/2 p-6 flex flex-col justify-center items-center">
@@ -178,11 +194,11 @@ if (!projectDetails) {
           </div>
           <button className="mt-4 w-full bg-pink-600 text-white py-2 rounded-md">bKash</button>
         </div> */}
-      </div>
+      </motion.div>
 
       {/* Tabs */}
-      <div className="max-w-6xl mx-auto bg-green-200 mt-10 pb-1 rounded-md shadow-md">
-  <div className="bg-green-200 rounded-lg p-2">
+      <div className="max-w-6xl mx-auto bg-green-100 mt-10 pb-1 rounded-md shadow-md">
+  <div className="bg-green-100 rounded-lg p-2">
     <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
       {tabs.map((tab) => (
         <button
@@ -191,7 +207,7 @@ if (!projectDetails) {
           className={`relative overflow-hidden py-3 font-medium rounded-md transition-colors duration-300 ${
             activeTab === tab
               ? "bg-green-800 text-white"
-              : "bg-green-100 text-green-900 hover:text-white"
+              : "bg-green-200 text-green-900 hover:text-white"
           } group `}
         >
           <span className='relative z-10'>{tab}</span>
@@ -202,7 +218,7 @@ if (!projectDetails) {
   </div>
 
   {/* Content Area */}
-  <div className="bg-green-100 p-6 pb-10 rounded-lg shadow-sm m-2 min-h-[200px]">
+  <div className="bg-white p-6 pb-10 rounded-lg shadow-sm m-2 min-h-[200px]">
     <AnimatePresence mode="wait">
       <motion.div
         key={activeTab} 
@@ -252,7 +268,7 @@ if (!projectDetails) {
     </AnimatePresence>
   </div>
 </div>
-    </div>
+    </motion.div>
   );
 };
 

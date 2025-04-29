@@ -13,7 +13,7 @@ interface AppBrandingProps {
 
 }
 
-const AppBranding: React.FC<AppBrandingProps> = ({ title, description, customStyles = "relative w-full mt-[8vh] h-[50vh] lg:h-[100vh]" ,bannerUrl ,link }) => {
+const AppBranding: React.FC<AppBrandingProps> = ({ title, description, customStyles = "relative w-full h-[50vh] lg:h-[100vh]" ,bannerUrl ,link }) => {
   return (
     <div className={`${customStyles}`}>
       <Image

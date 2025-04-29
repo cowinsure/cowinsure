@@ -75,7 +75,7 @@ const SwiperComponent = () => {
 
 
   return (
-    <div className='relative w-full h-auto md:h-full  lg:h-auto mb-[320px]  lg:mb-[120px] mt-[8vh]'>
+    <div className='relative w-full h-auto md:h-full  lg:h-auto mb-[320px]  lg:mb-[120px]'>
 
       <div className='absolute right-4   top-10 lg:right-16 lg:bottom-0 lg:top-10 z-40 flex gap-3 mb-10 lg:flex-col lg:justify-center'>
         <button
