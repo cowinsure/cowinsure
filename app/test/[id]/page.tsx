@@ -5,6 +5,7 @@ import CowPurchaseModal from '@/components/Project/cowSellProject/CowPurchaseMod
 import { useParams } from 'next/navigation';
 import { formatToBDT } from '@/utils/currencyFormatter';
 import { motion, AnimatePresence } from "framer-motion";
+import { SuccessModal } from '@/components/Project/cowSellProject/SuccessModal';
 
 interface ExtraData {
   age: number;
@@ -58,6 +59,8 @@ const TestPage = () => {
       const [activeTab, setActiveTab] = useState('Overview');
     
       const [isModalOpen, setIsModalOpen] = useState(false)
+
+      const [isSuccessOpen, setSuccessOpen] = useState(false);
     
       const tabs = ['Overview', 'Delivery Terms', 'Payment Terms', 'FAQs'];
 
@@ -162,6 +165,10 @@ if (!projectDetails) {
                     </button>
         </div>
         <CowPurchaseModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <SuccessModal
+        isOpen={isSuccessOpen}
+        onClose={() => setSuccessOpen(false)}
+      />
 
         {/* Purchase Box */}
         {/* <div className="lg:w-1/3 p-6">

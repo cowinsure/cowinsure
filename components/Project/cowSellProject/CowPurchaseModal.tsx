@@ -1,6 +1,8 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { motion, AnimatePresence } from 'framer-motion'
 import logo from '../../../public/insurelogo.png'
 
@@ -9,16 +11,52 @@ interface CowPurchaseModalProps {
   onClose: () => void
 }
 
-const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) => {
-  // Form state
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [note, setNote] = useState('')
-  const [date, setDate] = useState('')
-  const [location, setLocation] = useState('')
-  const [address, setAddress] = useState('')
+interface DynamicFieldResponse {
+  field_id: string | number
+  value: string
+}
 
-  // Helper: trigger browser Geolocation
+interface finalForm {
+  name: '',
+  phone: '',
+  email: '',
+  insurance_type_id: 6, // Hardcoded as per the required output
+  responses: DynamicFieldResponse[]
+
+}
+interface FormField {
+  id: number;
+  label: string;
+  field_type: string;
+  required: boolean;
+}
+interface ApiResponse {
+  status: string;
+  message: string;
+  data: FormField[];
+}
+
+const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) => {
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+      const [formFields, setFormFields] = useState<FormField[]>([]);
+    const [isChecked, setChecked] = useState(false);
+    const [formValues, setFormValues] = useState<finalForm>({
+      name: '',
+      phone: '',
+      email: '',
+      insurance_type_id: 6, // Hardcoded as per the required output
+      responses: [],
+    });
+  
+    // const [submissionMessage, setSubmissionMessage] = useState('');
+    // const [openDialog, setOpenDialog] = useState(false);
+  
+    // const handleCloseDialog = () => {
+    //   setOpenDialog(false);
+    // };
+
+      // Helper: trigger browser Geolocation
   const useMyLocation = () => {
     if (!navigator.geolocation) {
       alert('Geolocation is not supported by your browser.')
@@ -36,6 +74,88 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     )
   }
+  
+    useEffect(() => {
+      const fetchFormFields = async () => {
+        try {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/insurance-types/6/form/`);
+          const result: ApiResponse = await response.json();
+          if (result.status === 'success') {
+          
+            setFormFields(result.data);
+            console.log(result.data);
+          }
+        } catch (error) {
+          console.error('Error fetching form fields:', error);
+        }
+      };
+  
+      fetchFormFields();
+    }, []);
+  
+  
+  
+    const findByLabel = (label:string) => {
+      return formFields.find(item => item.label === label);
+  }
+  
+   const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, field:FormField) => {
+      const updatedResponses = formValues.responses.filter(
+        (response) => response.field_id !== field.id
+      );
+      updatedResponses.push({
+        field_id: field.id,
+        value: e.target.value,
+      });
+  
+      setFormValues({
+        ...formValues,
+        responses: updatedResponses,
+      });
+    };
+  
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!isChecked) {
+        alert('You must accept the terms and conditions to proceed.');
+        return;
+      }
+          try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/submit-form/`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formValues)
+            });
+            
+            const result = await response.json();
+            if (response.ok) {
+              toast.success('Your insurance request has been sent successfully.');
+              setSubmissionMessage(result.message);
+              setOpenDialog(true);
+              
+              setFormValues({
+                name: '',
+                phone: '',
+                email: '',
+                insurance_type_id: 6, // Hardcoded as per the required output
+                responses: [],
+              });
+            } else {
+              toast.error('Failed to submit. Please try again later.'); 
+            }
+            
+          } catch (error) {
+            toast.error('An error occurred. Please try again later.' + error
+            );
+          } finally {
+            setIsSubmitting(false);
+          }
+  
+            // Handle form submission logic here
+            console.log('Form submitted:', formValues);
+          };
 
   return (
     <AnimatePresence>
@@ -202,6 +322,23 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                   <span>256000</span>
                 </div>
               </motion.div>
+
+              <div className="flex items-center pt-4">
+          <input
+            type="checkbox"
+            id="termsAccepted"
+            name="termsAccepted"
+            // checked={isChecked}
+            // onChange={()=>{
+            //   setChecked(!isChecked)
+            // }}
+            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+            required
+          />
+          <label htmlFor="termsAccepted" className="ml-2 block text-sm text-green-600">
+            I accept the terms and conditions
+          </label>
+        </div>
 
               {/* Confirm */}
               <motion.button
