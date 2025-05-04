@@ -5,7 +5,6 @@ import CowPurchaseModal from '@/components/Project/cowSellProject/CowPurchaseMod
 import { useParams } from 'next/navigation';
 import { formatToBDT } from '@/utils/currencyFormatter';
 import { motion, AnimatePresence } from "framer-motion";
-import { SuccessModal } from '@/components/Project/cowSellProject/SuccessModal';
 
 interface ExtraData {
   age: number;
@@ -59,8 +58,6 @@ const TestPage = () => {
       const [activeTab, setActiveTab] = useState('Overview');
     
       const [isModalOpen, setIsModalOpen] = useState(false)
-
-      const [isSuccessOpen, setSuccessOpen] = useState(false);
     
       const tabs = ['Overview', 'Delivery Terms', 'Payment Terms', 'FAQs'];
 
@@ -70,6 +67,11 @@ const TestPage = () => {
       //   Image1,
       //   Image2
       // ]
+
+      const closeAll = () => {
+        setIsModalOpen(false);
+      };
+
   
       useEffect(() => {
           const fetchProjectDetails = async () => {
@@ -129,24 +131,6 @@ if (!projectDetails) {
             />
           </div>
 
-          {/* <div className="flex space-x-2">
-            {[1, 2, 3].map(i => (
-              <button key={i} className="flex-1 bg-green-100 text-green-900 py-2 rounded-md">
-                Preview
-              </button>
-            ))}
-          </div> */}
-          {/* <div className="grid grid-cols-3 gap-3">
-            {cowImages.map((img, i) => (
-              <div
-                key={i}
-                className={`bg-green-100 rounded-lg overflow-hidden cursor-pointer ${activeImage === i ? "ring-2 ring-green-500" : ""}`}
-                onClick={() => setActiveImage(i)}
-              >
-                <div className="p-3 text-center text-green-800">Preview</div>
-              </div>
-            ))}
-          </div> */}
         </motion.div>
 
         {/* Main Info */}
@@ -164,43 +148,8 @@ if (!projectDetails) {
                         Buy Now
                     </button>
         </div>
-        <CowPurchaseModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-        <SuccessModal
-        isOpen={isSuccessOpen}
-        onClose={() => setSuccessOpen(false)}
-      />
+        <CowPurchaseModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSuccess={closeAll} />
 
-        {/* Purchase Box */}
-        {/* <div className="lg:w-1/3 p-6">
-          <p className="text-sm font-medium">
-            <span>SKU: {cow.sku}</span>
-            {cow.inStock ? <span className="text-green-600 ml-2">In-stock</span> : <span className="text-red-600 ml-2">Out of stock</span>}
-          </p>
-          <p className="text-sm mt-2">Delivery will be 2 days before The Eid-Ul-Adha</p>
-          <div className="flex items-center space-x-3 mt-4">
-            <button className="flex items-center text-red-500">
-              <FaHeart /> <span className="ml-1">Add to Wishlist</span>
-            </button>
-            <div className="flex space-x-2 text-gray-600">
-              <FaFacebookF />
-              <FaFacebookMessenger />
-              <FaWhatsapp />
-            </div>
-          </div>
-          <div className="mt-4 text-sm">
-            <p><strong>Delivery:</strong> {cow.deliveryDays}</p>
-            <p><strong>Location:</strong> <span className="text-blue-600 underline cursor-pointer">Select your delivery location</span></p>
-          </div>
-          <div className="mt-4">
-            <p className="font-medium">Card Payment</p>
-            <div className="flex space-x-2 mt-2">
-              <span>Visa</span>
-              <span>Mastercard</span>
-              <span>AMEX</span>
-            </div>
-          </div>
-          <button className="mt-4 w-full bg-pink-600 text-white py-2 rounded-md">bKash</button>
-        </div> */}
       </motion.div>
 
       {/* Tabs */}

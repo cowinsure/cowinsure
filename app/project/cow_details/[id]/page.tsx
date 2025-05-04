@@ -56,8 +56,8 @@ function CowDetailsPage() {
     const [loading, setLoading] = useState(true);
 
     const [projectDetails, setProjectDetails] = useState<Portfolio | null>(null);
-
-
+    
+    
     useEffect(() => {
         const fetchProjectDetails = async () => {
             try {

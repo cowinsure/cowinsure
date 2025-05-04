@@ -1,14 +1,59 @@
 'use client'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion, AnimatePresence } from 'framer-motion'
 import logo from '../../../public/insurelogo.png'
+import DialogCustom from '@/components/Helper/Dialog';
+import { useParams } from 'next/navigation';
+
+interface ExtraData {
+  age: number;
+  sex: string;
+  breed: string;
+  horns: string;
+  colour: string;
+  isSold: boolean;
+  cattleId: string;
+  weightKg: number;
+  heightFeet: number;
+  askingPrice: number;
+  sellingPrice: number;
+  dehorningStatus: string;
+  dewormingStatus: string;
+  identifyingMarks: string;
+  sourceOfPurchase: string;
+  anyDiseaseHistory: string;
+  vaccinationStatus: string;
+  currentOwnerFarmName: string;
+  generalHealthCondition: string;
+  numberOfCutMarksOnSkin: number;
+  locationOfCurrentHolding: string;
+}
+
+interface Portfolio {
+  id: string;
+  name: string;
+  location: string;
+  investment_value: string;
+  currency: string;
+  investment_period: string;
+  expected_return_min: string;
+  expected_return_max: string;
+  total_return_min: string;
+  total_return_max: string;
+  image_url: string;
+  description: string;
+  extra_data: ExtraData;
+  created_at: string;
+  updated_at: string;
+}
 
 interface CowPurchaseModalProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
+  onSuccess: () => void;
 }
 
 interface DynamicFieldResponse {
@@ -36,8 +81,9 @@ interface ApiResponse {
   data: FormField[];
 }
 
-const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) => {
+const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, onSuccess }) => {
 
+  const { id } = useParams() as { id: string };
     const [isSubmitting, setIsSubmitting] = useState(false);
       const [formFields, setFormFields] = useState<FormField[]>([]);
     const [isChecked, setChecked] = useState(false);
@@ -48,32 +94,100 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
       insurance_type_id: 6, // Hardcoded as per the required output
       responses: [],
     });
+    const [location, setLocation] = useState('')
+    
+          const [loading, setLoading] = useState(true);
   
-    // const [submissionMessage, setSubmissionMessage] = useState('');
-    // const [openDialog, setOpenDialog] = useState(false);
+    const [submissionMessage, setSubmissionMessage] = useState('');
+    const [openDialog, setOpenDialog] = useState(false);
+
+    const [projectDetails, setProjectDetails] = useState<Portfolio | null>(null);
+
+          useEffect(() => {
+              const fetchProjectDetails = async () => {
+                  try {
+                      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/${id}/`);
+                      const data = await response.json();
+                      setProjectDetails(data.data);
+      
+                      setLoading(false);
+                  } catch (error) {
+                      console.error('Error fetching project details:', error);
+                      setLoading(false);
+                  }
+              };
+      
+              fetchProjectDetails();
+          }, [id]);
+      
   
-    // const handleCloseDialog = () => {
-    //   setOpenDialog(false);
-    // };
+    const handleCloseDialog = () => {
+      setOpenDialog(false);
+      onSuccess();
+    };
+    
 
       // Helper: trigger browser Geolocation
-  const useMyLocation = () => {
-    if (!navigator.geolocation) {
-      alert('Geolocation is not supported by your browser.')
-      return
-    }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const { latitude, longitude } = pos.coords
-        setLocation(`${latitude.toFixed(6)}, ${longitude.toFixed(6)}`)
-      },
-      (err) => {
-        console.error(err)
-        alert('Unable to retrieve location. Please enable GPS and grant permission.')
-      },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-    )
-  }
+      const useMyLocation = () => {
+        if (!navigator.geolocation) {
+          alert('Geolocation is not supported by your browser.');
+          return;
+        }
+      
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const { latitude, longitude } = pos.coords;
+            const locationString = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
+            setLocation(locationString);
+      
+            const field = findByLabel("Location");
+            if (field) {
+              const updatedResponses = formValues.responses.filter(
+                (response) => response.field_id !== field.id
+              );
+              updatedResponses.push({
+                field_id: field.id,
+                value: locationString,
+              });
+      
+              setFormValues({
+                ...formValues,
+                responses: updatedResponses,
+              });
+            }
+          },
+          (err) => {
+            console.error(err);
+            alert('Unable to retrieve location. Please enable GPS and grant permission.');
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+      };
+
+      useEffect(() => {
+        // only run once both are loaded
+        if (!projectDetails || formFields.length === 0) return;
+      
+        const cowField = formFields.find(f => f.label === "Cow ID");
+        if (!cowField) {
+          console.warn("No dynamic field labeled “Cow ID” found in formFields");
+          return;
+        }
+      
+        setFormValues(prev => {
+          // remove any previous Cow ID entry, then append the new one
+          const filtered = prev.responses.filter(r => r.field_id !== cowField.id);
+          return {
+            ...prev,
+            responses: [
+              ...filtered,
+              { field_id: cowField.id, value: projectDetails.name }
+            ]
+          };
+        });
+      }, [projectDetails, formFields]);
+      
+      
   
     useEffect(() => {
       const fetchFormFields = async () => {
@@ -207,6 +321,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
               </motion.div>
 
               {/* Form */}
+              <form onSubmit={handleSubmit}>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -220,9 +335,12 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                     whileFocus={{ scale: 1.02 }}
                     className="border p-2 rounded"
                     type="text"
+                    id='name'
+                    name='name'
                     placeholder="Enter name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={formValues.name}
+                    onChange={(e) => setFormValues({ ...formValues, [e.target.name]: e.target.value })}
+                    required
                   />
                 </div>
 
@@ -232,10 +350,13 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
                     className="border p-2 rounded"
-                    type="tel"
+                    type='tel'
+                    id='phone'
+                    name='phone'
                     placeholder="Enter phone number"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={formValues.phone}
+                    onChange={(e) => setFormValues({...formValues,[e.target.name]:e.target.value})}
+                    required
                   />
                 </div>
 
@@ -245,9 +366,15 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                   <motion.textarea
                     whileFocus={{ scale: 1.02 }}
                     className="border p-2 rounded h-24"
+                    id='note'
+                    name='note'
                     placeholder="Any queries..."
-                    value={note}
-                    onChange={(e) => setNote(e.target.value)}
+                    value={formValues.responses.find(response => response.field_id === findByLabel("Add Note")?.id)?.value || ''}
+                    onChange={(e)=>{
+                
+                      const field = findByLabel("Add Note"); 
+                      if (field) handleChange(e, field);
+                    }}
                   />
                 </div>
 
@@ -258,8 +385,15 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                     whileFocus={{ scale: 1.02 }}
                     className="border p-2 rounded"
                     type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                    id='date'
+                    name='date'
+                    value={formValues.responses.find(response => response.field_id === findByLabel("Book Your Visit Date")?.id)?.value || ''}
+                    onChange={(e)=>{
+                
+                      const field = findByLabel("Book Your Visit Date"); 
+                      if (field) handleChange(e, field);
+                    }}
+                    required
                   />
                 </div>
 
@@ -269,6 +403,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
+                    type='button'
                     onClick={useMyLocation}
                     className="self-start mb-1 bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded"
                   >
@@ -278,8 +413,18 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                     whileFocus={{ scale: 1.02 }}
                     className="border p-2 rounded"
                     type="text"
+                    id='location'
+                    name='location'
                     placeholder="Lat, Long"
-                    value={location}
+                    value={
+                      formValues.responses.find(
+                        (response) => response.field_id === findByLabel("Location")?.id
+                      )?.value || ''
+                    }
+                    onChange={(e) => {
+                      const field = findByLabel("Location");
+                      if (field) handleChange(e, field);
+                    }}
                     readOnly
                   />
                 </div>
@@ -291,12 +436,21 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                     whileFocus={{ scale: 1.02 }}
                     className="border p-2 rounded"
                     type="text"
+                    id='address'
+                    name='address'
                     placeholder="Enter address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={formValues.responses.find(response => response.field_id === findByLabel("Address")?.id)?.value || ''}
+                    onChange={(e)=>{
+                
+                      const field = findByLabel("Address"); 
+                      if (field) handleChange(e, field);
+                    }}
+                    required
                   />
                 </div>
+              
               </motion.div>
+             
 
               {/* Totals */}
               <motion.div
@@ -307,11 +461,11 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
               >
                 <div className="flex justify-between">
                   <span>Subtotal:</span>
-                  <span>256000</span>
+                  <span>{projectDetails.extra_data.sellingPrice}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Shipping:</span>
-                  <span>1000</span>
+                  <span>Delivery Charge:</span>
+                  <span>5000</span>
                 </div>
                 <div className="flex justify-between">
                   <span>VAT (%):</span>
@@ -319,7 +473,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                 </div>
                 <div className="flex justify-between font-bold border-t pt-2">
                   <span>Total:</span>
-                  <span>256000</span>
+                  <span>{projectDetails.extra_data.sellingPrice +5000}</span>
                 </div>
               </motion.div>
 
@@ -328,10 +482,10 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
             type="checkbox"
             id="termsAccepted"
             name="termsAccepted"
-            // checked={isChecked}
-            // onChange={()=>{
-            //   setChecked(!isChecked)
-            // }}
+            checked={isChecked}
+            onChange={()=>{
+              setChecked(!isChecked)
+            }}
             className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
             required
           />
@@ -347,12 +501,16 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose }) 
                 transition={{ delay: 0.5 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={onClose}
+                type='submit'
+                disabled={isSubmitting}
                 className="mt-6 w-full bg-green-700 hover:bg-green-800 text-white py-2 rounded"
               >
-                Confirm
+                {isSubmitting ? 'Submitting...' : 'Submit'}
               </motion.button>
+              </form>
             </div>
+            {openDialog ? <DialogCustom message={submissionMessage} onClose={()=>{handleCloseDialog()}} />: ""}
+            <ToastContainer />
           </motion.div>
         </>
       )}

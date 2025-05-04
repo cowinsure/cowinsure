@@ -14,7 +14,7 @@ interface finalForm {
   name: '',
   phone: '',
   email: '',
-  insurance_type_id: 2, // Hardcoded as per the required output
+  insurance_type_id: number, // Hardcoded as per the required output
   responses: DynamicFieldResponse[]
 
 }
