@@ -8,7 +8,7 @@ import ServiceHighlighted from '@/components/common/ServiceHighlighted';
 
 function FinancialInsuranceServices() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
    
      <HerosSectionCommon title='Financial Insurance Services' bannerUrl={bannerImage}/>
      <div className='bg-[#F6F4EC]'>

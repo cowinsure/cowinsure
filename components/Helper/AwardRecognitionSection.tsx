@@ -88,7 +88,7 @@ const AwardRecognitionSection = () => {
 
 
   return (
-    <div className=' flex flex-col mt-20 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
+    <div className=' flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full mb-10">
         <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
         <h2 className="text-xl font-bold text-[#687469] text-start mb-3">achivement</h2>

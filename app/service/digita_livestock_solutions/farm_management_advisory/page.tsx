@@ -6,7 +6,7 @@ import OurServicesCommon from '@/components/common/OurServicesCommon';
 
 function FinacialManagementAdvisory() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
      <HerosSectionCommon title='Farm Management & Advisory' bannerUrl={bannerImage}/>
      <div className='bg-[#F6F4EC]'>
 

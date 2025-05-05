@@ -7,7 +7,7 @@ import farmManagement from '../../../public/farmManagement.jpg';
 
 function DigitalLiveStockSolutions() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
    
     <HerosSectionCommon title='Digital Livestock Solutions' bannerUrl={bannerImage}/>
     <div className='bg-[#F6F4EC]'>

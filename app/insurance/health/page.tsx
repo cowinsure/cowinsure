@@ -12,8 +12,8 @@ import { GiBullHorns } from 'react-icons/gi'
 
 function page() {
     return (
-        <div className='h-auto w-auto   md:pt-0  lg:w-full  text-center bg-[#F7F7F7] '>
-            <div className='pt-[100px] lg:pt-[100px]   container mx-auto flex flex-col lg:flex-col lg:justify-center justify-between'>
+        <div className='h-auto md:pt-0 mx-auto lg:w-full  text-center bg-[#F7F7F7] '>
+            <div className='pt-[10vh] lg:pt-[10vh]   container mx-auto flex flex-col lg:flex-col lg:justify-center justify-between'>
                 <div className="w-full  text-center mb-16">
                     <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-2' />
 
@@ -33,14 +33,14 @@ function page() {
 
                     <div className='lg:w-1/2 flex flex-col items-center justify-center lg:justify-center lg:items-center'>
 
-                        <div className="rounded-full z-20  h-[30vh] w-[30vh] lg:h-[35vh] lg:w-[35vh] overflow-hidden  border-gray-300">
+                        <div className="md:w-60  md:h-60 rounded-full overflow-hidden border-2 border-gray-300">
 
                             <Image
                                 src={inspection}
                                 alt="Profile"
 
                                 objectFit="cover"
-                                className="overflow-hidden  lg:h-[35vh] lg:w-[35vh] h-[30vh] w-[30vh]"
+                                className="rounded-full object-cover w-60 h-60"
                             />
 
                         </div>

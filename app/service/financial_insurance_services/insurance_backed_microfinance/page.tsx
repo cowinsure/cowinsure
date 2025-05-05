@@ -6,7 +6,7 @@ import React from 'react'
 
 function InsuranceBackedMicrofinance() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
     <HerosSectionCommon title='Insurance Backed Microfinance' bannerUrl={bannerImage}/>
 
     <div className='bg-[#F6F4EC]'>

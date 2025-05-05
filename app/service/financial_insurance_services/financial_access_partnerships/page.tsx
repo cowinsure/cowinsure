@@ -5,7 +5,7 @@ import bannerImage from '../../../../public/farmerimg.jpg';
 
 function FinancialAccessPartnerships() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
     <HerosSectionCommon title='Financial Access Partnerships' bannerUrl={bannerImage}/>
 
     <div className='bg-[#F6F4EC]'>

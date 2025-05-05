@@ -102,7 +102,7 @@ const CowPurchaseSection = () => {
 
   return (
 
-    <section className="p-10    flex flex-col  lg:flex-col lg:justify-center  lg:items-center items-center justify-center bg-[#F6F4EC] lg:mt-[9vh] mt-[8vh]">
+    <section className="p-10    flex flex-col  lg:flex-col lg:justify-center  lg:items-center items-center justify-center bg-[#F6F4EC]">
       <div className="max-w-4xl text-center">
         <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
 

@@ -6,7 +6,7 @@ import bannerImage from '../../../../public/cover3.jpg';
 
 function TrainingSkillDevelopment() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
     <HerosSectionCommon title='Training Skill Development' bannerUrl={bannerImage}/>
 
     <div className='bg-[#F6F4EC]'>

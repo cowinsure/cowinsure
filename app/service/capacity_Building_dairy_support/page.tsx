@@ -8,7 +8,7 @@ import ServiceHighlighted from '@/components/common/ServiceHighlighted';
 
 function CapacityBuildingDairySupport() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
    
     <HerosSectionCommon title='Capacity Building & Dairy Support' bannerUrl={bannerImage}/>
     <div className='bg-[#F6F4EC]'>

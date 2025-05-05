@@ -6,7 +6,7 @@ import OurServicesCommon from '@/components/common/OurServicesCommon';
 
 function AiPoweredLiveStockSolutions() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
      <HerosSectionCommon title='AI-Powered Livestock Solutions' bannerUrl={bannerImage}/>
 
      <div className='bg-[#F6F4EC]'>

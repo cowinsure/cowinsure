@@ -84,7 +84,7 @@ function CowDetailsPage() {
     }
 
     return (
-        <div className='h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7] lg:mt-[8vh]'>
+        <div className='h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7]'>
             <div className='pt-[10vh] lg:pt-[10vh] container mx-auto flex flex-col lg:flex-col lg:justify-center lg:items-center justify-center p-5'>
                 <div className='relative mb-10 w-full rounded-lg overflow-hidden h-auto lg:h-[70vh]'>
                     <Image

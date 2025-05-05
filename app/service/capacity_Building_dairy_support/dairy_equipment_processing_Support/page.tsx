@@ -5,7 +5,7 @@ import bannerImage from '../../../../public/farmers-with.jpg';
 
 function DairyEquipmentProcessingSupport() {
   return (
-    <div className='h-auto mt-[80px]'>
+    <div className='h-auto'>
     <HerosSectionCommon title='Dairy Equipment & Processing Support' bannerUrl={bannerImage}/>
 
     <div className='bg-[#F6F4EC]'>

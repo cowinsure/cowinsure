@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
 
         {/* Contact Info */}
-        <p className="mt-4 text-gray-600">info@insure.global</p>
+        <p className="mt-4 text-gray-600">info@insurecow.com</p>
         <p className="text-gray-600">+8801999INSURE</p>
       </div>
 
