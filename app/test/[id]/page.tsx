@@ -70,7 +70,7 @@ const TestPage = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const tabs = ["Overview", "Delivery Terms", "Payment Terms", "FAQs"];
+  const tabs = ["Overview", "Terms & Conditions", "FAQs"];
 
   const [faqNterms, setFaqNterms] = useState<BaseCategory[]>([]);
 
@@ -196,7 +196,7 @@ const TestPage = () => {
       {/* Tabs */}
       <div className="max-w-6xl mx-auto bg-green-100 mt-10 pb-1 rounded-md shadow-md">
         <div className="bg-green-100 rounded-lg p-2">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-4">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -223,6 +223,7 @@ const TestPage = () => {
               animate={{ opacity: 1, x: 10, y: 20 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.15 }}
+              className="text-lg md:text-xl lg:text-xl mt-4 lg:mr-20 lg:ml-20"
             >
               {activeTab === "Overview" && (
                 <div>
@@ -275,32 +276,25 @@ const TestPage = () => {
                   </div>
                 </div>
               )}
-              {activeTab === "Delivery Terms" && (
-                <p>
-                  {
-                    faqNterms.find(
-                      (category) => category.name === "Delivery Terms"
-                    )?.description
-                  }
-                </p>
-              )}
-              {activeTab === "Payment Terms" && (
-                <p>
-                  {
-                    faqNterms.find(
-                      (category) => category.name === "Payment Terms"
-                    )?.description
-                  }
-                </p>
+              {activeTab === "Terms & Conditions" && (
+                <p
+                  
+                    dangerouslySetInnerHTML={{
+                      __html:faqNterms.find(
+                      (category) => category.name === "Terms & Conditions"
+                    )?.description}}
+                  
+                />
               )}
               {activeTab === "FAQs" && (
-                <p>
-                  {
-                    faqNterms.find(
-                      (category) => category.name === "FAQs - Cow Details"
-                    )?.description
-                  }
-                </p>
+                <p
+                  
+                dangerouslySetInnerHTML={{
+                  __html:faqNterms.find(
+                  (category) => category.name === "FAQs - Cow Details"
+                )?.description}}
+              
+            />
               )}
             </motion.div>
           </AnimatePresence>

@@ -465,7 +465,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                 </div>
                 <div className="flex justify-between">
                   <span>Delivery Charge:</span>
-                  <span>5000</span>
+                  <span>1500</span>
                 </div>
                 <div className="flex justify-between">
                   <span>VAT (%):</span>
@@ -473,7 +473,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                 </div>
                 <div className="flex justify-between font-bold border-t pt-2">
                   <span>Total:</span>
-                  <span>{projectDetails.extra_data.sellingPrice +5000}</span>
+                  <span>{projectDetails.extra_data.sellingPrice +1500}</span>
                 </div>
               </motion.div>
 
