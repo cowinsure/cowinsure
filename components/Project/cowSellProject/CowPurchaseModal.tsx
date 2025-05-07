@@ -298,7 +298,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
               fixed inset-0 z-50 flex items-center justify-center p-4
             "
           >
-            <div className="relative bg-[#FFF6F3] rounded-lg shadow-lg w-full max-w-xl p-6 overflow-auto max-h-[90vh]">
+            <div className="relative bg-[#ddebe0] rounded-lg shadow-lg w-full max-w-xl p-6 overflow-auto max-h-[90vh]">
               {/* Close */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
