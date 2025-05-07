@@ -24,6 +24,7 @@ interface ExtraData {
   cowBreed: string;
   weightKg: number;
   expectedFinalWeight: number;
+  isSold: boolean
 }
 
 interface Portfolio {
@@ -129,7 +130,40 @@ function CowPurchaseSlider() {
 >
   {memoizedPortfolios.map((portfolio, index) => (
     <SwiperSlide key={index} className='p-2'>
+{portfolio.extra_data.isSold ? (
+                <div className="group bg-gray-300 rounded-lg overflow-hidden relative">
+                <div className="h-[400px] bg-black relative">
+                  <Image
+                    src={portfolio.image_url}
+                    alt="cow-sold-out"
+                    layout="fill"
+                    objectFit="cover"
+                    className="opacity-50"
+                  />
+                </div>
+                <div className=' absolute bottom-0 left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible '>
+                  <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-red-600 rounded-t-lg text-2xl font-bold text-white'>
+                    <div className='flex flex-row lg:flex-row items-center justify-start text-center w-full px-4  py-2'>
 
+                      <div className='text-white text-xl font-bold'>{formatToBDT(portfolio.extra_data.sellingPrice)} TK</div>
+                    </div>
+
+                    <div className='w-full flex flex-row lg:flex-col items-center justify-center   px-2  '>
+                      <div className='flex flex-row lg:flex-row items-center justify-start   w-full gap-4  px-2  '>
+                        <div className=' text-white text-xs '>Live weight:</div>
+                        <div className=' flex-1 text-white text-xl font-bold'>{portfolio.extra_data.weightKg} KG</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="bg-red-600 text-white px-6 py-4 rounded-lg text-3xl font-bold">
+                    Sold Out
+                  </span>
+                </div>
+              </div>
+              
+              ) : (
   
         <div className='relative   w-full flex-col h-auto mb-10  justify-center items-center group bg-gray-800 rounded-lg'>
                           <div className='relative h-[400px]  rounded-lg bg-black   overflow-hidden'>
@@ -198,6 +232,7 @@ function CowPurchaseSlider() {
       
       
                       </div>
+              )}
    
    
 
