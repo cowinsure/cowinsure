@@ -333,7 +333,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Name</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded"
+                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type="text"
                     id='name'
                     name='name'
@@ -349,7 +349,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Phone Number</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded"
+                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type='tel'
                     id='phone'
                     name='phone'
@@ -365,7 +365,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Add Note</label>
                   <motion.textarea
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded h-24"
+                    className="border p-2 rounded h-24 focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     id='note'
                     name='note'
                     placeholder="Any queries..."
@@ -383,7 +383,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Book Your Visit Date</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded"
+                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type="date"
                     id='date'
                     name='date'
@@ -411,7 +411,8 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   </motion.button>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded"
+                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500
+                    hover:border-green-300"
                     type="text"
                     id='location'
                     name='location'
@@ -434,7 +435,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Address</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded"
+                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type="text"
                     id='address'
                     name='address'
@@ -467,10 +468,6 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <span>Delivery Charge:</span>
                   <span>1500</span>
                 </div>
-                <div className="flex justify-between">
-                  <span>VAT (%):</span>
-                  <span>0</span>
-                </div>
                 <div className="flex justify-between font-bold border-t pt-2">
                   <span>Total:</span>
                   <span>{projectDetails.extra_data.sellingPrice +1500}</span>
@@ -486,7 +483,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
             onChange={()=>{
               setChecked(!isChecked)
             }}
-            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded "
             required
           />
           <label htmlFor="termsAccepted" className="ml-2 block text-sm text-green-600">
