@@ -61,7 +61,7 @@ useEffect(()=>{
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`);
       const result: BaseCategoryApiResponse =await response.json();
       if(result.status === 'success'){
-        const AboutUsCategory = result.data.find(category => category.name ==="About Us - Home Section");
+        const AboutUsCategory = result.data.find(category => category.name ==="About Us - About Section");
         if(AboutUsCategory){
           fetchBaseCards(AboutUsCategory.id)
         }
@@ -91,7 +91,7 @@ useEffect(()=>{
 
         <div className='min-h-[600px] p-14 mb-10'>
       {aboutUsData.map((item , index)=>(
-        <div key={index} className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10 mt-[280px] lg:mt-2 '>
+        <div key={index} className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10 mt-2 lg:mt-2 '>
 <div  className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-center items-center relative'>
         {/* <div className='absolute rounded-full  bg-[#fcf4e6] lg:right-[35vh] right-[65px]  h-[300px] w-[300px] lg:h-[500px] lg:w-[500px]  '></div> */}
         {/* <motion.div
@@ -146,16 +146,16 @@ useEffect(()=>{
 
 
       </div>
-      <div  className='pl-2 pr-2 flex-1 w-full lg:w-1/2 text-start'>
-        <GiBullHorns className='w-auto text-3xl text-green-700 mb-3 pl-2 pr-2' />
-        <span className="pl-2 pr-2 text-sm text-[#687469] uppercase font-semibold">get to know about us</span>
-        <h2 className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl pl-2 pr-2">
+      <div  className='flex-1 w-full lg:w-1/2 text-start'>
+        <GiBullHorns className='w-auto text-3xl text-green-700 mb-3' />
+        <span className="text-sm text-[#687469] uppercase font-semibold">get to know about us</span>
+        <h2 className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl">
           {item.name}
         </h2>
-        <p className="mt-5 pl-2 pr-2 text-xl text-[#687469] ">
+        <p className="mt-5 text-xl text-[#687469] ">
           {item.extra_data.heading}
         </p>
-        <p className="space-y-3 mb-8 pt-5 pl-2 pr-2 text-[18px] text-[#334b35]">
+        <p className="space-y-3 mb-8 pt-5 text-[18px] text-[#334b35]">
           {item.extra_data.description}
         </p>
         

@@ -298,7 +298,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
               fixed inset-0 z-50 flex items-center justify-center p-4
             "
           >
-            <div className="relative bg-[#ddebe0] rounded-lg shadow-lg w-full max-w-xl p-6 overflow-auto max-h-[90vh]">
+            <div className="relative bg-[#F6F4EC] border-2 border-green-200 rounded-lg shadow-lg w-full max-w-xl p-6 overflow-auto max-h-[90vh]">
               {/* Close */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -333,7 +333,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Name</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
+                    className="border  border-gray-300 p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type="text"
                     id='name'
                     name='name'
@@ -349,7 +349,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Phone Number</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
+                    className="border border-gray-300 p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type='tel'
                     id='phone'
                     name='phone'
@@ -365,7 +365,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Add Note</label>
                   <motion.textarea
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded h-24 focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
+                    className="border border-gray-300 p-2 rounded h-24 focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     id='note'
                     name='note'
                     placeholder="Any queries..."
@@ -383,7 +383,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Book Your Visit Date</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
+                    className="border border-gray-300 p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type="date"
                     id='date'
                     name='date'
@@ -411,7 +411,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   </motion.button>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500
+                    className="border border-gray-300 p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500
                     hover:border-green-300"
                     type="text"
                     id='location'
@@ -435,7 +435,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                   <label className="mb-1 font-medium">Address</label>
                   <motion.input
                     whileFocus={{ scale: 1.02 }}
-                    className="border p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
+                    className="border border-gray-300 p-2 rounded focus:outline-none focus:ring-green-500 focus:border-green-500 hover:border-green-300"
                     type="text"
                     id='address'
                     name='address'
