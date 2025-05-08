@@ -73,6 +73,8 @@ const TestPage = () => {
   const tabs = ["Overview", "Terms & Conditions", "FAQs"];
 
   const [faqNterms, setFaqNterms] = useState<BaseCategory[]>([]);
+  console.log("faqNterms", faqNterms);
+  
 
   // const [activeImage,setActiveImage] = useState(0)
 
@@ -276,7 +278,7 @@ const TestPage = () => {
                   </div>
                 </div>
               )}
-              {activeTab === "Terms & Conditions" && (
+              {/* {activeTab === "Terms & Conditions" && (
                 <p
                   
                     dangerouslySetInnerHTML={{
@@ -295,7 +297,7 @@ const TestPage = () => {
                 )?.description}}
               
             />
-              )}
+              )} */}
             </motion.div>
           </AnimatePresence>
         </div>

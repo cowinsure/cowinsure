@@ -94,9 +94,9 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
       insurance_type_id: 6, // Hardcoded as per the required output
       responses: [],
     });
-    const [location, setLocation] = useState('')
+    // const [location, setLocation] = useState('')
     
-          const [loading, setLoading] = useState(true);
+          // const [loading, setLoading] = useState(true);
   
     const [submissionMessage, setSubmissionMessage] = useState('');
     const [openDialog, setOpenDialog] = useState(false);
@@ -110,10 +110,10 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                       const data = await response.json();
                       setProjectDetails(data.data);
       
-                      setLoading(false);
+                      // setLoading(false);
                   } catch (error) {
                       console.error('Error fetching project details:', error);
-                      setLoading(false);
+                      // setLoading(false);
                   }
               };
       
@@ -138,7 +138,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
           (pos) => {
             const { latitude, longitude } = pos.coords;
             const locationString = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
-            setLocation(locationString);
+            // setLocation(locationString);
       
             const field = findByLabel("Location");
             if (field) {
@@ -213,7 +213,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
       return formFields.find(item => item.label === label);
   }
   
-   const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, field:FormField) => {
+   const handleChange = (e:React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement | HTMLSelectElement>, field:FormField) => {
       const updatedResponses = formValues.responses.filter(
         (response) => response.field_id !== field.id
       );
@@ -461,8 +461,8 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                 className="mt-4 text-gray-700 space-y-1"
               >
                 <div className="flex justify-between">
-                  <span>Subtotal:</span>
-                  <span>{projectDetails.extra_data.sellingPrice}</span>
+                  <span>Subtotal:
+                  {projectDetails?.extra_data?.sellingPrice || 0}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Delivery Charge:</span>
@@ -470,7 +470,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                 </div>
                 <div className="flex justify-between font-bold border-t pt-2">
                   <span>Total:</span>
-                  <span>{projectDetails.extra_data.sellingPrice +1500}</span>
+                  <span>{projectDetails?.extra_data?.sellingPrice || 0 +1500}</span>
                 </div>
               </motion.div>
 
