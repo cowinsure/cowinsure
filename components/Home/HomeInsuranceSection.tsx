@@ -75,7 +75,7 @@ const HomeInsuranceSection: React.FC = () => {
       []);  
     
   return (
-    <section className=" py-[15vh] h-auto lg:h-auto  flex flex-col  lg:flex-col lg:justify-start  lg:items-center items-center justify-center bg-white">
+    <section className="pt-[10vh] pb-[5vh] h-auto lg:h-auto  flex flex-col  lg:flex-col lg:justify-start  lg:items-center items-center justify-center bg-white">
       <div className="max-w-4xl text-center">
         <GiBullHorns className='w-full lg:text-3xl text-xl text-center text-green-700 mb-2' />
 
