@@ -79,7 +79,7 @@ const CardsSection: React.FC = () => {
     <>
 
 
-     <div className=" flex flex-col justify-center items-center  text-center w-full mb-10">
+     <div className=" flex flex-col justify-center items-center  text-center w-full pt-10 mb-10">
             <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
             <h2 className="text-xl font-bold text-[#687469] text-start mb-3">Services</h2>
             <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">What we offer</h1>
