@@ -93,8 +93,8 @@ const PartnerAndInvestorSection = () => {
 
 
   return (
-    <div className='container mt-20 mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
-      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full mb-10">
+    <div className='container mt-8 mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5'>
+      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full mb-2">
         <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
         <h2 className="text-xl font-bold text-[#687469] text-start mb-3">Association</h2>
         <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start">Partner & Investor</h1>
