@@ -461,8 +461,8 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                 className="mt-4 text-gray-700 space-y-1"
               >
                 <div className="flex justify-between">
-                  <span>Subtotal:
-                  {projectDetails?.extra_data?.sellingPrice || 0}</span>
+                  <span>Subtotal:</span>
+                  <span>{(projectDetails?.extra_data?.sellingPrice || 0)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Delivery Charge:</span>
@@ -470,7 +470,7 @@ const CowPurchaseModal: React.FC<CowPurchaseModalProps> = ({ isOpen, onClose, on
                 </div>
                 <div className="flex justify-between font-bold border-t pt-2">
                   <span>Total:</span>
-                  <span>{projectDetails?.extra_data?.sellingPrice || 0 +1500}</span>
+                  <span>{(projectDetails?.extra_data?.sellingPrice || 0 )+1500}</span>
                 </div>
               </motion.div>
 
