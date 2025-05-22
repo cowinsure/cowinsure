@@ -235,15 +235,15 @@ const SwiperComponent = () => {
 
       }}
       
-      className=" absolute right-0 w-full bottom-[-400px] lg:bottom-[-100px] lg:right-0  md:left-0   lg:w-full z-10 flex flex-col lg:flex-row  rounded-lg">
+      className=" absolute bottom-0 right-0 w-full lg:bottom-[-100px] lg:right-0  md:left-0 lg:w-full z-10 flex flex-col lg:flex-row rounded-lg">
 
 
-        <div className="shadow-md flex items-center lg:h-32  bg-white flex-col lg:flex-row  gap-0 justify-between w-full lg:mx-20 rounded-lg">
+        <div className="shadow-md flex items-center lg:h-32 bg-white flex-col lg:flex-row gap-0 justify-between w-full lg:mx-20 rounded-lg">
           <div className="p-6 flex-1 flex justify-center items-center h-20 lg:h-auto">
             <div className='items-center mr-4'>
               {/* <GiBullHorns className='text-5xl text-green-600' /> */}
             </div>
-            <div className='flex flex-col justify-center items-center   w-[200px]'>
+            <div className='flex flex-col justify-center items-center w-[200px]'>
               <h3 className="font-semibold text-xl text-[#334B35]">Farmers Impacted</h3>
               <p className="text-md mt-2 text-[#687469]">4,136+ MSME Farms and Farmers</p>
             </div>

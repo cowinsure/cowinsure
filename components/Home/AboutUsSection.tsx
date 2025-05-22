@@ -82,7 +82,7 @@ useEffect(()=>{
 
     <div className='min-h-[600px]'>
       {aboutUsData.map((item , index)=>(
-        <div key={index} className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10 mt-[280px] lg:mt-2 '>
+        <div key={index} className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10 mt-[450px] lg:mt-2 '>
 <div  className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-center items-center relative'>
         {/* <div className='absolute rounded-full  bg-[#fcf4e6] lg:right-[35vh] right-[65px]  h-[300px] w-[300px] lg:h-[500px] lg:w-[500px]  '></div> */}
         {/* <motion.div
