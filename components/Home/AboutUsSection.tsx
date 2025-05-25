@@ -1,12 +1,19 @@
-'use client'
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { GiBullHorns } from 'react-icons/gi';
-// import { FaCheckCircle } from 'react-icons/fa';
-// import { motion } from 'framer-motion'; // Import Framer Motion
-import Link from 'next/link';
+"use client";
+import { useEffect, useState, useRef } from "react";
+import type React from "react";
 
-interface ExtraData{
+import Image from "next/image";
+import { GiBullHorns } from "react-icons/gi";
+import Link from "next/link";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+interface ExtraData {
   url: string;
   heading: string;
   description: string;
@@ -42,122 +49,311 @@ interface BaseCategoryApiResponse {
 }
 
 const AboutUsSection: React.FC = () => {
+  const [aboutUsData, setAboutUsData] = useState<BaseCard[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-const [aboutUsData, setAboutUsData] = useState<BaseCard[]>([]);
-useEffect(()=>{
-  const fetchBaseCategories = async()=>{
-    try{
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`);
-      const result: BaseCategoryApiResponse =await response.json();
-      if(result.status === 'success'){
-        const AboutUsCategory = result.data.find(category => category.name ==="About Us - Home Section");
-        if(AboutUsCategory){
-          fetchBaseCards(AboutUsCategory.id)
+  // Refs for animations
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const textRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const subtitleRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
+  const headingRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  const descriptionRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+  const buttonRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  useEffect(() => {
+    const fetchBaseCategories = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`
+        );
+        const result: BaseCategoryApiResponse = await response.json();
+        if (result.status === "success") {
+          const AboutUsCategory = result.data.find(
+            (category) => category.name === "About Us - Home Section"
+          );
+          if (AboutUsCategory) {
+            fetchBaseCards(AboutUsCategory.id);
+          }
         }
+      } catch (error) {
+        console.error("Error fetching base categories: ", error);
+        setIsLoading(false);
       }
-    }catch(error){
-      console.error("Error fetching base categories: ",error);
-    }
-  };
-  const fetchBaseCards = async(categoryId: string)=>{
-    try{
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`);
-      const result: BaseCardApiResponse = await response.json();
-      if(result.status=== 'success'){
-        setAboutUsData(result.data)
+    };
+
+    const fetchBaseCards = async (categoryId: string) => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`
+        );
+        const result: BaseCardApiResponse = await response.json();
+        if (result.status === "success") {
+          setAboutUsData(result.data);
+        }
+      } catch (error) {
+        console.error("Error fetching base cards: ", error);
+      } finally {
+        setIsLoading(false);
       }
+    };
 
-    }catch(error){
-      console.error("Error fetching base cards: ",error);
+    fetchBaseCategories();
+  }, []);
+
+  // GSAP animations
+  useEffect(() => {
+    if (!isLoading && aboutUsData.length > 0) {
+      const ctx = gsap.context(() => {
+        aboutUsData.forEach((_, index) => {
+          const imageElement = imageRefs.current[index];
+          const iconElement = iconRefs.current[index];
+          const subtitleElement = subtitleRefs.current[index];
+          const titleElement = titleRefs.current[index];
+          const headingElement = headingRefs.current[index];
+          const descriptionElement = descriptionRefs.current[index];
+          const buttonElement = buttonRefs.current[index];
+
+          if (
+            imageElement &&
+            iconElement &&
+            subtitleElement &&
+            titleElement &&
+            headingElement &&
+            descriptionElement &&
+            buttonElement
+          ) {
+            // Set initial states
+            // Image comes from left
+            gsap.set(imageElement, {
+              x: -100,
+              opacity: 0,
+            });
+
+            // Text elements come from top
+            gsap.set(
+              [
+                iconElement,
+                subtitleElement,
+                titleElement,
+                headingElement,
+                descriptionElement,
+                buttonElement,
+              ],
+              {
+                y: -50,
+                opacity: 0,
+              }
+            );
+
+            // Create timeline with scroll trigger
+            const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: imageElement.closest(".about-section-item"),
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse",
+                // markers: true, // Uncomment for debugging
+              },
+            });
+
+            // Image animation - slides from left
+            tl.to(imageElement, {
+              duration: 1.25,
+              x: 0,
+              opacity: 1,
+              ease: "power2.out",
+            });
+
+            // Icon animation - falls from top
+            tl.to(
+              iconElement,
+              {
+                duration: 0.75,
+                y: 0,
+                opacity: 1,
+                ease: "bounce.out",
+              },
+              "-=0.8"
+            );
+
+            // Subtitle animation - falls from top
+            tl.to(
+              subtitleElement,
+              {
+                duration: 0.75,
+                y: 0,
+                opacity: 1,
+                ease: "power2.out",
+              },
+              "-=0.6"
+            );
+
+            // Title animation - falls from top
+            tl.to(
+              titleElement,
+              {
+                duration: 0.75,
+                y: 0,
+                opacity: 1,
+                ease: "power2.out",
+              },
+              "-=0.6"
+            );
+
+            // Heading animation - falls from top
+            tl.to(
+              headingElement,
+              {
+                duration: 0.75,
+                y: 0,
+                opacity: 1,
+                ease: "power2.out",
+              },
+              "-=0.6"
+            );
+
+            // Description animation - falls from top
+            tl.to(
+              descriptionElement,
+              {
+                duration: 0.75,
+                y: 0,
+                opacity: 1,
+                ease: "power2.out",
+              },
+              "-=0.6"
+            );
+
+            // Button animation - falls from top
+            tl.to(
+              buttonElement,
+              {
+                duration: 0.75,
+                y: 0,
+                opacity: 1,
+                ease: "back.out(1.7)",
+              },
+              "-=0.4"
+            );
+
+            // Add hover animation for image
+            const imageInner = imageElement.querySelector(".image-inner");
+            if (imageInner) {
+              imageElement.addEventListener("mouseenter", () => {
+                gsap.to(imageInner, {
+                  scale: 1.05,
+                  duration: 0.3,
+                  ease: "power2.out",
+                });
+              });
+
+              imageElement.addEventListener("mouseleave", () => {
+                gsap.to(imageInner, {
+                  scale: 1,
+                  duration: 0.8,
+                  ease: "power2.out",
+                });
+              });
+            }
+          }
+        });
+      }, containerRef);
+
+      return () => ctx.revert();
     }
-  };
-  fetchBaseCategories();
-},[]);
+  }, [isLoading, aboutUsData]);
 
-
-
+  if (isLoading) {
+    return (
+      <div className="min-h-[600px] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading about us...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-
-
-    <div className='min-h-[600px]'>
-      {aboutUsData.map((item , index)=>(
-        <div key={index} className='flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-10 mt-[450px] lg:mt-2 '>
-<div  className='flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center  lg:justify-center items-center relative'>
-        {/* <div className='absolute rounded-full  bg-[#fcf4e6] lg:right-[35vh] right-[65px]  h-[300px] w-[300px] lg:h-[500px] lg:w-[500px]  '></div> */}
-        {/* <motion.div
-          animate={{ y: [1, -10, 1], opacity: [1, 0.5, 1] }}
-          transition={{
-            duration: 3,
-            ease: "easeInOut",
-            repeat: Infinity,
-          }}
-
-          className='absolute rounded-full   lg:bottom-[150px] lg:right-[19vh] bottom-[80px] right-[40px]  h-[10vh] w-[10vh] lg:h-[15vh] lg:w-[15vh]  bg-green-900'></motion.div> */}
-
-        <div className='relative px-10  '>
-
-          <div className="relative z-30 h-[300px] w-[300px] lg:h-[500px] lg:w-[500px] overflow-hidden border-gray-300 rounded-[5px] group">
-            <Image
-              src={item.image_url}
-              alt={item.name}
-              height={200}
-              width={300}
-              className="w-full h-full rounded-md object-cover"
-              unoptimized
-              priority
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="absolute w-0 h-full bg-white bg-opacity-20 transform group-hover:w-full transition-all duration-500 ease-in-out"></div>
+    <div ref={containerRef} className="min-h-[600px]">
+      {aboutUsData.map((item, index) => (
+        <div
+          key={index}
+          className="about-section-item flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-8 mt-[200px] min-[768px]:mt-[150px] lg:mt-8"
+        >
+          <div
+            ref={(el) => (imageRefs.current[index] = el)}
+            className="flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center lg:justify-center items-center relative"
+          >
+            <div className="relative px-10">
+              <div className="relative z-30 h-[300px] w-[300px] lg:h-[500px] lg:w-[500px] overflow-hidden border-gray-300 rounded-[5px] group">
+                <div className="image-inner w-full h-full">
+                  <Image
+                    src={item.image_url || "/placeholder.svg"}
+                    alt={item.name}
+                    height={500}
+                    width={500}
+                    className="w-full h-full rounded-md object-cover"
+                    unoptimized
+                    priority
+                  />
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute w-0 h-full bg-white bg-opacity-20 transform group-hover:w-full transition-all duration-500 ease-in-out"></div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* <motion.div
-            animate={{ y: [1, -10, 1], opacity: [1, 0.5, 1] }}
-            transition={{
-              duration: 3,
-              ease: "easeInOut",
-              repeat: Infinity,
-            }} className='absolute bg-green-800 z-20 lg:left-[0px] left-5 bottom-10 rounded-md h-[200px] w-[120px] lg:h-[250px] lg:w-[200px]'>
-
-          </motion.div>
-          <div className='absolute bg-transparent z-40 px-16 left-[0px] right-0 lg:bottom-[-60px] bottom-0 rounded-md h-[100px] w-full lg:h-[250px] lg:w-full flex justify-center items-center'>
-            <div className='w-full  bg-green-800 flex flex-row gap-4  justify-center items-center p-4 rounded-md '>
-
-              <div className='flex flex-col items-center'>
-                <span className='text-white text-3xl'>4,136</span>
-                <span className='text-white text-md'>Farmer Benefited</span>
-
-              </div>
-
+          <div className="pl-2 pr-2 flex-1 w-full lg:w-1/2 text-start">
+            <div ref={(el) => (iconRefs.current[index] = el)}>
+              <GiBullHorns className="w-auto text-3xl text-green-700 mb-3 pl-2 pr-2" />
             </div>
 
-          </div> */}
-        </div>
+            <span
+              ref={(el) => (subtitleRefs.current[index] = el)}
+              className="pl-2 pr-2 text-sm text-[#687469] uppercase font-semibold"
+            >
+              get to know about us
+            </span>
 
+            <h2
+              ref={(el) => (titleRefs.current[index] = el)}
+              className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl pl-2 pr-2"
+            >
+              {item.name}
+            </h2>
 
-      </div>
-      <div  className='pl-2 pr-2 flex-1 w-full lg:w-1/2 text-start'>
-        <GiBullHorns className='w-auto text-3xl text-green-700 mb-3 pl-2 pr-2' />
-        <span className="pl-2 pr-2 text-sm text-[#687469] uppercase font-semibold">get to know about us</span>
-        <h2 className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl pl-2 pr-2">
-          {item.name}
-        </h2>
-        <p className="mt-5 pl-2 pr-2 text-xl text-[#687469] ">
-          {item.extra_data.heading}
-        </p>
-        <p className="space-y-3 mb-8 pt-5 pl-2 pr-2 text-[18px] text-[#334b35]">
-          {item.extra_data.description}
-        </p>
-        <div className='flex items-center pl-2 pr-2'>
-          <Link href={item.extra_data.url} className="relative text-center p-3 lg:w-[150px] lg:h-[50px] bg-green-300 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center">
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">Learn more</span>
-            <div className="absolute inset-0 bg-green-800 transform -translate-x-[-145px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
-          </Link>
-        </div>
+            <p
+              ref={(el) => (headingRefs.current[index] = el)}
+              className="mt-5 pl-2 pr-2 text-xl text-[#687469]"
+            >
+              {item.extra_data.heading}
+            </p>
 
-      </div>
+            <p
+              ref={(el) => (descriptionRefs.current[index] = el)}
+              className="space-y-3 mb-8 pt-5 pl-2 pr-2 text-[18px] text-[#334b35]"
+            >
+              {item.extra_data.description}
+            </p>
 
+            <div className="flex items-center pl-2 pr-2">
+              <Link
+                ref={(el) => (buttonRefs.current[index] = el)}
+                href={item.extra_data.url}
+                className="relative text-center p-3 lg:w-[150px] lg:h-[50px] bg-green-300 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center"
+              >
+                <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                  Learn more
+                </span>
+                <div className="absolute inset-0 bg-green-800 transform -translate-x-[-145px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
+              </Link>
+            </div>
+          </div>
         </div>
       ))}
     </div>
