@@ -75,12 +75,19 @@ function CoreValueSection() {
     // Container:
     // - By default (below 650px): flex-row (letters on left, description on right)
     // - For devices with minimum width of 650px: flex-col (letters on top, description below)
+    <div>
+      <div className="text-center mb-8 min-[650px]:block">
+          <h2 className="text-3xl font-bold text-green-800 mb-2">Our Core Values</h2>
+          <p className="text-gray-700 text-2xl">The principles that guide everything we do</p>
+        </div>
     <div className="container mx-auto py-10 px-4 flex flex-row min-[650px]:flex-col items-center gap-8">
+      
+      <div className="flex flex-col min-[650px]:flex-row gap-2">
       
       {/* Letters Container:
           - Default: flex-col (vertical) for narrow screens.
           // For minimum width of 650px, switch to flex-row */}
-      <div className="flex flex-col min-[650px]:flex-row gap-2">
+          
         {coreValues.map((item, index) => (
           <motion.div
             key={item.letter}
@@ -121,6 +128,7 @@ function CoreValueSection() {
           </motion.div>
         </AnimatePresence>
       </div>
+    </div>
     </div>
   );
 }
