@@ -255,7 +255,11 @@ const AwardRecognitionSection = () => {
         >
           {partners.map((partner, index) => (
             <SwiperSlide key={partner.id}>
-              <div ref={(el) => (cardRefs.current[index] = el)}>
+              <div
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
+              >
                 <Link href={partner.extra_data.url} passHref>
                   <div className="relative flex justify-center h-[200px] items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
                     <Image

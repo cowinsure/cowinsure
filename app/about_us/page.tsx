@@ -282,7 +282,7 @@ const AboutUs: React.FC = () => {
             className="about-section-item flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-8 mt-[200px] min-[768px]:mt-[150px] lg:mt-8"
           >
             <div
-              ref={(el) => (imageRefs.current[index] = el)}
+              ref={(el) => {imageRefs.current[index] = el}}
               className="flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center lg:justify-center items-center relative"
             >
               <div className="relative px-10">
@@ -305,33 +305,45 @@ const AboutUs: React.FC = () => {
               </div>
             </div>
             <div className="pl-2 pr-2 flex-1 w-full lg:w-1/2 text-start">
-              <div ref={(el) => (iconRefs.current[index] = el)}>
+              <div
+                ref={(el) => {
+                  iconRefs.current[index] = el;
+                }}
+              >
                 <GiBullHorns className="w-auto text-3xl text-green-700 mb-3 pl-2 pr-2" />
               </div>
 
               <span
-                ref={(el) => (subtitleRefs.current[index] = el)}
+                ref={(el) => {
+                  subtitleRefs.current[index] = el;
+                }}
                 className="pl-2 pr-2 text-sm text-[#687469] uppercase font-semibold"
               >
                 get to know about us
               </span>
 
               <h2
-                ref={(el) => (titleRefs.current[index] = el)}
+                ref={(el) => {
+                  titleRefs.current[index] = el;
+                }}
                 className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl pl-2 pr-2"
               >
                 {item.name}
               </h2>
 
               <p
-                ref={(el) => (headingRefs.current[index] = el)}
+                ref={(el) => {
+                  headingRefs.current[index] = el;
+                }}
                 className="mt-5 pl-2 pr-2 text-xl text-[#687469]"
               >
                 {item.extra_data.heading}
               </p>
 
               <p
-                ref={(el) => (descriptionRefs.current[index] = el)}
+                ref={(el) => {
+                  descriptionRefs.current[index] = el;
+                }}
                 className="space-y-3 mb-8 pt-5 pl-2 pr-2 text-[18px] text-[#334b35]"
               >
                 {item.extra_data.description}
