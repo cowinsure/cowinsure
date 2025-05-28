@@ -231,13 +231,13 @@ const AwardRecognitionSection = () => {
           ref={subtitleRef}
           className="text-xl font-bold text-[#687469] text-start mb-3"
         >
-          achivement
+          achivements
         </h2>
         <h1
           ref={titleRef}
           className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start"
         >
-          Award & Recognitions
+          Awards & Recognitions
         </h1>
       </div>
       <div ref={swiperRef} className="w-full">

@@ -82,7 +82,7 @@ const FeaturedNewsSection: React.FC = () => {
     <section className="w-full container mx-auto py-8 flex flex-col items-center space-y-10">
       <div className="max-w-4xl text-center">
         <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
-        <h2 className="text-xl font-bold text-[#687469]">strength and vision</h2>
+        <h2 className="text-xl font-bold text-[#687469]">Strength and Vision</h2>
         <h1 className="text-5xl font-bold text-[#334b35]">Featured News</h1>
       </div>
       <p className='text-center font-semibold text-gray-500 mt-10 text-2xl lg:max-w-[800px]'>

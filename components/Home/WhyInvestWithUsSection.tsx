@@ -222,7 +222,7 @@ const WhyInvestWithUs: React.FC = () => {
         <h2 ref={subtitleRef} className="text-xl font-bold text-[#687469] text-start mb-3">our goal</h2>
         <h1 ref={titleRef} className="lg:text-5xl text-2xl min-w-[150px] mb-5 font-bold text-[#334b35] text-start">Why Invest With Us</h1>
         <p ref={titleDescRef} className='text-center font-semibold text-gray-500 mb-10 text-xl lg:text-2xl lg:max-w-[800px]'>
-          Our full value-chain model offers tangible growth opportunities
+          Our end-to-end value-chain approach unlocks concrete growth opportunities.
         </p>
       </div>
       <div ref={swiperRef} className='w-full'>
