@@ -58,12 +58,12 @@ const FaqSection: React.FC = () => {
       const ctx = gsap.context(() => {
         // Set initial states
         gsap.set(titleRef.current, {
-          y: 50,
+          y: -20,
           opacity: 0,
         });
 
         gsap.set(faqRefs.current, {
-          y: 30,
+          y: -100,
           opacity: 0,
         });
 
@@ -71,7 +71,7 @@ const FaqSection: React.FC = () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 80%",
+            start: "top 90%",
             end: "bottom 20%",
             toggleActions: "play none none reverse",
             // markers: true, // Uncomment for debugging
@@ -188,7 +188,7 @@ const FaqSection: React.FC = () => {
           {faqs.map((faq, index) => (
             <li
               key={index}
-              ref={(el) => (faqRefs.current[index] = el)}
+              ref={(el) => {faqRefs.current[index] = el}}
               className="border-b border-gray-200 pb-6 opacity-0"
             >
               <button
@@ -207,7 +207,7 @@ const FaqSection: React.FC = () => {
 
               <div className="overflow-hidden">
                 <p
-                  ref={(el) => (answerRefs.current[index] = el)}
+                  ref={(el) => {answerRefs.current[index] = el}}
                   className="mt-4 text-lg lg:text-xl text-gray-600 leading-relaxed"
                   style={{
                     height: expandedIndex === index ? "auto" : "0",

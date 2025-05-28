@@ -247,7 +247,7 @@ const HomeInsuranceSection: React.FC = () => {
         {insuranceSection.map((item, index) => (
           <div
             key={index}
-            ref={(el) => (cardRefs.current[index] = el)}
+            ref={(el) => {cardRefs.current[index] = el}}
             className="relative w-[400px] flex-col h-auto justify-center items-center group bg-gray-800 rounded-lg transform transition-transform duration-300 hover:scale-105"
           >
             <div className="relative h-[400px] rounded-lg bg-black overflow-hidden">

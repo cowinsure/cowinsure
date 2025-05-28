@@ -141,7 +141,7 @@ const AwardRecognitionSection = () => {
 
         // Icon animation - falls from top
         tl.to(iconRef.current, {
-          duration: 1,
+          duration: 0.35,
           y: 0,
           opacity: 1,
           ease: "bounce.out",
@@ -151,9 +151,10 @@ const AwardRecognitionSection = () => {
         tl.to(
           subtitleRef.current,
           {
-            duration: 1,
+            duration: 0.35,
             y: 0,
             opacity: 1,
+            delay: 0.5,
             ease: "bounce.out",
           },
           "-=0.5"
@@ -163,9 +164,10 @@ const AwardRecognitionSection = () => {
         tl.to(
           titleRef.current,
           {
-            duration: 1,
+            duration: 0.35,
             y: 0,
             opacity: 1,
+            delay: 0.5,
             ease: "bounce.out",
           },
           "-=0.5"
@@ -175,7 +177,7 @@ const AwardRecognitionSection = () => {
         tl.to(
           swiperRef.current,
           {
-            duration: 1,
+            duration: 0.5,
             x: 0,
             opacity: 1,
             ease: "power2.out",
@@ -187,13 +189,13 @@ const AwardRecognitionSection = () => {
         tl.to(
           cardRefs.current,
           {
-            duration: 0.8,
+            duration: 0.25,
             opacity: 1,
             scale: 1,
             y: 0,
             ease: "back.out(1.7)",
             stagger: {
-              amount: 1.2, // Total time to stagger all cards
+              amount: 1, // Total time to stagger all cards
               from: "start", // Start from first card
             },
           },
