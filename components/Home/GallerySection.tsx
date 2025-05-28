@@ -72,7 +72,7 @@ const GallerySection = () => {
         );
         gsap.set(cardRefs.current, {
           y: 50,
-          scale: 0.8,
+          scale: 0.1,
           opacity: 0,
         });
       const tl = gsap.timeline({
@@ -87,7 +87,6 @@ const GallerySection = () => {
         y: 0,
         opacity: 1,
         duration: 0.35,
-        delay: 0.5,
         ease: "bounce.out",
       });
       tl.to(subtitleRef.current, {
@@ -112,7 +111,7 @@ const GallerySection = () => {
       tl.to(
           swiperRef.current,
           {
-            duration: 0.5,
+            duration: 0.25,
             x: 0,
             opacity: 1,
             ease: "power2.out",
@@ -122,7 +121,7 @@ const GallerySection = () => {
         tl.to(
           cardRefs.current,
           {
-            duration: 0.25,
+            duration: 0.5,
             opacity: 1,
             scale: 1,
             y: 0,

@@ -80,7 +80,7 @@ const FaqSection: React.FC = () => {
 
         // Title animation
         tl.to(titleRef.current, {
-          duration: 1,
+          duration: 0.35,
           y: 0,
           opacity: 1,
           ease: "power2.out",
@@ -94,7 +94,7 @@ const FaqSection: React.FC = () => {
             y: 0,
             opacity: 1,
             ease: "power2.out",
-            stagger: 0.1,
+            stagger: 0.3,
           },
           "-=0.5"
         );

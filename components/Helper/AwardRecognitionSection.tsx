@@ -124,7 +124,7 @@ const AwardRecognitionSection = () => {
         // Individual cards start invisible and scaled down
         gsap.set(cardRefs.current, {
           opacity: 0,
-          scale: 0.8,
+          scale: 0.1,
           y: 50,
         });
 
@@ -153,8 +153,8 @@ const AwardRecognitionSection = () => {
           {
             duration: 0.35,
             y: 0,
-            opacity: 1,
             delay: 0.5,
+            opacity: 1,
             ease: "bounce.out",
           },
           "-=0.5"
@@ -166,8 +166,8 @@ const AwardRecognitionSection = () => {
           {
             duration: 0.35,
             y: 0,
-            opacity: 1,
             delay: 0.5,
+            opacity: 1,
             ease: "bounce.out",
           },
           "-=0.5"
@@ -177,7 +177,7 @@ const AwardRecognitionSection = () => {
         tl.to(
           swiperRef.current,
           {
-            duration: 0.5,
+            duration: 0.35,
             x: 0,
             opacity: 1,
             ease: "power2.out",
