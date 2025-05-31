@@ -40,7 +40,7 @@ const AppBranding: React.FC<AppBrandingProps> = ({ title, description, customSty
           <p className="text-lg lg:text-2xl mb-6 lg:w-full lg:text-[36px]">{description}</p>
         ) : (
           <p className="text-lg lg:text-2xl mb-6  lg:text-[28px]">
-            Join us in making a difference - your investment can uplift communities and transform millions of lives for the better.
+            Together, we can make a real difference—your investment brings hope and progress to millions.
           </p>
         )}
 

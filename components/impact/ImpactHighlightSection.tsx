@@ -86,7 +86,7 @@ const ImpactHighlightSection: React.FC = () => {
             </div>
 
             <p className='text-center font-semibold text-gray-500 mt-10 text-2xl lg:max-w-[80vh]'>
-                Apart from ensuring access to finance, input resources, and access to markets; we are thriving everyday towards our vision to make agriculture simplified in the hands of every farmer.
+                While ensuring access to finance, resources, and markets, we remain driven by our mission to place simplified agriculture in the hands of every farmer. 
 
             </p>
 

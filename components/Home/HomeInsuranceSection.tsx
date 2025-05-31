@@ -139,7 +139,7 @@ const HomeInsuranceSection: React.FC = () => {
 
         // Icon animation - falls from top
         tl.to(iconRef.current, {
-          duration: 0.75,
+          duration: 0.35,
           y: 0,
           opacity: 1,
           ease: "bounce.out",
@@ -149,7 +149,8 @@ const HomeInsuranceSection: React.FC = () => {
         tl.to(
           subtitleRef.current,
           {
-            duration: 0.75,
+            duration: 0.35,
+            delay: 0.35,
             y: 0,
             opacity: 1,
             ease: "bounce.out",
@@ -161,7 +162,8 @@ const HomeInsuranceSection: React.FC = () => {
         tl.to(
           titleRef.current,
           {
-            duration: 0.75,
+            duration: 0.35,
+            delay: 0.35,
             y: 0,
             opacity: 1,
             ease: "bounce.out",
@@ -191,7 +193,7 @@ const HomeInsuranceSection: React.FC = () => {
             y: 0,
             ease: "back.out(1.7)",
             stagger: {
-              amount: 0.75, // Total time to stagger all cards
+              amount: 0.5, // Total time to stagger all cards
               from: "start", // Start from first card
             },
           },
@@ -247,7 +249,7 @@ const HomeInsuranceSection: React.FC = () => {
         {insuranceSection.map((item, index) => (
           <div
             key={index}
-            ref={(el) => (cardRefs.current[index] = el)}
+            ref={(el) => {cardRefs.current[index] = el}}
             className="relative w-[400px] flex-col h-auto justify-center items-center group bg-gray-800 rounded-lg transform transition-transform duration-300 hover:scale-105"
           >
             <div className="relative h-[400px] rounded-lg bg-black overflow-hidden">

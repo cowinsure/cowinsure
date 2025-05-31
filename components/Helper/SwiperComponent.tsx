@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiMiniArrowLongLeft } from "react-icons/hi2";
 import { gsap } from "gsap";
+import type { Swiper as SwiperType } from 'swiper'
 
 interface SliderData {
   id: number;
@@ -146,7 +147,8 @@ const SwiperComponent = () => {
             },
             "-=0.8"
           );
-      });
+      })
+      return ctx
     }
   };
 
@@ -157,7 +159,7 @@ const SwiperComponent = () => {
     }
   }, [activeIndex, sliderData]);
 
-  const handleSlideChange = (swiper: any) => {
+  const handleSlideChange = (swiper: SwiperType) => {
     setActiveIndex(swiper.activeIndex);
   };
 
@@ -236,19 +238,19 @@ const SwiperComponent = () => {
                 {/* Overlay Content */}
                 <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center px-4 pb-20">
                   <p
-                    ref={(el) => (titleRefs.current[index] = el)}
+                    ref={(el) => {titleRefs.current[index] = el}}
                     className="text-white text-2xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-4xl leading-tight"
                   >
                     {slide.title}
                   </p>
 
                   <div
-                    ref={(el) => (lineRefs.current[index] = el)}
+                    ref={(el) => {lineRefs.current[index] = el}}
                     className="h-1 bg-white mb-8 opacity-0"
                   />
 
                   <div
-                    ref={(el) => (buttonRefs.current[index] = el)}
+                    ref={(el) => {buttonRefs.current[index] = el}}
                     className="opacity-0 z-20 relative"
                   >
                     <Link

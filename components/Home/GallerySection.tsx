@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,6 +7,12 @@ import 'swiper/css/pagination';
 import Image from 'next/image';
 import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+if(typeof window !== 'undefined'){
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface GalleryData {
   id: number;
@@ -25,7 +31,14 @@ interface ApiResponse {
 
 const GallerySection = () => {
   const [galleryData, setGalleryData] = useState<GalleryData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const iconRef = useRef<HTMLDivElement>(null);
+    const subtitleRef = useRef<HTMLHeadingElement>(null);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const swiperRef = useRef<HTMLDivElement>(null);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const fetchGalleryData = async () => {
@@ -37,11 +50,93 @@ const GallerySection = () => {
         }
       } catch (error) {
         console.error('Error fetching gallery data:', error);
+      } finally{
+        setIsLoading(false)
       }
     };
 
     fetchGalleryData();
   }, []);
+
+  useEffect(() => {
+    if(!isLoading && galleryData.length > 0) {
+      const ctx = gsap.context(()=>{
+        gsap.set([iconRef.current, subtitleRef.current, titleRef.current],{
+          y: -100,
+          opacity: 0,
+        });
+        gsap.set(swiperRef.current, {
+          x: -100,
+          opacity: 0,
+        }
+        );
+        gsap.set(cardRefs.current, {
+          y: 50,
+          scale: 0.1,
+          opacity: 0,
+        });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse',
+        }
+      });
+      tl.to(iconRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.35,
+        ease: "bounce.out",
+      });
+      tl.to(subtitleRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.35,
+        delay: 0.5,
+        ease: "bounce.out",
+      },
+    "-=0.5"
+  );
+      tl.to(titleRef.current, {
+        y: 0,
+        opacity: 1,
+        duration: 0.35,
+        delay: 0.5,
+        ease: "bounce.out",
+      },
+    "-=0.5"
+  );
+
+      tl.to(
+          swiperRef.current,
+          {
+            duration: 0.25,
+            x: 0,
+            opacity: 1,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        );
+        tl.to(
+          cardRefs.current,
+          {
+            duration: 0.5,
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            ease: "back.out(1.7)",
+            stagger: {
+              amount: 1, // Total time to stagger all cards
+              from: "start", // Start from first card
+            },
+          },
+          "-=0.5"
+        );
+      }, containerRef);
+      return () => ctx.revert();
+    }
+  }, [isLoading, galleryData]);
 
   const handleImageClick = (image: string) => {
     setSelectedImage(image);
@@ -51,15 +146,27 @@ const GallerySection = () => {
     setSelectedImage(null);
   };
 
+    if (isLoading) {
+    return (
+      <div className="container mt-8 mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading gallery...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[70vh] h-auto p-5'>
+    <div ref={containerRef} className='container mx-auto mt-20 flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[70vh] h-auto p-5'>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
-        <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />
-        <h2 className="text-xl font-bold text-[#687469] text-start mb-3">organic food</h2>
-        <h1 className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35] mb-10 text-start">Watch Our Gallery</h1>
+        <div ref={iconRef}><GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' /></div>
+        <h2 ref={subtitleRef} className="text-xl font-bold text-[#687469] text-start mb-3">organic food</h2>
+        <h1 ref={titleRef} className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35] mb-10 text-start">Watch Our Gallery</h1>
       </div>
 
-      <Swiper
+      <div ref={swiperRef} className='w-full mt-20 mb-20'>
+        <Swiper
         breakpoints={{
           640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
@@ -73,9 +180,9 @@ const GallerySection = () => {
         modules={[Navigation, Autoplay]}
         className="flex-1 w-full lg:h-auto justify-center items-center lg:justify-center lg:items-center"
       >
-        {galleryData.map((item) => (
+        {galleryData.map((item, index) => (
           <SwiperSlide key={item.id}>
-            <div className="relative lg:w-auto lg:h-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
+            <div ref={(el) => {cardRefs.current[index] = el}} className="relative lg:w-auto lg:h-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
               <Image
               src={item.image_url}
               alt={item.title}
@@ -91,7 +198,7 @@ const GallerySection = () => {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </Swiper></div>
 
       {selectedImage && (
         <>

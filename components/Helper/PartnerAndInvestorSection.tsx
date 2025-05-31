@@ -244,7 +244,7 @@ const PartnerAndInvestorSection = () => {
           ref={titleRef}
           className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35] text-start mb-6"
         >
-          Partner & Investor
+          Partners & Investors
         </h1>
       </div>
 
@@ -266,7 +266,7 @@ const PartnerAndInvestorSection = () => {
           {partners.map((partner, index) => (
             <SwiperSlide key={partner.id}>
               <div
-                ref={(el) => (cardRefs.current[index] = el)}
+                ref={(el) => {cardRefs.current[index] = el}}
                 className="relative flex justify-center items-center h-[200px] lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white shadow-lg overflow-hidden"
               >
                 <Link href={partner.extra_data.url} passHref>
