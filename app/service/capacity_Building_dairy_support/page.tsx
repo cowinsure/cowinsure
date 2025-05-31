@@ -1,3 +1,5 @@
+'use client'
+
 import HerosSectionCommon from '@/components/common/HerosSectionCommon'
 import React from 'react'
 import bannerImage from '../../../public/aibg.png';

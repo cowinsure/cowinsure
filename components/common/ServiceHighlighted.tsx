@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link';
