@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
 
   images: {
-    domains: ['webv1.insurecow.com'],
+    domains: ['website-v1.insurecow.com'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'webv1.insurecow.com',
+        hostname: 'website-v1.insurecow.com',
         port: '',
         pathname: '/media/**',
         search: '',
