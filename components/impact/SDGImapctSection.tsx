@@ -1,149 +1,270 @@
-'use client'
+"use client"
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from "react"
+import Image from "next/image"
+import { GiBullHorns } from "react-icons/gi"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import zeroHunger from "../../public/zerohungerSDG.png"
+import provertSDG from "../../public/noprovertySDG.png"
+import DecentWorkSDG from "../../public/decentworkSDG.png"
+import climateSDG from "../../public/climateSDG.jpg"
+import genderequality from "../../public/genderEqualitySDG.png"
+import partnerShipSDG from "../../public/partnershipsForTheGoalsSDG.png"
 
-import React from 'react'
-import { GiBullHorns } from 'react-icons/gi'
-import zeroHunger from '../../public/zerohungerSDG.png';
-import provertSDG from '../../public/noprovertySDG.png';
-import DecentWorkSDG from '../../public/decentworkSDG.png';
-import climateSDG from '../../public/climateSDG.jpg';
-import genderequality from '../../public/genderEqualitySDG.png';
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
-export default function SDGImapctSection() {
+const sdgData = [
+  {
+    image: provertSDG,
+    title: "No Poverty",
+    description: "End poverty in all its forms everywhere by providing financial inclusion to farmers.",
+    color: 'bg-red-600',
+  },
+  {
+    image: zeroHunger,
+    title: "Zero Hunger",
+    description: "Achieve food security and improved nutrition through sustainable agriculture.",
+    color: 'bg-yellow-500',
+  },
+  {
+    image: genderequality,
+    title: "Gender Equality",
+    description: "Achieve gender equality and empower all women and men in agriculture.",
+    color: 'bg-orange-700',
+  },
+  {
+    image: DecentWorkSDG,
+    title: "Decent Work",
+    description: "Promote sustained, inclusive economic growth and decent work for all farmers.",
+    color: 'bg-pink-800',
+  },
+  {
+    image: climateSDG,
+    title: "Climate Action",
+    description: "Take urgent action to combat climate change through sustainable farming.",
+    color: 'bg-green-700',
+  },
+  {
+    image: partnerShipSDG,
+    title: "Partnerships for the Goals",
+    description: "Strengthen the means of production and income generation for smallholder farmers.",
+    color: 'bg-blue-900',
+  }
+]
+
+export default function SDGImpactSection() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const iconRef = useRef<HTMLDivElement>(null)
+  const subtitleRef = useRef<HTMLHeadingElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const descriptionRef = useRef<HTMLParagraphElement>(null)
+  const cardsContainerRef = useRef<HTMLDivElement>(null)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set([iconRef.current, subtitleRef.current, titleRef.current, descriptionRef.current], {
+        y: -100,
+        opacity: 0,
+      })
+
+      gsap.set(cardsContainerRef.current, {
+        x: -100,
+        opacity: 0,
+      })
+
+      gsap.set(cardRefs.current, {
+        opacity: 0,
+        scale: 0.8,
+        y: 50,
+      })
+
+      // Create timeline for sequential animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      })
+
+      // Header animations - fall from top
+      tl.to(iconRef.current, {
+        duration: 0.75,
+        y: 0,
+        opacity: 1,
+        ease: "power2.out",
+      })
+        .to(
+          subtitleRef.current,
+          {
+            duration: 0.75,
+            y: 0,
+            opacity: 1,
+            ease: "power2.out",
+          },
+          "-=0.5",
+        )
+        .to(
+          titleRef.current,
+          {
+            duration: 0.75,
+            y: 0,
+            opacity: 1,
+            ease: "power2.out",
+          },
+          "-=0.5",
+        )
+        .to(
+          descriptionRef.current,
+          {
+            duration: 0.75,
+            y: 0,
+            opacity: 1,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        )
+
+      // Cards container animation - slides from left
+      tl.to(
+        cardsContainerRef.current,
+        {
+          duration: 0.75,
+          x: 0,
+          opacity: 1,
+          ease: "power2.out",
+        },
+        "-=0.3",
+      )
+
+      // Individual cards animation - staggered appearance
+      tl.to(
+        cardRefs.current,
+        {
+          duration: 0.75,
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          ease: "back.out(1.7)",
+          stagger: {
+            amount: 0.75,
+            from: "start",
+          },
+        },
+        "-=0.5",
+      )
+
+      // Add flip animations for each card
+      cardRefs.current.forEach((card, index) => {
+        if (card) {
+          const frontSide = card.querySelector(".front-side")
+          const backSide = card.querySelector(".back-side")
+
+          if (frontSide && backSide) {
+            // Set initial states for flip
+            gsap.set(backSide, { rotationX: 180 })
+
+            // Hover animations
+            card.addEventListener("mouseenter", () => {
+              gsap.to(frontSide, {
+                rotationX: -180,
+                duration: 0.6,
+                ease: "power2.inOut",
+              })
+              gsap.to(backSide, {
+                rotationX: 0,
+                duration: 0.6,
+                ease: "power2.inOut",
+              })
+            })
+
+            card.addEventListener("mouseleave", () => {
+              gsap.to(frontSide, {
+                rotationX: 0,
+                duration: 0.6,
+                ease: "power2.inOut",
+              })
+              gsap.to(backSide, {
+                rotationX: 180,
+                duration: 0.6,
+                ease: "power2.inOut",
+              })
+            })
+          }
+        }
+      })
+    }, containerRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <div className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center py-20'>
+    <div
+      ref={containerRef}
+      className="container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center py-20"
+    >
+      <div className="max-w-4xl text-center">
+        <div ref={iconRef}>
+          <GiBullHorns className="w-full text-3xl text-center text-green-700 mb-3" />
+        </div>
+        <h2 ref={subtitleRef} className="text-xl font-bold text-[#687469]">
+          SDG
+        </h2>
+        <h1 ref={titleRef} className="text-5xl font-bold text-[#334b35]">
+          SDG Impact
+        </h1>
+      </div>
 
-    <div className="max-w-4xl text-center">
-        <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
+      <p ref={descriptionRef} className="text-center font-semibold text-gray-500 mt-10 text-2xl lg:max-w-[80vh]">
+        The activities we undertake everyday are helping to achieve the below Sustainable Development Goals as defined
+        by UN.
+      </p>
 
-        <h2 className="text-xl font-bold text-[#687469]">SDG</h2>
-        <h1 className="text-5xl font-bold text-[#334b35]">SDG Impact</h1>
+      <div
+        ref={cardsContainerRef}
+        className="w-[99%] rounded-lg flex flex-col lg:flex-row min-[640px]:flex-row justify-center items-center gap-2 lg:gap-5 md:gap-5 lg:justify-center lg:items-center"
+      >
+        {sdgData.map((sdg, index) => (
+          <div
+            key={index}
+            ref={(el) => {
+              cardRefs.current[index] = el
+            }}
+            className="mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer rounded-lg flex flex-row items-center justify-center"
+            style={{ perspective: "1000px" }}
+          >
+            <div className="relative w-full h-[25vh] min-[640px]:h-[25vh]" style={{ transformStyle: "preserve-3d" }}>
+              {/* Front Side - Image */}
+              <div
+                className="front-side absolute inset-0 h-[25vh] min-[640px]:h-auto rounded-lg overflow-hidden"
+                style={{ backfaceVisibility: "hidden" }}
+              >
+                <Image
+                  src={sdg.image || "/placeholder.svg"}
+                  alt={sdg.title}
+                  fill
+                  className="rounded-lg object-cover w-full h-full overflow-clip"
+                />
+              </div>
 
+              {/* Back Side - Message */}
+              <div
+                className={`back-side absolute inset-0 w-full h-full rounded-lg bg-gradient-to-br ${sdg.color} flex flex-col justify-center items-center p-4 text-white`}
+                style={{ backfaceVisibility: "hidden" }}
+              >
+                <h3 className="text-sm font-bold mb-2 text-center">{sdg.title}</h3>
+                <p className="text-xs text-center leading-relaxed">{sdg.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-
-    <p className='text-center font-semibold text-gray-500 mt-10 text-2xl lg:max-w-[80vh]'>
-    The activities we undertake everyday are helping to achieve the below Sustainable Development Goals as defined by UN.
-
-    </p>
-
-      <div className='w-[99%] rounded-lg flex flex-col lg:flex-row min-[640px]:flex-row justify-center items-center gap-2 lg:gap-5 md:gap-5 lg:justify-center lg:items-center'>
-
-  
-
-{/* {[...Array(6)].map((_, index) => (
-    <
-))} */}
-
-<motion.div
-     
-        initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-        whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-        viewport={{ once: true }} // Only animate once
-        transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
-    >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[640px]:h-auto">
-            <Image
-                src={provertSDG}
-                alt="Profile"
-                objectFit='cover'
-                className="rounded-lg object-cover w-full h-full overflow-clip"
-            />
-           
-        </div>
-    </motion.div>
-
-    <motion.div
-     
-        initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-        whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-        viewport={{ once: true }} // Only animate once
-        transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
-    >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[640px]:h-auto">
-            <Image
-                src={zeroHunger}
-                alt="Profile"
-                objectFit='cover'
-                className="rounded-lg object-cover w-full h-full overflow-clip"
-            />
-        
-        </div>
-    </motion.div>
-
-
-    <motion.div
-     
-        initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-        whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-        viewport={{ once: true }} // Only animate once
-        transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
-    >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[640px]:h-auto">
-            <Image
-                src={genderequality}
-                alt="Profile"
-                objectFit='cover'
-                className="rounded-lg object-cover w-full h-full overflow-clip"
-            />
-          
-        </div>
-    </motion.div>
-
-    <motion.div
-     
-        initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-        whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-        viewport={{ once: true }} // Only animate once
-        transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
-    >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[640px]:h-auto">
-            <Image
-                src={DecentWorkSDG}
-                alt="Profile"
-                objectFit='cover'
-                className="rounded-lg object-cover w-full h-full overflow-clip"
-            />
-          
-        </div>
-    </motion.div>
-
-    <motion.div
-     
-        initial={{ opacity: 0, x: 100 }} // Initial state (hidden)
-        whileInView={{ opacity: 1, x: 0 }} // Animate when in view
-        viewport={{ once: true }} // Only animate once
-        transition={{ duration: 0.3 }} 
-        className='mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer shadow-lg rounded-lg flex items-center justify-center'
-    >
-        <div className="rounded-lg overflow-hidden relative h-[25vh] min-[640px]:h-auto">
-            <Image
-                src={climateSDG}
-                alt="Profile"
-                objectFit='cover'
-                className="rounded-lg object-cover w-full h-full overflow-clip"
-            />
-           
-        </div>
-    </motion.div>
-
-         
-     
-
-
-
-
-  
-  
-    </div>  
-
-
-
-</div>
   )
 }

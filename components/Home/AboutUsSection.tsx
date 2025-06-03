@@ -173,7 +173,7 @@ const AboutUsSection: React.FC = () => {
                 duration: 0.75,
                 y: 0,
                 opacity: 1,
-                ease: "bounce.out",
+                ease: "power2.out",
               },
               "-=0.8"
             );

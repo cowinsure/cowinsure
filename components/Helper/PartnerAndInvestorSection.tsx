@@ -137,8 +137,8 @@ const PartnerAndInvestorSection = () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 60%",
-            end: "bottom 40%",
+            start: "top 80%",
+            end: "bottom 20%",
             toggleActions: "play none none reverse",
             // markers: true,
           },
@@ -149,7 +149,7 @@ const PartnerAndInvestorSection = () => {
           duration: 0.35,
           y: 0,
           opacity: 1,
-          ease: "bounce.out",
+          ease: "power2.out",
         });
 
         // Subtitle animation - falls from top
@@ -160,7 +160,7 @@ const PartnerAndInvestorSection = () => {
             y: 0,
             opacity: 1,
             delay: 0.5,
-            ease: "bounce.out",
+            ease: "power2.out",
           },
           "-=0.5"
         );
@@ -173,7 +173,7 @@ const PartnerAndInvestorSection = () => {
             y: 0,
             opacity: 1,
             delay: 0.5,
-            ease: "bounce.out",
+            ease: "power2.out",
           },
           "-=0.5"
         );

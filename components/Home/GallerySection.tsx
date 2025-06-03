@@ -87,14 +87,14 @@ const GallerySection = () => {
         y: 0,
         opacity: 1,
         duration: 0.35,
-        ease: "bounce.out",
+        ease: "power2.out",
       });
       tl.to(subtitleRef.current, {
         y: 0,
         opacity: 1,
         duration: 0.35,
         delay: 0.5,
-        ease: "bounce.out",
+        ease: "power2.out",
       },
     "-=0.5"
   );
@@ -103,7 +103,7 @@ const GallerySection = () => {
         opacity: 1,
         duration: 0.35,
         delay: 0.5,
-        ease: "bounce.out",
+        ease: "power2.out",
       },
     "-=0.5"
   );

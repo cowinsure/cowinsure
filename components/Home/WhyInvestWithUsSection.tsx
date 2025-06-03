@@ -133,14 +133,14 @@ const WhyInvestWithUs: React.FC = () => {
           opacity: 1,
           y: 0,
           duration: 0.35,
-          ease: "bounce.out",
+          ease: "power2.out",
         });
         tl.to(subtitleRef.current, {
           opacity: 1,
           y: 0,
           duration: 0.35,
           delay: 0.35,
-          ease: "bounce.out",
+          ease: "power2.out",
         },
         "-=0.5"
       );
@@ -149,7 +149,7 @@ const WhyInvestWithUs: React.FC = () => {
           y: 0,
           duration: 0.35,
           delay: 0.35,
-          ease: "bounce.out",
+          ease: "power2.out",
         },
         "-=0.5"
       );
@@ -158,7 +158,7 @@ const WhyInvestWithUs: React.FC = () => {
           y: 0,
           duration: 0.35,
           delay: 0.35,
-          ease: "bounce.out",
+          ease: "power2.out",
         },
         "-=0.5"
       );

@@ -142,7 +142,7 @@ const CardsSection: React.FC = () => {
           duration: 0.35,
           y: 0,
           opacity: 1,
-          ease: "bounce.out",
+          ease: "power2.out",
         });
 
         // Subtitle animation - falls from top
@@ -153,7 +153,7 @@ const CardsSection: React.FC = () => {
             delay: 0.35,
             y: 0,
             opacity: 1,
-            ease: "bounce.out",
+            ease: "power2.out",
           },
           "-=0.5"
         );
@@ -166,7 +166,7 @@ const CardsSection: React.FC = () => {
             delay: 0.35,
             y: 0,
             opacity: 1,
-            ease: "bounce.out",
+            ease: "power2.out",
           },
           "-=0.5"
         );

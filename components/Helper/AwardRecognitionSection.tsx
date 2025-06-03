@@ -144,7 +144,7 @@ const AwardRecognitionSection = () => {
           duration: 0.35,
           y: 0,
           opacity: 1,
-          ease: "bounce.out",
+          ease: "power2.out",
         });
 
         // Subtitle animation - falls from top
@@ -155,7 +155,7 @@ const AwardRecognitionSection = () => {
             y: 0,
             delay: 0.5,
             opacity: 1,
-            ease: "bounce.out",
+            ease: "power2.out",
           },
           "-=0.5"
         );
@@ -168,7 +168,7 @@ const AwardRecognitionSection = () => {
             y: 0,
             delay: 0.5,
             opacity: 1,
-            ease: "bounce.out",
+            ease: "power2.out",
           },
           "-=0.5"
         );
