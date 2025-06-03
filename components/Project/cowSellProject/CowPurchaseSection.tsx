@@ -131,7 +131,7 @@ const CowPurchaseSection = () => {
                   />
                 </div>
                 <div className=' absolute bottom-0 left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible '>
-                  <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-red-600 rounded-t-lg text-2xl font-bold text-white'>
+                  <div className='relative z-20 flex flex-col h-[100px] justify-center items-center  bg-green-800 rounded-t-lg text-2xl font-bold text-white'>
                     <div className='flex flex-row lg:flex-row items-center justify-start text-center w-full px-4  py-2'>
 
                       <div className='text-white text-xl font-bold'>{formatToBDT(portfolio.extra_data.sellingPrice)} TK</div>
@@ -146,7 +146,7 @@ const CowPurchaseSection = () => {
                   </div>
                 </div>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="bg-red-600 text-white px-6 py-4 rounded-lg text-3xl font-bold">
+                  <span className="bg-red-700 text-white px-6 py-4 rounded-lg text-3xl font-bold">
                     Sold Out
                   </span>
                 </div>
