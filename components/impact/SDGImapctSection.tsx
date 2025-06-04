@@ -95,7 +95,7 @@ export default function SDGImpactSection() {
 
       // Header animations - fall from top
       tl.to(iconRef.current, {
-        duration: 0.75,
+        duration: 0.5,
         y: 0,
         opacity: 1,
         ease: "power2.out",
@@ -103,7 +103,7 @@ export default function SDGImpactSection() {
         .to(
           subtitleRef.current,
           {
-            duration: 0.75,
+            duration: 0.5,
             y: 0,
             opacity: 1,
             ease: "power2.out",
@@ -113,7 +113,7 @@ export default function SDGImpactSection() {
         .to(
           titleRef.current,
           {
-            duration: 0.75,
+            duration: 0.5,
             y: 0,
             opacity: 1,
             ease: "power2.out",
@@ -123,7 +123,7 @@ export default function SDGImpactSection() {
         .to(
           descriptionRef.current,
           {
-            duration: 0.75,
+            duration: 0.5,
             y: 0,
             opacity: 1,
             ease: "power2.out",
@@ -135,7 +135,7 @@ export default function SDGImpactSection() {
       tl.to(
         cardsContainerRef.current,
         {
-          duration: 0.75,
+          duration: 0.5,
           x: 0,
           opacity: 1,
           ease: "power2.out",
@@ -147,7 +147,7 @@ export default function SDGImpactSection() {
       tl.to(
         cardRefs.current,
         {
-          duration: 0.75,
+          duration: 0.5,
           opacity: 1,
           scale: 1,
           y: 0,
