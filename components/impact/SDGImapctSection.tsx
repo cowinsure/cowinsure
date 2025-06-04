@@ -95,7 +95,7 @@ export default function SDGImpactSection() {
 
       // Header animations - fall from top
       tl.to(iconRef.current, {
-        duration: 0.75,
+        duration: 0.5,
         y: 0,
         opacity: 1,
         ease: "power2.out",
@@ -103,7 +103,7 @@ export default function SDGImpactSection() {
         .to(
           subtitleRef.current,
           {
-            duration: 0.75,
+            duration: 0.5,
             y: 0,
             opacity: 1,
             ease: "power2.out",
@@ -113,7 +113,7 @@ export default function SDGImpactSection() {
         .to(
           titleRef.current,
           {
-            duration: 0.75,
+            duration: 0.5,
             y: 0,
             opacity: 1,
             ease: "power2.out",
@@ -123,7 +123,7 @@ export default function SDGImpactSection() {
         .to(
           descriptionRef.current,
           {
-            duration: 0.75,
+            duration: 0.5,
             y: 0,
             opacity: 1,
             ease: "power2.out",
@@ -135,7 +135,7 @@ export default function SDGImpactSection() {
       tl.to(
         cardsContainerRef.current,
         {
-          duration: 0.75,
+          duration: 0.5,
           x: 0,
           opacity: 1,
           ease: "power2.out",
@@ -147,7 +147,7 @@ export default function SDGImpactSection() {
       tl.to(
         cardRefs.current,
         {
-          duration: 0.75,
+          duration: 0.5,
           opacity: 1,
           scale: 1,
           y: 0,
@@ -161,7 +161,7 @@ export default function SDGImpactSection() {
       )
 
       // Add flip animations for each card
-      cardRefs.current.forEach((card, index) => {
+      cardRefs.current.forEach((card) => {
         if (card) {
           const frontSide = card.querySelector(".front-side")
           const backSide = card.querySelector(".back-side")
@@ -228,7 +228,7 @@ export default function SDGImpactSection() {
 
       <div
         ref={cardsContainerRef}
-        className="w-[99%] rounded-lg flex flex-col lg:flex-row min-[640px]:flex-row justify-center items-center gap-2 lg:gap-5 md:gap-5 lg:justify-center lg:items-center"
+        className="w-[99%] rounded-lg flex flex-1 flex-wrap flex-row justify-center items-center gap-2 lg:gap-5 md:gap-5 lg:justify-center lg:items-center"
       >
         {sdgData.map((sdg, index) => (
           <div
@@ -236,13 +236,13 @@ export default function SDGImpactSection() {
             ref={(el) => {
               cardRefs.current[index] = el
             }}
-            className="mt-20 lg:w-[25vh] sm:w-[30vh] md:w-[25vh] cursor-pointer rounded-lg flex flex-row items-center justify-center"
+            className="mt-20 w-[25vh] cursor-pointer rounded-lg flex flex-col items-center justify-center"
             style={{ perspective: "1000px" }}
           >
-            <div className="relative w-full h-[25vh] min-[640px]:h-[25vh]" style={{ transformStyle: "preserve-3d" }}>
+            <div className="relative w-full h-[25vh]" style={{ transformStyle: "preserve-3d" }}>
               {/* Front Side - Image */}
               <div
-                className="front-side absolute inset-0 h-[25vh] min-[640px]:h-auto rounded-lg overflow-hidden"
+                className="front-side absolute inset-0 h-[25vh] rounded-lg overflow-hidden"
                 style={{ backfaceVisibility: "hidden" }}
               >
                 <Image
@@ -258,8 +258,8 @@ export default function SDGImpactSection() {
                 className={`back-side absolute inset-0 w-full h-full rounded-lg bg-gradient-to-br ${sdg.color} flex flex-col justify-center items-center p-4 text-white`}
                 style={{ backfaceVisibility: "hidden" }}
               >
-                <h3 className="text-sm font-bold mb-2 text-center">{sdg.title}</h3>
-                <p className="text-xs text-center leading-relaxed">{sdg.description}</p>
+                <h3 className="text-xl lg:text-sm font-bold mb-2 text-center">{sdg.title}</h3>
+                <p className="text-lg lg:text-xs text-center leading-relaxed">{sdg.description}</p>
               </div>
             </div>
           </div>
