@@ -258,8 +258,8 @@ export default function SDGImpactSection() {
                 className={`back-side absolute inset-0 w-full h-full rounded-lg bg-gradient-to-br ${sdg.color} flex flex-col justify-center items-center p-4 text-white`}
                 style={{ backfaceVisibility: "hidden" }}
               >
-                <h3 className="text-sm font-bold mb-2 text-center">{sdg.title}</h3>
-                <p className="text-xs text-center leading-relaxed">{sdg.description}</p>
+                <h3 className="text-xl lg:text-sm font-bold mb-2 text-center">{sdg.title}</h3>
+                <p className="text-lg lg:text-xs text-center leading-relaxed">{sdg.description}</p>
               </div>
             </div>
           </div>
