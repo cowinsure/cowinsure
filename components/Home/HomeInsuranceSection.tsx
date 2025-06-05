@@ -207,7 +207,7 @@ const HomeInsuranceSection: React.FC = () => {
 
   if (isLoading) {
     return (
-      <section className="pt-[10vh] pb-[5vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-white">
+      <section className="pt-[40vh] pb-[35vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-white">
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading insurance options...</p>
