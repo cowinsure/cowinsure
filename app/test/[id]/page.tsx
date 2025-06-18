@@ -5,6 +5,7 @@ import CowPurchaseModal from "@/components/Project/cowSellProject/CowPurchaseMod
 import { useParams } from "next/navigation";
 import { formatToBDT } from "@/utils/currencyFormatter";
 import { motion, AnimatePresence } from "framer-motion";
+import village from "@/public/village.png"
 
 interface ExtraData {
   age: number;
@@ -217,7 +218,17 @@ const TestPage = () => {
         </div>
 
         {/* Content Area */}
-        <div className="bg-white p-6 pb-10 rounded-lg shadow-sm m-2 min-h-[200px]">
+        <div className="relative min-h-[200px] m-2 rounded-lg shadow-sm overflow-hidden">
+  {/* Background layer with transparency */}
+  <div
+    className="absolute inset-0 bg-no-repeat bg-bottom bg-[length:100%] opacity-5 z-0"
+    style={{
+      backgroundImage: `url(${village.src})`,
+    }}
+  />
+
+  {/* Foreground content */}
+  <div className="relative z-10 p-6 pb-10 rounded-lg">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -297,9 +308,10 @@ const TestPage = () => {
                 )?.description}}
               
             />
-              )} */}
+              )}  */}
             </motion.div>
           </AnimatePresence>
+          </div>
         </div>
       </div>
     </motion.div>
