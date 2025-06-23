@@ -179,8 +179,7 @@ const FaqSection: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="faq-section relative h-auto py-10 pb-20">
-      <BackgroundImageLayer imageUrl={village.src} opacity={0.1} size="80%" />
-
+      <BackgroundImageLayer imageUrl={village.src} opacity={0.1} size="80%" position="bottom" />
       <div className="relative z-10 container mx-auto px-4">
         <h2
           ref={titleRef}

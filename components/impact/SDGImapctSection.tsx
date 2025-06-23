@@ -19,31 +19,37 @@ if (typeof window !== "undefined") {
 const sdgData = [
   {
     image: provertSDG,
+    title: "No Poverty",
     description: "End poverty in all its forms everywhere by providing financial inclusion to farmers.",
     color: 'bg-red-600',
   },
   {
     image: zeroHunger,
+    title: "Zero Hunger",
     description: "Achieve food security and improved nutrition through sustainable agriculture.",
     color: 'bg-yellow-500',
   },
   {
     image: genderequality,
+    title: "Gender Equality",
     description: "Achieve gender equality and empower all women and men in agriculture.",
     color: 'bg-orange-700',
   },
   {
     image: DecentWorkSDG,
+    title: "Decent Work",
     description: "Promote sustained, inclusive economic growth and decent work for all farmers.",
     color: 'bg-pink-800',
   },
   {
     image: climateSDG,
+    title: "Climate Action",
     description: "Take urgent action to combat climate change through sustainable farming.",
     color: 'bg-green-700',
   },
   {
     image: partnerShipSDG,
+    title: "Partnerships for the Goals",
     description: "Strengthen the means of production and income generation for smallholder farmers.",
     color: 'bg-blue-900',
   }
@@ -241,7 +247,7 @@ export default function SDGImpactSection() {
               >
                 <Image
                   src={sdg.image || "/placeholder.svg"}
-                  alt='SDG Image'
+                  alt={sdg.title}
                   fill
                   className="rounded-lg object-cover w-full h-full overflow-clip"
                 />

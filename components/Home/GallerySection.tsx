@@ -9,6 +9,8 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import BackgroundImageLayer from '../common/BackgroundImageLayer';
+import farm from '@/public/Farm.png'
 
 if(typeof window !== 'undefined'){
   gsap.registerPlugin(ScrollTrigger);
@@ -158,14 +160,15 @@ const GallerySection = () => {
   }
 
   return (
-    <div ref={containerRef} className='container mx-auto mt-20 flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[70vh] h-auto p-5'>
+    <div ref={containerRef} className='relative container mx-auto mt-20 flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[70vh] h-auto p-5'>
+      <BackgroundImageLayer imageUrl={farm.src} opacity={0.1} position='bottom' size='70%' />
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
         <div ref={iconRef}><GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' /></div>
         <h2 ref={subtitleRef} className="text-xl font-bold text-[#687469] text-start mb-3">organic food</h2>
         <h1 ref={titleRef} className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35] mb-10 text-start">Watch Our Gallery</h1>
       </div>
 
-      <div ref={swiperRef} className='w-full mt-20 mb-20'>
+      <div ref={swiperRef} className='max-[767px]:w-[85%] w-full mt-10 mb-20'>
         <Swiper
         breakpoints={{
           640: { slidesPerView: 1 },
@@ -182,7 +185,7 @@ const GallerySection = () => {
       >
         {galleryData.map((item, index) => (
           <SwiperSlide key={item.id}>
-            <div ref={(el) => {cardRefs.current[index] = el}} className="relative lg:w-auto lg:h-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
+            <div ref={(el) => {cardRefs.current[index] = el}} className="relative mt-2 mb-5 mr-3 ml-3 shadow-lg shadow-gray-800 rounded-lg lg:w-auto lg:sh-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
               <Image
               src={item.image_url}
               alt={item.title}

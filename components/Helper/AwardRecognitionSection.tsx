@@ -10,6 +10,7 @@ import { GiBullHorns } from "react-icons/gi";
 import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import BackgroundImageLayer from "../common/BackgroundImageLayer";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -221,8 +222,9 @@ const AwardRecognitionSection = () => {
   return (
     <div
       ref={containerRef}
-      className=" flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5"
+      className="relative flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5"
     >
+      <BackgroundImageLayer imageUrl="/farm.png" size="70%" position="bottom"/>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full mb-2">
         <div ref={iconRef}>
           <GiBullHorns className="lg:w-auto w-full text-2xl text-start text-green-700 mb-2" />
