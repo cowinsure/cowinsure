@@ -150,7 +150,8 @@ const GallerySection = () => {
 
     if (isLoading) {
     return (
-      <div className="container mt-8 mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5">
+      <div className="relative container mt-8 mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[500px] h-auto p-5">
+        <BackgroundImageLayer imageUrl={farm.src} opacity={0.1} position='bottom' size='70%' />
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading gallery...</p>

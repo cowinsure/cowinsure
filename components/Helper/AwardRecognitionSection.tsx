@@ -10,7 +10,7 @@ import { GiBullHorns } from "react-icons/gi";
 import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import BackgroundImageLayer from "../common/BackgroundImageLayer";
+// import BackgroundImageLayer from "../common/BackgroundImageLayer";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -210,7 +210,7 @@ const AwardRecognitionSection = () => {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5">
+      <div className="flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[600px] h-auto p-5">
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading awards...</p>
@@ -222,10 +222,10 @@ const AwardRecognitionSection = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5"
+      className="relative flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[600px] h-auto p-5"
     >
-      <BackgroundImageLayer imageUrl="/farm.png" size="70%" position="bottom"/>
-      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full mb-2">
+      {/* <BackgroundImageLayer imageUrl="/farm.png" size="80%" position="bottom"/> */}
+      <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full max-[1023px]:mb-5">
         <div ref={iconRef}>
           <GiBullHorns className="lg:w-auto w-full text-2xl text-start text-green-700 mb-2" />
         </div>
@@ -237,12 +237,12 @@ const AwardRecognitionSection = () => {
         </h2>
         <h1
           ref={titleRef}
-          className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35]  text-start"
+          className="lg:text-5xl text-2xl min-w-[150px] font-bold text-[#334b35] text-start"
         >
           Awards & Recognitions
         </h1>
       </div>
-      <div ref={swiperRef} className="w-full">
+      <div ref={swiperRef} className="w-[98%]">
         <Swiper
           breakpoints={{
             640: { slidesPerView: 1 },
@@ -265,7 +265,7 @@ const AwardRecognitionSection = () => {
                 }}
               >
                 <Link href={partner.extra_data.url} passHref>
-                  <div className="relative flex justify-center h-[200px] items-center lg:w-auto lg:h-[300px] cursor-pointer group rounded-md bg-white">
+                  <div className="relative flex justify-center items-center w-[300px] h-[250px] cursor-pointer group rounded-md bg-[#F6F4EC] bg-transparent">
                     <Image
                       src={partner.image_url}
                       alt={partner.name}

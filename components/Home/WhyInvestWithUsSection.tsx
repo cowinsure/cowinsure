@@ -9,6 +9,7 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import { GiBullHorns } from 'react-icons/gi';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
+import BackgroundImageLayer from '../common/BackgroundImageLayer';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -204,7 +205,8 @@ const WhyInvestWithUs: React.FC = () => {
 
     if (isLoading) {
     return (
-      <div className="flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5">
+      <div className="relative flex flex-col mt-10 justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-[700px] h-auto p-5">
+        <BackgroundImageLayer imageUrl='/farmpic.png' opacity={0.07}/>
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading investing reasons...</p>
@@ -214,7 +216,8 @@ const WhyInvestWithUs: React.FC = () => {
   }
 
   return (
-    <div ref={containerRef} className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto p-5'>
+    <div ref={containerRef} className='relative container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto p-5'>
+      <BackgroundImageLayer imageUrl='/farmpic.png' opacity={0.07}/>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
         <div ref={iconRef}>
           <GiBullHorns className='lg:w-auto w-full text-2xl text-start text-green-700 mb-2' />

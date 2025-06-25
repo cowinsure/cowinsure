@@ -208,7 +208,8 @@ const CardsSection: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-[400px] flex items-center justify-center">
+      <div className="min-h-[700px] relative flex items-center justify-center">
+      <BackgroundImageLayer imageUrl='/village3.png' opacity={0.1} size="80%"/>
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading services...</p>
