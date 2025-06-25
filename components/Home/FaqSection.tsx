@@ -4,6 +4,9 @@ import type React from "react";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BackgroundImageLayer from "../common/BackgroundImageLayer";
+
+import village from "../../public/village.png";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -165,18 +168,19 @@ const FaqSection: React.FC = () => {
 
   if (isLoading) {
     return (
-      <section className="faq-section h-auto py-10 pb-20">
+      <section className="faq-section min-h-[500px] h-auto py-10 pb-20">
         <div className="container mx-auto px-4 text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading FAQs...</p>
+          <p className="text-gray-600 ">Loading FAQs...</p>
         </div>
       </section>
     );
   }
 
   return (
-    <section ref={sectionRef} className="faq-section h-auto py-10 pb-20">
-      <div className="container mx-auto px-4">
+    <section ref={sectionRef} className="faq-section relative h-auto py-10 pb-20">
+      <BackgroundImageLayer imageUrl={village.src} opacity={0.1} size="80%" position="bottom" />
+      <div className="relative z-10 container mx-auto px-4">
         <h2
           ref={titleRef}
           className="text-2xl lg:text-5xl font-bold mb-24 mt-5 text-[#334b35] text-center opacity-0"

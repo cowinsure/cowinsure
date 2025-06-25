@@ -6,6 +6,7 @@ import Link from "next/link";
 import { GiBullHorns } from "react-icons/gi";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import BackgroundImageLayer from "../common/BackgroundImageLayer";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -207,7 +208,8 @@ const CardsSection: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-[400px] flex items-center justify-center">
+      <div className="min-h-[700px] relative flex items-center justify-center">
+      <BackgroundImageLayer imageUrl='/village3.png' opacity={0.1} size="80%"/>
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading services...</p>
@@ -217,7 +219,8 @@ const CardsSection: React.FC = () => {
   }
 
   return (
-    <div ref={containerRef} className="py-10">
+    <div ref={containerRef} className="relative py-10">
+      <BackgroundImageLayer imageUrl='/village3.png' opacity={0.1} size="80%"/>
       <div className="flex flex-col justify-center items-center text-center w-full pt-10 mb-10">
         <div ref={iconRef}>
           <GiBullHorns className="lg:w-auto w-full text-2xl text-start text-green-700 mb-2" />
