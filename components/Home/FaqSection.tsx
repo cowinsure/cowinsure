@@ -168,7 +168,8 @@ const FaqSection: React.FC = () => {
 
   if (isLoading) {
     return (
-      <section className="faq-section min-h-[500px] h-auto py-10 pb-20">
+      <section className="faq-section relative flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full min-h-[500px] h-auto py-10 pb-20">
+        <BackgroundImageLayer imageUrl={village.src} opacity={0.1} size="80%" position="bottom" />
         <div className="container mx-auto px-4 text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600 ">Loading FAQs...</p>
