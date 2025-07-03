@@ -19,7 +19,7 @@ const Footer = () => {
          InsureCow
         </h2>
         <p className="mt-3 text-gray-600">
-         Bangladesh Office: House 109, Road 5, Block B, Niketon, Dhaka, Bangladesh
+         Bangladesh Office: House 117, Road 5, Block B, Niketon, Dhaka, Bangladesh
         </p>
         <p className="mt-3 text-gray-600">
          Singapore Office: 192 Waterloo St. #05-03 Skyline, Singapore 187966 
