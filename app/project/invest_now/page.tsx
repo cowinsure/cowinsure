@@ -9,6 +9,10 @@ import Link from 'next/link';
 import { formatToBDT } from '@/utils/currencyFormatter';
 import { FaArrowRightLong } from 'react-icons/fa6';
 
+interface ExtraData{
+  isSold: boolean;
+}
+
 interface Portfolio {
     id: string;
     name: string;
@@ -24,6 +28,7 @@ interface Portfolio {
     description: string;
     created_at: string;
     updated_at: string;
+    extra_data: ExtraData;
   }
   
   interface ApiResponse {
@@ -49,6 +54,8 @@ function InvestNow() {
       const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
     
       const [categories, setCategories] = useState<Category[]>([]);
+
+      const [isLoading, setIsLoading] = useState(true);
     
       console.log(categories);
     
@@ -66,6 +73,7 @@ function InvestNow() {
         }
       } catch (error) {
         console.error('Error fetching categories:', error);
+        setIsLoading(false);
       }
     };
     
@@ -81,11 +89,24 @@ function InvestNow() {
         }
       } catch (error) {
         console.error('Error fetching portfolios:', error);
+      } finally{
+        setIsLoading(false);
       }
     };
 
     fetchCategories();
-  }, []);
+  }, [isLoading]);
+
+        if (isLoading) {
+    return (
+      <section className="pt-[50vh] pb-[50vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-white">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading Projects...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="h-auto pb-10 lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
@@ -185,11 +206,17 @@ function InvestNow() {
        
                        </div>
        
-                       <Link href={`/project/project_details/${portfolio.id}`} className='absolute w-full lg:w-[300px] bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
+                       {portfolio.extra_data.isSold ? (
+                        <div className='absolute w-full lg:w-[300px] bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
+                         <span className='z-50 text-white text-center group-hover:text-yellow-500 transition-all duration-500'>Completed</span>
+                       </div>
+                         ):(
+                        <Link href={`/project/project_details/${portfolio.id}`} className='absolute w-full lg:w-[300px] bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
                          <div className='relative z-20 flex flex-col h-[50px] w-[50px] justify-center items-center bg-yellow-500 rounded-full text-2xl font-bold text-white group-hover:bg-white transition-all duration-500'>
                            <span className='z-50 text-white text-center group-hover:text-green-800 transition-all duration-500'><FaArrowRightLong /></span>
                          </div>
                        </Link>
+                       )}
                      </div>
                    </>
                  ))}
