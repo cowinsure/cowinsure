@@ -186,7 +186,7 @@ const GallerySection = () => {
       >
         {galleryData.map((item, index) => (
           <SwiperSlide key={item.id}>
-            <div ref={(el) => {cardRefs.current[index] = el}} className="relative mt-2 mb-5 mr-3 ml-3 aspect-[3/2] shadow-lg shadow-gray-800 rounded-lg lg:w-auto lg:sh-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
+            <div ref={(el) => {cardRefs.current[index] = el}} className="relative mt-2 mb-5 mr-3 ml-3 aspect-[3/2] shadow-md shadow-gray-800 rounded-lg lg:w-auto lg:sh-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
               <Image
               src={item.image_url}
               alt={item.title}
