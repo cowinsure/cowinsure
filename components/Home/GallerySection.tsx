@@ -186,14 +186,12 @@ const GallerySection = () => {
       >
         {galleryData.map((item, index) => (
           <SwiperSlide key={item.id}>
-            <div ref={(el) => {cardRefs.current[index] = el}} className="relative mt-2 mb-5 mr-3 ml-3 shadow-lg shadow-gray-800 rounded-lg lg:w-auto lg:sh-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
+            <div ref={(el) => {cardRefs.current[index] = el}} className="relative mt-2 mb-5 mr-3 ml-3 aspect-[3/2] shadow-lg shadow-gray-800 rounded-lg lg:w-auto lg:sh-auto cursor-pointer group" onClick={() => handleImageClick(item.image_url)}>
               <Image
               src={item.image_url}
               alt={item.title}
-              objectFit='cover'
-              className="rounded-md object-cover"
-              width={500}
-              height={300}
+              fill
+              className="rounded-md object-cover object-center transition-transform"
               unoptimized={true} // Add this line to bypass Next.js image optimization
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex justify-center items-center">
