@@ -346,7 +346,8 @@ const AboutUsSection: React.FC = () => {
             <div className="flex items-center pl-2 pr-2">
               <Link
                 ref={(el) => {buttonRefs.current[index] = el}}
-                href={item.extra_data.url}
+                href="/about_us#about"
+                scroll={true}
                 className="relative text-center p-3 lg:w-[150px] lg:h-[50px] bg-green-300 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center"
               >
                 <span className="relative z-10 group-hover:text-white transition-colors duration-300">
