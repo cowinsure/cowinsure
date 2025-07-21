@@ -163,8 +163,8 @@ const ImpactHighlightSection: React.FC = () => {
   }
 
     return (
-        <div ref={containerRef} className='container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center py-20'>
-
+        <div ref={containerRef} className='container relative mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center py-20'>
+ 
             <div className="max-w-4xl text-center">
                 <div ref={iconRef}>
                   <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />

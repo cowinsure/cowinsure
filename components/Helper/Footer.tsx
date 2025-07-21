@@ -3,10 +3,10 @@ import React from 'react'
 // import google from '../../public/googleplay.svg';
 // import apple from '../../public/appstore.png';
 import { CiLinkedin } from "react-icons/ci";
-import { FaXTwitter } from "react-icons/fa6";
 import { FaFacebookSquare } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { FaSquareInstagram } from "react-icons/fa6";
+// import { FaXTwitter } from "react-icons/fa6";
+// import { FaYoutube } from "react-icons/fa";
+// import { FaSquareInstagram } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -19,7 +19,7 @@ const Footer = () => {
          InsureCow
         </h2>
         <p className="mt-3 text-gray-600">
-         Bangladesh Office: House 109, Road 5, Block B, Niketon, Dhaka, Bangladesh
+         Bangladesh Office: House 117, Road 5, Block B, Niketon, Dhaka, Bangladesh
         </p>
         <p className="mt-3 text-gray-600">
          Singapore Office: 192 Waterloo St. #05-03 Skyline, Singapore 187966 
@@ -27,21 +27,21 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="flex gap-3 mt-4">
-          <a href="#" className="p-1 bg-black text-white rounded">
+          <a href="https://www.linkedin.com/company/insurecow/" className="p-1 bg-black text-white rounded">
           <CiLinkedin  className='text-2xl'/>
           </a>
-          <a href="#" className="p-2 bg-black text-white rounded">
-           <FaXTwitter/>
-          </a>
-          <a href="#" className="p-2 bg-black text-white rounded">
+          <a href="https://www.facebook.com/share/1P4UStavgY/" className="p-2 bg-black text-white rounded">
           <FaFacebookSquare/>
+          </a>
+          {/* <a href="#" className="p-2 bg-black text-white rounded">
+           <FaXTwitter/>
           </a>
           <a href="#" className="p-2 bg-black text-white rounded">
           <FaYoutube/>
           </a>
           <a href="#" className="p-2 bg-black text-white rounded">
           <FaSquareInstagram/>
-          </a>
+          </a> */}
         </div>
 
         {/* Contact Info */}

@@ -1,19 +1,18 @@
 "use client";
 import AppBranding from "@/components/Project/AppBranding";
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import banner from "../../public/farmers-with.jpg";
 import bannerGenereal from "../../public/farmerfieldimg.jpeg";
 import bannerGenereal2 from "../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg";
-import { GiBullHorns } from "react-icons/gi";
 import FaqSection from "@/components/Home/FaqSection";
 import ContactUs from "@/components/Helper/ContactUs";
 import CoreValueSection from "@/components/AboutPage/CoreValueSection";
 import BannerGeneral from "@/components/Home/BannerGeneral";
 import AwardRecognitionSection from "@/components/Helper/AwardRecognitionSection";
 import ServiceHighlighted from "@/components/common/ServiceHighlighted";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AboutUsDetails from "@/components/AboutPage/AboutUsDetails";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -61,7 +60,6 @@ interface BaseCategoryApiResponse {
 
 const AboutUs: React.FC = () => {
   const [aboutUsData, setAboutUsData] = useState<BaseCard[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
   const iconRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -69,6 +67,7 @@ const AboutUs: React.FC = () => {
   const titleRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   const headingRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const descriptionRefs = useRef<(HTMLParagraphElement | null)[]>([]);
+
   useEffect(() => {
     const fetchBaseCategories = async () => {
       try {
@@ -82,15 +81,10 @@ const AboutUs: React.FC = () => {
           );
           if (AboutUsCategory) {
             fetchBaseCards(AboutUsCategory.id);
-          } else {
-            setIsLoading(false);
           }
-        } else {
-          setIsLoading(false);
         }
       } catch (error) {
         console.error("Error fetching base categories: ", error);
-        setIsLoading(false);
       }
     };
     const fetchBaseCards = async (categoryId: string) => {
@@ -104,15 +98,13 @@ const AboutUs: React.FC = () => {
         }
       } catch (error) {
         console.error("Error fetching base cards: ", error);
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchBaseCategories();
   }, []);
 
   useEffect(() => {
-    if (!isLoading && aboutUsData.length > 0) {
+    if (aboutUsData.length > 0) {
       const ctx = gsap.context(() => {
         aboutUsData.forEach((_, index) => {
           const imageElement = imageRefs.current[index];
@@ -255,103 +247,20 @@ const AboutUs: React.FC = () => {
       }, containerRef);
       return () => ctx.revert();
     }
-  }, [isLoading, aboutUsData]);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-[600px] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading about us...</p>
-        </div>
-      </div>
-    );
-  }
+  }, [aboutUsData]);
 
   return (
-    <div className=" lg:h-auto h-auto">
+    <div className=" lg:h-auto h-auto overflow-x-hidden">
       <AppBranding
         title="Stronger Together, Enriching Farmers' Future!"
         bannerUrl={banner}
       />
 
-      <div ref={containerRef} className="min-h-[600px]">
-        {aboutUsData.map((item, index) => (
-          <div
-            key={index}
-            className="about-section-item flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-8 mt-[200px] min-[768px]:mt-[150px] lg:mt-8"
-          >
-            <div
-              ref={(el) => {imageRefs.current[index] = el}}
-              className="flex-1 w-full lg:w-1/2 lg:pr-10 pb-10 flex justify-center lg:justify-center items-center relative"
-            >
-              <div className="relative px-10">
-                <div className="relative z-30 h-[300px] w-[300px] lg:h-[500px] lg:w-[500px] overflow-hidden border-gray-300 rounded-[5px] group">
-                  <div className="image-inner w-full h-full">
-                    <Image
-                      src={item.image_url || "/placeholder.svg"}
-                      alt={item.name}
-                      height={500}
-                      width={500}
-                      className="w-full h-full rounded-md object-cover"
-                      unoptimized
-                      priority
-                    />
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="absolute w-0 h-full bg-white bg-opacity-20 transform group-hover:w-full transition-all duration-500 ease-in-out"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="pl-2 pr-2 flex-1 w-full lg:w-1/2 text-start">
-              <div
-                ref={(el) => {
-                  iconRefs.current[index] = el;
-                }}
-              >
-                <GiBullHorns className="w-auto text-3xl text-green-700 mb-3 pl-2 pr-2" />
-              </div>
-
-              <span
-                ref={(el) => {
-                  subtitleRefs.current[index] = el;
-                }}
-                className="pl-2 pr-2 text-sm text-[#687469] uppercase font-semibold"
-              >
-                get to know about us
-              </span>
-
-              <h2
-                ref={(el) => {
-                  titleRefs.current[index] = el;
-                }}
-                className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl pl-2 pr-2"
-              >
-                {item.name}
-              </h2>
-
-              <p
-                ref={(el) => {
-                  headingRefs.current[index] = el;
-                }}
-                className="mt-5 pl-2 pr-2 text-xl text-[#687469]"
-              >
-                {item.extra_data.heading}
-              </p>
-
-              <p
-                ref={(el) => {
-                  descriptionRefs.current[index] = el;
-                }}
-                className="space-y-3 mb-8 pt-5 pl-2 pr-2 text-[18px] text-[#334b35]"
-              >
-                {item.extra_data.description}
-              </p>
-            </div>
-          </div>
-        ))}
+      <Suspense fallback={<div>Loading About section...</div>}>
+      <div id="about">
+        <AboutUsDetails/>
       </div>
+      </Suspense>
 
       <ServiceHighlighted
         url=""

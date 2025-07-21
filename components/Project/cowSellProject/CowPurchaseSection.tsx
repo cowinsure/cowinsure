@@ -23,7 +23,7 @@ interface ExtraData {
   cowBreed: string;
   weightKg: number;
   expectedFinalWeight: number;
-  isSold: boolean
+  isSold: boolean;
 }
 
 interface Portfolio {
