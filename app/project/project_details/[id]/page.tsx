@@ -88,7 +88,10 @@ const DetailsID = () => {
 
 
 
-  }, [profitCount])
+  }, [investmentValue,
+  profitCount,
+  projectDetails?.expected_return_min,
+  projectDetails?.expected_return_max,])
 
   console.log(investmentValue, maxTotalReturn, minTotalReturn);
 
@@ -103,7 +106,14 @@ const DetailsID = () => {
   };
 
   if (loading) {
-    return <div className='h-screen w-screen text-center'>Loading...</div>;
+    return (
+      <div className="min-h-[600px] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <p className="text-gray-600">Loading Project Details...</p>
+        </div>
+      </div>
+    );
   }
 
 
