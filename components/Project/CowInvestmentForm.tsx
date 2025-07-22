@@ -135,32 +135,35 @@ const CowInvestmentForm = () => {
   return (
 
     <>
-        <div className=' h-full w-auto border border-green-400 flex flex-col justify-center items-center lg:flex-col p-5'>
-      <form onSubmit={handleSubmit} className="space-y-4 ">
+        <div className=' h-full w-auto flex flex-col justify-center items-center lg:flex-col p-5'>
+          <h2 className="text-3xl font-bold text-[#334b35] text-center mb-10">
+                Invest on Cow
+              </h2>
+      <form onSubmit={handleSubmit} className="space-y-6 ">
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
           <div className="flex-1">
-            <label htmlFor="name" className="block text-lg text-start font-medium text-green-600">Name</label>
             <input
               type="text"
+              placeholder='Name'
               id="name"
               name="name"
               value={formValues.name}
               onChange={(e) => setFormValues({ ...formValues, [e.target.name]: e.target.value })}
 
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="mt-1 block w-full px-4 py-3 rounded-md shadow-sm bg-[#F6F4EC] focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
               required
             />
           </div>
           <div className="flex-1">
-            <label htmlFor="phone" className="block text-start text-lg font-medium text-green-600">Phone Number</label>
             <input
               type="number"
+              placeholder='Phone Number'
               id="phone"
               name="phone"
               value={formValues.phone}
               onChange={(e) => setFormValues({ ...formValues, [e.target.name]: e.target.value })}
 
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+              className="mt-1 block w-full px-4 py-3 rounded-md shadow-sm bg-[#F6F4EC] focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
               required
             />
           </div>
@@ -168,9 +171,9 @@ const CowInvestmentForm = () => {
 
 
         <div>
-          <label htmlFor="designation" className="text-start block text-lg font-medium text-green-600">{findByLabel("Occupation")?.label}</label>
           <input
             type="text"
+            placeholder='Occupation'
             id="designation"
             name="designation"
             value={formValues.responses.find(response => response.field_id === findByLabel("Occupation")?.id)?.value || ''}
@@ -180,7 +183,7 @@ const CowInvestmentForm = () => {
               const field = findByLabel("Occupation"); 
               if (field) handleChange(e, field);
             }}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+            className="mt-1 block w-full px-4 py-3 rounded-md shadow-sm bg-[#F6F4EC] focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
             required
           />
         </div>
@@ -193,22 +196,25 @@ const CowInvestmentForm = () => {
             onChange={()=>{
               setChecked(!isChecked)
             }}
-            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
+            className="h-4 w-4 text-green-600 focus:ring-green-500 rounded"
             required
           />
           <label htmlFor="termsAccepted" className="ml-2 block text-sm text-green-600">
             I accept the terms and conditions
           </label>
         </div>
-        <div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-          >
-            {isSubmitting ? 'Submitting...' : 'Submit'}
-          </button>
-        </div>
+        <div className="flex items-center justify-center pt-4 pl-2 pr-2">
+                <button
+                  type="submit"
+                  className="relative text-center p-3 lg:w-[150px] lg:h-[40px] bg-green-300 text-green-800 font-semibold rounded-md overflow-hidden group cursor-pointer flex items-center justify-center"
+                  disabled={isSubmitting}
+                >
+                <span className="relative z-10 group-hover:text-white text-md transition-colors duration-300">
+                 {isSubmitting ? 'Submitting...' : 'Submit'}
+                </span>
+                <div className="absolute inset-0 bg-green-800 transform -translate-x-[-145px] group-hover:translate-x-0 transition-transform duration-300 ease-in-out"></div>
+                </button>
+              </div>
       </form>
     </div>
 
