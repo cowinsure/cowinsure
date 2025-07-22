@@ -220,7 +220,7 @@ const Home = () => {
 
 
       {/* contact us */}
-      <div className='py-16 bg-green-950 '>
+      <div className='py-16 bg-[#F6F4EC] '>
         <ContactUs />
       </div>
 
