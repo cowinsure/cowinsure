@@ -112,7 +112,7 @@ const Home = () => {
       {/* Section 2 - About Us */}
 
       
-      <section className=" mb-10   mx-auto  flex flex:row items-center justify-center p-2">
+      <section className=" max-[767px]:mt-20 mb-10   mx-auto  flex flex:row items-center justify-center p-2">
 
 
         <AboutUsSection/>
