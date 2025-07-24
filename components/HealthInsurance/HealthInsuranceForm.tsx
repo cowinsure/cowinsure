@@ -170,11 +170,11 @@ export default function HealthInsuranceForm() {
   };
   return (
     <>
-      <div className="h-full w-full flex flex-col lg:flex-col">
-        <div className="flex flex-row justify-center items-center gap-4 mb-6">
+      <div className="h-full w-full flex flex-col lg:flex-col text-justify">
+        <div className="flex flex-row justify-center items-center gap-4 ">
           <div className="flex flex-col items-center justify-center">
             <div
-              className="flex flex-col border-2 justify-center items-center text-center lg:w-32 border-primary bg-card shadow-lg hover:shadow-xl p-6 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
+              className="flex flex-col border-2 justify-center items-center text-center lg:w-24 border-primary bg-card shadow-lg hover:shadow-xl p-4 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
               onClick={() => setVisibleArrow(0)}
             >
               <FaPerson className="text-3xl text-green-600 mb-2" />
@@ -191,7 +191,7 @@ export default function HealthInsuranceForm() {
 
           <div className="flex flex-col items-center justify-center">
             <div
-              className="flex flex-col justify-center items-center border-2 lg:w-32 border-primary bg-card shadow-lg hover:shadow-xl p-6 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
+              className="flex flex-col justify-center items-center border-2 lg:w-24 border-primary bg-card shadow-lg hover:shadow-xl p-4 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
               onClick={() => setVisibleArrow(1)}
             >
               <GiLovers className="text-3xl text-green-600 mb-2" />
@@ -208,7 +208,7 @@ export default function HealthInsuranceForm() {
 
           <div className="flex flex-col items-center justify-center">
             <div
-              className="flex flex-col justify-center items-center border-2 lg:w-32 border-primary bg-card shadow-lg hover:shadow-xl p-6 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
+              className="flex flex-col justify-center items-center border-2 lg:w-24 border-primary bg-card shadow-lg hover:shadow-xl p-4 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
               onClick={() => setVisibleArrow(2)}
             >
               <MdFamilyRestroom className="text-3xl text-green-600 mb-2" />
@@ -225,7 +225,7 @@ export default function HealthInsuranceForm() {
 
           <div className="flex flex-col items-center justify-center">
             <div
-              className="flex flex-col justify-center items-center border-2 lg:w-32 border-primary bg-card shadow-lg hover:shadow-xl p-6 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
+              className="flex flex-col justify-center items-center border-2 lg:w-24 border-primary bg-card shadow-lg hover:shadow-xl p-4 rounded-xl cursor-pointer transition-all duration-200 hover:scale-105"
               onClick={() => setVisibleArrow(3)}
             >
               <RiParentFill className="text-3xl text-green-600 mb-2" />
@@ -243,7 +243,7 @@ export default function HealthInsuranceForm() {
 
         <div className="h-full w-full max-w-4xl rounded-xl bg-[#F6F4EC] flex flex-col p-4 shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-3">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-justify">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label
                   htmlFor="name"
@@ -255,6 +255,7 @@ export default function HealthInsuranceForm() {
                   type="text"
                   id="name"
                   name="name"
+                  placeholder="Name"
                   value={formValues.name}
                   onChange={(e) =>
                     setFormValues({
@@ -262,7 +263,7 @@ export default function HealthInsuranceForm() {
                       [e.target.name]: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white"
+                  className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white"
                   required
                 />
               </div>
@@ -277,6 +278,7 @@ export default function HealthInsuranceForm() {
                   type="number"
                   id="phone"
                   name="phone"
+                  placeholder="Phone Number"
                   value={formValues.phone}
                   onChange={(e) =>
                     setFormValues({
@@ -284,7 +286,7 @@ export default function HealthInsuranceForm() {
                       [e.target.name]: e.target.value,
                     })
                   }
-                  className="w-full px-4 py-3 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white"
+                  className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white"
                   required
                 />
               </div>
@@ -312,7 +314,7 @@ export default function HealthInsuranceForm() {
                       const field = findByLabel("Your Age");
                       if (field) handleChange2(e, field);
                     }}
-                    className="w-full px-4 py-3 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
+                    className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
                     required
                   >
                     <option value="">Select age</option>
@@ -345,12 +347,12 @@ export default function HealthInsuranceForm() {
                       const field = findByLabel("Spouse Age");
                       if (field) handleChange2(e, field);
                     }}
-                    className="w-full px-4 py-3 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
+                    className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
                   >
                     <option value="">Select age</option>
                     {Array.from({ length: 100 }, (_, i) => (
                       <option key={i + 1} value={i + 1}>
-                        {i + 1}
+                        {i + 1} Years
                       </option>
                     ))}
                   </select>
@@ -359,8 +361,8 @@ export default function HealthInsuranceForm() {
             </div>
 
             {visibleArrow === 3 && (
-              <div className="space-y-6 p-6 bg-muted/50 rounded-xl border border-border">
-                <div className="space-y-4">
+              <div className="space-y-4 p-4 bg-muted/50 rounded-xl border border-border">
+                <div className="space-y-2">
                   <h3 className="text-xl font-bold text-green-600">
                     {findByLabel("Insurance For")?.label}
                   </h3>
@@ -369,7 +371,7 @@ export default function HealthInsuranceForm() {
                       (choice, index) => (
                         <div
                           key={index}
-                          className={`border-2 lg:w-[160px] text-center rounded-xl p-4 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
+                          className={`border-2 lg:w-[100px] text-center rounded-xl p-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
                             parent === index
                               ? "border-primary bg-primary/10 text-green-600 shadow-lg"
                               : "text-muted-foreground border-border bg-background hover:border-primary/50"
@@ -412,7 +414,7 @@ export default function HealthInsuranceForm() {
                           const field = findByLabel("Father Age");
                           if (field) handleChange2(e, field);
                         }}
-                        className="w-full px-4 py-3 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
+                        className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
                       >
                         <option value="">Select age</option>
                         {Array.from({ length: 100 }, (_, i) => (
@@ -446,7 +448,7 @@ export default function HealthInsuranceForm() {
                           const field = findByLabel("Mother Age");
                           if (field) handleChange2(e, field);
                         }}
-                        className="w-full px-4 py-3 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
+                        className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white appearance-none cursor-pointer"
                       >
                         <option value="">Select age</option>
                         {Array.from({ length: 100 }, (_, i) => (
@@ -462,7 +464,7 @@ export default function HealthInsuranceForm() {
             )}
 
             {visibleArrow === 2 && (
-              <div className="space-y-4 p-6 bg-muted/50 rounded-xl border border-border">
+              <div className="space-y-4 p-4 bg-muted/50 rounded-xl border border-border">
                 <h3 className="text-xl font-bold text-green-600">
                   {findByLabel("Number of Child (Below 18 years)")?.label}
                 </h3>
@@ -471,7 +473,7 @@ export default function HealthInsuranceForm() {
                     (choice, index) => (
                       <div
                         key={index}
-                        className={`border-2 lg:w-[160px] text-center rounded-xl p-4 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
+                        className={`border-2 lg:w-[120px] text-center rounded-xl p-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
                           children === index
                             ? "border-primary bg-primary/10 text-green-600 shadow-lg"
                             : "text-muted-foreground border-border bg-background hover:border-primary/50"
@@ -494,7 +496,7 @@ export default function HealthInsuranceForm() {
               </div>
             )}
 
-            <div className="space-y-4 p-6 bg-muted/50 rounded-xl border border-border">
+            <div className="space-y-4 p-4 bg-muted/50 rounded-xl border border-border">
               <h3 className="text-xl font-bold text-green-600">
                 {findByLabel("Health Coverage Amount (?)")?.label}
               </h3>
@@ -503,7 +505,7 @@ export default function HealthInsuranceForm() {
                   (choice, index) => (
                     <div
                       key={index}
-                      className={`border-2 lg:w-[160px] text-center rounded-xl p-4 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
+                      className={`border-2 lg:w-[130px] text-center rounded-xl p-2 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-md ${
                         coverage === index
                           ? "border-primary bg-primary/10 text-green-600 shadow-lg"
                           : "text-muted-foreground border-border bg-background hover:border-primary/50"
@@ -524,7 +526,7 @@ export default function HealthInsuranceForm() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 p-4 bg-muted/30 rounded-lg border border-border">
+            <div className="flex items-center space-x-3 p-4 bg-muted/30 rounded-lg border border-border bg-green-50 border-green-200">
               <input
                 type="checkbox"
                 id="termsAccepted"
@@ -541,10 +543,10 @@ export default function HealthInsuranceForm() {
               </label>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3 px-6 bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-2 px-6 bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}

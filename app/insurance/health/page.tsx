@@ -31,7 +31,7 @@ function page() {
         </div>
 
         <div className=" mt-14 flex flex-col lg:flex-row lg:justify-center  gap-3 lg:mb-[10vh]">
-          <div className="lg:w-1/2 flex flex-col items-center justify-center lg:justify-center lg:items-center">
+          <div className="lg:w-1/2 flex flex-col items-center justify-left lg:justify-center lg:items-center">
             <div className="md:w-60  md:h-60 rounded-full overflow-hidden border-2 border-gray-300">
               <Image
                 src={inspection}
