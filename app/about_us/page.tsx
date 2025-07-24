@@ -311,7 +311,7 @@ const AboutUs: React.FC = () => {
         <div className="text-center">
           <FaqSection />
         </div>
-        <div className="p-5 text-center bg-green-900">
+        <div className="text-center bg-[#F6F4EC]">
           <ContactUs />
         </div>
       </div>

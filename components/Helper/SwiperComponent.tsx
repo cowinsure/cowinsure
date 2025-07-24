@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HiMiniArrowLongLeft } from "react-icons/hi2";
 import { gsap } from "gsap";
-import type { Swiper as SwiperType } from 'swiper'
+import type { Swiper as SwiperType } from "swiper";
 
 interface SliderData {
   id: number;
@@ -147,8 +147,8 @@ const SwiperComponent = () => {
             },
             "-=0.8"
           );
-      })
-      return ctx
+      });
+      return ctx;
     }
   };
 
@@ -238,19 +238,25 @@ const SwiperComponent = () => {
                 {/* Overlay Content */}
                 <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-center px-4 pb-20">
                   <p
-                    ref={(el) => {titleRefs.current[index] = el}}
+                    ref={(el) => {
+                      titleRefs.current[index] = el;
+                    }}
                     className="text-white text-2xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-4xl leading-tight"
                   >
                     {slide.title}
                   </p>
 
                   <div
-                    ref={(el) => {lineRefs.current[index] = el}}
+                    ref={(el) => {
+                      lineRefs.current[index] = el;
+                    }}
                     className="h-1 bg-white mb-8 opacity-0"
                   />
 
                   <div
-                    ref={(el) => {buttonRefs.current[index] = el}}
+                    ref={(el) => {
+                      buttonRefs.current[index] = el;
+                    }}
                     className="opacity-0 z-20 relative"
                   >
                     <Link
@@ -273,7 +279,7 @@ const SwiperComponent = () => {
       {/* Statistics Section - Now properly responsive */}
       <div
         ref={statsRef}
-        className="relative mt-2 md:mt-4 lg:mt-[-24] z-10 px-4 md:px-8 lg:px-20 opacity-0"
+        className="relative mt-[-22] min-[768px]:mt-[-64] z-10 px-4 md:px-8 lg:px-20 opacity-0"
       >
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">

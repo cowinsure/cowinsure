@@ -186,12 +186,21 @@ const TestPage = () => {
           <p className="text-4xl font-bold text-green-900 my-4">
             {formatToBDT(projectDetails.extra_data.sellingPrice)}
           </p>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded"
-          >
-            Buy Now
-          </button>
+          {!projectDetails.extra_data.isSold ? (
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded"
+            >
+              Buy Now
+            </button>
+          ) : (
+            <button
+              className="bg-red-700 hover:bg-red-800 text-white px-6 py-2 rounded"
+              disabled
+            >
+              Sold Out
+            </button>
+          )}
         </div>
         <CowPurchaseModal
           isOpen={isModalOpen}
@@ -208,10 +217,11 @@ const TestPage = () => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`relative overflow-hidden py-3 font-medium rounded-md transition-colors duration-300 ${activeTab === tab
-                  ? "bg-green-800 text-white"
-                  : "bg-green-200 text-green-900 hover:text-white"
-                  } group `}
+                className={`relative overflow-hidden py-3 font-medium rounded-md transition-colors duration-300 ${
+                  activeTab === tab
+                    ? "bg-green-800 text-white"
+                    : "bg-green-200 text-green-900 hover:text-white"
+                } group `}
               >
                 <span className="relative z-10">{tab}</span>
                 <span className="absolute inset-0 bg-green-800 transition-all duration-500 transform scale-x-0 origin-left group-hover:scale-x-100 rounded-md" />
@@ -300,7 +310,6 @@ const TestPage = () => {
                 </>
               )}
               {activeTab === "FAQs" && (
-
                 <>
                   {faqNterms.find(
                     (category) => category.name === "FAQs - Cow Details"
@@ -316,7 +325,6 @@ const TestPage = () => {
                     <p>No FAQs available.</p>
                   )}
                 </>
-
               )}
             </motion.div>
           </AnimatePresence>

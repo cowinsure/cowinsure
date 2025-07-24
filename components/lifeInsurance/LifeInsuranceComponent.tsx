@@ -1,22 +1,21 @@
-'use client'
-import React, { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+"use client";
+import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import DialogCustom from '../Helper/Dialog';
+import DialogCustom from "../Helper/Dialog";
 
 interface DynamicFieldResponse {
-  field_id: string | number
-  value: string
+  field_id: string | number;
+  value: string;
 }
 
 interface finalForm {
-  name: '',
-  phone: '',
-  email: '',
-  insurance_type_id: number, // Hardcoded as per the required output
-  responses: DynamicFieldResponse[]
-
+  name: "";
+  phone: "";
+  email: "";
+  insurance_type_id: number; // Hardcoded as per the required output
+  responses: DynamicFieldResponse[];
 }
 interface FormField {
   id: number;
@@ -33,17 +32,17 @@ interface ApiResponse {
 
 const LifeInsuranceForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-    const [formFields, setFormFields] = useState<FormField[]>([]);
+  const [formFields, setFormFields] = useState<FormField[]>([]);
   const [isChecked, setChecked] = useState(false);
   const [formValues, setFormValues] = useState<finalForm>({
-    name: '',
-    phone: '',
-    email: '',
+    name: "",
+    phone: "",
+    email: "",
     insurance_type_id: 2, // Hardcoded as per the required output
     responses: [],
   });
 
-  const [submissionMessage, setSubmissionMessage] = useState('');
+  const [submissionMessage, setSubmissionMessage] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
 
   const handleCloseDialog = () => {
@@ -53,28 +52,30 @@ const LifeInsuranceForm = () => {
   useEffect(() => {
     const fetchFormFields = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/insurance-types/2/form/`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/insurance-types/2/form/`
+        );
         const result: ApiResponse = await response.json();
-        if (result.status === 'success') {
-        
+        if (result.status === "success") {
           setFormFields(result.data);
           console.log(result.data);
         }
       } catch (error) {
-        console.error('Error fetching form fields:', error);
+        console.error("Error fetching form fields:", error);
       }
     };
 
     fetchFormFields();
   }, []);
 
+  const findByLabel = (label: string) => {
+    return formFields.find((item) => item.label === label);
+  };
 
-
-  const findByLabel = (label:string) => {
-    return formFields.find(item => item.label === label);
-}
-
- const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLSelectElement>, field:FormField) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    field: FormField
+  ) => {
     const updatedResponses = formValues.responses.filter(
       (response) => response.field_id !== field.id
     );
@@ -92,50 +93,50 @@ const LifeInsuranceForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isChecked) {
-      alert('You must accept the terms and conditions to proceed.');
+      alert("You must accept the terms and conditions to proceed.");
       return;
     }
-        try {
-          const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/submit-form/`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formValues)
-          });
-          
-          const result = await response.json();
-          if (response.ok) {
-            toast.success('Your insurance request has been sent successfully.');
-            setSubmissionMessage(result.message);
-            setOpenDialog(true);
-            
-            setFormValues({
-              name: '',
-              phone: '',
-              email: '',
-              insurance_type_id: 2, // Hardcoded as per the required output
-              responses: [],
-            });
-          } else {
-            toast.error('Failed to submit. Please try again later.'); 
-          }
-          
-        } catch (error) {
-          toast.error('An error occurred. Please try again later.' + error
-          );
-        } finally {
-          setIsSubmitting(false);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/submit-form/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formValues),
         }
+      );
 
-          // Handle form submission logic here
-          console.log('Form submitted:', formValues);
-        };
+      const result = await response.json();
+      if (response.ok) {
+        toast.success("Your insurance request has been sent successfully.");
+        setSubmissionMessage(result.message);
+        setOpenDialog(true);
+
+        setFormValues({
+          name: "",
+          phone: "",
+          email: "",
+          insurance_type_id: 2, // Hardcoded as per the required output
+          responses: [],
+        });
+      } else {
+        toast.error("Failed to submit. Please try again later.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later." + error);
+    } finally {
+      setIsSubmitting(false);
+    }
+
+    // Handle form submission logic here
+    console.log("Form submitted:", formValues);
+  };
 
   return (
-
     <>
-        <div className='h-full w-full border border-green-400 flex flex-col lg:flex-col p-5'>
+      {/* <div className='h-full w-full border border-green-400 flex flex-col lg:flex-col p-5'>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
           <div className="flex-1">
@@ -210,13 +211,142 @@ const LifeInsuranceForm = () => {
           </button>
         </div>
       </form>
-    </div>
+    </div> */}
+      <div className="h-full w-full text-justify max-w-4xl rounded-xl bg-[#F6F4EC] flex flex-col p-4 shadow-lg">
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-green-700 mb-2">
+              Life Insurance Application
+            </h2>
+            <p className="text-green-600">
+              Please fill in all required information
+            </p>
+          </div>
 
-    {openDialog ? <DialogCustom message={submissionMessage} onClose={()=>{handleCloseDialog()}} />: ""}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label
+                htmlFor="name"
+                className="block text-md font-semibold text-green-600"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                value={formValues.name}
+                onChange={(e) =>
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white"
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <label
+                htmlFor="phone"
+                className="block text-md font-semibold text-green-600"
+              >
+                Phone
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+                value={formValues.phone}
+                onChange={(e) =>
+                  setFormValues({
+                    ...formValues,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white"
+                required
+              />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <label
+              htmlFor="designation"
+              className="block text-md font-semibold text-green-600"
+            >
+              {findByLabel("Occupation")?.label}
+            </label>
+            <input
+              type="text"
+              id="designation"
+              name="designation"
+              placeholder="Occupation"
+              value={
+                formValues.responses.find(
+                  (response) =>
+                    response.field_id === findByLabel("Occupation")?.id
+                )?.value || ""
+              }
+              onChange={(e) => {
+                const field = findByLabel("Occupation");
+                if (field) handleChange(e, field);
+              }}
+              className="w-full px-4 py-2 border-2 border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200 bg-white"
+              required
+            />
+          </div>
+          <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+            <div className="flex items-start space-x-3">
+              <input
+                type="checkbox"
+                id="termsAccepted"
+                name="termsAccepted"
+                checked={isChecked}
+                onChange={() => setChecked(!isChecked)}
+                className="mt-1 h-5 w-5 text-green-600 focus:ring-green-500 border-green-300 rounded transition-colors"
+                required
+              />
+              <label
+                htmlFor="termsAccepted"
+                className="text-sm font-medium text-green-700 leading-6"
+              >
+                I accept the terms and conditions
+              </label>
+            </div>
+          </div>
 
-    <ToastContainer />
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full py-3 px-6 bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-200 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? (
+              <div className="flex items-center justify-center space-x-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Submitting...</span>
+              </div>
+            ) : (
+              "Submit Application"
+            )}
+          </button>
+        </form>
+      </div>
+
+      {openDialog ? (
+        <DialogCustom
+          message={submissionMessage}
+          onClose={() => {
+            handleCloseDialog();
+          }}
+        />
+      ) : (
+        ""
+      )}
+
+      <ToastContainer />
     </>
-
   );
 };
 

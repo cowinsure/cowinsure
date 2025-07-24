@@ -173,62 +173,71 @@ const DetailsID = () => {
           </div>
 
         </div>
-        <div className='w-full flex flex-col lg:gap-5 justify-start items-start lg:flex-row lg:items-start lg:justify-between mt-10'>
-          <div className='flex flex-col w-full justify-start items-center lg:justify-start lg:items-start lg:w-1/3'>
+        <div className="w-full bg-white rounded-lg shadow-md flex flex-col-reverse lg:flex-row mt-10">
 
-            <div className='w-full text-center mb-10 text-3xl font-bold text-[#334b35] mt-5'>Invest on Cow</div>
-            <CowInvestmentForm />
+  {/* Invest on Cow Section */}
+  <div className="w-full lg:w-1/2 p-6 lg:px-8">
+    <CowInvestmentForm />
+  </div>
 
-          </div>
-          <div className='flex-1 flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center lg:w-1/3' >
-            <h1 className=' text-3xl font-bold text-[#334b35] text-center w-full mt-5 mb-5'>Approximate Profit Statement</h1>
+  {/* Divider (desktop only) */}
+  <div className="hidden lg:block w-px bg-gray-300 my-4"></div>
 
-            <div className='flex flex-row justify-between lg:justify-around w-full mt-10'>
-              <div className='flex flex-col gap-4'>
-                <h2 className='text-2xl font-bold text-green-700 '>Return</h2>
-                <h2 className='text-3xl text-green-700'>{projectDetails.expected_return_min}% - {projectDetails.expected_return_max}%</h2>
-              </div>
+  {/* Profit Statement Section */}
+  <div className="w-full lg:w-1/2 p-6 lg:px-8">
+    <h2 className="text-2xl md:text-3xl font-bold text-center text-[#334b35] mb-6">
+      Approximate Profit Statement
+    </h2>
 
-              <div className='flex flex-col gap-4'>
-                <h2 className='text-2xl font-bold text-green-700 '>Duration</h2>
-                <h2 className='text-3xl text-green-700'>{projectDetails.investment_period}</h2>
-              </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="p-6 bg-green-50 rounded-lg text-center">
+        <h3 className="text-lg font-semibold text-green-700">Return</h3>
+        <p className="text-2xl font-bold text-green-800">
+          {projectDetails.expected_return_min}% – {projectDetails.expected_return_max}%
+        </p>
+      </div>
+      <div className="p-6 bg-green-50 rounded-lg text-center">
+        <h3 className="text-lg font-semibold text-green-700">Duration</h3>
+        <p className="text-2xl font-bold text-green-800">
+          {projectDetails.investment_period}
+        </p>
+      </div>
+      <div className="p-6 bg-green-50 rounded-lg text-center">
+        <h3 className="text-lg font-semibold text-green-700">Location</h3>
+        <p className="text-2xl font-bold text-green-800">
+          {projectDetails.location}
+        </p>
+      </div>
+    </div>
 
-            </div>
+    <div className="mt-8 flex flex-col items-center bg-green-800 text-white space-y-4 p-6 rounded-lg">
+      <h3 className="text-xl font-semibold">Total Return</h3>
+      <p className="text-2xl font-bold text-white">
+          {formatToBDT(minTotalReturn)} – {formatToBDT(maxTotalReturn)}
+        </p>
+      <h3 className="text-lg font-semibold">Profit Count</h3>
+      <div className="mt-4 flex items-center space-x-4">
+        <button
+          onClick={decrementProfitCount}
+          disabled={profitCount <= 1}
+          className="bg-green-700 hover:bg-green-600 disabled:opacity-50 rounded-full p-2"
+        >
+          <HiOutlineMinusSm size={20} />
+        </button>
+        <span className="text-2xl font-bold">{profitCount}</span>
+        <button
+          onClick={incrementProfitCount}
+          className="bg-green-700 hover:bg-green-600 rounded-full p-2"
+        >
+          <FaPlus size={20} />
+        </button>
+        
+      </div>
+    </div>
+  </div>
 
-            <div className='flex flex-row justify-between lg:justify-around w-full mt-10'>
-              <div className='flex flex-col gap-4'>
-                <h2 className='text-2xl font-bold text-green-700 '>Total Return</h2>
-                <h2 className='text-3xl text-green-700'>{formatToBDT(minTotalReturn)} - {formatToBDT(maxTotalReturn)}</h2>
-              </div>
+</div>
 
-              <div className='flex flex-col gap-4'>
-                <h2 className='text-2xl font-bold text-green-700 '>Location</h2>
-                <h2 className='text-3xl text-green-700'>{projectDetails.location}</h2>
-              </div>
-
-            </div>
-
-            <div className=' flex flex-row items-center justify-start bg-green-800 p-5 rounded-md mt-20'>
-              <h1 className='text-white text-2xl'>Profit Count:</h1>
-              <button className='ml-4 bg-white text-green-800 rounded-full w-10 h-10 flex items-center justify-center'
-                onClick={() => { decrementProfitCount() }}
-              >
-                <HiOutlineMinusSm />
-              </button>
-              <span className='mx-4 text-white text-xl'>{profitCount}</span>
-              <button
-
-                onClick={() => { incrementProfitCount() }}
-                className=' bg-white text-green-800 rounded-full w-10 h-10 flex items-center justify-center'>
-                <FaPlus />
-              </button>
-
-
-            </div>
-
-          </div>
-        </div>
       </div>
 
 
