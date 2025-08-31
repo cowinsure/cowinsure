@@ -1,137 +1,151 @@
-"use client"
-import { useEffect, useRef, useState, useCallback } from "react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import Image from "next/image"
-import { Autoplay, Navigation } from "swiper/modules"
-import { GiBullHorns } from "react-icons/gi"
-import gsap from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
+"use client";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Image from "next/image";
+import { Autoplay, Navigation } from "swiper/modules";
+import { GiBullHorns } from "react-icons/gi";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 interface ParentProps {
-  serviceName: string
+  serviceName: string;
 }
 
 interface BaseCategory {
-  id: string
-  name: string
-  description: string
+  id: string;
+  name: string;
+  description: string;
 }
 
 interface BaseCategoryApiResponse {
-  status: string
-  message: string
-  data: BaseCategory[]
+  status: string;
+  message: string;
+  data: BaseCategory[];
 }
 
 interface ExtraData {
-  short_description: string
+  short_description: string;
 }
 
 interface BaseCard {
-  id: number
-  name: string
-  category: string
-  image_url: string
-  extra_data: ExtraData
-  is_active: boolean
-  created_at: string
-  updated_at: string
+  id: number;
+  name: string;
+  category: string;
+  image_url: string;
+  extra_data: ExtraData;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 interface BaseCardApiResponse {
-  status: string
-  message: string
-  data: BaseCard[]
+  status: string;
+  message: string;
+  data: BaseCard[];
 }
 
 const OurServicesCommon = ({ serviceName }: ParentProps) => {
-  const [services, setServices] = useState<BaseCard[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [hasAnimated, setHasAnimated] = useState(false)
+  const [services, setServices] = useState<BaseCard[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const iconRef = useRef<HTMLDivElement | null>(null)
-  const subtitleRef = useRef<HTMLHeadingElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const titleDescRef = useRef<HTMLParagraphElement | null>(null)
-  const swiperRef = useRef<HTMLDivElement>(null)
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const descriptionRefs = useRef<(HTMLDivElement | null)[]>([])
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const iconRef = useRef<HTMLDivElement | null>(null);
+  const subtitleRef = useRef<HTMLHeadingElement | null>(null);
+  const titleRef = useRef<HTMLHeadingElement | null>(null);
+  const titleDescRef = useRef<HTMLParagraphElement | null>(null);
+  const swiperRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const descriptionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Memoize the fetch functions to prevent unnecessary re-renders
   const fetchBaseCards = useCallback(async (categoryId: string) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`)
-      const result: BaseCardApiResponse = await response.json()
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/base-category/${categoryId}/base-cards/`
+      );
+      const result: BaseCardApiResponse = await response.json();
       if (result.status === "success") {
-        console.log(result.data[0]?.image_url)
-        setServices(result.data)
+        console.log(result.data[0]?.image_url);
+        setServices(result.data);
       }
     } catch (error) {
-      console.error("Error fetching base cards:", error)
+      console.error("Error fetching base cards:", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [])
+  }, []);
 
   const fetchBaseCategories = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`)
-      const result: BaseCategoryApiResponse = await response.json()
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/base-categories/`
+      );
+      const result: BaseCategoryApiResponse = await response.json();
       if (result.status === "success") {
-        const partnersCategory = result.data.find((category) => category.name === serviceName)
+        const partnersCategory = result.data.find(
+          (category) => category.name === serviceName
+        );
         if (partnersCategory) {
-          fetchBaseCards(partnersCategory.id)
+          fetchBaseCards(partnersCategory.id);
         } else {
-          setIsLoading(false)
+          setIsLoading(false);
         }
       } else {
-        setIsLoading(false)
+        setIsLoading(false);
       }
     } catch (error) {
-      console.error("Error fetching base categories:", error)
-      setIsLoading(false)
+      console.error("Error fetching base categories:", error);
+      setIsLoading(false);
     }
-  }, [serviceName, fetchBaseCards])
+  }, [serviceName, fetchBaseCards]);
 
   // Fixed: Added proper dependency array with serviceName
   useEffect(() => {
-    fetchBaseCategories()
-  }, [fetchBaseCategories])
+    fetchBaseCategories();
+  }, [fetchBaseCategories]);
 
   // Fixed: Only run animation once when data is loaded
   useEffect(() => {
     if (!isLoading && services.length > 0 && !hasAnimated) {
       const ctx = gsap.context(() => {
         // Set initial states
-        gsap.set([iconRef.current, subtitleRef.current, titleRef.current, titleDescRef.current], {
-          opacity: 0,
-          y: -100,
-        })
+        gsap.set(
+          [
+            iconRef.current,
+            subtitleRef.current,
+            titleRef.current,
+            titleDescRef.current,
+          ],
+          {
+            opacity: 0,
+            y: -100,
+          }
+        );
 
         gsap.set(swiperRef.current, {
           opacity: 0,
           x: -100,
-        })
+        });
 
         gsap.set(cardRefs.current, {
           opacity: 0,
           y: 50,
           scale: 0.8,
-        })
+        });
 
         gsap.set(descriptionRefs.current, {
           opacity: 0,
           y: 50,
           scale: 0.8,
-        })
+        });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -141,7 +155,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
             toggleActions: "play none none reverse",
           },
           onComplete: () => setHasAnimated(true), // Prevent re-animation
-        })
+        });
 
         tl.to(iconRef.current, {
           opacity: 1,
@@ -157,7 +171,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
               duration: 0.35,
               ease: "power2.out",
             },
-            "-=0.2",
+            "-=0.2"
           )
           .to(
             titleRef.current,
@@ -167,7 +181,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
               duration: 0.35,
               ease: "power2.out",
             },
-            "-=0.2",
+            "-=0.2"
           )
           .to(
             titleDescRef.current,
@@ -177,7 +191,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
               duration: 0.35,
               ease: "power2.out",
             },
-            "-=0.2",
+            "-=0.2"
           )
           .to(
             swiperRef.current,
@@ -187,7 +201,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
               duration: 0.25,
               ease: "power2.out",
             },
-            "-=0.1",
+            "-=0.1"
           )
           .to(
             cardRefs.current,
@@ -202,7 +216,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
                 from: "start",
               },
             },
-            "-=0.2",
+            "-=0.2"
           )
           .to(
             descriptionRefs.current,
@@ -217,20 +231,20 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
                 from: "start",
               },
             },
-            "-=0.4",
-          )
-      }, containerRef)
+            "-=0.4"
+          );
+      }, containerRef);
 
-      return () => ctx.revert()
+      return () => ctx.revert();
     }
-  }, [isLoading, services.length, hasAnimated]) // Changed dependency to services.length instead of services array
+  }, [isLoading, services.length, hasAnimated]); // Changed dependency to services.length instead of services array
 
   // Reset animation state when serviceName changes
   useEffect(() => {
-    setHasAnimated(false)
-    setServices([])
-    setIsLoading(true)
-  }, [serviceName])
+    setHasAnimated(false);
+    setServices([]);
+    setIsLoading(true);
+  }, [serviceName]);
 
   if (isLoading) {
     return (
@@ -240,7 +254,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
           <p className="text-gray-600">Loading Services...</p>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -251,13 +265,22 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
           <div ref={iconRef}>
             <GiBullHorns className="text-2xl text-green-700 mb-2" />
           </div>
-          <h2 ref={subtitleRef} className="text-xl font-bold text-[#687469] mb-3">
+          <h2
+            ref={subtitleRef}
+            className="text-xl font-bold text-[#687469] mb-3"
+          >
             Services
           </h2>
-          <h1 ref={titleRef} className="text-3xl lg:text-5xl font-bold text-[#334b35] mb-5">
+          <h1
+            ref={titleRef}
+            className="text-3xl lg:text-5xl font-bold text-[#334b35] mb-5"
+          >
             What We Offer
           </h1>
-          <p ref={titleDescRef} className="text-center font-semibold text-gray-500 text-lg lg:text-xl max-w-3xl">
+          <p
+            ref={titleDescRef}
+            className="text-center font-semibold text-gray-500 text-lg lg:text-xl max-w-3xl"
+          >
             Our services are tailored to overcome challenges.
           </p>
         </div>
@@ -283,7 +306,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
                 <div className="flex flex-col h-full">
                   <div
                     ref={(el) => {
-                      cardRefs.current[index] = el
+                      cardRefs.current[index] = el;
                     }}
                     className="mb-4"
                   >
@@ -307,12 +330,14 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
 
                   <div
                     ref={(el) => {
-                      descriptionRefs.current[index] = el
+                      descriptionRefs.current[index] = el;
                     }}
                     className="flex-1 text-left"
                   >
-                    <h3 className="text-xl lg:text-2xl font-bold text-[#334b35] mb-2 line-clamp-2">{s.name}</h3>
-                    <p className="text-gray-500 font-medium text-base lg:text-lg line-clamp-3">
+                    <h3 className="text-xl lg:text-2xl font-bold text-[#334b35] mb-2 line-clamp-2">
+                      {s.name}
+                    </h3>
+                    <p className="text-gray-500 font-medium text-base lg:text-md line-clamp-5">
                       {s.extra_data.short_description}
                     </p>
                   </div>
@@ -323,7 +348,7 @@ const OurServicesCommon = ({ serviceName }: ParentProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OurServicesCommon
+export default OurServicesCommon;

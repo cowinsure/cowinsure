@@ -289,7 +289,7 @@ const SwiperComponent = () => {
                 Farmers Impacted
               </h3>
               <p className="text-sm lg:text-base text-[#687469]">
-                4,136+ MSME Farms and Farmers
+                7,500+ MSME Farms and Farmers
               </p>
             </div>
 
@@ -299,7 +299,7 @@ const SwiperComponent = () => {
                 Livestock Registered
               </h3>
               <p className="text-sm lg:text-base text-[#687469]">
-                12,345+ Cattle
+                16,500+ Cattle
               </p>
             </div>
 
