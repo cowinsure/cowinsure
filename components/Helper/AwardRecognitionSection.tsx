@@ -250,7 +250,7 @@ const AwardRecognitionSection = () => {
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 4 },
           }}
-          spaceBetween={50}
+          spaceBetween={200}
           loop={true}
           pagination={{ clickable: false }}
           autoplay={{ delay: 1500, disableOnInteraction: false }}
@@ -260,11 +260,13 @@ const AwardRecognitionSection = () => {
           {partners.map((partner, index) => (
             <SwiperSlide key={partner.id}>
               <div
+                key={index}
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
+                className="relative w-[350px] flex-col h-auto justify-center items-center group bg-gray-800 rounded-lg transform transition-transform duration-300 hover:scale-105"
               >
-                <Link href={partner.extra_data.url} passHref>
+                {/*<Link href={partner.extra_data.url} passHref>
                   <div className="relative flex justify-center items-center w-[300px] h-[250px] cursor-pointer group rounded-md bg-[#F6F4EC] bg-transparent">
                     <Image
                       src={partner.image_url}
@@ -274,7 +276,7 @@ const AwardRecognitionSection = () => {
                       height={300}
                       priority
                     />
-                    {/* <Link href={partner.extra_data.url} className='absolute  bottom-0 left-0 right-0 z-50 mx-5 overflow-hidden group-hover:overflow-visible'/> */}
+                     // <Link href={partner.extra_data.url} className='absolute  bottom-0 left-0 right-0 z-50 mx-5 overflow-hidden group-hover:overflow-visible'/>
                     <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-50 transition-opacity duration-300 rounded-md flex flex-col justify-center items-center">
                       {partner.extra_data.event && (
                         <p className="text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -292,6 +294,46 @@ const AwardRecognitionSection = () => {
                         </p>
                       )}
                     </div>
+                  </div>
+                </Link> */}
+                <div className="relative h-[300px] rounded-lg bg-black overflow-hidden">
+                  <div className="absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-5 transition-all duration-700">
+                    <Image
+                      src={partner.image_url || "/placeholder.svg"}
+                      alt={partner.name}
+                      fill
+                      className="rounded-lg object-cover object-center"
+                      priority
+                    />
+                    <div className="absolute rounded-lg bg-green-300 bg-opacity-20 top-[-100%] z-30 right-0 w-full h-full group-hover:top-0 transition-all duration-700 ease-in-out overflow-hidden"></div>
+                  </div>
+                </div>
+
+                <Link
+                  href={partner.extra_data.url}
+                  className="absolute bottom-0 left-0 right-0 z-50 mx-5 overflow-hidden group-hover:overflow-visible"
+                >
+                  <div className="relative [transform:rotateX(120deg)] z-20 flex flex-col h-[80px] justify-center items-center rounded-t-lg font-bold text-white opacity-0 group-hover:opacity-100 group-hover:[transform:rotateX(0deg)] transition-all duration-700">
+                    <div className="w-full flex flex-col justify-center bg-green-800 items-center h-full rounded-tr-lg">
+                      <div className="text-center mb-4">
+                        {partner.extra_data.status || partner.name}
+                      </div>
+                    </div>
+
+                    <div className="absolute left-0 top-[-32px] rounded-t-md">
+                      <div className="bg-yellow-600 text-xs p-2 text-center text-black rounded-t-md">
+                        {partner.extra_data.event || partner.name}
+                      </div>
+                    </div>
+                    {partner.extra_data.prize ? (
+                      <div className="absolute center-0 bottom-[1px] rounded-t-md">
+                        <div className="bg-green-700 text-xs p-2 text-center text-white rounded-t-md">
+                          {partner.extra_data.prize}
+                        </div>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
                   </div>
                 </Link>
               </div>
