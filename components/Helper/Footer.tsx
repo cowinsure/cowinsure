@@ -45,8 +45,19 @@ const Footer = () => {
         </div>
 
         {/* Contact Info */}
-        <p className="mt-4 text-gray-600">info@insurecow.com</p>
+        <div className='flex flex-col gap-5 mt-5'>
+            <div className='mr-5'>
+               <p className="text-gray-600">info@insurecow.com</p>
         <p className="text-gray-600">+8801999INSURE</p>
+            </div>
+            <div>
+               <p className="text-gray-600">Helpline </p>
+        <p className="text-gray-600">+8801999467873</p>
+            </div>
+
+        </div>
+       
+       
       </div>
 
       {/* Middle Section - About */}
