@@ -47,7 +47,7 @@ const GlobalDeployment = () => {
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               By separating verification engines, operating systems, and distribution 
-              layers, InsureCow's architecture remains modular and scalable—without 
+              layers, InsureCows architecture remains modular and scalable—without 
               compromising regulatory clarity.
             </p>
 
