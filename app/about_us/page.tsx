@@ -13,6 +13,11 @@ import ServiceHighlighted from "@/components/common/ServiceHighlighted";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutUsDetails from "@/components/AboutPage/AboutUsDetails";
+import TechnologyHero from "@/components/AboutPage/AboutUsSectionComponent/TechnologyHero";
+import VerificationEngines from "@/components/AboutPage/AboutUsSectionComponent/VerificationEngine";
+import OperatingSystems from "@/components/AboutPage/AboutUsSectionComponent/OperatingSystems";
+import ArchitectureDiagram from "@/components/AboutPage/AboutUsSectionComponent/ArchitectureDiagram";
+import GlobalDeployment from "@/components/AboutPage/AboutUsSectionComponent/GlobalDeployment";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -251,16 +256,25 @@ const AboutUs: React.FC = () => {
 
   return (
     <div className=" lg:h-auto h-auto overflow-x-hidden">
-      <AppBranding
+      {/* <AppBranding
         title="Stronger Together, Enriching Farmers' Future!"
         bannerUrl={banner}
-      />
+      /> */}
+
+            <TechnologyHero />
+      <VerificationEngines />
+      <OperatingSystems />
+      <ArchitectureDiagram />
+      <GlobalDeployment />
 
       <Suspense fallback={<div>Loading About section...</div>}>
       <div id="about">
         <AboutUsDetails/>
+         
       </div>
       </Suspense>
+
+   
 
       <ServiceHighlighted
         url=""
