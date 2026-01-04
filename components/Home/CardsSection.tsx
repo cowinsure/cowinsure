@@ -241,7 +241,7 @@ const CardsSection: React.FC = () => {
 
       <div
         ref={cardsContainerRef}
-        className="p-5 min-h-[300px] h-auto lg:h-auto flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-14 mb-20 lg:mt-14 lg:mb-20 lg:flex-row w-full lg:w-auto gap-8 lg:px-24"
+        className="p-5 min-h-[300px] h-auto lg:h-auto flex justify-center items-center overflow-auto lg:items-center lg:justify-center flex-col mt-14 mb-20 lg:mt-14 lg:mb-20 lg:flex-row w-full lg:w-auto gap-8 lg:px-24 max-w-[86%] mx-auto"
       >
         {whatWeOfferData.length > 0 ? (
           whatWeOfferData.map((item, index) => (

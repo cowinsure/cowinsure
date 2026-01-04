@@ -216,7 +216,7 @@ const WhyInvestWithUs: React.FC = () => {
   }
 
   return (
-    <div ref={containerRef} className='relative container mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto p-5'>
+    <div ref={containerRef} className='relative  mx-auto flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full lg:h-auto h-auto p-5'>
       <BackgroundImageLayer imageUrl='/farmpic.png' opacity={0.07}/>
       <div className="flex-1 flex flex-col justify-center items-center max-w-4xl text-center w-full">
         <div ref={iconRef}>
@@ -224,11 +224,11 @@ const WhyInvestWithUs: React.FC = () => {
         </div>
         <h2 ref={subtitleRef} className="text-xl font-bold text-[#687469] text-start mb-3">our goal</h2>
         <h1 ref={titleRef} className="lg:text-5xl text-2xl min-w-[150px] mb-5 font-bold text-[#334b35] text-start">Why Invest With Us</h1>
-        <p ref={titleDescRef} className='text-center font-semibold text-gray-500 mb-10 text-xl lg:text-2xl lg:max-w-[800px]'>
+        <p ref={titleDescRef} className='text-center font-semibold text-gray-500 mb-10 text-xl lg:text-2xl lg:max-w-[900px]'>
           Our end-to-end value-chain approach unlocks concrete growth opportunities.
         </p>
       </div>
-      <div ref={swiperRef} className='w-full'>
+      <div ref={swiperRef} className='w-full mt-20'>
          <Swiper
         breakpoints={{
           640: { slidesPerView: 1 },
@@ -241,7 +241,7 @@ const WhyInvestWithUs: React.FC = () => {
         pagination={{ clickable: false }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         modules={[Navigation, Autoplay]}
-        className="w-full"
+        className="max-w-[78%]"
       >
         {whyInvestData.map((item, index) => (
           <SwiperSlide key={item.id}>
@@ -261,7 +261,7 @@ const WhyInvestWithUs: React.FC = () => {
             </div>
             <div ref={(el) => {descriptionRefs.current[index] = el}} className='text-start mt-2'>
               <h1 className="lg:text-2xl text-xl min-w-[150px] mb-2 font-bold text-[#334b35] text-start">{item.extra_data.heading}</h1>
-              <p className='text-start font-semibold text-gray-500 text-xl'>
+              <p className='text-start font-light text-gray-500 text-xl'>
                 {item.extra_data.short_description}
               </p>
             </div>

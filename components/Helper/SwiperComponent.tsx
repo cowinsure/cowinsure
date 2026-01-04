@@ -65,9 +65,22 @@ const SwiperComponent = () => {
         // Initial entrance animation for stats
         gsap.fromTo(
           statsRef.current,
+          // {
+          //   y: 100,
+          //   opacity: 0,
+          // },
+          // {
+          //   y: 0,
+          //   opacity: 1,
+          //   duration: 1.5,
+          //   ease: "power2.out",
+          //   delay: 2,
+          // }
+
+          // For development purpose
           {
-            y: 100,
-            opacity: 0,
+            y: 0,
+            opacity: 1,
           },
           {
             y: 0,
@@ -175,7 +188,7 @@ const SwiperComponent = () => {
   }
 
   return (
-    <div ref={containerRef} className="relative w-full">
+    <div ref={containerRef} className="relative w-full mt-20">
       {/* Navigation Buttons */}
       <div className="absolute right-4 top-10 lg:right-16 lg:top-10 z-40 flex gap-3 lg:flex-col">
         <button
@@ -281,46 +294,52 @@ const SwiperComponent = () => {
         ref={statsRef}
         className="relative mt-[-22] min-[768px]:mt-[-64] z-10 px-4 md:px-8 lg:px-20 opacity-0"
       >
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden lg:max-w-[1450px] lg:h-40 mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 h-full">
             {/* Farmers Impacted */}
             <div className="p-6 text-center border-b md:border-b-0 md:border-r border-gray-200">
-              <h3 className="font-semibold text-lg lg:text-xl text-[#334B35] mb-2">
+              <h3 className="font-semibold text-lg lg:text-xl text-green-400 mb-2">
                 Farmers Impacted
               </h3>
-              <p className="text-sm lg:text-base text-[#687469]">
-                7,500+ MSME Farms and Farmers
+              <p className="text-2xl lg:text-5xl text-green-500 font-bold">
+                7,500+
               </p>
+              <small className="text-sm text-green-400">
+                MSME Farms and Farmers
+              </small>
             </div>
 
             {/* Livestock Registered */}
             <div className="p-6 text-center border-b md:border-b-0 lg:border-r border-gray-200">
-              <h3 className="font-semibold text-lg lg:text-xl text-[#334B35] mb-2">
+              <h3 className="font-semibold text-lg lg:text-xl text-green-400 mb-2">
                 Livestock Registered
               </h3>
-              <p className="text-sm lg:text-base text-[#687469]">
-                16,500+ Cattle
+              <p className="text-2xl lg:text-5xl text-green-500 font-bold">
+                16,500+
               </p>
+              <small className="text-sm text-green-400">
+                Cattle Registered
+              </small>
             </div>
 
             {/* Fraudulent Claims */}
             <div className="p-6 text-center border-b lg:border-b-0 lg:border-r border-gray-200">
-              <h3 className="font-semibold text-lg lg:text-xl text-[#334B35] mb-2">
+              <h3 className="font-semibold text-lg lg:text-xl text-green-400 mb-2">
                 Fraudulent Claims
               </h3>
-              <p className="text-sm lg:text-base text-[#687469]">
-                Zero false claims
-              </p>
+              <p className="text-2xl lg:text-5xl text-green-500 font-bold">0</p>
+              <small className="text-sm text-green-400">False Claims</small>
             </div>
 
             {/* Capacity Building */}
             <div className="p-6 text-center">
-              <h3 className="font-semibold text-lg lg:text-xl text-[#334B35] mb-2">
+              <h3 className="font-semibold text-lg lg:text-xl text-green-400 mb-2">
                 Capacity Building
               </h3>
-              <p className="text-sm lg:text-base text-[#687469]">
-                2,000+ farmers
+              <p className="text-2xl lg:text-5xl text-green-500 font-bold">
+                2,000+
               </p>
+              <small className="text-sm text-green-400">Farmers Trained</small>
             </div>
           </div>
         </div>

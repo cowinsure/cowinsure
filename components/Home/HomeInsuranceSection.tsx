@@ -209,7 +209,7 @@ const HomeInsuranceSection: React.FC = () => {
   if (isLoading) {
     return (
       <section className="relative min-h-[600px] pt-[40vh] pb-[35vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-white">
-        <BackgroundImageLayer imageUrl="/insuranceBG.png" size="70%"/>
+        <BackgroundImageLayer imageUrl="/insuranceBG.png" size="70%" />
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading insurance options...</p>
@@ -221,9 +221,9 @@ const HomeInsuranceSection: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative pt-[10vh] pb-[10vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-white"
+      className="relative pt-[10vh] pb-[10vh] h-auto lg:h-screen flex flex-col lg:flex-col lg:items-center items-center justify-center bg-white"
     >
-      <BackgroundImageLayer imageUrl="/insuranceBG.png" size="70%"/>
+      <BackgroundImageLayer imageUrl="/insuranceBG.png" size="70%" />
       <div className="max-w-4xl text-center">
         <div ref={iconRef}>
           <GiBullHorns className="w-full lg:text-3xl text-xl text-center text-green-700 mb-2" />
@@ -240,20 +240,22 @@ const HomeInsuranceSection: React.FC = () => {
             ref={titleRef}
             className="lg:text-5xl text-3xl font-bold text-[#334b35]"
           >
-            Simply compare, order, and get covered.
+            Simply compare, order, and get covered
           </h1>
         </div>
       </div>
 
       <div
         ref={cardsContainerRef}
-        className="mt-10 w-full h-auto container mx-auto flex flex-col gap-4 md:flex-row lg:flex-row items-center justify-center mb-5"
+        className="mt-10 min-w-[76%] h-auto mx-auto flex flex-col gap-4 md:flex-row lg:flex-row items-center justify-center mb-5 "
       >
         {insuranceSection.map((item, index) => (
           <div
             key={index}
-            ref={(el) => {cardRefs.current[index] = el}}
-            className="relative w-[350px] flex-col h-auto justify-center items-center group bg-gray-800 rounded-lg transform transition-transform duration-300 hover:scale-105"
+            ref={(el) => {
+              cardRefs.current[index] = el;
+            }}
+            className="relative w-full flex-col h-auto justify-center items-center group bg-gray-800 rounded-lg transform transition-transform duration-300 hover:scale-105"
           >
             <div className="relative h-[300px] rounded-lg bg-black overflow-hidden">
               <div className="absolute h-auto rounded-lg inset-0 bg-contain left-0 group-hover:-left-5 transition-all duration-700">
