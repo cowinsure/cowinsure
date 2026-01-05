@@ -1,33 +1,44 @@
-// import Link from 'next/link'
-import React,{ ReactNode } from 'react';
-// import bannerImage from '../../public/brandingbg.jpg';
-import Image from 'next/image';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
+"use client";
+
+import React, { ReactNode, useRef } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 interface AppBrandingProps {
-  title?: string;
-  description?: string;
   bannerUrl: string | StaticImport;
-  customStyles?: React.CSSProperties;
-  children: ReactNode; 
-
-
+  children: ReactNode;
 }
 
-const BannerGeneral = ({children , bannerUrl}:AppBrandingProps) => {
+const BannerGeneral = ({ children, bannerUrl }: AppBrandingProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax movement
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
   return (
-    <div className="relative w-full h-[50vh] lg:h-[50vh] md:h-[40vh]">
-    <Image
-      src={bannerUrl}
-      alt="Banner"
-      layout="fill"
-      objectFit="cover"
-      objectPosition="center"
-      className="absolute inset-0 z-0"
-    />
-   {children}
-  </div>
-  )
-}
+    <div
+      ref={ref}
+      className="relative w-full h-[50vh] lg:h-[80vh] md:h-[40vh] mt-20 overflow-hidden"
+    >
+      <motion.div style={{ y }} className="absolute inset-0">
+        <Image
+          src={bannerUrl}
+          alt="Banner"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </motion.div>
 
-export default BannerGeneral
+      {children}
+    </div>
+  );
+};
+
+export default BannerGeneral;

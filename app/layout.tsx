@@ -8,6 +8,7 @@ import "./globals.css";
 import Footer from "@/components/Helper/Footer";
 import NavBarResponsive from "@/components/Helper/NavBarResponsive";
 import LoadingProvider from "@/components/Helper/LoadingProvider";
+import LenisProvider from "@/utils/LenisProvider";
 
 // const poppins = Poppins({
 //   subsets: ["latin"],
@@ -37,7 +38,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={` ${averia.className} antialiased bg-[#F6F4EC]/90`}>
         <NavBarResponsive />
-        <LoadingProvider>{children}</LoadingProvider>
+        <LoadingProvider>
+          <LenisProvider>{children}</LenisProvider>
+        </LoadingProvider>
         <Footer />
       </body>
     </html>
