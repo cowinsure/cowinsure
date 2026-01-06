@@ -10,7 +10,7 @@ import InvestmentSection from '@/components/Helper/InvestmentSection';
 const Project = () => {
   
   return (
-    <div className='pt-16 lg:pt-0 overflow-hidden mt-[-10vh] lg:mt-[0vh]'>
+    <div className='pt-16 lg:pt-20 overflow-hidden mt-[-10vh] lg:mt-[0vh]'>
         
         <div>
           <InvestmentSection/>

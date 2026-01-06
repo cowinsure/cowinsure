@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import {
   // Poppins,
 
-  Averia_Sans_Libre,
+  // Averia_Sans_Libre,
+  Poppins,
 } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Helper/Footer";
@@ -10,17 +11,17 @@ import NavBarResponsive from "@/components/Helper/NavBarResponsive";
 import LoadingProvider from "@/components/Helper/LoadingProvider";
 import LenisProvider from "@/utils/LenisProvider";
 
-// const poppins = Poppins({
-//   subsets: ["latin"],
-//   weight: ["300", "400", "700", "800"], // Add the required font weights
-//   style: ["normal", "italic"], // Optional styles
-//   variable: "--font-poppins",
-// });
-
-const averia = Averia_Sans_Libre({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "700"], // Specify weights as needed
+  weight: ["300", "400", "700", "800"], // Add the required font weights
+  style: ["normal", "italic"], // Optional styles
+  variable: "--font-poppins",
 });
+
+// const averia = Averia_Sans_Libre({
+//   subsets: ["latin"],
+//   weight: ["400", "700"], // Specify weights as needed
+// });
 
 export const metadata: Metadata = {
   icons: "../favicon.ico",
@@ -36,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${averia.className} antialiased bg-[#F6F4EC]/90`}>
+      <body className={` ${poppins.className} antialiased bg-[#F6F4EC]/90`}>
         <NavBarResponsive />
         <LoadingProvider>
           <LenisProvider>{children}</LenisProvider>

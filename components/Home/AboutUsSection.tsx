@@ -334,7 +334,7 @@ const AboutUsSection: React.FC = () => {
               ref={(el) => {
                 titleRefs.current[index] = el;
               }}
-              className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w-xl pl-2 pr-2"
+              className="text-4xl lg:text-5xl font-bold text-[#334b35] mt-2 max-w- pl-2 pr-2 leading-8"
             >
               {item.name}
             </h2>
@@ -352,7 +352,7 @@ const AboutUsSection: React.FC = () => {
               ref={(el) => {
                 descriptionRefs.current[index] = el;
               }}
-              className="space-y-3 mb-8 pt-5 pl-2 pr-2 text-[18px] text-[#334b35]"
+              className="space-y-3 mb-8 pt-5 pl-2 pr-2 text-[18px] text-[#334b35] tracking-normal"
             >
               {item.extra_data.description}
             </p>

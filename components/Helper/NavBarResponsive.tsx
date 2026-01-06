@@ -113,10 +113,8 @@ function NavBarResponsive() {
             borderRadius: scrolled ? "9999px" : "0px",
             paddingLeft: scrolled ? "6px" : "0px",
             paddingRight: scrolled ? "6px" : "0px",
-            boxShadow: scrolled
-              ? "0 20px 40px rgba(0,0,0,0.12)"
-              : "0 0 0 rgba(0,0,0,0)",
-            backdropFilter: scrolled ? "blur(14px)" : "blur(6px)",
+            boxShadow: scrolled ? "0 20px 40px rgba(0,0,0,0.12)" : "",
+            backdropFilter: scrolled ? "blur(14px)" : "",
           }}
           transition={{
             borderRadius: {
@@ -128,25 +126,46 @@ function NavBarResponsive() {
             boxShadow: { duration: 1, ease: "easeOut" },
             backdropFilter: { duration: 0.4 },
           }}
-          className={`backdrop-blur-md bg-[#F6F4EC]/50
-    ${scrolled ? "max-w-[1480px] mx-auto" : "w-full"}
+          className={`
+    ${
+      scrolled
+        ? "max-w-[1480px] mx-auto bg-[#F6F4EC]/50"
+        : "w-full bg-transparent"
+    }
   `}
         >
-          <div className=" mx-auto px-6 h-20 flex items-center justify-between">
+          <div className=" mx-auto px-6 h-20 flex items-center justify-between relative">
             {/* Logo */}
-            <Link href="/">
-              {logoData && (
-                <Image
-                  src={logoData.image_url}
-                  alt={logoData.name}
-                  width={140}
-                  height={60}
-                  className="object-contain h-14 w-auto mb-4 -ml-5"
-                  priority
-                  unoptimized
+            <div className="relative flex items-center">
+              {/* SVG Blob */}
+              <svg
+                viewBox="0 0 200 200"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`absolute left-0 -top-16 w-40 h-40 rotate-180 scale-150 -z-10 transition-opacity duration-100
+        ${scrolled ? "opacity-0" : "opacity-100"}`}
+                aria-hidden
+              >
+                <path
+                  fill="#F6F4EC"
+                  d="M65.4,-37.9C79.2,-13.9,81,17,68.1,38C55.2,59.1,27.6,70.5,1.5,69.6C-24.6,68.8,-49.3,55.7,-56,38.2C-62.6,20.7,-51.3,-1.2,-39,-24.4C-26.7,-47.6,-13.3,-72,6.2,-75.6C25.8,-79.2,51.6,-62,65.4,-37.9Z"
+                  transform="translate(100 100)"
                 />
-              )}
-            </Link>
+              </svg>
+
+              <Link href="/" className="">
+                {logoData && (
+                  <Image
+                    src={logoData.image_url}
+                    alt={logoData.name}
+                    width={140}
+                    height={60}
+                    className="object-contain h-14 w-auto mb-4 -ml-5"
+                    priority
+                    unoptimized
+                  />
+                )}
+              </Link>
+            </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-12">
@@ -154,7 +173,9 @@ function NavBarResponsive() {
                 <div key={item.title} className="relative group menu-item">
                   <Link
                     href={item.link}
-                    className="text-[15px] font-semibold tracking-wide text-[#334b35] hover:text-[#1f3322]"
+                    className={`text-[15px] font-semibold tracking-wide ${
+                      scrolled ? "text-[#334b35]" : "text-green-500"
+                    } hover:text-[#1f3322]`}
                   >
                     {item.title}
                   </Link>
@@ -166,8 +187,7 @@ function NavBarResponsive() {
                           <Link
                             key={subItem.title}
                             href={subItem.link}
-                            className="block px-4 py-3 rounded-xl text-sm font-medium text-[#687469]
-                            hover:bg-black/5 hover:text-[#334b35]"
+                            className="block px-4 py-3 rounded-xl text-sm font-medium text-[#687469] hover:bg-black/5 hover:text-[#334b35] transition-all duration-300 ease-out hover:[text-shadow:0_0_0_currentColor]"
                           >
                             {subItem.title}
                           </Link>

@@ -1,95 +1,97 @@
-
-'use client'
-import React, { useEffect, useState } from 'react';
+"use client";
+import React, { useEffect, useState } from "react";
 // import InvestmentSection from '@/components/Helper/InvestmentSection'
-import { GiBullHorns } from 'react-icons/gi';
-import Image from 'next/image';
+import { GiBullHorns } from "react-icons/gi";
+import Image from "next/image";
 // import FaqSection from '@/components/Home/FaqSection';
-import Link from 'next/link';
-import { formatToBDT } from '@/utils/currencyFormatter';
-import { FaArrowRightLong } from 'react-icons/fa6';
+import Link from "next/link";
+import { formatToBDT } from "@/utils/currencyFormatter";
+// import { FaArrowRightLong } from "react-icons/fa6";
 
-interface ExtraData{
+interface ExtraData {
   isSold: boolean;
 }
 
 interface Portfolio {
-    id: string;
-    name: string;
-    location: string;
-    investment_value: string;
-    currency: string;
-    investment_period: string;
-    expected_return_min: string;
-    expected_return_max: string;
-    total_return_min: string;
-    total_return_max: string;
-    image_url: string;
-    description: string;
-    created_at: string;
-    updated_at: string;
-    extra_data: ExtraData;
-  }
-  
-  interface ApiResponse {
-    status: string;
-    message: string;
-    data: Portfolio[];
-  }
-  
-  interface Category {
-    id: string;
-    name: string;
-    description: string;
-  }
-  
-  interface CategoryApiResponse {
-    status: string;
-    message: string;
-    data: Category[];
-  }
+  id: string;
+  name: string;
+  location: string;
+  investment_value: string;
+  currency: string;
+  investment_period: string;
+  expected_return_min: string;
+  expected_return_max: string;
+  total_return_min: string;
+  total_return_max: string;
+  image_url: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  extra_data: ExtraData;
+}
+
+interface ApiResponse {
+  status: string;
+  message: string;
+  data: Portfolio[];
+}
+
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface CategoryApiResponse {
+  status: string;
+  message: string;
+  data: Category[];
+}
 
 function InvestNow() {
+  const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
 
-      const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
-    
-      const [categories, setCategories] = useState<Category[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
-      const [isLoading, setIsLoading] = useState(true);
-    
-      console.log(categories);
-    
+  const [isLoading, setIsLoading] = useState(true);
+
+  console.log(categories);
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/categories/`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/categories/`
+        );
         const result: CategoryApiResponse = await response.json();
-        if (result.status === 'success') {
+        if (result.status === "success") {
           setCategories(result.data);
-          const cowSellCategory = result.data.find(category => category.name === 'Short Term Investment');
+          const cowSellCategory = result.data.find(
+            (category) => category.name === "Short Term Investment"
+          );
           if (cowSellCategory) {
             fetchPortfolios(cowSellCategory.id);
           }
         }
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        console.error("Error fetching categories:", error);
         setIsLoading(false);
       }
     };
-    
-    
-    
+
     const fetchPortfolios = async (categoryId: string) => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/category/${categoryId}/portfolios/`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/category/${categoryId}/portfolios/`
+        );
 
         const result: ApiResponse = await response.json();
-        if (result.status === 'success') {
+        if (result.status === "success") {
           setPortfolios(result.data);
         }
       } catch (error) {
-        console.error('Error fetching portfolios:', error);
-      } finally{
+        console.error("Error fetching portfolios:", error);
+      } finally {
         setIsLoading(false);
       }
     };
@@ -97,7 +99,7 @@ function InvestNow() {
     fetchCategories();
   }, [isLoading]);
 
-        if (isLoading) {
+  if (isLoading) {
     return (
       <section className="pt-[50vh] pb-[50vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-white">
         <div className="text-center">
@@ -109,120 +111,105 @@ function InvestNow() {
   }
 
   return (
-    <section className="h-auto pb-10 lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-[#F6F4EC] pt-10">
-        <div className="max-w-4xl text-center">
-          <GiBullHorns className='w-full text-3xl text-center text-green-700 mb-3' />
-          <h2 className="text-xl font-bold text-[#687469]">Invest Now</h2>
-          <h1 className="text-5xl font-bold text-[#334b35]">Our Projects</h1>
-        </div>
+    <section className="h-auto pb-10 lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-[#F6F4EC] pt-16 lg:pt-32">
+      <div className="max-w-4xl text-center">
+        <GiBullHorns className="w-full text-3xl text-center text-green-700 mb-3" />
+        <h2 className="text-xl font-bold text-[#687469]">Invest Now</h2>
+        <h1 className="text-5xl font-bold text-[#334b35]">Our Projects</h1>
+      </div>
 
-        <div className=' mt-10 w-full h-auto container mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-5 p-2'>
-                 {portfolios.map((portfolio) => (
-       
-       
-                   <>
-                     <div className='relative  lg:w-[300px]'>
-       
-       
-                       <div key={portfolio.id} className='relative flex-col w-full   h-[600px]  justify-center items-center group  bg-[#263c28] rounded-lg'>
-       
-                         <div className='relative h-auto w-full round-lg '>
-                           <div className='relative h-[200px]  rounded-t-lg   overflow-hidden'>
-                             <div className='absolute h-auto rounded-t-lg inset-0 bg-contain left-0 group-hover:-left-4 transition-all duration-700'>
-                               <Image
-                                 src={portfolio.image_url}
-                                 alt='cover'
-                                 width={800}
-                                 height={600}
-                                 quality={50}
-                                 loading="eager"
-                                 unoptimized = {true}
-                                 priority={true}
-                                 objectPosition='top'
-                                 className="w-full h-full object-cover rounded-lg"
-                               />
-                               
-                               <div className='absolute rounded-t-lg bg-green-800 bg-opacity-40 top-0 left-[50%] transform -translate-x-[50%] w-0 h-full group-hover:w-full transition-all duration-500 ease-in-out overflow-hidden'>
-       
-       
-                               </div>
-       
-       
-                             </div>
-       
-       
-       
-                           </div>
-                           {/* project title */}
-                           <div className=' absolute bottom-[-55px] left-0 right-0 z-40  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                             <div className='relative z-20 flex flex-col h-[100px] w-[100px]  justify-center items-center bg-[#263c28] rounded-full text-2xl font-bold text-center text-white'>
-                               <span className='z-40 text-white group-hover:text-white transition-all duration-500'>{portfolio.name}</span>
-       
-                               <div className='absolute inset-0 flex justify-center items-center'>
-                                 <div className='w-0 h-0 z-30 bg-yellow-500 rounded-full group-hover:w-full group-hover:h-full  transition-all duration-500'></div>
-                               </div>
-                             </div>
-       
-       
-                           </div>
-                           <div className=' absolute bottom-[-60px] left-0 right-0 z-30  mx-5  overflow-hidden group-hover:overflow-visible flex justify-center items-center'>
-                             <div className='relative z-20 flex flex-col h-[100px] w-[100px] justify-center items-center bg-[#2b442d] rounded-full text-2xl font-bold text-white'>
-       
-                             </div>
-       
-       
-                           </div>
-                         </div>
-                         <div className='w-0 shadow-lg group-hover:w-full transition-all duration-500 border-2 border-transparent group-hover:border-yellow-400 mx-auto'></div>
-                         <div className='mt-10'>
-       
-                           {/* period */}
-                           <div className='flex flex-row lg:flex-row items-end justify-between w-full px-2'>
-                             <div className='text-xl text-white font-semibold'>Invest</div>
-                             <div className='text-white text-xl font-bold'> {formatToBDT(parseInt(portfolio.investment_value))}</div>
-                           </div>
-       
-                           {/* Return */}
-                           <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                             <div className='text-md text-white font-semibold'>{portfolio.location}</div>
-                             <div className='text-white text-md font-bold'>{portfolio.currency}</div>
-                           </div>
-                         </div>
-       
-                         <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2  py-3'>
-                           <div className='text-md text-white font-semibold'>Period</div>
-                           <div className='text-white text-md font-bold'>{portfolio.investment_period}</div>
-                         </div>
-       
-                         <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2 py-3'>
-                           <div className='text-md text-white font-semibold'>Return</div>
-                           <div className='text-white text-md font-bold'>{portfolio.expected_return_min}% - {portfolio.expected_return_max}%</div>
-                         </div>
-       
-                         <div className='flex flex-row lg:flex-row items-start justify-between w-full px-2 py-3'>
-                           <div className='text-md text-white font-semibold'>Total Return</div>
-                           <div className='text-xm font-bold text-white'> {formatToBDT(parseInt(portfolio.total_return_min))} - {formatToBDT(parseInt(portfolio.total_return_max))}</div>
-                         </div>
-       
-                       </div>
-       
-                       {portfolio.extra_data.isSold ? (
-                        <div className='absolute w-full lg:w-[300px] bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
-                         <span className='z-50 text-white text-center group-hover:text-yellow-500 transition-all duration-500'>Completed</span>
-                       </div>
-                         ):(
-                        <Link href={`/project/project_details/${portfolio.id}`} className='absolute w-full lg:w-[300px] bottom-[50px] left-0 right-0 z-30  group flex justify-center items-center cursor-pointer'>
-                         <div className='relative z-20 flex flex-col h-[50px] w-[50px] justify-center items-center bg-yellow-500 rounded-full text-2xl font-bold text-white group-hover:bg-white transition-all duration-500'>
-                           <span className='z-50 text-white text-center group-hover:text-green-800 transition-all duration-500'><FaArrowRightLong /></span>
-                         </div>
-                       </Link>
-                       )}
-                     </div>
-                   </>
-                 ))}
-               </div>
-      </section>
-  )
+      <div className=" mt-10 w-full h-auto container mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-10 mb-5 p-2 max-w-7xl">
+        {portfolios.map((portfolio) => (
+          <>
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-t from-[#151a19] to-[#4b5a7b] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] ">
+              {/* IMAGE */}
+              <div className="relative h-[220px] overflow-hidden">
+                <Image
+                  src={portfolio.image_url}
+                  alt={portfolio.name}
+                  fill
+                  quality={70}
+                  priority
+                  unoptimized
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+
+                {/* STATUS */}
+                {portfolio.extra_data.isSold && (
+                  <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-amber-500 text-black">
+                    Completed
+                  </span>
+                )}
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-6 flex flex-col h-[calc(100%-220px)]">
+                {/* HEADER */}
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-white leading-tight">
+                      {portfolio.name}
+                    </h3>
+                    <p className="text-slate-300 mt-1 flex items-center gap-1 text-sm">
+                      {portfolio.location}
+                    </p>
+                  </div>
+
+                  <div className="text-right">
+                    <p className="text-xs text-slate-400">Investment</p>
+                    <p className="text-2xl font-bold text-amber-400 tracking-tight">
+                      {formatToBDT(parseInt(portfolio.investment_value))}
+                    </p>
+                  </div>
+                </div>
+
+                {/* DIVIDER */}
+                <div className="my-5 h-px bg-white/10" />
+
+                {/* STATS */}
+                <div className="space-y-3 text-sm text-slate-200">
+                  <StatRow label="Period" value={portfolio.investment_period} />
+                  <StatRow
+                    label="Return"
+                    value={`${portfolio.expected_return_min}% – ${portfolio.expected_return_max}%`}
+                  />
+                  <StatRow
+                    label="Total Return"
+                    value={`${formatToBDT(
+                      parseInt(portfolio.total_return_min)
+                    )} – ${formatToBDT(parseInt(portfolio.total_return_max))}`}
+                  />
+                  <StatRow label="Currency" value={portfolio.currency} />
+                </div>
+
+                {/* CTA */}
+                {!portfolio.extra_data.isSold && (
+                  <Link
+                    href={`/project/project_details/${portfolio.id}`}
+                    className="mt-auto"
+                  >
+                    <button className="w-full mt-6 py-3 rounded-xl bg-amber-500 text-black font-semibold tracking-wide transition-all duration-300 hover:bg-amber-400 hover:shadow-lg">
+                      View Project →
+                    </button>
+                  </Link>
+                )}
+              </div>
+            </div>
+          </>
+        ))}
+      </div>
+    </section>
+  );
 }
 
-export default InvestNow
+const StatRow = ({ label, value }: { label: string; value: string }) => (
+  <div className="flex justify-between items-center">
+    <span className="text-slate-400">{label}</span>
+    <span className="font-semibold text-white">{value}</span>
+  </div>
+);
+
+export default InvestNow;
