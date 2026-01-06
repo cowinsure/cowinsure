@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEvent } from "react";
 import BannerGeneral from "@/components/Home/BannerGeneral";
 import FaqSection from "@/components/Home/FaqSection";
 import { motion, AnimatePresence } from "framer-motion";
@@ -34,7 +34,7 @@ const VetService = () => {
     };
   }, [isModalOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name || !mobile || !location || !cattle) {
       alert("Please fill all required fields");
@@ -270,7 +270,7 @@ const VetService = () => {
                     value={cattle}
                     onChange={(e) => setCattle(e.target.value)}
                     required
-                   className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
+                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
                   >
                     <option value="">Select cattle</option>
                     {cattleOptions.map((opt) => (
