@@ -6,6 +6,32 @@ import FaqSection from "@/components/Home/FaqSection";
 import { motion, AnimatePresence } from "framer-motion";
 import ImageCapture from "@/components/ImageCapture";
 
+interface ApiResponse {
+  status: string;
+  message: string;
+  data: FormField[];
+}
+
+interface FormField {
+  id: number;
+  label: string;
+  field_type: string;
+  required: boolean;
+  choices: string[];
+}
+interface finalForm {
+  name: "";
+  phone: "";
+  email: "";
+  insurance_type_id: 1; // Hardcoded as per the required output
+  responses: DynamicFieldResponse[];
+}
+
+interface DynamicFieldResponse {
+  field_id: string | number;
+  value: string;
+}
+
 const VetService = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
@@ -14,13 +40,43 @@ const VetService = () => {
   const [cattle, setCattle] = useState("");
   const [remarks, setRemarks] = useState("");
   const [image, setImage] = useState<File | null>(null);
+  const [formValues, setFormValues] = useState<finalForm>({
+      name: "",
+      phone: "",
+      email: "",
+      insurance_type_id: 1, // Hardcoded as per the required output
+      responses: [],
+    });
   // const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const [urgency, setUrgency] = useState("");
+    const [formFields, setFormFields] = useState<FormField[]>([]);
+  
 
   const cattleOptions = ["Cow"];
   const urgencyOptions = ["Low", "Moderate", "High"];
   const serviceOptions = ["Vaccination", "Health checkup"];
+
+
+  
+    useEffect(() => {
+      const fetchFormFields = async () => {
+        try {
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/insurance-types/4/form/`
+          );
+          const result: ApiResponse = await response.json();
+          if (result.status === "success") {
+            setFormFields(result.data);
+            console.log(result.data);
+          }
+        } catch (error) {
+          console.error("Error fetching form fields:", error);
+        }
+      };
+  
+      fetchFormFields();
+    }, []);
 
   useEffect(() => {
     if (isModalOpen) {
