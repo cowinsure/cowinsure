@@ -20,15 +20,15 @@ interface FormField {
   choices: string[];
 }
 interface finalForm {
-  name: "";
-  phone: "";
-  email: "";
-  insurance_type_id: 1; // Hardcoded as per the required output
+  name: string;
+  phone: string;
+  email?: string;
+  insurance_type_id: number; // Hardcoded as per the required output
   responses: DynamicFieldResponse[];
 }
 
 interface DynamicFieldResponse {
-  field_id: string | number;
+  field_id: number;
   value: string;
 }
 
@@ -41,12 +41,13 @@ const VetService = () => {
   const [remarks, setRemarks] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [formValues, setFormValues] = useState<finalForm>({
-      name: "",
-      phone: "",
-      email: "",
-      insurance_type_id: 1, // Hardcoded as per the required output
-      responses: [],
-    });
+    name: "",
+    phone: "",
+    email: "",
+    insurance_type_id: 4, // Hardcoded as per the required output
+    responses: [],
+  });
+  const [submitting, setSubmitting] = useState(false);
   // const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const [urgency, setUrgency] = useState("");
@@ -56,7 +57,29 @@ const VetService = () => {
   const cattleOptions = ["Cow"];
   const urgencyOptions = ["Low", "Moderate", "High"];
   const serviceOptions = ["Vaccination", "Health checkup"];
+  
+  const findByLabel = (label: string) => {
+    return formFields.find((item) => item.label === label);
+  };
 
+  const getResponseValue = (fieldId: number) => {
+    return (
+      formValues.responses.find((r) => r.field_id === fieldId)?.value || ""
+    );
+  };
+
+  const handleDynamicChange = (value: string, field: FormField) => {
+    setFormValues((prev) => {
+      const responses = [...prev.responses];
+      const idx = responses.findIndex((r) => r.field_id === field.id);
+      if (idx > -1) {
+        responses[idx] = { ...responses[idx], value };
+      } else {
+        responses.push({ field_id: field.id, value });
+      }
+      return { ...prev, responses };
+    });
+  };
 
   
     useEffect(() => {
@@ -90,21 +113,85 @@ const VetService = () => {
     };
   }, [isModalOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !mobile || !location || !cattle) {
+    if (!name || !mobile) {
       alert("Please fill all required fields");
       return;
     }
-    console.log({ name, mobile, location, cattle, remarks, image, urgency });
-    setIsModalOpen(false);
-    setName("");
-    setMobile("");
-    setLocation("");
-    setCattle("");
-    setRemarks("");
-    setImage(null);
-    setUrgency("");
+
+    // build final payload including dynamic responses and kept name/phone
+    const payload: finalForm = {
+      ...formValues,
+      name,
+      phone: mobile,
+      insurance_type_id: 4,
+    };
+
+    setSubmitting(true);
+    try {
+      const formData = new FormData();
+      formData.append("name", payload.name);
+      formData.append("phone", payload.phone);
+      formData.append("insurance_type_id", String(payload.insurance_type_id));
+
+      const responses = [...payload.responses];
+      console.log(payload);
+      
+
+      // Attach image if present to first file field (if any)
+      // if (image) {
+      //   const fileFields = formFields.filter((f) => f.field_type === "file");
+      //   if (fileFields.length > 0) {
+      //     const fileField = fileFields[0];
+      //     formData.append(`file_${fileField.id}`, image, image.name);
+      //     const idx = responses.findIndex((r) => r.field_id === fileField.id);
+      //     if (idx > -1) responses[idx].value = image.name;
+      //     else responses.push({ field_id: fileField.id, value: image.name });
+      //   } else {
+      //     formData.append("file", image, image.name);
+      //   }
+      // }
+
+      formData.append("responses", JSON.stringify(responses));
+      console.log(formData);
+      
+
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/submit-form/`,
+        { method: "POST", body: JSON.stringify(payload) }
+      );
+
+      let result: any = null;
+      try {
+        result = await res.json();
+      } catch (err) {
+        const txt = await res.text();
+        console.error("Non-JSON response:", txt);
+        throw new Error(txt || "Non-JSON response from server");
+      }
+
+      if (res.ok) {
+        alert("Request submitted successfully");
+        setIsModalOpen(false);
+        setName("");
+        setMobile("");
+        setLocation("");
+        setCattle("");
+        setRemarks("");
+        setImage(null);
+        setUrgency("");
+        setFormValues({ name: "", phone: "", email: "", insurance_type_id: 4, responses: [] });
+      } else {
+        console.error("Submission error:", result);
+        alert(result?.message || "Submission failed");
+      }
+    } catch (err) {
+      console.error("Submit exception:", err);
+      alert("An error occurred while submitting the form");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -299,47 +386,9 @@ const VetService = () => {
                 onSubmit={handleSubmit}
                 className="space-y-5 overflow-y-auto overscroll-contain"
               >
-                {/* Service type */}
+                {/* Keep name & mobile; render dynamic fields using findByLabel */}
                 <div>
-                  <label className="text-sm font-medium text-slate-600">
-                    Select your service
-                  </label>
-                  <select
-                    value={cattle}
-                    onChange={(e) => setCattle(e.target.value)}
-                    required
-                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
-                  >
-                    <option value="">Select service</option>
-                    {serviceOptions.map((opt) => (
-                      <option key={opt}>{opt}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Cattle */}
-                <div>
-                  <label className="text-sm font-medium text-slate-600">
-                    Cattle Type
-                  </label>
-                  <select
-                    value={cattle}
-                    onChange={(e) => setCattle(e.target.value)}
-                    required
-                   className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
-                  >
-                    <option value="">Select cattle</option>
-                    {cattleOptions.map((opt) => (
-                      <option key={opt}>{opt}</option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Name */}
-                <div>
-                  <label className="text-sm font-medium text-slate-600">
-                    Name
-                  </label>
+                  <label className="text-sm font-medium text-slate-600">Name</label>
                   <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -349,11 +398,8 @@ const VetService = () => {
                   />
                 </div>
 
-                {/* Mobile */}
                 <div>
-                  <label className="text-sm font-medium text-slate-600">
-                    Mobile Number
-                  </label>
+                  <label className="text-sm font-medium text-slate-600">Mobile Number</label>
                   <input
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
@@ -363,66 +409,82 @@ const VetService = () => {
                   />
                 </div>
 
-                {/* Location */}
-                <div>
-                  <label className="text-sm font-medium text-slate-600">
-                    Location
-                  </label>
-                  <input
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    required
-                    placeholder="Village / Area"
-                    className="mt-1 w-full rounded-md border text-black border-slate-300 px-2 py-1 focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition"
-                  />
-                </div>
+                {formFields.map((field) => {
+                  const lookup = findByLabel(field.label);
+                  const value = lookup ? getResponseValue(lookup.id) : "";
+                  if (field.field_type === "choice") {
+                    return (
+                      <div key={field.id}>
+                        <label className="text-sm font-medium text-slate-600">{field.label}</label>
+                        <select
+                          value={value}
+                          onChange={(e) => handleDynamicChange(e.target.value, field)}
+                          required={field.required}
+                          className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
+                        >
+                          <option value="">Select</option>
+                          {field.choices.map((c) => (
+                            <option key={c} value={c.trim()}>
+                              {c.trim()}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    );
+                  }
 
-                {/* Urgency */}
-                <div>
-                  <label className="text-sm font-medium text-slate-600">
-                    Urgency
-                  </label>
-                  <div className="mt-2 flex gap-3">
-                    {urgencyOptions.map((opt) => (
-                      <button
-                        type="button"
-                        key={opt}
-                        onClick={() => setUrgency(opt)}
-                        className={`px-2 py-1 rounded-full text-sm border transition ${
-                          urgency === opt
-                            ? "bg-green-600 text-white border-green-600"
-                            : "border-slate-300 text-slate-600 hover:border-green-500"
-                        }`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                  if (field.field_type === "text") {
+                    const isRemarks = /remarks/i.test(field.label);
+                    return (
+                      <div key={field.id}>
+                        <label className="text-sm font-medium text-slate-600">{field.label}</label>
+                        {isRemarks ? (
+                          <textarea
+                            rows={3}
+                            value={value}
+                            onChange={(e) => handleDynamicChange(e.target.value, field)}
+                            required={field.required}
+                            className="mt-1 w-full rounded-md text-black border border-slate-300 px-2 py-1 focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition"
+                            placeholder={field.label}
+                          />
+                        ) : (
+                          <input
+                            value={value}
+                            onChange={(e) => handleDynamicChange(e.target.value, field)}
+                            required={field.required}
+                            placeholder={field.label}
+                            className="mt-1 w-full rounded-md text-black border border-slate-300 px-2 py-1 focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition"
+                          />
+                        )}
+                      </div>
+                    );
+                  }
 
-                {/* Image Upload */}
-                <ImageCapture image={image} setImage={setImage} />
+                  if (field.field_type === "file") {
+                    return (
+                      <div key={field.id}>
+                        <label className="text-sm font-medium text-slate-600">{field.label}</label>
+                        <ImageCapture
+                          image={image}
+                          setImage={(f) => {
+                            setImage(f);
+                            handleDynamicChange(f ? f.name : "", field);
+                          }}
+                        />
+                      </div>
+                    );
+                  }
 
-                {/* Remarks */}
-                <div>
-                  <label className="text-sm font-medium text-slate-600">
-                    Remarks (optional)
-                  </label>
-                  <textarea
-                    rows={3}
-                    value={remarks}
-                    onChange={(e) => setRemarks(e.target.value)}
-                    className="mt-1 w-full rounded-md text-black border border-slate-300 px-2 py-1 focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition"
-                    placeholder="Describe the issue..."
-                  />
-                </div>
+                  return null;
+                })}
 
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full mt-4 rounded-md bg-green-600 py-3 font-semibold text-white transition-all duration-300 hover:bg-green-700 hover:shadow-lg active:scale-[0.98]"
+                  disabled={submitting}
+                  className={`w-full mt-4 rounded-md bg-green-600 py-3 font-semibold text-white transition-all duration-300 hover:bg-green-700 hover:shadow-lg active:scale-[0.98] ${submitting ? 'opacity-60 cursor-not-allowed' : ''}`}
                 >
-                  Submit Request
+                  {submitting ? 'Submitting...' : 'Submit Request'}
                 </button>
               </form>
             </motion.div>
