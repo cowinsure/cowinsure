@@ -101,12 +101,10 @@ function NavBarResponsive() {
           opacity: 1,
         }}
         transition={{
-          y: { duration: 3, ease: "easeInOut" },
+          y: { duration: 7, ease: "easeInOut" },
           scale: capsuleSpring,
         }}
-        className={`z-50 fixed
-        ${scrolled ? "top-4 -translate-x-1/2 w-full" : "top-0 w-full"}
-        `}
+        className="fixed top-0 left-0 w-full z-50 h-[80px]"
       >
         <motion.div
           animate={{
@@ -126,10 +124,10 @@ function NavBarResponsive() {
             boxShadow: { duration: 1, ease: "easeOut" },
             backdropFilter: { duration: 0.4 },
           }}
-          className={`
+          className={`transition-all ease-in-out duration-700 mt-3
     ${
       scrolled
-        ? "max-w-[1480px] mx-auto bg-[#F6F4EC]/50"
+        ? "max-w-[1480px] mx-auto bg-[#F6F4EC]/50 translate-y-0"
         : "w-full bg-transparent"
     }
   `}
@@ -138,19 +136,11 @@ function NavBarResponsive() {
             {/* Logo */}
             <div className="relative flex items-center">
               {/* SVG Blob */}
-              <svg
-                viewBox="0 0 200 200"
-                xmlns="http://www.w3.org/2000/svg"
-                className={`absolute left-0 -top-16 w-40 h-40 rotate-180 scale-150 -z-10 transition-opacity duration-100
-        ${scrolled ? "opacity-0" : "opacity-100"}`}
-                aria-hidden
-              >
-                <path
-                  fill="#F6F4EC"
-                  d="M65.4,-37.9C79.2,-13.9,81,17,68.1,38C55.2,59.1,27.6,70.5,1.5,69.6C-24.6,68.8,-49.3,55.7,-56,38.2C-62.6,20.7,-51.3,-1.2,-39,-24.4C-26.7,-47.6,-13.3,-72,6.2,-75.6C25.8,-79.2,51.6,-62,65.4,-37.9Z"
-                  transform="translate(100 100)"
-                />
-              </svg>
+              <div
+                className={`absolute -left-5 -top-8 -z-10 w-[150px] h-[100px] bg-[#F6F4EC] skew-x-[20deg] rounded-md transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  scrolled ? "-translate-y-40" : "translate-y-0"
+                }`}
+              />
 
               <Link href="/" className="">
                 {logoData && (
@@ -169,13 +159,19 @@ function NavBarResponsive() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center gap-12">
+              {/* Animated background div */}
+              <div
+                className={`absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[100px] bg-black/30 rounded-2xl transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] backdrop-blur-sm ${
+                  scrolled ? "-translate-y-[calc(100%)]" : "translate-y-0"
+                }`}
+              />
               {menuData.map((item) => (
                 <div key={item.title} className="relative group menu-item">
                   <Link
                     href={item.link}
                     className={`text-[15px] font-semibold tracking-wide ${
-                      scrolled ? "text-[#334b35]" : "text-green-500"
-                    } hover:text-[#1f3322]`}
+                      scrolled ? "text-[#334b35]" : "text-white"
+                    } hover:text-[#a2ffad]`}
                   >
                     {item.title}
                   </Link>
@@ -200,13 +196,13 @@ function NavBarResponsive() {
             </div>
             {/* WhatsApp CTA */}
             <Link
-              href="https://wa.me/880XXXXXXXXXX"
+              href="https://wa.me/8801999467873"
               target="_blank"
               className="ml-4 px-5 py-2 rounded-full bg-[#002b10] text-[#25D366] text-sm font-semibold
-                hover:scale-105 transition shadow-md flex items-center gap-1"
+                hover:scale-105 transition shadow-md hidden md:flex items-center gap-1"
             >
               <FaWhatsapp size={25} />
-              Get In Touch
+              <span className="">Get In Touch</span>
             </Link>
 
             {/* Mobile Toggle */}
@@ -280,7 +276,7 @@ function NavBarResponsive() {
           height: 2px;
           left: 50%;
           bottom: -6px;
-          background: #334b35;
+          background: #25d366;
           transition: all 0.3s ease;
           transform: translateX(-50%);
         }

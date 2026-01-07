@@ -294,7 +294,7 @@ const SwiperComponent = () => {
         ref={statsRef}
         className="relative mt-[-22] min-[768px]:mt-[-64] z-10 px-4 md:px-8 lg:px-20 opacity-0"
       >
-        <div className="bg-gradient-to-tr from-[#f6eec7] via-[#ffffff] to-[#f6eec7] rounded-lg shadow-lg overflow-hidden lg:max-w-[1450px] lg:h-40 mx-auto">
+        <div className="bg-[#F6F4EC] rounded-lg shadow-lg overflow-hidden lg:max-w-[1450px] lg:h-40 mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 h-full">
             {/* Farmers Impacted */}
             <div className="p-6 text-center border-b md:border-b-0 md:border-r border-gray-200 flex flex-col items-center justify-center">

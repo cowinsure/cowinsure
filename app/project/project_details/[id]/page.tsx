@@ -5,10 +5,12 @@ import FaqSection from "@/components/Home/FaqSection";
 import { useParams } from "next/navigation";
 
 import { formatToBDT } from "@/utils/currencyFormatter";
-import { HiOutlineMinusSm } from "react-icons/hi";
-import { FaPlus } from "react-icons/fa6";
+// import { HiOutlineMinusSm } from "react-icons/hi";
+// import { FaPlus } from "react-icons/fa6";
 import CowInvestmentForm from "@/components/Project/CowInvestmentForm";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { MapPin, Clock, TrendingUp } from "lucide-react";
 
 // types/Investment.ts
 export interface Category {
@@ -128,16 +130,21 @@ const DetailsID = () => {
     return newv;
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-[600px] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-600">Loading Project Details...</p>
-        </div>
-      </div>
-    );
-  }
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  // if (loading) {
+  //   return (
+  //     <div className="min-h-[600px] flex items-center justify-center">
+  //       <div className="text-center">
+  //         <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+  //         <p className="text-gray-600">Loading Project Details...</p>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (!projectDetails) {
     return (
@@ -153,142 +160,217 @@ const DetailsID = () => {
     );
   }
 
+  console.log(projectDetails);
+
   return (
-    <div className="h-auto md:pt-0 mx-auto lg:w-full text-center bg-[#F7F7F7]">
-      <div className="pt-[10vh] lg:pt-[10vh] container mx-auto flex flex-col lg:flex-col lg:justify-center lg:items-center justify-center p-5">
-        <div className="relative mb-10 w-full rounded-lg overflow-hidden h-auto lg:h-[100vh]">
-          <Image
-            src={projectDetails.image_url}
-            width={800}
-            height={600}
-            alt="Banner"
-            loading="eager"
-            priority={true}
-            unoptimized={true}
-            objectPosition="top"
-            className="w-full h-full object-cover rounded-lg"
-          />
-          <div className="absolute bg-black bg-opacity-45 top-0 h-full w-full flex justify-center items-center lg:justify-center lg:items-center">
-            <h1 className="text-white text-4xl lg:text-6xl font-bold">
+    <div className="">
+      {/* ===== HERO ===== */}
+      <section className="relative h-[85vh] overflow-hidden">
+        <Image
+          src={projectDetails.image_url}
+          alt="Project Banner"
+          fill
+          priority
+          className="object-cover"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 h-full flex items-end"
+        >
+          <div className="container mx-auto px-6 pb-20 text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 max-w-3xl">
               {projectDetails.name}
             </h1>
-          </div>
-        </div>
-        <h1 className="text-3xl font-bold text-[#334b35] text-start w-full mt-5 mb-5">
-          Project Overview
-        </h1>
-        <div className="mb-10 w-full flex flex-col lg:gap-5 gap-5 justify-between lg:flex-row lg:items-start lg:justify-between">
-          <div className="w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold">
-            <h2 className="text-2xl text-white mb-5">Return</h2>
-            <h2 className="text-xl text-white">
-              {projectDetails.expected_return_min}% -{" "}
-              {projectDetails.expected_return_max}%
-            </h2>
-          </div>
-          <div className="w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold">
-            <h2 className="text-2xl text-white mb-5">Duration</h2>
-            <h2 className="text-xl text-white">
-              {projectDetails.investment_period}
-            </h2>
-          </div>
-          <div className="w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold">
-            <h2 className="text-2xl text-white mb-5">Unit price</h2>
-            <h2 className="text-xl text-white">
-              {formatToBDT(parseInt(projectDetails.investment_value))}
-            </h2>
-          </div>
 
-          <div className="w-full lg:flex-1 p-10 rounded-md bg-green-800 font-bold">
-            <h2 className="text-2xl text-white mb-5">Location</h2>
-            <h2 className="text-xl text-white">{projectDetails.location}</h2>
-          </div>
-        </div>
+            {/* KPI CHIPS */}
+            <div className="flex flex-wrap gap-4">
+              <Kpi icon={TrendingUp} label="Expected Return">
+                {projectDetails.expected_return_min}% –{" "}
+                {projectDetails.expected_return_max}%
+              </Kpi>
 
-        <div className="w-full flex flex-col lg:gap-5 justify-start items-start lg:flex-row lg:items-start lg:justify-between ">
-          <div className="flex-1 flex flex-col lg:flex-col gap-5 justify-start items-start lg:items-start lg:justify-start">
-            <h1 className="text-xl font-bold text-[#334b35] text-start w-full mt-5 mb-5">
-              Project Details
-            </h1>
-            <p className="text-start  text-xl  text-[#687469]">
-              <div
-                dangerouslySetInnerHTML={{ __html: projectDetails.description }}
-              />
-            </p>
+              <Kpi icon={Clock} label="Duration">
+                {projectDetails.investment_period}
+              </Kpi>
+
+              <Kpi icon={MapPin} label="Location">
+                {projectDetails.location}
+              </Kpi>
+            </div>
           </div>
-        </div>
-        <div className="w-full bg-white rounded-lg shadow-md flex flex-col-reverse lg:flex-row mt-10">
-          {/* Invest on Cow Section */}
-          <div className="w-full lg:w-1/2 p-6 lg:px-8">
+        </motion.div>
+      </section>
+
+      {/* ===== CONTENT ===== */}
+      <section className=" container mx-auto px-6 py-20 space-y-20s">
+        {/* OVERVIEW */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className=""
+        >
+          <h2 className="text-3xl font-semibold text-[#1e3a2f] mb-6">
+            Project Overview
+          </h2>
+
+          {/* STATS GRID */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full mb-8"
+          >
+            <StatCard
+              title="Unit Price"
+              value={formatToBDT(parseInt(projectDetails.investment_value))}
+            />
+            <StatCard
+              title="Min Return"
+              value={`${projectDetails.expected_return_min}%`}
+            />
+            <StatCard
+              title="Max Return"
+              value={`${projectDetails.expected_return_max}%`}
+            />
+            <StatCard
+              title="Investment Period"
+              value={projectDetails.investment_period}
+            />
+          </motion.div>
+
+          <div
+            className="prose prose-lg text-[#5f6f65]"
+            dangerouslySetInnerHTML={{
+              __html: projectDetails.description,
+            }}
+          />
+        </motion.div>
+
+        {/* INVESTMENT PANEL */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="bg-white rounded-2xl shadow-xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden mt-8"
+        >
+          {/* FORM */}
+          <div className="p-8 lg:p-12">
             <CowInvestmentForm />
           </div>
 
-          {/* Divider (desktop only) */}
-          <div className="hidden lg:block w-px bg-gray-300 my-4"></div>
+          {/* PROFIT SUMMARY */}
+          <div className="bg-gradient-to-br from-green-800 to-green-900 text-white p-8 lg:p-12">
+            <h3 className="text-3xl font-semibold mb-8 text-center">
+              Profit Projection
+            </h3>
 
-          {/* Profit Statement Section */}
-          <div className="w-full lg:w-1/2 p-6 lg:px-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-center text-[#334b35] mb-6">
-              Approximate Profit Statement
-            </h2>
+            <div className="grid grid-cols-2 gap-6 mb-10">
+              <ProfitBox label="Return">
+                {projectDetails.expected_return_min}% –{" "}
+                {projectDetails.expected_return_max}%
+              </ProfitBox>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-6 bg-green-50 rounded-lg text-center">
-                <h3 className="text-lg font-semibold text-green-700">Return</h3>
-                <p className="text-2xl font-bold text-green-800">
-                  {projectDetails.expected_return_min}% –{" "}
-                  {projectDetails.expected_return_max}%
-                </p>
-              </div>
-              <div className="p-6 bg-green-50 rounded-lg text-center">
-                <h3 className="text-lg font-semibold text-green-700">
-                  Duration
-                </h3>
-                <p className="text-2xl font-bold text-green-800">
-                  {projectDetails.investment_period}
-                </p>
-              </div>
-              <div className="p-6 bg-green-50 rounded-lg text-center">
-                <h3 className="text-lg font-semibold text-green-700">
-                  Location
-                </h3>
-                <p className="text-2xl font-bold text-green-800">
-                  {projectDetails.location}
-                </p>
-              </div>
+              <ProfitBox label="Duration">
+                {projectDetails.investment_period}
+              </ProfitBox>
             </div>
 
-            <div className="mt-8 flex flex-col items-center bg-green-800 text-white space-y-4 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold">Total Return</h3>
-              <p className="text-2xl font-bold text-white">
+            <div className="bg-white/10 rounded-xl p-6 text-center space-y-4">
+              <p className="uppercase text-sm tracking-wider opacity-80">
+                Total Estimated Return
+              </p>
+              <p className="text-3xl font-bold">
                 {formatToBDT(minTotalReturn)} – {formatToBDT(maxTotalReturn)}
               </p>
-              <h3 className="text-lg font-semibold">Profit Count</h3>
-              <div className="mt-4 flex items-center space-x-4">
-                <button
+
+              {/* COUNTER */}
+              <div className="flex justify-center items-center gap-6 pt-6">
+                <CounterButton
                   onClick={decrementProfitCount}
                   disabled={profitCount <= 1}
-                  className="bg-green-700 hover:bg-green-600 disabled:opacity-50 rounded-full p-2"
                 >
-                  <HiOutlineMinusSm size={20} />
-                </button>
-                <span className="text-2xl font-bold">{profitCount}</span>
-                <button
-                  onClick={incrementProfitCount}
-                  className="bg-green-700 hover:bg-green-600 rounded-full p-2"
-                >
-                  <FaPlus size={20} />
-                </button>
+                  −
+                </CounterButton>
+
+                <span className="text-3xl font-semibold">{profitCount}</span>
+
+                <CounterButton onClick={incrementProfitCount}>+</CounterButton>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </section>
 
-      <div className="mt-11 bg-[#F6F4EC]">
+      {/* FAQ */}
+      <section className="bg-[#f3f4ef] py-20">
         <FaqSection />
-      </div>
+      </section>
     </div>
   );
 };
+
+const Kpi = ({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: React.ComponentType<{ size: number }>;
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-3 rounded-full text-sm">
+    <Icon size={18} />
+    <span className="opacity-80">{label}:</span>
+    <span className="font-semibold">{children}</span>
+  </div>
+);
+
+const StatCard = ({ title, value }: { title: string; value: string }) => (
+  <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition">
+    <p className="text-sm text-gray-500 mb-2">{title}</p>
+    <p className="text-xl font-semibold text-[#1e3a2f]">{value}</p>
+  </div>
+);
+
+const ProfitBox = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <div className="bg-white/10 rounded-xl p-5 text-center">
+    <p className="text-sm opacity-80 mb-1">{label}</p>
+    <p className="text-xl font-semibold">{children}</p>
+  </div>
+);
+
+const CounterButton = ({
+  children,
+  ...props
+}: {
+  children: React.ReactNode;
+  [key: string]: any;
+}) => (
+  <button
+    {...props}
+    className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 transition text-2xl disabled:opacity-40"
+  >
+    {children}
+  </button>
+);
 
 export default DetailsID;

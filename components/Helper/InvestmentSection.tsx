@@ -104,7 +104,7 @@ const InvestmentSection = () => {
 
   if (isLoading) {
     return (
-      <section className="pt-[50vh] pb-[50vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-white">
+      <section className="pt-[50vh] pb-[50vh] h-auto lg:h-auto flex flex-col lg:flex-col lg:justify-start lg:items-center items-center justify-center bg-transparent">
         <div className="text-center">
           <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading Projects...</p>
@@ -155,7 +155,7 @@ const InvestmentSection = () => {
 
                   {/* Status */}
                   {portfolio.extra_data.isSold && (
-                    <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-amber-500/90 text-black">
+                    <span className="absolute top-4 right-4 px-3 py-1 text-xs font-semibold rounded-full bg-green-800 text-white">
                       Completed
                     </span>
                   )}
@@ -179,7 +179,7 @@ const InvestmentSection = () => {
                       <p className="text-sm text-slate-400 text-right">
                         Investment
                       </p>
-                      <p className="text-3xl font-bold text-amber-400 tracking-tight">
+                      <p className="text-3xl font-bold text-green-400 tracking-tight">
                         {formatToBDT(parseInt(portfolio.investment_value))}
                       </p>
                     </div>
@@ -215,7 +215,7 @@ const InvestmentSection = () => {
                       href={`/project/project_details/${portfolio.id}`}
                       className="mt-auto"
                     >
-                      <button className="w-full mt-6 py-3 rounded-xl bg-amber-500 text-black font-semibold tracking-wide transition-all duration-300 hover:bg-amber-400 hover:shadow-lg">
+                      <button className="w-full mt-6 py-3 rounded-xl bg-green-500 text-white hover:text-green-800 font-semibold tracking-wide transition-all duration-300 hover:bg-green-400 hover:shadow-lg">
                         View Project →
                       </button>
                     </Link>

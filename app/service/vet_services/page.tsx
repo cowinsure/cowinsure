@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FormEvent } from "react";
 import BannerGeneral from "@/components/Home/BannerGeneral";
 import FaqSection from "@/components/Home/FaqSection";
 import { motion, AnimatePresence } from "framer-motion";
@@ -113,7 +113,7 @@ const VetService = () => {
     };
   }, [isModalOpen]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !mobile) {
       alert("Please fill all required fields");
@@ -279,7 +279,10 @@ const VetService = () => {
       </section>
 
       {/* Awareness Campaign Section */}
-      <section className=" py-16 bg-white">
+      <section className=" py-16 relative bg-white">
+        {/* <div className="w-full h-full bg-white absolute -top-20 skew-y-[10deg] -z-20"></div> */}
+        {/* <div className="w-full h-full bg-white absolute top-0 -skew-x-[18deg] -z-20"></div> */}
+        {/* <div className="w-full h-full bg-white absolute top-20 skew-y-[5deg] -z-20"></div> */}
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl lg:text-4xl font-bold text-left text-[#334b35] mb-2 underline">
             Why Veterinary Services Matter
@@ -388,7 +391,45 @@ const VetService = () => {
               >
                 {/* Keep name & mobile; render dynamic fields using findByLabel */}
                 <div>
-                  <label className="text-sm font-medium text-slate-600">Name</label>
+                  <label className="text-sm font-medium text-slate-600">
+                    Select your service
+                  </label>
+                  <select
+                    value={cattle}
+                    onChange={(e) => setCattle(e.target.value)}
+                    required
+                    className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
+                  >
+                    <option value="">Select service</option>
+                    {serviceOptions.map((opt) => (
+                      <option key={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Cattle */}
+                <div>
+                  <label className="text-sm font-medium text-slate-600">
+                    Cattle Type
+                  </label>
+                  <select
+                    value={cattle}
+                    onChange={(e) => setCattle(e.target.value)}
+                    required
+                   className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
+                  >
+                    <option value="">Select cattle</option>
+                    {cattleOptions.map((opt) => (
+                      <option key={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Name */}
+                <div>
+                  <label className="text-sm font-medium text-slate-600">
+                    Name
+                  </label>
                   <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
