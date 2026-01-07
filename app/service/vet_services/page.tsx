@@ -113,7 +113,7 @@ const VetService = () => {
     };
   }, [isModalOpen]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !mobile) {
       alert("Please fill all required fields");
