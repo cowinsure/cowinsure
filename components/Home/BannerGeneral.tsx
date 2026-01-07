@@ -24,7 +24,7 @@ const BannerGeneral = ({ children, bannerUrl }: AppBrandingProps) => {
   return (
     <div
       ref={ref}
-      className="relative w-full h-[50vh] lg:h-[80vh] md:h-[40vh] mt-20 overflow-hidden"
+      className="relative w-full h-[50vh] lg:h-[100vh] md:h-[40vh] overflow-hidden"
     >
       <motion.div style={{ y }} className="absolute inset-0">
         <Image

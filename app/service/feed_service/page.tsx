@@ -1,12 +1,63 @@
+"use client";
 import React from "react";
 import BannerGeneral from "@/components/Home/BannerGeneral";
 import FaqSection from "@/components/Home/FaqSection";
 // import banner from '../../public/agriculture-farmland-2023-11-27-05-02-44-utc.jpg';
 import Link from "next/link";
 
+const products = [
+  {
+    image:
+      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/DAIRY-CATTLE_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
+    name: "Premium Cattle Feed",
+    description:
+      "High-quality balanced feed for cattle to ensure optimal health and growth.",
+    price: 25.99,
+  },
+  {
+    image:
+      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/BEEF-CATTLE_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
+    name: "Organic Poultry Feed",
+    description:
+      "Nutrient-rich organic feed for poultry, promoting egg production and health.",
+    price: 18.5,
+  },
+  {
+    image:
+      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/BEEF-BUILDER_25-KG-2.jpg.bv.webp?bv_host=akijfeed.com",
+    name: "Sheep Nutrition Mix",
+    description:
+      "Specialized mix for sheep, providing essential vitamins and minerals.",
+    price: 22.75,
+  },
+  {
+    image:
+      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/MILK-BOOSTER_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
+    name: "Goat Feed Pellets",
+    description:
+      "Easy-to-digest pellets for goats, supporting milk yield and weight gain.",
+    price: 20.0,
+  },
+];
+
 const page = () => {
   return (
     <div className="h-auto overflow-hidden">
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .fade-in {
+          animation: fadeIn 0.6s ease-out forwards;
+        }
+      `}</style>
       {/* Banner Section */}
       <BannerGeneral bannerUrl={"/Feedimg.png"}>
         <div className="relative z-10 flex flex-col items-center justify-center h-full bg-orange-950 bg-opacity-50 text-white text-center p-5">
@@ -24,6 +75,68 @@ const page = () => {
           </Link>
         </div>
       </BannerGeneral>
+
+      {/* Our Products Section */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <h2 className="text-3xl lg:text-4xl font-bold text-center text-[#334b35] mb-12">
+          Our Products
+        </h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="relative bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 transition-transform duration-300 cursor-pointer group"
+            >
+              {/* Product Image */}
+              <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                />
+                {/* Floating badge */}
+                <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full font-semibold text-sm shadow-lg">
+                  New
+                </div>
+              </div>
+
+              {/* Card Content */}
+              <div className="p-6 flex flex-col justify- ">
+                <div>
+                  <h3 className="text-xl font-bold text-[#334b35] mb-2">
+                    {product.name}
+                  </h3>
+                  <p className="text-gray-600 mb-4 line-clamp-3">
+                    {product.description}
+                  </p>
+                </div>
+
+                {/* WhatsApp Button */}
+                <a
+                  href={`https://wa.me/?text=I'm interested in ${encodeURIComponent(
+                    product.name
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white font-semibold rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 text-lg"
+                >
+                  {/* WhatsApp Icon */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.52 3.48A11.87 11.87 0 0012 0C5.37 0 0 5.37 0 12a11.94 11.94 0 001.85 6.28L0 24l5.77-1.88A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22c-2.03 0-3.92-.62-5.5-1.67l-.39-.23-3.42 1.12 1.14-3.33-.26-.42A9.95 9.95 0 012 12c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10zm5.02-7.98l-2.29-.66a1 1 0 00-1.07.3l-.52.53a8.28 8.28 0 01-3.85-3.85l.53-.52a1 1 0 00.3-1.07l-.65-2.3a1 1 0 00-1.1-.65l-1.57.25a1 1 0 00-.9 1.09 11.22 11.22 0 0011 11 1 1 0 001.09-.9l.24-1.57a1 1 0 00-.65-1.1z" />
+                  </svg>
+                  Order Now
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* About Feed Services Section */}
       <section className="max-w-7xl mx-auto px-6 py-20">

@@ -136,7 +136,10 @@ const VetService = () => {
       </section>
 
       {/* Awareness Campaign Section */}
-      <section className=" py-16 bg-white">
+      <section className=" py-16 relative bg-white">
+        {/* <div className="w-full h-full bg-white absolute -top-20 skew-y-[10deg] -z-20"></div> */}
+        {/* <div className="w-full h-full bg-white absolute top-0 -skew-x-[18deg] -z-20"></div> */}
+        {/* <div className="w-full h-full bg-white absolute top-20 skew-y-[5deg] -z-20"></div> */}
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-3xl lg:text-4xl font-bold text-left text-[#334b35] mb-2 underline">
             Why Veterinary Services Matter
