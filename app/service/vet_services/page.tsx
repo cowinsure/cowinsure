@@ -48,6 +48,7 @@ const VetService = () => {
     responses: [],
   });
   const [submitting, setSubmitting] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
   // const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const [urgency, setUrgency] = useState("");
@@ -172,7 +173,7 @@ const VetService = () => {
       }
 
       if (res.ok) {
-        alert("Request submitted successfully");
+        setToast({ message: "Request submitted successfully", type: "success" });
         setIsModalOpen(false);
         setName("");
         setMobile("");
@@ -184,18 +185,36 @@ const VetService = () => {
         setFormValues({ name: "", phone: "", email: "", insurance_type_id: 4, responses: [] });
       } else {
         console.error("Submission error:", result);
-        alert(result?.message || "Submission failed");
+        setToast({ message: result?.message || "Submission failed", type: "error" });
       }
     } catch (err) {
       console.error("Submit exception:", err);
-      alert("An error occurred while submitting the form");
+      setToast({ message: "An error occurred while submitting the form", type: "error" });
     } finally {
       setSubmitting(false);
     }
   };
 
+  // auto-dismiss toast
+  useEffect(() => {
+    if (!toast) return;
+    const id = window.setTimeout(() => setToast(null), 4000);
+    return () => clearTimeout(id);
+  }, [toast]);
+
   return (
     <div className="h-auto overflow-hidden">
+      {/* Toast */}
+      {toast && (
+        <div
+          className={`fixed top-6 right-6 z-50 max-w-sm w-full px-4 py-2 rounded shadow-lg text-white ${
+            toast.type === "success" ? "bg-green-600" : "bg-red-600"
+          }`}
+          role="status"
+        >
+          {toast.message}
+        </div>
+      )}
       {/* Banner Section */}
       <BannerGeneral bannerUrl={"/cowinspection.jpg"}>
         <div className="relative z-10 flex flex-col items-center justify-center h-full bg-green-950 bg-opacity-50 text-white text-center p-5">
@@ -390,7 +409,7 @@ const VetService = () => {
                 className="space-y-5 overflow-y-auto overscroll-contain"
               >
                 {/* Keep name & mobile; render dynamic fields using findByLabel */}
-                <div>
+                {/* <div>
                   <label className="text-sm font-medium text-slate-600">
                     Select your service
                   </label>
@@ -405,10 +424,10 @@ const VetService = () => {
                       <option key={opt}>{opt}</option>
                     ))}
                   </select>
-                </div>
+                </div> */}
 
                 {/* Cattle */}
-                <div>
+                {/* <div>
                   <label className="text-sm font-medium text-slate-600">
                     Cattle Type
                   </label>
@@ -423,7 +442,7 @@ const VetService = () => {
                       <option key={opt}>{opt}</option>
                     ))}
                   </select>
-                </div>
+                </div> */}
 
                 {/* Name */}
                 <div>
