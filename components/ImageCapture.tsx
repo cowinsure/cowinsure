@@ -8,7 +8,7 @@ interface ImageCaptureProps {
   setImage: (file: File | null) => void;
 }
 
-const ImageCapture: React.FC<ImageCaptureProps> = ({ image, setImage }) => {
+const ImageCapture: React.FC<ImageCaptureProps> = ({  setImage }) => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [cameraOpen, setCameraOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);

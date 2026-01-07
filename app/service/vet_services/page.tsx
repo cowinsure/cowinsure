@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect, useState, FormEvent } from "react";
+import React, { useEffect, useState } from "react";
 import BannerGeneral from "@/components/Home/BannerGeneral";
 import FaqSection from "@/components/Home/FaqSection";
 import { motion, AnimatePresence } from "framer-motion";
@@ -36,9 +36,7 @@ const VetService = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
-  const [location, setLocation] = useState("");
-  const [cattle, setCattle] = useState("");
-  const [remarks, setRemarks] = useState("");
+  
   const [image, setImage] = useState<File | null>(null);
   const [formValues, setFormValues] = useState<finalForm>({
     name: "",
@@ -51,13 +49,10 @@ const VetService = () => {
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
   // const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-  const [urgency, setUrgency] = useState("");
     const [formFields, setFormFields] = useState<FormField[]>([]);
   
 
-  const cattleOptions = ["Cow"];
-  const urgencyOptions = ["Low", "Moderate", "High"];
-  const serviceOptions = ["Vaccination", "Health checkup"];
+
   
   const findByLabel = (label: string) => {
     return formFields.find((item) => item.label === label);
@@ -114,7 +109,7 @@ const VetService = () => {
     };
   }, [isModalOpen]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !mobile) {
       alert("Please fill all required fields");
@@ -163,13 +158,13 @@ const VetService = () => {
         { method: "POST", body: JSON.stringify(payload) }
       );
 
-      let result: any = null;
+      let result;
       try {
         result = await res.json();
       } catch (err) {
         const txt = await res.text();
         console.error("Non-JSON response:", txt);
-        throw new Error(txt || "Non-JSON response from server");
+        throw new Error(txt || "Non-JSON response from server" + err);
       }
 
       if (res.ok) {
@@ -177,11 +172,9 @@ const VetService = () => {
         setIsModalOpen(false);
         setName("");
         setMobile("");
-        setLocation("");
-        setCattle("");
-        setRemarks("");
+ 
         setImage(null);
-        setUrgency("");
+      
         setFormValues({ name: "", phone: "", email: "", insurance_type_id: 4, responses: [] });
       } else {
         console.error("Submission error:", result);

@@ -46,7 +46,7 @@ const DetailsID = () => {
   const [minTotalReturn, setMinTotalReturn] = useState<number>(0);
   const [maxTotalReturn, setMaxTotalReturn] = useState<number>(0);
   const [investmentValue, setInvestmentValue] = useState<number>(0);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjectDetails = async () => {
@@ -57,10 +57,10 @@ const DetailsID = () => {
         const data = await response.json();
         setProjectDetails(data.data);
 
-        setLoading(false);
+        // setLoading(false);
       } catch (error) {
         console.error("Error fetching project details:", error);
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
@@ -361,12 +361,9 @@ const ProfitBox = ({
 const CounterButton = ({
   children,
   ...props
-}: {
-  children: React.ReactNode;
-  [key: string]: any;
-}) => (
+}: { children: React.ReactNode } & React.ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
-    {...props}
+    {...(props as React.ButtonHTMLAttributes<HTMLButtonElement>)}
     className="w-12 h-12 rounded-full bg-white/20 hover:bg-white/30 transition text-2xl disabled:opacity-40"
   >
     {children}
