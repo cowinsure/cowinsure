@@ -7,37 +7,38 @@ import Link from "next/link";
 
 const products = [
   {
-    image:
-      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/DAIRY-CATTLE_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
-    name: "Premium Cattle Feed",
-    description:
-      "High-quality balanced feed for cattle to ensure optimal health and growth.",
-    price: 25.99,
-  },
-  {
-    image:
-      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/BEEF-CATTLE_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
-    name: "Organic Poultry Feed",
-    description:
-      "Nutrient-rich organic feed for poultry, promoting egg production and health.",
-    price: 18.5,
-  },
-  {
-    image:
-      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/BEEF-BUILDER_25-KG-2.jpg.bv.webp?bv_host=akijfeed.com",
-    name: "Sheep Nutrition Mix",
-    description:
-      "Specialized mix for sheep, providing essential vitamins and minerals.",
-    price: 22.75,
-  },
-  {
-    image:
-      "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/MILK-BOOSTER_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
-    name: "Goat Feed Pellets",
-    description:
-      "Easy-to-digest pellets for goats, supporting milk yield and weight gain.",
-    price: 20.0,
-  },
+  image:
+    "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/DAIRY-CATTLE_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
+  name: "Daily Cattle Feed",
+  description:
+    "High-quality feed formulated for dairy cattle to ensure optimal milk production and overall health.",
+  price: 25.99,
+},
+{
+  image:
+    "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/BEEF-CATTLE_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
+  name: "Beef Cattle Feed",
+  description:
+    "Nutrient-rich feed specially designed for beef cattle to support growth, muscle development, and weight gain.",
+  price: 18.5,
+},
+{
+  image:
+    "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/BEEF-BUILDER_25-KG-2.jpg.bv.webp?bv_host=akijfeed.com",
+  name: "Beef Builder Feed",
+  description:
+    "Protein-rich feed for livestock aimed at building strength, enhancing muscle mass, and promoting healthy growth.",
+  price: 22.75,
+},
+{
+  image:
+    "https://akijfeed.com/wp-content/uploads/al_opt_content/IMAGE/akijfeed.com/wp-content/uploads/2024/12/MILK-BOOSTER_25-KG.jpg.bv.webp?bv_host=akijfeed.com",
+  name: "Milk Booster Feed",
+  description:
+    "Specially formulated pellets for cows to improve milk yield, support digestion, and maintain optimal health.",
+  price: 20.0,
+},
+
 ];
 
 const page = () => {
