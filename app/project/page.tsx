@@ -16,9 +16,9 @@ const Project = () => {
           <InvestmentSection/>
         </div>
 
-      <div className='mt-20'>
+      {/* <div className='mt-20'>
         <CowPurchaseSlider />
-      </div>
+      </div> */}
 
       <div className='my-20'>
         <WhyInvestWithUs />
