@@ -37,70 +37,70 @@ const GalleryPage: React.FC = () => {
 
   // Extended gallery data with more images for pagination demo
   const galleryData: GalleryItem[] = [
-    {
-      id: 1,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-1.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
-    {
-      id: 2,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-2.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
-    {
-      id: 3,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-3.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
-    {
-      id: 4,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-4.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
-    {
-      id: 5,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-5.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
-    {
-      id: 6,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-6.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
-    {
-      id: 7,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-7.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
-    {
-      id: 8,
-      title: "Farmer with Cattle",
-      category: "farmers",
-      image_url: "/farmer-8.png",
-      description: "A smallholder farmer with his livestock in Bangladesh",
-    },
+    // {
+    //   id: 1,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-1.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
+    // {
+    //   id: 2,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-2.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
+    // {
+    //   id: 3,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-3.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
+    // {
+    //   id: 4,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-4.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
+    // {
+    //   id: 5,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-5.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
+    // {
+    //   id: 6,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-6.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
+    // {
+    //   id: 7,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-7.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
+    // {
+    //   id: 8,
+    //   title: "Farmer with Cattle",
+    //   category: "farmers",
+    //   image_url: "/farmer-8.png",
+    //   description: "A smallholder farmer with his livestock in Bangladesh",
+    // },
 
-    {
-      id: 9,
-      title: "Yard Meeting & Awareness Campaign",
-      category: "campaigns",
-      image_url: "/Yard-Meeting-&-Awareness-Campaign-21.jpg",
-      description: "",
-    },
+    // {
+    //   id: 9,
+    //   title: "Yard Meeting & Awareness Campaign",
+    //   category: "campaigns",
+    //   image_url: "/Yard-Meeting-&-Awareness-Campaign-21.jpg",
+    //   description: "",
+    // },
     {
       id: 10,
       title: "Training for Farmers and Cattle Rearers",
@@ -189,14 +189,14 @@ const GalleryPage: React.FC = () => {
       id: 22,
       title: "B-Briddhi",
       category: "partnerships",
-      image_url: "/briddhi.png",
+      image_url: "/bridhi.jpg",
       description: "",
     },
     {
       id: 23,
       title: "Swiss Contact",
       category: "partnerships",
-      image_url: "/swisscontact.png",
+      image_url: "/BMMDP.jpg",
       description: "",
     },
     {
@@ -204,6 +204,13 @@ const GalleryPage: React.FC = () => {
       title: "Tenity",
       category: "partnerships",
       image_url: "/tenity.png",
+      description: "",
+    },
+    {
+      id: 99,
+      title: "Accelerating Asia",
+      category: "partnerships",
+      image_url: "/accelaringasia.jpg",
       description: "",
     },
     {
@@ -244,12 +251,12 @@ const GalleryPage: React.FC = () => {
   ];
 
   const categories = [
-    { id: "all", name: "All", count: galleryData.length },
-    {
-      id: "farmers",
-      name: "Farmers",
-      count: galleryData.filter((item) => item.category === "farmers").length,
-    },
+    // { id: "all", name: "All", count: galleryData.length },
+    // {
+    //   id: "farmers",
+    //   name: "Farmers",
+    //   count: galleryData.filter((item) => item.category === "farmers").length,
+    // },
     {
       id: "campaigns",
       name: "Campaigns",

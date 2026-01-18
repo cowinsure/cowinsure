@@ -299,10 +299,10 @@ const SwiperComponent = () => {
             {/* Farmers Impacted */}
             <div className="p-6 text-center border-b md:border-b-0 md:border-r border-gray-200 flex flex-col items-center justify-center">
               <h3 className="font-normal text-lg lg:text-xl text-green-700/70 mb-2">
-                Farmers Impacted
+                Cattle Farmers
               </h3>
               <p className="text-2xl lg:text-4xl text-green-950/70 font-semibold">
-                7,500+
+                11,000+
               </p>
               {/* <small className="text-sm text-green-700/70">
                 MSME Farms and Farmers
@@ -312,10 +312,10 @@ const SwiperComponent = () => {
             {/* Livestock Registered */}
             <div className="p-6 text-center border-b md:border-b-0 lg:border-r border-gray-200 flex flex-col items-center justify-center">
               <h3 className="font-normal text-lg lg:text-xl text-green-700/70 mb-2">
-                Livestock Registered
+                Cattle
               </h3>
               <p className="text-2xl lg:text-4xl text-green-950/70 font-semibold">
-                16,500+
+                24,500+
               </p>
               {/* <small className="text-sm text-green-700/70">
                 Cattle Registered

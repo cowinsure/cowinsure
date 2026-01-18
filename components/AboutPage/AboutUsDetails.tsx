@@ -75,24 +75,24 @@ const AboutUsDetailedSection: React.FC = () => {
   }, [])
 
   const sections = [
-    {
-      id: "company-overview",
-      title: "Transforming Rural Economies",
-      subtitle: "About InsureCow",
-      heading: "Bridging the World's Most Overlooked Financing Gap",
-      description: `InsureCow is a Singapore-based fintech and insurtech company, originally founded in Bangladesh, that is transforming rural economies by bridging the world's most overlooked financing gap: livestock. In emerging markets, over 500 million smallholder farmers rely on cattle and other animals as their primary asset. Yet, these animals remain undocumented, uninsured, and financially invisible—locking millions out of affordable credit, protection, and opportunity.`,
-      image: "/farmer-cow.png",
-      reverse: false,
-    },
-    {
-      id: "technology",
-      title: "Innovation at Scale",
-      subtitle: "Our Technology",
-      heading: "AI-Driven Digital Twins for Livestock",
-      description: `At the core of InsureCow is a proprietary AI-driven platform that creates tamper-proof Digital Twins for livestock using our patent-pending Muzzle Printometry technology. This innovation powers our Know Your Cow™ (KYC) system, which verifies and transforms cattle into traceable, financeable digital collateral. With this foundation, we offer a seamless bundle of livestock ID, microinsurance, health and life coverage for farmers, financing, veterinary services, and verified cattle trading—all integrated into one inclusive ecosystem.`,
-      image: "/farmer-cow1.png",
-      reverse: true,
-    },
+    // {
+    //   id: "company-overview",
+    //   title: "Transforming Rural Economies",
+    //   subtitle: "About InsureCow",
+    //   heading: "Bridging the World's Most Overlooked Financing Gap",
+    //   description: `InsureCow is a Singapore-based fintech and insurtech company, originally founded in Bangladesh, that is transforming rural economies by bridging the world's most overlooked financing gap: livestock. In emerging markets, over 500 million smallholder farmers rely on cattle and other animals as their primary asset. Yet, these animals remain undocumented, uninsured, and financially invisible—locking millions out of affordable credit, protection, and opportunity.`,
+    //   image: "/farmer-cow.png",
+    //   reverse: false,
+    // },
+    // {
+    //   id: "technology",
+    //   title: "Innovation at Scale",
+    //   subtitle: "Our Technology",
+    //   heading: "AI-Driven Digital Twins for Livestock",
+    //   description: `At the core of InsureCow is a proprietary AI-driven platform that creates tamper-proof Digital Twins for livestock using our patent-pending Muzzle Printometry technology. This innovation powers our Know Your Cow™ (KYC) system, which verifies and transforms cattle into traceable, financeable digital collateral. With this foundation, we offer a seamless bundle of livestock ID, microinsurance, health and life coverage for farmers, financing, veterinary services, and verified cattle trading—all integrated into one inclusive ecosystem.`,
+    //   image: "/farmer-cow1.png",
+    //   reverse: true,
+    // },
     {
       id: "impact",
       title: "Proven Impact",
@@ -156,7 +156,7 @@ const AboutUsDetailedSection: React.FC = () => {
           ]
 
   return (
-    <div ref={containerRef} className="py-8 lg:py-16 bg-white">
+    <div ref={containerRef} className="py-8 lg:py-16 bg-white ">
       {/* Detailed Sections */}
       {sections.map((section, index) => (
         <div
@@ -164,7 +164,7 @@ const AboutUsDetailedSection: React.FC = () => {
           ref={(el) => {
             sectionRefs.current[index] = el
           }}
-          className={`flex flex-col lg:flex-row lg:justify-around md:flex-col w-full px-4 md:px-6 lg:px-8 py-8 lg:py-16 ${
+          className={`flex flex-col max-w-[1480px] mx-auto lg:flex-row lg:justify-around md:flex-col w-full px-4 md:px-6 lg:px-8 py-8 lg:py-16 ${
             index > 0 ? "border-t border-gray-100" : ""
           }`}
         >
@@ -218,7 +218,7 @@ const AboutUsDetailedSection: React.FC = () => {
       ))}
 
       {/* Key Features Section */}
-      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 bg-[#F7F7F7] rounded-xl lg:rounded-2xl mt-8 lg:mt-16">
+      <div className="max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16 bg-[#F7F7F7] rounded-xl lg:rounded-2xl mt-8 lg:mt-16">
         <div className="text-center mb-8 lg:mb-12">
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#334b35] mb-3 lg:mb-4 px-2">
             Why Choose InsureCow?

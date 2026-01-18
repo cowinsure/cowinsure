@@ -13,11 +13,11 @@ import ServiceHighlighted from "@/components/common/ServiceHighlighted";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import AboutUsDetails from "@/components/AboutPage/AboutUsDetails";
-import TechnologyHero from "@/components/AboutPage/AboutUsSectionComponent/TechnologyHero";
-import VerificationEngines from "@/components/AboutPage/AboutUsSectionComponent/VerificationEngine";
-import OperatingSystems from "@/components/AboutPage/AboutUsSectionComponent/OperatingSystems";
-import ArchitectureDiagram from "@/components/AboutPage/AboutUsSectionComponent/ArchitectureDiagram";
-import GlobalDeployment from "@/components/AboutPage/AboutUsSectionComponent/GlobalDeployment";
+import TechnologyHero from "@/components/AboutPage/OurTechnologySection/TechnologyHero";
+
+import AboutInsurecow from "@/components/AboutPage/AboutInsurecow";
+import CompanyIntroductionSection from "@/components/AboutPage/CompanyIntroductionSection";
+import MarketContextSection from "@/components/AboutPage/MarketContextSection";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -255,42 +255,52 @@ const AboutUs: React.FC = () => {
   }, [aboutUsData]);
 
   return (
-    <div className=" lg:h-auto h-auto overflow-x-hidden">
-      {/* <AppBranding
-        title="Stronger Together, Enriching Farmers' Future!"
-        bannerUrl={banner}
-      /> */}
+    <div className=" lg:h-auto w-auto h-auto overflow-hidden bg-[#F7F7F7]">
+      {/* Technology Sections */}
+      {/* <div className="bg-white">
+        <TechnologyHero />
+        <VerificationEngines />
+        <OperatingSystems />
+        <ArchitectureDiagram />
+        <GlobalDeployment />
+      </div> */}
+      <CompanyIntroductionSection />
+        <MarketContextSection />
+     
+      <AboutInsurecow />
+           <TechnologyHero showKnowMoreButton={true} />
 
-            <TechnologyHero />
-      <VerificationEngines />
-      <OperatingSystems />
-      <ArchitectureDiagram />
-      <GlobalDeployment />
+
+    
+
+    
+
+      {/* About Us Details */}
 
       <Suspense fallback={<div>Loading About section...</div>}>
-      <div id="about">
-        <AboutUsDetails/>
-         
-      </div>
+        <div id="about" className="bg-[#F6F4EC]">
+          <AboutUsDetails/>
+        </div>
       </Suspense>
 
-   
+      {/* Mission and Vision */}
+      <div className="bg-white">
+        <ServiceHighlighted
+          url=""
+          image={bannerGenereal}
+          title="Our Mission"
+          description={mission}
+          reverse
+        />
+        <ServiceHighlighted
+          url=""
+          image={bannerGenereal2}
+          title="Our Vision"
+          description={vision}
+        />
+      </div>
 
-      <ServiceHighlighted
-        url=""
-        image={bannerGenereal}
-        title="Our Mission"
-        description={mission}
-        reverse
-      />
-      <ServiceHighlighted
-        url=""
-        image={bannerGenereal2}
-        title="Our Vision"
-        description={vision}
-      />
-
-      <div className="h-auto lg:h-auto lg:pt-10 md:h-auto bg-[#F7F7F7]">
+      <div className="h-auto lg:h-auto lg:pt-10 md:h-auto bg-[#F6F4EC]">
         <CoreValueSection />
 
         {/* <TeamSection /> */}
@@ -306,7 +316,7 @@ const AboutUs: React.FC = () => {
               </h1>
             </div>
             <div
-              className="flex flex-col item-center flex-1 lg:justify-center lg:items-center  backdrop-blur-lg bg-green-800 bg-opacity-15  h-full justify-center text-center gap-4"
+              className="flex flex-col item-center flex-1 lg:justify-center lg:items-center  backdrop-blur-lg bg-gradient-to-r from-green-900/80 to-[#16351810]  h-full justify-center text-center gap-4"
               style={{ clipPath: "ellipse(90% 90% at 50% 50%)" }}
             >
               <p className=" lg:text-2xl text-xs mb-6 lg:max-w-[70vh]">
@@ -322,7 +332,7 @@ const AboutUs: React.FC = () => {
 
         <AwardRecognitionSection />
 
-        <div className="text-center">
+        <div className="text-center bg-white">
           <FaqSection />
         </div>
         <div className="text-center bg-[#F6F4EC]">

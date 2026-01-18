@@ -1,8 +1,12 @@
 'use client';
 import { motion } from "framer-motion";
 import { Globe, Layers, Building, CheckCircle } from "lucide-react";
+import { GiBullHorns } from "react-icons/gi";
+import { useRef } from "react";
 
 const GlobalDeployment = () => {
+  const iconRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
   const benefits = [
     {
       icon: Layers,
@@ -29,8 +33,8 @@ const GlobalDeployment = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 bg-background relative overflow-hidden">
-      <div className=" px-4">
+    <section className="py-20 md:py-32 bg-[#F6F4EC] relative overflow-hidden">
+      <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div
@@ -39,13 +43,23 @@ const GlobalDeployment = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-medium mb-4">
-              Enterprise Ready
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+            {/* Icon and Subtitle Section */}
+            <motion.div className="flex flex-col items-center mb-6">
+              <div ref={iconRef}>
+                <GiBullHorns className="lg:w-auto w-full text-2xl text-center text-green-700 mb-2" />
+              </div>
+              <h2
+                ref={subtitleRef}
+                className="text-xl font-bold text-[#687469] text-center mb-3"
+              >
+                Enterprise Ready
+              </h2>
+            </motion.div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
               Built for Global Deployment
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               By separating verification engines, operating systems, and distribution 
               layers, InsureCows architecture remains modular and scalable—without 
               compromising regulatory clarity.
@@ -62,8 +76,8 @@ const GlobalDeployment = () => {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex items-start gap-3"
                 >
-                  <CheckCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground">{capability}</span>
+                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-900">{capability}</span>
                 </motion.li>
               ))}
             </ul>
@@ -84,16 +98,16 @@ const GlobalDeployment = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                className="group flex items-start gap-5 p-6 rounded-xl bg-card border border-border hover:shadow-card transition-all duration-300"
+                className="group flex items-start gap-5 p-6 rounded-xl bg-white border border-gray-200 hover:shadow-lg transition-all duration-300"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl hero-gradient flex items-center justify-center">
-                  <benefit.icon className="w-6 h-6 text-primary-foreground" />
+                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+                  <benefit.icon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-heading font-semibold text-foreground mb-1">
+                  <h3 className="font-semibold text-gray-900 mb-1">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-600">
                     {benefit.description}
                   </p>
                 </div>

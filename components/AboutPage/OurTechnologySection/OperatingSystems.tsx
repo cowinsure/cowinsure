@@ -1,9 +1,13 @@
 'use client';
 import { motion } from "framer-motion";
 import { Tractor, ShieldCheck, Store } from "lucide-react";
+import { GiBullHorns } from "react-icons/gi";
+import { useRef } from "react";
 import TechnologyCard from "./TechnologyCard";
 
 const OperatingSystems = () => {
+  const iconRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
   const systems = [
     {
       icon: Tractor,
@@ -48,11 +52,13 @@ const OperatingSystems = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden" style={{ background: 'var(--gradient-subtle)' }}>
+    <section className="py-20 md:py-32 relative overflow-hidden bg-[#F6F4EC]">
       {/* Background Elements */}
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-      
-      <div className=" px-4 relative z-10">
+      <div className="absolute inset-0 opacity-5">
+        <div className="w-full h-full bg-gradient-to-br from-green-100 to-transparent"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,14 +67,24 @@ const OperatingSystems = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Operating Systems
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+          {/* Icon and Subtitle Section */}
+          <motion.div className="flex flex-col items-center mb-6">
+            <div ref={iconRef}>
+              <GiBullHorns className="lg:w-auto w-full text-2xl text-center text-green-700 mb-2" />
+            </div>
+            <h2
+              ref={subtitleRef}
+              className="text-xl font-bold text-[#687469] text-center mb-3"
+            >
+              Operating Systems
+            </h2>
+          </motion.div>
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Intelligence & Distribution
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            Purpose-built operating systems that transform verified data into 
+          <p className="max-w-2xl mx-auto text-lg text-gray-600">
+            Purpose-built operating systems that transform verified data into
             actionable intelligence and scalable distribution.
           </p>
         </motion.div>
@@ -94,9 +110,9 @@ const OperatingSystems = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center text-sm text-muted-foreground mt-12 max-w-3xl mx-auto"
+          className="text-center text-sm text-gray-500 mt-12 max-w-3xl mx-auto"
         >
-          InsureCow provides technology, analytics, and integration. All underwriting, 
+          InsureCow provides technology, analytics, and integration. All underwriting,
           lending, and risk-bearing activities remain with regulated partner institutions.
         </motion.p>
       </div>

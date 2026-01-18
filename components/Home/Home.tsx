@@ -23,52 +23,12 @@ import PartnerAndInvestorSection from "../Helper/PartnerAndInvestorSection";
 // import bannerGenereal from '../../public/back-view-of-filipino-local-farmers-2025-01-07-23-27-27-utc.jpg';
 // import CowPurchaseSection from '../Project/cowSellProject/CowPurchaseSection';
 import InvestmentSection from "../Helper/InvestmentSection";
+import TechnologyHero from "../AboutPage/OurTechnologySection/TechnologyHero";
 // import HomeInvestmentSection from './HomeInvestmentSection';
 
 // Testing git
 
 const Home = () => {
-  // const slideTexts = [
-  //   "Welcome to InsureCow",
-  //   " Investment plans for you",
-
-  //   "Easy Insurance "
-  // ];
-
-  // const stylingHtmlText = [
-  //   <h2 key="1" className=" text-white text-2xl font-bold text-center lg:text-5xl md:text-[50px] ">
-  //     Welcome to  <span className="text-green-700">InsureCow</span>
-  //   </h2>,
-  //   <h2 key="2" className="text-white text-2xl md:text-4xl font-bold text-center lg:text-[80px] md:text-[50px] ">
-  //     We have tailored for your  <span className="text-green-700 md:text-5xl ">Investment plans</span>
-  //   </h2>,
-  //   <h2 key="3" className="text-white text-2xl font-bold text-center lg:t5xl md:text-[50px] ">
-  //     Loan that can <span className="text-green-700">change your life</span>
-  //   </h2>,
-  //   <h2 key="4" className="text-white text-2xl font-bold text-center lg:text-5xl md:text-[50px] ">
-  //     <span className="text-green-700">Insurance</span> that you can trust
-  //   </h2>
-
-  // ]
-
-  // const stylingHtmlText2 = [
-  //   <h2 key="1" className=" text-white text-5xl font-bold text-center lg:text-[90px] md:text-[50px] ">
-  //     Welcome to  <span className="text-white"> <br></br> InsureCow</span>
-  //   </h2>,
-  //   <h2 key="2" className="text-white text-5xl font-bold text-center lg:text-[90px] md:text-[50px] ">
-  //     We have tailored <span className="text-white">Investment plans</span> for you
-  //   </h2>,
-  //   <h2 key="3" className="text-white text-5xl font-bold text-center lg:text-[90px] md:text-[50px] ">
-  //     Loan that can <span className="text-white">change your life</span>
-  //   </h2>,
-  //   <h2 key="4"  className="text-white text-5xl font-bold text-center lg:text-[90px] md:text-[50px] ">
-  //     <span className="text-white">Insurance</span> that you can trust
-  //   </h2>
-
-  // ]
-
-  //   const mission  = "Our mission is to promote financial inclusion for smallholder farmers by providing accessible, innovative insurance and financial products. We aim to empower underserved farming communities with technol-ogy-driven solutions, enhancing their ability to mitigate risks, increase productivity, and achieve long-term economic resilience"
-  // const vision  = "Our vision is to ensure that smallholder farmers in emerging economies have access to financial services, cutting-edge technology, and essential information, fostering a sustainable and prosperous agricultural sector."
 
   return (
     <div className=" lg:h-auto w-auto h-auto overflow-hidden">
@@ -102,6 +62,8 @@ const Home = () => {
       <div className="h-auto lg:h-auto lg:pt-10 md:h-auto bg-[#F6F4EC] pb-10">
         <CardsSection />
       </div>
+
+       <TechnologyHero showKnowMoreButton={true} />
 
       {/* <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Mission' description={mission} reverse/>
       <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Vision' description={vision} /> */}
