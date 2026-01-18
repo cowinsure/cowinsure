@@ -3,12 +3,40 @@ import HealthInsuranceForm from "@/components/HealthInsurance/HealthInsuranceFor
 import React from "react";
 import inspection from "../../../public/livestockinsuranceimg.jpg";
 import Image from "next/image";
-import FaqSection from "@/components/Home/FaqSection";
 
 import { motion } from "framer-motion";
 import { GiBullHorns } from "react-icons/gi";
+import StaticFAQ from "@/components/StaticFAQ";
 
 function page() {
+  const healthInsuranceFaqs = [
+    {
+      question: "What is health insurance?",
+      answer:
+        "Health insurance is a policy that covers the cost of medical expenses, including hospitalization, surgeries, medicines, and sometimes preventive care, in exchange for regular premium payments.",
+    },
+    {
+      question: "Why is health insurance important?",
+      answer:
+        "Health insurance protects you from high medical costs, ensures timely medical care, and provides financial security in case of serious illness or accidents.",
+    },
+    {
+      question: "What does health insurance typically cover?",
+      answer:
+        "It usually covers hospitalization, doctor consultations, surgeries, diagnostic tests, prescription medicines, and sometimes preventive services like vaccinations and health check-ups.",
+    },
+    {
+      question: "What is a deductible in health insurance?",
+      answer:
+        "A deductible is the amount you must pay out-of-pocket before your insurance coverage begins. Policies with higher deductibles often have lower premiums, and vice versa.",
+    },
+    {
+      question: "Can I add my family members to my health insurance policy?",
+      answer:
+        "Yes, most health insurance plans allow you to add dependents like spouse, children, or parents, so that their medical expenses are also covered under the same policy.",
+    },
+  ];
+
   return (
     <div className="h-auto md:pt-0 mx-auto lg:w-full  text-center bg-[#F7F7F7] ">
       <div className="pt-[10vh] lg:pt-[10vh]   container mx-auto flex flex-col lg:flex-col lg:justify-center justify-between">
@@ -55,7 +83,7 @@ function page() {
       </div>
 
       <div className="mt-11 bg-[#F6F4EC]">
-        <FaqSection />
+        <StaticFAQ data={healthInsuranceFaqs} />
       </div>
     </div>
   );

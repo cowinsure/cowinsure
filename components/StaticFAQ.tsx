@@ -4,9 +4,9 @@ import type React from "react";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import BackgroundImageLayer from "../common/BackgroundImageLayer";
 
-import village from "../../public/village.png";
+import village from "../public/village.png";
+import BackgroundImageLayer from "./common/BackgroundImageLayer";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -18,16 +18,18 @@ interface Faq {
   answer: string;
 }
 
-interface ApiResponse {
-  status: string;
-  message: string;
+interface FaqSectionProps {
   data: Faq[];
+  title?: string;
+  loading?: boolean;
 }
 
-const FaqSection: React.FC = () => {
+const StaticFAQ: React.FC<FaqSectionProps> = ({
+  data,
+  title = "Frequently Asked Questions",
+  loading = false,
+}) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const [faqs, setFaqs] = useState<Faq[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   // Refs for animations
   const sectionRef = useRef<HTMLElement>(null);
@@ -35,29 +37,9 @@ const FaqSection: React.FC = () => {
   const faqRefs = useRef<(HTMLLIElement | null)[]>([]);
   const answerRefs = useRef<(HTMLParagraphElement | null)[]>([]);
 
-  useEffect(() => {
-    const fetchFaqs = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/faqs/`,
-        );
-        const result: ApiResponse = await response.json();
-        if (result.status === "success") {
-          setFaqs(result.data);
-        }
-      } catch (error) {
-        console.error("Error fetching FAQs:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchFaqs();
-  }, []);
-
   // Initial scroll-triggered animations
   useEffect(() => {
-    if (!isLoading && faqs.length > 0) {
+    if (!loading && data.length > 0) {
       const ctx = gsap.context(() => {
         // Set initial states
         gsap.set(titleRef.current, {
@@ -77,7 +59,6 @@ const FaqSection: React.FC = () => {
             start: "top 90%",
             end: "bottom 20%",
             toggleActions: "play none none reverse",
-            // markers: true, // Uncomment for debugging
           },
         });
 
@@ -105,7 +86,7 @@ const FaqSection: React.FC = () => {
 
       return () => ctx.revert();
     }
-  }, [isLoading, faqs]);
+  }, [loading, data]);
 
   // Answer dropdown animation
   useEffect(() => {
@@ -113,7 +94,6 @@ const FaqSection: React.FC = () => {
       const answerElement = answerRefs.current[expandedIndex];
 
       if (answerElement) {
-        // Set initial state for the answer
         gsap.set(answerElement, {
           height: 0,
           opacity: 0,
@@ -121,7 +101,6 @@ const FaqSection: React.FC = () => {
           overflow: "hidden",
         });
 
-        // Animate the answer dropping down
         gsap.to(answerElement, {
           duration: 0.6,
           height: "auto",
@@ -132,7 +111,7 @@ const FaqSection: React.FC = () => {
       }
     }
 
-    // Animate closing of previously opened answer with upward motion
+    // Animate closing of previously opened answer
     answerRefs.current.forEach((answerElement, index) => {
       if (answerElement && index !== expandedIndex) {
         gsap.to(answerElement, {
@@ -142,7 +121,6 @@ const FaqSection: React.FC = () => {
           y: -40,
           ease: "power2.in",
           onComplete: () => {
-            // Reset position after animation completes
             gsap.set(answerElement, { y: -30 });
           },
         });
@@ -151,7 +129,6 @@ const FaqSection: React.FC = () => {
   }, [expandedIndex]);
 
   const toggleExpand = (index: number) => {
-    // Add a small visual feedback on the button
     const button = faqRefs.current[index]?.querySelector("button");
     if (button) {
       gsap.to(button, {
@@ -162,13 +139,12 @@ const FaqSection: React.FC = () => {
         ease: "power2.inOut",
       });
     }
-
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  if (isLoading) {
+  if (loading) {
     return (
-      <section className="faq-section relative flex flex-col justify-center items-center lg:flex-col lg:justify-center lg:items-center w-full min-h-[500px] h-auto py-10 pb-20">
+      <section className="faq-section relative flex flex-col justify-center items-center w-full min-h-[500px] py-10 pb-20">
         <BackgroundImageLayer
           imageUrl={village.src}
           opacity={0.1}
@@ -199,11 +175,11 @@ const FaqSection: React.FC = () => {
           ref={titleRef}
           className="text-2xl lg:text-5xl font-bold mb-24 mt-5 text-[#334b35] text-center opacity-0"
         >
-          Frequently Asked Questions
+          {title}
         </h2>
 
         <ul className="space-y-6 max-w-4xl mx-auto">
-          {faqs.map((faq, index) => (
+          {data.map((faq, index) => (
             <li
               key={index}
               ref={(el) => {
@@ -212,7 +188,7 @@ const FaqSection: React.FC = () => {
               className="border-b border-gray-200 pb-6 opacity-0"
             >
               <button
-                className="w-full text-left text-xl lg:text-2xl font-semibold text-[#334b35] hover:text-green-700 transition-colors duration-300 flex justify-between items-center group"
+                className="w-full text-left text-xl lg:text-xl font-semibold text-[#334b35] hover:text-green-700 transition-colors duration-300 flex justify-between items-center group"
                 onClick={() => toggleExpand(index)}
               >
                 <span className="pr-4">{faq.question}</span>
@@ -247,4 +223,4 @@ const FaqSection: React.FC = () => {
   );
 };
 
-export default FaqSection;
+export default StaticFAQ;

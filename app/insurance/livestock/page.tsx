@@ -3,13 +3,41 @@
 import React from "react";
 import inspection from "../../../public/livestockinsuranceimg.jpg";
 import Image from "next/image";
-import FaqSection from "@/components/Home/FaqSection";
+
 
 import LiveStockInsuranceForm from "@/components/livestock/LiveStockInsuranceForm";
 import { motion } from "framer-motion";
 import { GiBullHorns } from "react-icons/gi";
+import StaticFAQ from "@/components/StaticFAQ";
 
 const LiveStock = () => {
+  const livestockInsuranceFaqs = [
+    {
+      question: "What is livestock insurance?",
+      answer:
+        "Livestock insurance is a policy that provides financial protection to farmers against the loss or death of animals due to accidents, diseases, natural disasters, or theft.",
+    },
+    {
+      question: "Which animals can be insured under livestock insurance?",
+      answer:
+        "Commonly insured animals include cows, goats, sheep, pigs, poultry, and other farm animals, depending on the insurer and policy terms.",
+    },
+    {
+      question: "What does livestock insurance cover?",
+      answer:
+        "Coverage may include death of animals due to accidents, disease, natural disasters, theft, and sometimes medical treatment costs or loss of income due to animal deaths.",
+    },
+    {
+      question: "How is the premium for livestock insurance calculated?",
+      answer:
+        "Premiums are generally based on the type, age, and value of the animal, as well as the farm’s location, herd size, and risk factors such as disease prevalence or climate hazards.",
+    },
+    {
+      question: "How do I file a claim for livestock insurance?",
+      answer:
+        "In case of loss, the farmer must inform the insurance company immediately, submit proof of loss such as veterinary reports, photographs, or farm records, and follow the insurer’s claims process.",
+    },
+  ];
   return (
     <div className="h-auto md:pt-0 mx-auto lg:w-full  text-center bg-[#F7F7F7] ">
       <div className="pt-[10vh] lg:pt-[10vh]   container mx-auto flex flex-col lg:flex-col lg:justify-center justify-between">
@@ -56,7 +84,7 @@ const LiveStock = () => {
       </div>
 
       <div className="mt-11 bg-[#F6F4EC]">
-        <FaqSection />
+        <StaticFAQ data={livestockInsuranceFaqs} />
       </div>
     </div>
   );

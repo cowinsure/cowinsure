@@ -1,7 +1,7 @@
 'use client'
 import FaqSection from '@/components/Home/FaqSection';
 import WhyInvestWithUs from '@/components/Home/WhyInvestWithUsSection';
-import CowPurchaseSlider from '@/components/Project/cowSellProject/CowPurchaseSlider';
+// import CowPurchaseSlider from '@/components/Project/cowSellProject/CowPurchaseSlider';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import InvestmentSection from '@/components/Helper/InvestmentSection';
