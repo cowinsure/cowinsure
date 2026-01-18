@@ -12,7 +12,7 @@ import HomeInsuranceSection from '@/components/Home/HomeInsuranceSection';
 
 import { FinanceAccess,LivestockAI,Finance,FarmingTools,Advisory,Training,Dairy,Insurance } from '@/components/service/SvgIcons';
 import ContactUs from '@/components/Helper/ContactUs';
-import FaqSection from '@/components/Home/FaqSection';
+// import FaqSection from '@/components/Home/FaqSection';
 
 
 
@@ -85,9 +85,9 @@ function page() {
           {/* insurance section */}
           <HomeInsuranceSection />
 
-          <div className='text-center'>
+          {/* <div className='text-center'>
         <FaqSection/>
-      </div>
+      </div> */}
 
       <div className='text-center bg-[#F6F4EC]'>
         <ContactUs/>

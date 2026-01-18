@@ -4,7 +4,7 @@ import AppBranding from "@/components/Project/AppBranding";
 import ImpactHighlightSection from "@/components/impact/ImpactHighlightSection";
 import SDGImapctSection from "@/components/impact/SDGImapctSection";
 import FeaturedNewsSection from "@/components/impact/FeaturedNewsSection";
-import FaqSection from "@/components/Home/FaqSection";
+// import FaqSection from "@/components/Home/FaqSection";
 
 function Imapct() {
   return (
@@ -44,9 +44,9 @@ function Imapct() {
         </div>
       </BannerGeneral> */}
 
-      <div className="text-center bg-[#F6F4EC]">
+      {/* <div className="text-center bg-[#F6F4EC]">
         <FaqSection />
-      </div>
+      </div> */}
     </div>
   );
 }
