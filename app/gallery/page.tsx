@@ -109,7 +109,7 @@ const GalleryPage: React.FC = () => {
       description: "",
     },
       {
-      id: 105,
+      id: 106,
       title: "Yard Meeting & Awareness Campaign",
       category: "campaigns",
       image_url: "/seminar2.jpeg",
