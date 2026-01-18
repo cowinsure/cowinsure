@@ -284,7 +284,7 @@ const AboutUsSection: React.FC = () => {
       {aboutUsData.map((item, index) => (
         <div
           key={index}
-          className="about-section-item flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-8 mt-[200px] min-[768px]:mt-[150px] lg:mt-8"
+          className="about-section-item flex flex-col lg:flex-row lg:justify-around md:flex-col w-full lg:pt-8 mt-[400px] md:mt-0 lg:mt-8"
         >
           <div
             ref={(el) => {

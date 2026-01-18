@@ -234,7 +234,7 @@ const SwiperComponent = () => {
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           modules={[EffectFade, Navigation, Pagination, Autoplay]}
-          className="w-full h-[60vh] md:h-[70vh] lg:h-[90vh] bg-black"
+          className="w-full h-[90vh] md:h-[70vh] lg:h-[90vh] bg-black"
         >
           {sliderData.map((slide, index) => (
             <SwiperSlide key={slide.id}>
@@ -295,7 +295,7 @@ const SwiperComponent = () => {
         className="relative mt-[-22] min-[768px]:mt-[-64] z-10 px-4 md:px-8 lg:px-20 opacity-0"
       >
         <div className="bg-[#F6F4EC] rounded-lg shadow-lg overflow-hidden lg:max-w-[1450px] lg:h-40 mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 h-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 h-full">
             {/* Farmers Impacted */}
             <div className="p-6 text-center border-b md:border-b-0 md:border-r border-gray-200 flex flex-col items-center justify-center">
               <h3 className="font-normal text-lg lg:text-xl text-green-700/70 mb-2">

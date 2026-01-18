@@ -64,13 +64,13 @@ const InvestmentSection = () => {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/categories/`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/categories/`,
         );
         const result: CategoryApiResponse = await response.json();
         if (result.status === "success") {
           // setCategories(result.data);
           const cowSellCategory = result.data.find(
-            (category) => category.name === "Short Term Investment"
+            (category) => category.name === "Short Term Investment",
           );
           if (cowSellCategory) {
             fetchPortfolios(cowSellCategory.id);
@@ -85,7 +85,7 @@ const InvestmentSection = () => {
     const fetchPortfolios = async (categoryId: string) => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/category/${categoryId}/portfolios/`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio/category/${categoryId}/portfolios/`,
         );
 
         const result: ApiResponse = await response.json();
@@ -119,10 +119,10 @@ const InvestmentSection = () => {
         <GiBullHorns className="w-full text-3xl text-center text-green-700 mb-3" />
 
         <h2 className="text-xl font-bold text-[#687469]">Invest Now</h2>
-        <h1 className="text-5xl font-bold text-[#334b35]">Our Projects</h1>
+        <h1 className="text-3xl lg:text-5xl font-bold text-[#334b35]">Our Projects</h1>
       </div>
 
-      <div className="mt-10 h-auto container mx-auto flex flex-col gap-4 lg:flex-row items-center justify-center mb-5 max-w-[77%]">
+      <div className="mt-10 h-auto container mx-auto flex flex-col gap-4 lg:flex-row items-center justify-center mb-5 lg:max-w-[77%]">
         <Swiper
           centeredSlides={true}
           slidesPerView={1}
@@ -141,7 +141,7 @@ const InvestmentSection = () => {
         >
           {memoizedPortfolios.map((portfolio) => (
             <SwiperSlide key={portfolio.id}>
-              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-t from-[#151a19] to-[#4b5a7b] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
+              <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-t from-[#151a19] to-[#4b5a7b] transition-all duration-500 ">
                 {/* IMAGE */}
                 <div className="relative h-[220px] overflow-hidden">
                   <Image
@@ -201,9 +201,9 @@ const InvestmentSection = () => {
                     <StatRow
                       label="Total Return"
                       value={`${formatToBDT(
-                        parseInt(portfolio.total_return_min)
+                        parseInt(portfolio.total_return_min),
                       )} – ${formatToBDT(
-                        parseInt(portfolio.total_return_max)
+                        parseInt(portfolio.total_return_max),
                       )}`}
                     />
                     <StatRow label="Currency" value={portfolio.currency} />

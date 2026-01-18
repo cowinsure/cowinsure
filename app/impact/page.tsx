@@ -1,37 +1,33 @@
-import React from 'react'
-import banner from '../../public/a-young-man-holding-a-basket-of-freshly-harvested.jpg';
-import AppBranding from '@/components/Project/AppBranding';
-import ImpactHighlightSection from '@/components/impact/ImpactHighlightSection';
-import SDGImapctSection from '@/components/impact/SDGImapctSection';
-import FeaturedNewsSection from '@/components/impact/FeaturedNewsSection';
-import FaqSection from '@/components/Home/FaqSection';
-
-
+import React from "react";
+import banner from "../../public/a-young-man-holding-a-basket-of-freshly-harvested.jpg";
+import AppBranding from "@/components/Project/AppBranding";
+import ImpactHighlightSection from "@/components/impact/ImpactHighlightSection";
+import SDGImapctSection from "@/components/impact/SDGImapctSection";
+import FeaturedNewsSection from "@/components/impact/FeaturedNewsSection";
+import FaqSection from "@/components/Home/FaqSection";
 
 function Imapct() {
   return (
-    <div className=' lg:h-auto h-auto w-auto  overflow-hidden'>
-        <AppBranding title="Stronger Together, Enriching Farmers' Future!" bannerUrl={banner} link="#impact-highlight"/>
-        
-        <div id="impact-highlight">
-  <ImpactHighlightSection />
-</div>
+    <div className=" lg:h-auto h-auto w-auto  overflow-hidden">
+      <AppBranding
+        title="Stronger Together, Enriching Farmers' Future!"
+        bannerUrl={banner}
+        link="#impact-highlight"
+      />
 
-        <div className='bg-[#F6F4EC]'>
+      <div id="impact-highlight">
+        <ImpactHighlightSection />
+      </div>
 
-        <SDGImapctSection/>
+      <div className="bg-[#F6F4EC]">
+        <SDGImapctSection />
+      </div>
+      <div className="bg-[#F6F4EC]">{/* <CommitmentSection/> */}</div>
 
-        </div>
-        <div className='bg-[#F6F4EC]'>
-        {/* <CommitmentSection/> */}
-        </div>
+      <div className="py-10">
+        <FeaturedNewsSection />
+      </div>
 
-        <div className='py-10'>
-
-        <FeaturedNewsSection/>
-        </div>
-
-        
       {/* <BannerGeneral bannerUrl={farmeintheway}>
         <div className="relative z-10 flex flex-row items-center justify-center h-full bg-black bg-opacity-50 text-white text-center ">
           <div className='flex flex-1 item-center  lg:justify-center lg:items-center    justify-center '>
@@ -48,15 +44,11 @@ function Imapct() {
         </div>
       </BannerGeneral> */}
 
-      <div className='text-center bg-[#F6F4EC]'>
-
-      <FaqSection/>
-
+      <div className="text-center bg-[#F6F4EC]">
+        <FaqSection />
       </div>
-
-      
     </div>
-  )
+  );
 }
 
-export default Imapct
+export default Imapct;

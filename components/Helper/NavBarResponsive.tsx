@@ -60,7 +60,7 @@ function NavBarResponsive() {
     const fetchLogoData = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/logo/`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/logo/`,
         );
         const result = await res.json();
         if (result.status === "success") setLogoData(result.data);
@@ -72,7 +72,7 @@ function NavBarResponsive() {
     const fetchMenuData = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/menu/`
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/menu/`,
         );
         const result: ApiResponse = await res.json();
         if (result.status === "success") setMenuData(result.data);
@@ -132,7 +132,7 @@ function NavBarResponsive() {
     }
   `}
         >
-          <div className=" mx-auto px-6 h-20 flex items-center justify-between relative">
+          <div className=" mx-auto px-6 h-16 lg:h-20 flex items-center justify-between relative">
             {/* Logo */}
             <div className="relative flex items-center">
               {/* SVG Blob */}
@@ -147,9 +147,9 @@ function NavBarResponsive() {
                   <Image
                     src={logoData.image_url}
                     alt={logoData.name}
-                    width={140}
+                    width={120}
                     height={60}
-                    className="object-contain h-14 w-auto mb-4 -ml-5"
+                    className="object-contain h-12 w-auto -ml-5 mb-3"
                     priority
                     unoptimized
                   />
@@ -158,7 +158,7 @@ function NavBarResponsive() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-12">
+            <div className="hidden lg:flex items-center gap-12">
               {/* Animated background div */}
               <div
                 className={`absolute -top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[100px] bg-black/30 rounded-2xl transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] backdrop-blur-sm ${
@@ -199,7 +199,7 @@ function NavBarResponsive() {
               href="https://wa.me/8801999467873"
               target="_blank"
               className="ml-4 px-5 py-2 rounded-full bg-[#002b10] text-[#25D366] text-sm font-semibold
-                hover:scale-105 transition shadow-md hidden md:flex items-center gap-1"
+                hover:scale-105 transition shadow-md hidden lg:flex items-center gap-1"
             >
               <FaWhatsapp size={25} />
               <span className="">Get In Touch</span>
@@ -208,7 +208,7 @@ function NavBarResponsive() {
             {/* Mobile Toggle */}
             <button
               onClick={toggleNavbar}
-              className="md:hidden text-3xl font-light text-[#334b35]"
+              className="lg:hidden text-2xl font-light text-[#334b35]"
             >
               {isClick ? "×" : "☰"}
             </button>
@@ -222,7 +222,7 @@ function NavBarResponsive() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.25 }}
-                className="md:hidden bg-[#F6F4EC] border-t border-black/10"
+                className="lg:hidden bg-[#F6F4EC] border-t border-black/10"
               >
                 <div className="px-6 py-6 space-y-6">
                   {menuData.map((item) => (

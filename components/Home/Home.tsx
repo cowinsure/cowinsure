@@ -29,7 +29,6 @@ import TechnologyHero from "../AboutPage/OurTechnologySection/TechnologyHero";
 // Testing git
 
 const Home = () => {
-
   return (
     <div className=" lg:h-auto w-auto h-auto overflow-hidden">
       {/* Hero Section */}
@@ -55,7 +54,7 @@ const Home = () => {
 
       {/* Section 2 - About Us */}
 
-      <section className=" max-[767px]:mt-20 mb-10 mx-auto flex flex:row items-center justify-center p-2">
+      <section className=" mb-10 mx-auto flex flex:row items-center justify-center p-2">
         <AboutUsSection />
       </section>
 
@@ -63,7 +62,7 @@ const Home = () => {
         <CardsSection />
       </div>
 
-       <TechnologyHero showKnowMoreButton={true} />
+      <TechnologyHero showKnowMoreButton={true} />
 
       {/* <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Mission' description={mission} reverse/>
       <ServiceHighlighted url='/about_us' image={bannerGenereal} title='Our Vision' description={vision} /> */}
