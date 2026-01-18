@@ -102,6 +102,36 @@ const GalleryPage: React.FC = () => {
     //   description: "",
     // },
     {
+      id: 105,
+      title: "Yard Meeting & Awareness Campaign",
+      category: "campaigns",
+      image_url: "/seminar.jpeg",
+      description: "",
+    },
+      {
+      id: 105,
+      title: "Yard Meeting & Awareness Campaign",
+      category: "campaigns",
+      image_url: "/seminar2.jpeg",
+      description: "",
+    },
+   
+  
+     {
+      id: 103,
+      title: "Awareness Campaign by our CEO and COO",
+      category: "campaigns",
+      image_url: "/boss1.jpeg",
+      description: "",
+    },
+     {
+      id: 104,
+      title: "Branch Campaign",
+      category: "campaigns",
+      image_url: "/branch.jpeg",
+      description: "",
+    },
+    {
       id: 10,
       title: "Training for Farmers and Cattle Rearers",
       category: "campaigns",

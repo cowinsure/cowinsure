@@ -2,9 +2,21 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import BannerGeneral from "@/components/Home/BannerGeneral";
-import FaqSection from "@/components/Home/FaqSection";
 import { motion, AnimatePresence } from "framer-motion";
 import ImageCapture from "@/components/ImageCapture";
+import ContactUs from "@/components/Helper/ContactUs";
+
+import { ShieldCheck, TrendingUp, Wallet } from "lucide-react";
+import "animate.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import SectionHeading from "@/components/SectionHeading";
+import FaqSectionStatic from "@/components/service/vetservice/StaticFAQ";
+
+interface Faq {
+  question: string;
+  answer: string;
+}
 
 interface ApiResponse {
   status: string;
@@ -36,7 +48,7 @@ const VetService = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
-  
+
   const [image, setImage] = useState<File | null>(null);
   const [formValues, setFormValues] = useState<finalForm>({
     name: "",
@@ -46,14 +58,14 @@ const VetService = () => {
     responses: [],
   });
   const [submitting, setSubmitting] = useState(false);
-  const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
   // const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-    const [formFields, setFormFields] = useState<FormField[]>([]);
-  
+  const [formFields, setFormFields] = useState<FormField[]>([]);
 
-
-  
   const findByLabel = (label: string) => {
     return formFields.find((item) => item.label === label);
   };
@@ -77,25 +89,25 @@ const VetService = () => {
     });
   };
 
-  
-    useEffect(() => {
-      const fetchFormFields = async () => {
-        try {
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/insurance-types/4/form/`
-          );
-          const result: ApiResponse = await response.json();
-          if (result.status === "success") {
-            setFormFields(result.data);
-            console.log(result.data);
-          }
-        } catch (error) {
-          console.error("Error fetching form fields:", error);
+  useEffect(() => {
+    AOS.init();
+    const fetchFormFields = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/insurance-types/4/form/`,
+        );
+        const result: ApiResponse = await response.json();
+        if (result.status === "success") {
+          setFormFields(result.data);
+          console.log(result.data);
         }
-      };
-  
-      fetchFormFields();
-    }, []);
+      } catch (error) {
+        console.error("Error fetching form fields:", error);
+      }
+    };
+
+    fetchFormFields();
+  }, []);
 
   useEffect(() => {
     if (isModalOpen) {
@@ -133,7 +145,6 @@ const VetService = () => {
 
       const responses = [...payload.responses];
       console.log(payload);
-      
 
       // Attach image if present to first file field (if any)
       // if (image) {
@@ -151,11 +162,10 @@ const VetService = () => {
 
       formData.append("responses", JSON.stringify(responses));
       console.log(formData);
-      
 
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/insurance/submit-form/`,
-        { method: "POST", body: JSON.stringify(payload) }
+        { method: "POST", body: JSON.stringify(payload) },
       );
 
       let result;
@@ -168,21 +178,36 @@ const VetService = () => {
       }
 
       if (res.ok) {
-        setToast({ message: "Request submitted successfully", type: "success" });
+        setToast({
+          message: "Request submitted successfully",
+          type: "success",
+        });
         setIsModalOpen(false);
         setName("");
         setMobile("");
- 
+
         setImage(null);
-      
-        setFormValues({ name: "", phone: "", email: "", insurance_type_id: 4, responses: [] });
+
+        setFormValues({
+          name: "",
+          phone: "",
+          email: "",
+          insurance_type_id: 4,
+          responses: [],
+        });
       } else {
         console.error("Submission error:", result);
-        setToast({ message: result?.message || "Submission failed", type: "error" });
+        setToast({
+          message: result?.message || "Submission failed",
+          type: "error",
+        });
       }
     } catch (err) {
       console.error("Submit exception:", err);
-      setToast({ message: "An error occurred while submitting the form", type: "error" });
+      setToast({
+        message: "An error occurred while submitting the form",
+        type: "error",
+      });
     } finally {
       setSubmitting(false);
     }
@@ -208,10 +233,11 @@ const VetService = () => {
           {toast.message}
         </div>
       )}
+
       {/* Banner Section */}
-      <BannerGeneral bannerUrl={"/cowinspection.jpg"}>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full bg-green-950 bg-opacity-50 text-white text-center p-5">
-          <h1 className="text-xl lg:text-6xl font-semibold mb-4">
+      <BannerGeneral bannerUrl={"/Vet.jpeg"}>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full bg-black bg-opacity-30 text-white text-center p-5">
+          <h1 className="text-3xl lg:text-6xl font-semibold mb-4">
             Veterinary Services
           </h1>
           <p className="text-lg lg:text-2xl mb-6">
@@ -229,134 +255,261 @@ const VetService = () => {
       </BannerGeneral>
 
       {/* About Vet Services Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-3xl lg:text-4xl font-bold text-left text-[#334b35] mb-8 underline">
-          About Our Veterinary Services
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {/* ROW 1 */}
-          {/* <div className="rounded-2xl overflow-hidden">
+      <section className="max-w-7xl mx-auto px-6 py-20 bg-[#F6F4EC]">
+        <SectionHeading
+          title="About Our Veterinary Services"
+          subtitle="Our Services"
+        />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
+          {/* Left: Image */}
+          <div className="w-full h-[420px] rounded-2xl overflow-hidden shadow-lg">
             <img
-              src="/treat.jpg"
-              alt="Treat"
+              src={"/trusted_vet_serv.jpeg"}
+              alt="AgriCore Veterinary Services"
               className="w-full h-full object-cover"
             />
           </div>
 
-          <div className="rounded-2xl bg-white p-10 flex flex-col justify-center">
-            <h3 className="text-3xl font-bold mb-4">TREAT</h3>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Delivering expert veterinary care for every animal no matter
-              where.
-            </p>
-          </div> */}
-
-          {/* ROW 2 (reversed) */}
-          <div className="rounded-2xl bg-white p-10 flex flex-col justify-center shadow-xl">
-            <h3 className="text-3xl font-bold mb-4 text-gray-600">
-              Health Check Up
+          {/* Right: Content */}
+          <div className="text-[#334b35]">
+            <h3
+              className="text-2xl lg:text-3xl mb-4"
+              data-aos="fade-in"
+              data-aos-delay="0"
+            >
+              Trusted Veterinary Care by AgriCore
             </h3>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Providing training to promote long-lasting improvements in animal
-              welfare.
+
+            <p
+              className="text-[#687469] mb-6 leading-relaxed"
+              data-aos="fade-in"
+              data-aos-delay="100"
+            >
+              At <span className="font-semibold text-[#334b35]">AgriCore</span>,
+              we are committed to providing reliable, professional, and
+              compassionate veterinary services to ensure the health,
+              productivity, and well-being of your livestock. Our expert team
+              focuses on preventive care, disease management, and long-term
+              animal welfare.
             </p>
-          </div>
 
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/vaccine.png"
-              alt="Train"
-              className="w-full h-60 object-cover"
-            />
-          </div>
-
-          {/* ROW 3 */}
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/health.png"
-              alt="Respond"
-              className="w-full h-60 object-cover"
-            />
-          </div>
-
-          <div className="rounded-2xl bg-white p-10 flex flex-col justify-center shadow-xl">
-            <h3 className="text-3xl font-bold mb-4 text-gray-600">
-              Vaccination
-            </h3>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Aiding animals and their communities in their time of need.
-            </p>
+            <ul className="space-y-3 text-[#687469]">
+              <li
+                className="flex items-start gap-3"
+                data-aos="fade-up"
+                data-aos-delay="0"
+                data-aos-duration="600"
+              >
+                <span className="text-green-700 font-bold">✔</span>
+                Regular health check-ups to prevent diseases early
+              </li>
+              <li
+                className="flex items-start gap-3"
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="600"
+              >
+                <span className="text-green-700 font-bold">✔</span>
+                Professional vaccination programs for livestock safety
+              </li>
+              <li
+                className="flex items-start gap-3"
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="600"
+              >
+                <span className="text-green-700 font-bold">✔</span>
+                Emergency care and treatment support
+              </li>
+              <li
+                className="flex items-start gap-3"
+                data-aos="fade-up"
+                data-aos-delay="300"
+                data-aos-duration="600"
+              >
+                <span className="text-green-700 font-bold">✔</span>
+                Nutritional guidance for healthy growth and productivity
+              </li>
+              <li
+                className="flex items-start gap-3"
+                data-aos="fade-up"
+                data-aos-delay="400"
+                data-aos-duration="600"
+              >
+                <span className="text-green-700 font-bold">✔</span>
+                Disease prevention and biosecurity consultation
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
       {/* Awareness Campaign Section */}
-      <section className=" py-16 relative bg-white">
-        {/* <div className="w-full h-full bg-white absolute -top-20 skew-y-[10deg] -z-20"></div> */}
-        {/* <div className="w-full h-full bg-white absolute top-0 -skew-x-[18deg] -z-20"></div> */}
-        {/* <div className="w-full h-full bg-white absolute top-20 skew-y-[5deg] -z-20"></div> */}
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl lg:text-4xl font-bold text-left text-[#334b35] mb-2 underline">
-            Why Veterinary Services Matter
-          </h2>
-          <div className="mx-auto">
-            <p className="text-lg text-gray-700 mb-6 text-left">
-              Investing in veterinary care is crucial for sustainable livestock
-              farming. Healthy animals lead to better productivity, higher
-              yields, and economic stability for farmers.
-            </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center bg-green-200 p-3 rounded-lg">
-                <div className="bg-green-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl">🐄</span>
-                </div>
-                <h3 className="text-xl font-semibold text-[#334b35] mb-2">
-                  Disease Prevention
-                </h3>
-                <p className="text-gray-600">
-                  Vaccinations and checkups prevent outbreaks that can devastate
-                  herds.
-                </p>
-              </div>
+      <section className="py-20 bg-[#ffffff]">
+        <div className="max-w-7xl mx-auto px-6">
+          <SectionHeading
+            title="Why Veterinary Services Matter"
+            subtitle="Importance"
+          />
 
-              <div className="text-center bg-green-200 p-3 rounded-lg">
-                <div className="bg-green-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl">📈</span>
-                </div>
-                <h3 className="text-xl font-semibold text-[#334b35] mb-2">
-                  Increased Productivity
-                </h3>
-                <p className="text-gray-600">
-                  Healthy livestock produce more milk, meat, and offspring.
-                </p>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-12">
+            {/* Left: Content */}
+            <div>
+              <h3 className="text-2xl lg:text-3xl text-[#334b35] mb-4">
+                Building Healthier Farms with AgriCore
+              </h3>
 
-              <div className="text-center bg-green-200 p-3 rounded-lg">
-                <div className="bg-green-100 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl">💰</span>
-                </div>
-                <h3 className="text-xl font-semibold text-[#334b35] mb-2">
-                  Economic Benefits
-                </h3>
-                <p className="text-gray-600">
-                  Reduce losses from illness and improve farm profitability.
-                </p>
-              </div>
-            </div>
-            <div className="text-left mt-8">
-              <p className="text-lg text-gray-700">
-                Join our awareness campaign to spread the importance of
-                veterinary care in livestock management. Together, we can build
-                healthier communities and sustainable agriculture.
+              <p className="text-[#687469] mb-6 leading-relaxed">
+                Veterinary services play a vital role in sustainable livestock
+                management. With proper care, farmers can prevent diseases,
+                improve productivity, and protect their livelihoods.
+                <span className="font-semibold text-[#334b35]">
+                  {" "}
+                  AgriCore
+                </span>{" "}
+                supports farmers through expert veterinary guidance and
+                awareness programs.
               </p>
+
+              <ul className="space-y-4 text-[#687469]">
+                <li className="flex items-start gap-3">
+                  <span className="text-green-700 font-bold">✔</span>
+                  Prevents the spread of contagious animal diseases
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-700 font-bold">✔</span>
+                  Improves milk, meat, and reproduction performance
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-700 font-bold">✔</span>
+                  Reduces financial losses caused by illness
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-green-700 font-bold">✔</span>
+                  Promotes animal welfare and ethical farming
+                </li>
+              </ul>
+
+              <p className="mt-6 text-[#687469] leading-relaxed">
+                By raising awareness and providing access to veterinary care,
+                AgriCore helps farmers build stronger, healthier, and more
+                sustainable agricultural communities.
+              </p>
+            </div>
+
+            {/* Right: Feature Cards */}
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 place-items-center gap-5 lg:gap-0">
+              {/* Card 1 - Top Right */}
+              <div
+                data-aos="zoom-out-left"
+                data-aos-duration="800"
+                data-aos-delay="0"
+                className="lg:col-start-2 lg:row-start-1 bg-white p-5 rounded-2xl 
+               border border-green-100 shadow-sm 
+               drop-shadow-lg transition-all duration-300 -z-0 translate-y-20 translate-x-1"
+              >
+                <div className="flex items-center gap-2 text-green-700 text-sm font-semibold uppercase mb-2">
+                  <ShieldCheck size={16} />
+                  Protection
+                </div>
+                <h4 className="text-lg font-bold text-[#334b35] mb-3">
+                  Disease Prevention
+                </h4>
+                <p className="text-sm text-[#687469] leading-relaxed">
+                  Routine health checks and vaccination programs help prevent
+                  the spread.
+                </p>
+              </div>
+
+              {/* Card 2 - Middle Left */}
+              <div
+                data-aos="zoom-out-up"
+                data-aos-duration="800"
+                data-aos-delay="200"
+                className="lg:col-start-1 lg:row-start-2 translate-x-10 bg-white p-5 rounded-2xl 
+               border border-green-100 shadow-sm 
+               drop-shadow-lg -translate-y-12 transition-all duration-300 -z-0"
+              >
+                <div className="flex items-center gap-2 text-green-700 text-sm font-semibold uppercase mb-2">
+                  <TrendingUp size={16} />
+                  Performance
+                </div>
+                <h4 className="text-lg font-bold text-[#334b35] mb-3">
+                  Higher Productivity
+                </h4>
+                <p className="text-sm text-[#687469] leading-relaxed">
+                  Healthy animals grow faster, reproduce better, and deliver
+                  higher milk and meat yields.
+                </p>
+              </div>
+
+              {/* Card 3 - Bottom Right */}
+              <div
+                data-aos="zoom-out-right"
+                data-aos-duration="800"
+                data-aos-delay="400"
+                className="lg:col-start-2 lg:row-start-3 -translate-x-10 -translate-y-24 bg-white p-5 rounded-2xl 
+               border border-green-100 shadow-sm 
+               drop-shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center gap-2 text-green-700 text-sm font-semibold uppercase mb-2">
+                  <Wallet size={16} />
+                  Stability
+                </div>
+                <h4 className="text-lg font-bold text-[#334b35] mb-3">
+                  Economic Security
+                </h4>
+                <p className="text-sm text-[#687469] leading-relaxed">
+                  Preventive veterinary care minimizes medical costs and
+                  protects farmers from financial losses.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <div className="text-center">
-        <FaqSection />
+      <div className="text-center bg-[#F6F4EC]">
+        <FaqSectionStatic faqs={
+         [
+  {
+    question: "What services does Insurecow provide?",
+    answer:
+      "We provide a full range of veterinary services including routine check-ups, vaccinations, emergency care, and nutritional advice for your livestock.",
+  },
+  {
+    question: "How do I book an appointment?",
+    answer:
+      "You can book an appointment by calling our clinic directly or using the online booking form available on our website.",
+  },
+  {
+    question: "Do you provide on-site veterinary services?",
+    answer:
+      "Yes, our veterinarians can visit your farm or location to provide treatment and check-ups as needed.",
+  },
+  {
+    question: "What are your operating hours?",
+    answer:
+      "Our clinic is open Monday to Friday from 8:00 AM to 6:00 PM, and Saturday from 9:00 AM to 2:00 PM.",
+  },
+  {
+    question: "What should I bring to my pet's appointment?",
+    answer:
+      "Please bring any previous medical records, vaccination history, and a list of current medications your animal is taking.",
+  },
+  {
+    question: "How can I get advice in an emergency?",
+    answer:
+      "For urgent situations, please call our emergency hotline. Our team is trained to provide immediate guidance and assistance.",
+  },
+]
+        } />
+      </div>
+
+      <div className="text-center bg-[#F6F4EC]">
+        <ContactUs />
       </div>
 
       {/* Modal */}
@@ -452,7 +605,9 @@ const VetService = () => {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-slate-600">Mobile Number</label>
+                  <label className="text-sm font-medium text-slate-600">
+                    Mobile Number
+                  </label>
                   <input
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
@@ -468,10 +623,14 @@ const VetService = () => {
                   if (field.field_type === "choice") {
                     return (
                       <div key={field.id}>
-                        <label className="text-sm font-medium text-slate-600">{field.label}</label>
+                        <label className="text-sm font-medium text-slate-600">
+                          {field.label}
+                        </label>
                         <select
                           value={value}
-                          onChange={(e) => handleDynamicChange(e.target.value, field)}
+                          onChange={(e) =>
+                            handleDynamicChange(e.target.value, field)
+                          }
                           required={field.required}
                           className="mt-1 w-full rounded-md border border-slate-300 px-2 py-1 bg-white focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition text-black"
                         >
@@ -490,12 +649,16 @@ const VetService = () => {
                     const isRemarks = /remarks/i.test(field.label);
                     return (
                       <div key={field.id}>
-                        <label className="text-sm font-medium text-slate-600">{field.label}</label>
+                        <label className="text-sm font-medium text-slate-600">
+                          {field.label}
+                        </label>
                         {isRemarks ? (
                           <textarea
                             rows={3}
                             value={value}
-                            onChange={(e) => handleDynamicChange(e.target.value, field)}
+                            onChange={(e) =>
+                              handleDynamicChange(e.target.value, field)
+                            }
                             required={field.required}
                             className="mt-1 w-full rounded-md text-black border border-slate-300 px-2 py-1 focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition"
                             placeholder={field.label}
@@ -503,7 +666,9 @@ const VetService = () => {
                         ) : (
                           <input
                             value={value}
-                            onChange={(e) => handleDynamicChange(e.target.value, field)}
+                            onChange={(e) =>
+                              handleDynamicChange(e.target.value, field)
+                            }
                             required={field.required}
                             placeholder={field.label}
                             className="mt-1 w-full rounded-md text-black border border-slate-300 px-2 py-1 focus:border-green-600 focus:ring-2 focus:ring-green-500/30 outline-none transition"
@@ -516,7 +681,9 @@ const VetService = () => {
                   if (field.field_type === "file") {
                     return (
                       <div key={field.id}>
-                        <label className="text-sm font-medium text-slate-600">{field.label}</label>
+                        <label className="text-sm font-medium text-slate-600">
+                          {field.label}
+                        </label>
                         <ImageCapture
                           image={image}
                           setImage={(f) => {
@@ -535,9 +702,9 @@ const VetService = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className={`w-full mt-4 rounded-md bg-green-600 py-3 font-semibold text-white transition-all duration-300 hover:bg-green-700 hover:shadow-lg active:scale-[0.98] ${submitting ? 'opacity-60 cursor-not-allowed' : ''}`}
+                  className={`w-full mt-4 rounded-md bg-green-600 py-3 font-semibold text-white transition-all duration-300 hover:bg-green-700 hover:shadow-lg active:scale-[0.98] ${submitting ? "opacity-60 cursor-not-allowed" : ""}`}
                 >
-                  {submitting ? 'Submitting...' : 'Submit Request'}
+                  {submitting ? "Submitting..." : "Submit Request"}
                 </button>
               </form>
             </motion.div>
