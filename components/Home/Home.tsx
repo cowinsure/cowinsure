@@ -24,6 +24,7 @@ import PartnerAndInvestorSection from "../Helper/PartnerAndInvestorSection";
 // import CowPurchaseSection from '../Project/cowSellProject/CowPurchaseSection';
 import InvestmentSection from "../Helper/InvestmentSection";
 import TechnologyHero from "../AboutPage/OurTechnologySection/TechnologyHero";
+import SubscriptionPlans from "../SubscriptionPlans";
 // import HomeInvestmentSection from './HomeInvestmentSection';
 
 // Testing git
@@ -57,6 +58,8 @@ const Home = () => {
       <section className=" mb-10 mx-auto flex flex:row items-center justify-center p-2">
         <AboutUsSection />
       </section>
+
+      <SubscriptionPlans />
 
       <div className="h-auto lg:h-auto lg:pt-10 md:h-auto bg-[#F6F4EC] pb-10">
         <CardsSection />
