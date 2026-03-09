@@ -121,7 +121,7 @@ export default function SubscriptionPlans() {
 
   const handleWhatsAppClick = (planName: string) => {
     const message = `Hello, I'm interested in the ${planName} subscription plan. Can you provide more details?`;
-    const whatsappUrl = `https://wa.me/8801756987543?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/8801999467873?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -239,19 +239,6 @@ export default function SubscriptionPlans() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Bottom Note */}
-        <div className="mt-16 text-center">
-          <p className="text-sm text-slate-400">
-            All prices are in BDT (Taka). Prices subject to change.
-            <a
-              href="#"
-              className="text-emerald-600 hover:text-emerald-700 font-medium ml-1 underline decoration-emerald-200 underline-offset-4"
-            >
-              View terms
-            </a>
-          </p>
         </div>
       </div>
     </section>
