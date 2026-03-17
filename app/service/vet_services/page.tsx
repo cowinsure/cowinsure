@@ -13,10 +13,6 @@ import "aos/dist/aos.css";
 import SectionHeading from "@/components/SectionHeading";
 import FaqSectionStatic from "@/components/service/vetservice/StaticFAQ";
 
-interface Faq {
-  question: string;
-  answer: string;
-}
 
 interface ApiResponse {
   status: string;

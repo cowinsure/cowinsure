@@ -130,11 +130,11 @@ export default function SubscriptionPlans() {
       <div className="max-w-[1500px] mx-auto px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#334b35] tracking-tight mb-6">
             Simple, transparent{" "}
             <span className="text-emerald-600">pricing</span>
           </h2>
-          <p className="text-lg text-slate-600 leading-relaxed">
+          <p className="text-lg text-[#687469] leading-relaxed">
             Choose the perfect plan for your farm management needs. Scale
             seamlessly as your business grows, with no hidden fees.
           </p>
@@ -172,10 +172,10 @@ export default function SubscriptionPlans() {
                     {plan.icon}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-xl font-bold text-slate-900 leading-tight text-left">
+                    <h3 className="text-xl font-bold text-[#334b35] leading-tight text-left">
                       {plan.name}
                     </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed text-left">
+                    <p className="text-xs text-[#687469] leading-relaxed text-left">
                       {plan.description}
                     </p>
                   </div>
@@ -183,15 +183,15 @@ export default function SubscriptionPlans() {
 
                 {/* Price Row */}
                 <div className="mt-4 flex items-center justify-between gap-2">
-                  <span className="text-sm text-slate-400 font-medium">
+                  <span className="text-sm text-[#687469] font-medium">
                     MONTHLY
                   </span>
                   <div>
-                    <span className="text-4xl font-bold tracking-tight text-slate-900">
+                    <span className="text-4xl font-bold tracking-tight text-[#334b35]">
                       {plan.price}
                     </span>
                     {plan.price !== "Custom" && (
-                      <small className="text-xs font-medium text-slate-400">
+                      <small className="text-xs font-medium text-[#687469]">
                         {" "} /cattle
                       </small>
                     )}
@@ -213,7 +213,7 @@ export default function SubscriptionPlans() {
                           strokeWidth={2.5}
                         />
                       </div>
-                      <span className="text-sm font-medium text-slate-700 leading-relaxed">
+                      <span className="text-sm font-medium text-[#687469] leading-relaxed">
                         {feature}
                       </span>
                     </li>

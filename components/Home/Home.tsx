@@ -59,11 +59,12 @@ const Home = () => {
         <AboutUsSection />
       </section>
 
-      <SubscriptionPlans />
 
       <div className="h-auto lg:h-auto lg:pt-10 md:h-auto bg-[#F6F4EC] pb-10">
         <CardsSection />
       </div>
+      <SubscriptionPlans />
+
 
       <TechnologyHero showKnowMoreButton={true} />
 
